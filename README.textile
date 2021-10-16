@@ -1,7 +1,0 @@
-h2. Textile
-
-* is a _shorthand syntax_ used to generate valid HTML
-* is *easy* to read and *easy* to write
-* can generate complex pages, including: headings, quotes, lists, tables and figures
-
-Textile integrations are available for "a wide range of platforms":/article/.
