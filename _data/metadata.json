@@ -1,0 +1,11 @@
+{
+  "title": "MithrilJS Examples",
+  "url": "https://example.com/",
+  "language": "en",
+  "description": "Learning MithrilJS by various Examples.",
+  "author": {
+    "name": "Thomas Breuss",
+    "email": "me@tebe.ch",
+    "url": "https://www.tebe.ch"
+  }
+}
