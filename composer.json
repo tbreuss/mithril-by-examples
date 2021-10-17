@@ -1,0 +1,13 @@
+{
+    "require": {
+        "spatie/yaml-front-matter": "^2.0",
+        "league/plates": "^3.4",
+        "altorouter/altorouter": "^2.0",
+        "league/commonmark": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "ME\\": "library"
+        }
+    }
+}
