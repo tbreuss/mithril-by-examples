@@ -32,7 +32,7 @@ module.exports = function(eleventyConfig) {
     const tmpTsFound = content.match(/<code class="language-ts">(.*?)<\/code>/sg);
     const foundTsCode = tmpTsFound ? tmpTsFound.map(function (val) {
       return {
-        name: '.ts.',
+        name: '.ts',
         content: decode(val.substr(26, val.length - 26 - 7))
       };
     }) : [];
@@ -68,13 +68,14 @@ module.exports = function(eleventyConfig) {
       </div>
       <script>
       Flems(document.getElementById("flems"), {
-          files: ${flemsFiles},
-          links: [{
-              name: 'mithril',
-              type: 'script',
-              url: 'https://unpkg.com/mithril'
-          }]
-      })
+        selected: '.js',
+        files: ${flemsFiles},
+        links: [{
+            name: 'mithril',
+            type: 'script',
+            url: 'https://unpkg.com/mithril'
+        }]
+      });
       </script>
     `;
 

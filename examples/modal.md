@@ -14,7 +14,16 @@ layout: layouts/example.njk
 ## HTML
 
 ~~~html
-<div id="app"></div>
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Modal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+</body>
+</html>
 ~~~
 
 ## Typescript

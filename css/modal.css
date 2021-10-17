@@ -62,6 +62,10 @@ input[type="checkbox"]:checked ~ .modal-background {
 .modal-header label:hover img {
   opacity: 0.6;
 }
+.modal-body {
+  height: 100%;
+}
+
 /* below is optional, it is just an example for the blue button */
 .example-label {
   box-sizing: border-box;
