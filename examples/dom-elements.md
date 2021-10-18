@@ -1,5 +1,5 @@
 ---
-title: Hello World
+title: DOM Elements
 created: 2021-10-16
 modified: 2021-10-16
 tags: [basics]
@@ -11,7 +11,7 @@ links: []
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/index.html#hello-world>.
+This example was taken from the official website at <https://mithril.js.org/index.html#dom-elements>.
 
 ## HTML
 
@@ -20,7 +20,7 @@ This example was taken from the official website at <https://mithril.js.org/inde
 <html lang=en>
 <head>
   <meta charset=utf-8>
-  <title>Hello World</title>
+  <title>DOM Elements</title>
 </head>
 <body>
 </body>
@@ -30,5 +30,11 @@ This example was taken from the official website at <https://mithril.js.org/inde
 ## JavaScript
 
 ~~~js
-m.render(document.body, "Hello World")
+let root = document.body
+m.render(root, [
+  m("main", [
+    m("h1", {class: "title"}, "My first app"),
+    m("button", "A button"),
+  ])
+])
 ~~~

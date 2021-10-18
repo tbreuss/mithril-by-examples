@@ -7,10 +7,17 @@ eleventyNavigation:
   order: 3
 ---
 
-MithrilJS by Examples is a website to learn MithrilJS a JavaScript Framework for Building Brilliant Applications.
+MithrilJS by Examples is a website to learn MithrilJS – a JavaScript Framework for Building Brilliant Applications.
 
-## Official Links
+## Official Resources
 
-- [Official Website](https://mithril.js.org)
+- [Website](https://mithril.js.org)
+- [Simple Application Tutorial](https://mithril.js.org/simple-application.html)
+- [API Reference](https://mithril.js.org/api.html)
 - [GitHub Repo](https://github.com/MithrilJS/mithril.js)
 - [Gitter Chat](https://gitter.im/mithriljs/mithril.js)
+
+## Community
+
+- [Gitter Chat Room](https://gitter.im/mithriljs/mithril.js)
+- Use `#mithriljs` on Twitter and other social media.
