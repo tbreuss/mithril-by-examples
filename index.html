@@ -8,7 +8,7 @@ eleventyNavigation:
 
 <h1>Latest {% if maxExamples == 1 %}Example{% else %}{{ maxExamples }} Examples{% endif %}</h1>
 
-{% set examplesList = collections.examples | head(-3) %}
+{% set examplesList = collections.examples | head(-maxExamples) %}
 {% set examplesListCounter = collections.examples | length %}
 {% include "examples_list.html" %}
 
