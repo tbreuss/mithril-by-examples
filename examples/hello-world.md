@@ -1,11 +1,11 @@
 ---
 title: Hello World
-abstract:
 created: 2021-10-16
 modified: 2021-10-16
 tags: [basics]
+level: beginner
 version: 2.0.4
-author: [tebe]
+authors: [tebe]
 credits: []
 links: []
 layout: layouts/example.njk

@@ -7,7 +7,7 @@ eleventyNavigation:
   order: 3
 ---
 
-MithrilJS is a JavaScript Framework for Building Brilliant Applications
+MithrilJS by Examples is a website to learn MithrilJS a JavaScript Framework for Building Brilliant Applications.
 
 ## Official Links
 

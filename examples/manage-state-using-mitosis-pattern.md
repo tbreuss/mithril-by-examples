@@ -1,11 +1,11 @@
 ---
 title: Manage state using Mitosis pattern
-abstract: Simple example using Mitosis to manage state.
 created: 2021-10-16
 modified: 2021-10-16
 tags: [mitosis, state, component]
-version: 2.0.3
-author: [kevinfiol]
+level: intermediate
+version: 2.0.4
+authors: [kevinfiol]
 credits: [porsager, foxdonut]
 layout: layouts/example.njk
 ---
