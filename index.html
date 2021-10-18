@@ -1,5 +1,5 @@
 ---
-layout: layouts/home.njk
+layout: layouts/home.html
 eleventyNavigation:
   key: Home
   order: 1
@@ -10,6 +10,6 @@ eleventyNavigation:
 
 {% set examplesList = collections.examples | head(-3) %}
 {% set examplesListCounter = collections.examples | length %}
-{% include "examples_list.njk" %}
+{% include "examples_list.html" %}
 
 <p>More examples can be found in <a href="{{ '/examples/' | url }}">the examples</a> section.</p>

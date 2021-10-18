@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   // Alias `layout: post` to `layout: layouts/post.njk`
-  // eleventyConfig.addLayoutAlias("example", "layouts/example.njk");
+  // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
   eleventyConfig.addFilter("test", content => {
 

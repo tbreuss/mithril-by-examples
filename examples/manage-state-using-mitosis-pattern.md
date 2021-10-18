@@ -7,7 +7,7 @@ level: intermediate
 version: 2.0.4
 authors: [kevinfiol]
 credits: [porsager, foxdonut]
-layout: layouts/example.njk
+layout: layouts/example.html
 ---
 
 Simple example using Mitosis to manage state.

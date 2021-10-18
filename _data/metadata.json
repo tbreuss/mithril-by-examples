@@ -1,11 +1,10 @@
 {
   "title": "MithrilJS by Examples",
-  "url": "https://mithril-examples.tebe.ch",
+  "url": "https://mithril-by-examples.tebe.ch",
   "language": "en",
   "description": "Learning MithrilJS by various Examples.",
   "author": {
     "name": "Thomas Breuss",
-    "email": "me@tebe.ch",
     "url": "https://www.tebe.ch"
   }
 }

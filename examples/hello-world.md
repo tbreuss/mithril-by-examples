@@ -8,7 +8,7 @@ version: 2.0.4
 authors: [tebe]
 credits: []
 links: []
-layout: layouts/example.njk
+layout: layouts/example.html
 ---
 
 ## HTML

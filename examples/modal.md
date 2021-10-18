@@ -8,7 +8,7 @@ version: 2.0.4
 authors: [spacejack]
 credits: []
 links: [https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css]
-layout: layouts/example.njk
+layout: layouts/example.html
 ---
 
 ## HTML
