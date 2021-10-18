@@ -4,7 +4,6 @@ eleventyNavigation:
   key: Home
   order: 1
 ---
-
 {% set maxExamples = collections.examples.length | min(3) %}
 
 <h1>Latest {% if maxExamples == 1 %}Example{% else %}{{ maxExamples }} Examples{% endif %}</h1>
