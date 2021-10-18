@@ -1,0 +1,73 @@
+---
+layout: layouts/base.html
+templateClass: tmpl-post
+---
+<h1>{{ title }}</h1>
+
+<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+{%- for tag in tags | filterTagList -%}
+{%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+<a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+{%- endfor %}
+
+{{ content | test | safe }}
+
+{%- if collections.posts %}
+{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{%- if nextPost or previousPost %}
+<hr>
+<ul>
+  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+</ul>
+{%- endif %}
+{%- endif %}
+
+{% set maxExamples = collections.examples.length | min(3) %}
+
+{%- if authors.length > 0 %}
+  <div class="authors">
+  {% if authors.length == 1 %}Author{% else %}Authors{% endif %}:&nbsp;
+  {%- for author in authors -%}
+    {% if loop.index > 1  %}, {% endif %}<span class="author">{{ author }}</span>
+  {%- endfor %}
+  </div>
+{%- endif %}
+
+{%- if credits.length > 0 %}
+  <div class="credits">
+  {% if credits.length == 1 %}Credit{% else %}Credits{% endif %}:&nbsp;
+  {%- for credit in credits -%}
+    {% if loop.index > 1  %}, {% endif %}<span class="credit">{{ credit }}</span>
+  {%- endfor %}
+  </div>
+{%- endif %}
+
+{%- if level %}
+  <div class="level">
+  Level:
+    <span class="level">{{ level }}</span>
+  </div>
+{%- endif %}
+
+{%- if version %}
+  <div class="version">
+  Mithril Version:
+    <span class="version">{{ version }}</span>
+  </div>
+{%- endif %}
+
+{%- if created %}
+  <div class="created">
+  Created at:
+    <span class="created">{{ created | readableDate }}</span>
+  </div>
+{%- endif %}
+
+{%- if modified %}
+  <div class="modified">
+  Modified at:
+    <span class="modified">{{ modified | readableDate }}</span>
+  </div>
+{%- endif %}
