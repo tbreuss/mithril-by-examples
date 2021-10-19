@@ -7,6 +7,7 @@
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/modal.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/highlight/styles/atom-one-dark.min.css' | url }}">
     <!-- link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}" -->
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
@@ -44,4 +45,6 @@
 
     <!-- Current page: {{ page.url | url }} -->
   </body>
+  <script src="{{ '/css/highlight/highlight.min.js' | url }}"></script>
+  <script>hljs.highlightAll();</script>
 </html>
