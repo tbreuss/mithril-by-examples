@@ -29,6 +29,14 @@ module.exports = function(eleventyConfig) {
       };
     }) : [];
 
+    const tmpCssFound = content.match(/<code class="language-css">(.*?)<\/code>/sg);
+    const foundCssCode = tmpCssFound ? tmpCssFound.map(function (val) {
+      return {
+        name: '.css',
+        content: decode(val.substr(27, val.length - 27 - 7))
+      };
+    }) : [];
+
     const tmpTsFound = content.match(/<code class="language-ts">(.*?)<\/code>/sg);
     const foundTsCode = tmpTsFound ? tmpTsFound.map(function (val) {
       return {
@@ -45,7 +53,7 @@ module.exports = function(eleventyConfig) {
       };
     }) : [];
 
-    const flemsFilesArray = [].concat(foundHtmlCode, foundTsCode, foundJsCode);
+    const flemsFilesArray = [].concat(foundHtmlCode, foundCssCode, foundTsCode, foundJsCode);
     const flemsFiles = JSON.stringify(flemsFilesArray);
 
     //console.log(flemsFiles);
@@ -133,6 +141,7 @@ module.exports = function(eleventyConfig) {
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy(".htaccess");
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
