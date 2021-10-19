@@ -1,5 +1,5 @@
 ---
-title: Manage state using Mitosis pattern
+title: Manage State using Factory functions with stateless components
 created: 2021-10-16
 modified: 2021-10-16
 tags: [mitosis, state, component]
@@ -10,15 +10,6 @@ credits: [porsager, foxdonut]
 layout: layouts/example.html
 ---
 
-Simple example using Mitosis to manage state.
-Mitosis is named after the equally awesome Meiosis pattern.
-Credits go to @porsager and @foxdonut.
-
-## HTML
-
-~~~html
-<div id="app"></div>
-~~~
 
 ## JavaScript
 
