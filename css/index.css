@@ -185,7 +185,7 @@ p code, li code {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  padding-left: .25em;
+  padding-left: 0.1em;
   padding-right: .25em;
   text-underline-position: from-font;
   text-underline-offset: 0;
