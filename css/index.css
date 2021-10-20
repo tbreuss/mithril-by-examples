@@ -53,6 +53,9 @@ header:after {
   display: table;
   clear: both;
 }
+footer {
+  padding: 1rem;
+}
 table {
   margin: 1em 0;
 }
@@ -251,4 +254,8 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+.github-edit-link {
+  margin-top: 1.5rem;
 }
