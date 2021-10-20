@@ -13,4 +13,39 @@ layout: layouts/example.html
 
 See <https://eugenkiss.github.io/7guis/tasks#counter>.
 
-To be done.
+## HTML
+
+~~~html
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Counter</title>
+</head>
+<body>
+</body>
+</html>
+~~~
+
+## JavaScript
+
+~~~js
+let root = document.body
+let count = 0
+
+let Counter = {
+  view: function() {
+    return m("main", [
+      m("input[readonly=true]", {
+        value: count
+      }),
+      m("button", {
+        onclick: function() {count++}
+      }, "Count")
+    ])
+  }
+}
+
+m.mount(root, Counter)
+
+~~~
