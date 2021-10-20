@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
-  eleventyConfig.addFilter("test", content => {
+  eleventyConfig.addFilter("add_flems_link", (content, flems) => {
 
     const tmpHtmlFound = content.match(/<code class="language-html">(.*?)<\/code>/sg);
     const foundHtmlCode = tmpHtmlFound ? tmpHtmlFound.map(function (val) {
