@@ -41,7 +41,14 @@
       {{ content | safe }}
     </main>
 
-    <footer></footer>
+    <footer>
+      {% set regExp = r/\/examples\/.+/g %}
+      {% if regExp.test(page.url) %}
+      <div class="github-edit-link">
+        <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/{{ page.inputPath }}">Edit this example on GitHub</a>
+      </div>
+      {% endif %}
+    </footer>
 
     <!-- Current page: {{ page.url | url }} -->
   </body>
