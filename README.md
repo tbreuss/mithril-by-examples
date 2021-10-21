@@ -20,7 +20,7 @@ This repository is a collection of code samples containing working explanations.
 - [Gitter Chat Room](https://gitter.im/mithriljs/mithril.js)
 - Use `#mithriljs` on Twitter and other social media.
 
-## Install
+## Install & Run
 
-The website is built using <https://www.11ty.dev/>.
+The website is built using [Eleventy](https://www.11ty.dev), a simpler static site generator.
 Please follow the instructions at <https://www.11ty.dev/docs/getting-started/> to install and run the project locally.
