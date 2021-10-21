@@ -1,7 +1,6 @@
 ---
 title: Lifecycle methods
-created: 2021-10-19
-modified: 2021-10-19
+date: 2021-10-19
 tags: [component, lifecycle]
 level: intermediate
 version: 2.0.4

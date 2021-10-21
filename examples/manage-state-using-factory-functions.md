@@ -1,7 +1,6 @@
 ---
 title: Manage State using Factory Functions
-created: 2021-10-19
-modified: 2021-10-19
+date: 2021-10-19
 tags: [state, component, mitosis]
 level: intermediate
 version: 2.0.4

@@ -1,7 +1,6 @@
 ---
 title: XHR
-created: 2021-10-16
-modified: 2021-10-16
+date: 2021-10-16
 tags: [basics]
 level: beginner
 version: 2.0.4
