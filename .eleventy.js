@@ -134,10 +134,26 @@ module.exports = function(eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
+  eleventyConfig.addCollection('examplesLatest', collection => {
+    return collection
+      .getFilteredByGlob('./examples/*.md')
+      .sort(function(a, b) {
+        if (a.data.date > b.data.date) return -1;
+        else if (a.data.date < b.data.date) return 1;
+        else return 0;
+      });
+  });
+
   eleventyConfig.addCollection('examples', collection => {
     return collection
       .getFilteredByGlob('./examples/*.md')
-      .sort((a, b) => (Number(a.data.displayOrder) > Number(b.data.displayOrder) ? 1 : -1));
+      .sort(function(a, b) {
+        let nameA = a.data.title.toUpperCase();
+        let nameB = b.data.title.toUpperCase();
+        if (nameA < nameB) return -1;
+        else if (nameA > nameB) return 1;
+        else return 0;
+      });
   });
 
   // Copy the `img` and `css` folders to the output
