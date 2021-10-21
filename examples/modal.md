@@ -1,7 +1,6 @@
 ---
 title: Modal
-created: 2021-10-16
-modified: 2021-10-16
+date: 2021-10-16
 tags: [modal, dialog]
 level: beginner
 version: 2.0.4

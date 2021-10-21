@@ -1,7 +1,6 @@
 ---
 title: CSS Animation on element removal
-created: 2021-10-19
-modified: 2021-10-19
+date: 2021-10-19
 tags: [basics, animation]
 level: beginner
 version: 2.0.4
