@@ -1,5 +1,5 @@
 ---
-title: 7GUIs CRUD
+title: CRUD - 7GUIs
 date: 2021-10-18
 tags: [7guis]
 level: beginner

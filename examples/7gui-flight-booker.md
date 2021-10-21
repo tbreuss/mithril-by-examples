@@ -1,5 +1,5 @@
 ---
-title: 7GUIs Flight Booker
+title: Flight Booker - 7GUIs
 date: 2021-10-18
 tags: [7guis]
 level: beginner
