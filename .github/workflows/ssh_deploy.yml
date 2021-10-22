@@ -2,7 +2,7 @@ name: Deploy Eleventy via SSH
 
 on:
   push:
-    branches: [master,github-action]
+    branches: [master]
   pull_request:
     branches: [master]
 
