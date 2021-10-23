@@ -19,44 +19,92 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
-  eleventyConfig.addFilter("add_flems_link", (content, flems) => {
+  eleventyConfig.addFilter("add_link_to_flems", (rawContent, title, flems) => {
 
-    const tmpHtmlFound = content.match(/<code class="language-html">(.*?)<\/code>/sg);
-    const foundHtmlCode = tmpHtmlFound ? tmpHtmlFound.map(function (val) {
-      return {
+    if (flems === undefined) {
+      flems = ['.css', '.ts', '.js'];
+    }
+
+    const languages = [
+      {
+        type: 'html',
         name: '.html',
-        content: decode(val.substr(28, val.length - 28 - 7))
-      };
-    }) : [];
-
-    const tmpCssFound = content.match(/<code class="language-css">(.*?)<\/code>/sg);
-    const foundCssCode = tmpCssFound ? tmpCssFound.map(function (val) {
-      return {
+        openTag: '<code class="language-html">',
+        closeTag: '</code>',
+        filenameRegex: /<!-- (.+?\.html) -->/s
+      },
+      {
+        type: 'css',
         name: '.css',
-        content: decode(val.substr(27, val.length - 27 - 7))
-      };
-    }) : [];
-
-    const tmpTsFound = content.match(/<code class="language-ts">(.*?)<\/code>/sg);
-    const foundTsCode = tmpTsFound ? tmpTsFound.map(function (val) {
-      return {
+        openTag: '<code class="language-css">',
+        closeTag: '</code>',
+        filenameRegex: /\/\* (.+?\.css) \*\//s
+      },
+      {
+        type: 'ts',
         name: '.ts',
-        content: decode(val.substr(26, val.length - 26 - 7))
-      };
-    }) : [];
-
-    const tmpJsFound = content.match(/<code class="language-js">(.*?)<\/code>/sg);
-    const foundJsCode = tmpJsFound ? tmpJsFound.map(function (val) {
-      return {
+        openTag: '<code class="language-ts">',
+        closeTag: '</code>',
+        filenameRegex: /\/\/ (.+?\.ts)/s
+      },
+      {
+        type: 'js',
         name: '.js',
-        content: decode(val.substr(26, val.length - 26 - 7))
-      };
-    }) : [];
+        openTag: '<code class="language-js">',
+        closeTag: '</code>',
+        filenameRegex: /\/\/ (.+?\.js)/s
+      },
+    ]
 
-    const flemsFilesArray = [].concat(foundHtmlCode, foundCssCode, foundTsCode, foundJsCode);
+    const matches = rawContent.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
+    let flemsFilesArray = [];
+    let fileNames = [];
+
+    if (!matches) {
+      return rawContent;
+    }
+
+    for (let match of matches) {
+      for (let language of languages) {
+        let openTagLength = language.openTag.length;
+
+        if (match.substr(0, openTagLength) !== language.openTag) {
+          continue;
+        }
+
+        if (fileNames.includes(language.name)) {
+          continue;
+        }
+
+        let name = language.name;
+        let content = decode(match.substr(openTagLength, match.length - openTagLength - language.closeTag.length));
+        let firstLine = content.split('\n')[0];
+        let nameMatch = firstLine.match(language.filenameRegex);
+
+        if (nameMatch[1]) {
+          name = nameMatch[1];
+        }
+
+        if (!flems.includes(name)) {
+          continue;
+        }
+
+        flemsFilesArray.push({
+          name: name,
+          content: content
+        });
+
+        fileNames.push(name);
+      }
+    }
+
+    if (flemsFilesArray.length < 1) {
+      return rawContent;
+    }
+
     const flemsFiles = JSON.stringify(flemsFilesArray);
 
-    //console.log(flemsFiles);
+    //console.log(flemsFilesArray);
     //console.log(foundHtmlCode);
     //console.log(foundTsCode);
     //console.log(foundJsCode);
@@ -68,7 +116,7 @@ module.exports = function(eleventyConfig) {
         <input type="checkbox" id="modal">
         <div class="modal">
           <div class="modal-header">
-            <h3>Example in Flems</h3>
+            <h3>${title}</h3>
             <label for="modal">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
             </label>
@@ -166,7 +214,7 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true
-  }).use(markdownItAnchor, {
+    }).use(markdownItAnchor, {
     permalink: markdownItAnchor.permalink.ariaHidden({
       placement: "after",
       class: "direct-link",
