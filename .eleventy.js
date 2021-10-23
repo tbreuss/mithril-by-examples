@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
-  eleventyConfig.addFilter("add_link_to_flems", (rawContent, title, flems) => {
+  eleventyConfig.addFilter("add_link_to_flems", (content, title, flems) => {
 
     if (flems === undefined) {
       flems = ['.css', '.ts', '.js'];
@@ -56,14 +56,14 @@ module.exports = function(eleventyConfig) {
       },
     ]
 
-    const matches = rawContent.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
-    let flemsFilesArray = [];
-    let fileNames = [];
+    const matches = content.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
 
     if (!matches) {
-      return rawContent;
+      return content;
     }
 
+    let flemsFilesArray = [];
+    let fileNames = [];
     for (let match of matches) {
       for (let language of languages) {
         let openTagLength = language.openTag.length;
@@ -76,30 +76,30 @@ module.exports = function(eleventyConfig) {
           continue;
         }
 
-        let name = language.name;
-        let content = decode(match.substr(openTagLength, match.length - openTagLength - language.closeTag.length));
-        let firstLine = content.split('\n')[0];
+        let flemsName = language.name;
+        let flemsContent = decode(match.substr(openTagLength, match.length - openTagLength - language.closeTag.length));
+        let firstLine = flemsContent.split('\n')[0];
         let nameMatch = firstLine.match(language.filenameRegex);
 
-        if (nameMatch[1]) {
-          name = nameMatch[1];
+        if (nameMatch && nameMatch[1]) {
+          flemsName = nameMatch[1];
         }
 
-        if (!flems.includes(name)) {
+        if (!flems.includes(flemsName)) {
           continue;
         }
 
         flemsFilesArray.push({
-          name: name,
-          content: content
+          name: flemsName,
+          content: flemsContent
         });
 
-        fileNames.push(name);
+        fileNames.push(flemsName);
       }
     }
 
     if (flemsFilesArray.length < 1) {
-      return rawContent;
+      return content;
     }
 
     const flemsFiles = JSON.stringify(flemsFilesArray);
