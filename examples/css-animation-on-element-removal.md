@@ -1,10 +1,10 @@
 ---
-title: CSS Animation on element removal
+title: CSS Animation on Element Removal
 date: 2021-10-19
 tags: [basics, animation]
 level: beginner
 version: 2.0.4
-authors: [tebe]
+authors: []
 credits: []
 links: []
 layout: layouts/example.html

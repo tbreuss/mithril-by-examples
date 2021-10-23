@@ -1,5 +1,5 @@
 ---
-title: Manage State using Factory functions with stateless components
+title: Manage State using Factory Functions with Stateless Components
 date: 2021-10-16
 tags: [mitosis, state, component]
 level: intermediate

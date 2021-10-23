@@ -1,11 +1,11 @@
 ---
 title: Manage State using Pojos
 date: 2021-10-19
-tags: [state, component]
+tags: [state, component, pojo]
 level: intermediate
 version: 2.0.4
-authors: [tebe]
-credits: [kevinfiol]
+authors: [kevinfiol]
+credits: []
 layout: layouts/example.html
 ---
 

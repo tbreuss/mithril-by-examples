@@ -4,7 +4,7 @@ date: 2021-10-16
 tags: [basics]
 level: beginner
 version: 2.0.4
-authors: [tebe]
+authors: []
 credits: []
 links: []
 layout: layouts/example.html

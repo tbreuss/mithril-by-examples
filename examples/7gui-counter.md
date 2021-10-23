@@ -1,10 +1,10 @@
 ---
-title: Counter - 7GUIs
+title: Counter from 7GUIs
 date: 2021-10-18
 tags: [7guis]
 level: beginner
 version: 2.0.4
-authors: [tebe]
+authors: [narayand16]
 credits: []
 links: []
 layout: layouts/example.html

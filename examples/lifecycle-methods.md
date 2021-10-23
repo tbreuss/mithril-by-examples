@@ -1,10 +1,10 @@
 ---
-title: Lifecycle methods
+title: Lifecycle Methods
 date: 2021-10-19
 tags: [component, lifecycle]
 level: intermediate
 version: 2.0.4
-authors: [tebe]
+authors: []
 credits: []
 layout: layouts/example.html
 ---

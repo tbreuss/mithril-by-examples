@@ -4,8 +4,8 @@ date: 2021-10-19
 tags: [state, component, mitosis]
 level: intermediate
 version: 2.0.4
-authors: [tebe]
-credits: [kevinfiol]
+authors: [kevinfiol]
+credits: [porsager, foxdonut]
 layout: layouts/example.html
 ---
 
