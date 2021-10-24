@@ -4,11 +4,12 @@ eleventyNavigation:
   key: Home
   order: 1
 ---
+<h1>Latest Examples</h1>
+
 {% set maxExamples = collections.examplesLatest.length | min(10) %}
-
-<h1>Latest {% if maxExamples == 1 %}Example{% else %}{{ maxExamples }} Examples{% endif %}</h1>
-
 {% set examplesList = collections.examplesLatest | head(maxExamples) %}
 {% include "examples_list.html" %}
 
 <p>More examples can be found in <a href="{{ '/examples/' | url }}">the examples</a> section.</p>
+
+<p>All topics can be seen on the <a href="{{ '/tags/' | url }}">tags overview</a>.</p>
