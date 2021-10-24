@@ -8,12 +8,12 @@ eleventyExcludeFromCollections: true
     {
       "title": "{{ data.title }}",
       "date": "{{ page.date | htmlDateString }}",
-      "tags": "{{ data.tags }}",
+      "tags": {{ data.tags | stringify | safe }},
       "level": "{{ data.level }}",
       "version": "{{ data.version }}",
-      "authors": "{{ data.authors }}",
-      "credits": "{{ data.credits }}",
-      "links": "{{ data.links }}",
+      "authors": {{ data.authors | stringify | safe }},
+      "credits": {{ data.credits | stringify | safe }},
+      "links": {{ data.links | stringify | safe }},
       "url": "{{ page.url }}"
     }{{ '' if loop.last else ',' }}
   {%- endfor %}

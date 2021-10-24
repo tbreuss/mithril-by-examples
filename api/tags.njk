@@ -1,0 +1,13 @@
+---
+permalink: /api/tags.json
+eleventyExcludeFromCollections: true
+---
+[
+  {%- for tag in collections.tagList %}
+  {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+    {
+      "name": "{{ tag }}",
+      "url": "{{ tagUrl | url }}"
+    }{{ '' if loop.last else ',' }}
+  {%- endfor %}
+]

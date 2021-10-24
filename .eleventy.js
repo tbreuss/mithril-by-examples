@@ -19,6 +19,13 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
+  eleventyConfig.addFilter("stringify", (csvString) => {
+    if (!Array.isArray(csvString)) {
+      return '[]';
+    }
+    return JSON.stringify(csvString);
+  });
+
   eleventyConfig.addFilter("add_link_to_flems", (content, title, flems, version) => {
 
     let flemsLinksArray = [
