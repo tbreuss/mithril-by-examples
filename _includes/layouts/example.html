@@ -10,7 +10,7 @@ templateClass: tmpl-post
 <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
 {%- endfor %}
 
-{{ content | add_link_to_flems(title, flems) | safe }}
+{{ content | add_link_to_flems(title, flems, version) | safe }}
 
 {%- if collections.posts %}
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}

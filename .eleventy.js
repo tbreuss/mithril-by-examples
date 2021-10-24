@@ -19,9 +19,17 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
 
-  eleventyConfig.addFilter("add_link_to_flems", (content, title, flems) => {
+  eleventyConfig.addFilter("add_link_to_flems", (content, title, flems, version) => {
 
-    if (flems === undefined) {
+    let flemsLinksArray = [
+      {
+        name: 'mithril ' + version,
+        type: 'script',
+        url: 'https://unpkg.com/mithril@' + version
+      }
+    ];
+
+    if (!Array.isArray(flems)) {
       flems = ['.css', '.ts', '.js'];
     }
 
@@ -58,7 +66,7 @@ module.exports = function(eleventyConfig) {
 
     const matches = content.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
 
-    if (!matches) {
+    if (!Array.isArray(matches)) {
       return content;
     }
 
@@ -98,20 +106,16 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    if (flemsFilesArray.length < 1) {
+    if (flemsFilesArray.length === 0) {
       return content;
     }
 
     const flemsFiles = JSON.stringify(flemsFilesArray);
-
-    //console.log(flemsFilesArray);
-    //console.log(foundHtmlCode);
-    //console.log(foundTsCode);
-    //console.log(foundJsCode);
+    const flemsLinks = JSON.stringify(flemsLinksArray);
 
     let html = `
-      <div>
-        <label for="modal" class="example-label">Show Example in Flems</label>
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
         <label for="modal" class="modal-background"></label>
         <input type="checkbox" id="modal">
         <div class="modal">
@@ -128,11 +132,7 @@ module.exports = function(eleventyConfig) {
       Flems(document.getElementById("flems"), {
         selected: '.js',
         files: ${flemsFiles},
-        links: [{
-            name: 'mithril',
-            type: 'script',
-            url: 'https://unpkg.com/mithril'
-        }]
+        links: ${flemsLinks}
       });
       </script>
     `;
