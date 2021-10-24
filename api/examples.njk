@@ -1,0 +1,20 @@
+---
+permalink: /api/examples.json
+eleventyExcludeFromCollections: true
+---
+[
+  {%- for page in collections.examples %}
+  {%- set data = page.data %}
+    {
+      "title": "{{ data.title }}",
+      "date": "{{ page.date | htmlDateString }}",
+      "tags": {{ data.tags | stringify | safe }},
+      "level": "{{ data.level }}",
+      "version": "{{ data.version }}",
+      "authors": {{ data.authors | stringify | safe }},
+      "credits": {{ data.credits | stringify | safe }},
+      "links": {{ data.links | stringify | safe }},
+      "url": "{{ page.url }}"
+    }{{ '' if loop.last else ',' }}
+  {%- endfor %}
+]

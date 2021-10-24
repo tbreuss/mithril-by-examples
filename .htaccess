@@ -1,1 +1,2 @@
+AddType application/json .json
 ErrorDocument 404 /404.html
