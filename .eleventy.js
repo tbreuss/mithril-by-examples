@@ -37,7 +37,7 @@ module.exports = function(eleventyConfig) {
     ];
 
     if (!Array.isArray(flems)) {
-      flems = ['.css', '.ts', '.js'];
+      flems = ['.html', '.css', '.ts', '.js'];
     }
 
     const languages = [
