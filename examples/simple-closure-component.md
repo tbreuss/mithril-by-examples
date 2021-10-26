@@ -4,7 +4,7 @@ date: 2021-10-24
 tags: [component, closure]
 level: beginner
 version: 2.0.4
-authors: [osban]
+author: osban
 credits: []
 links: []
 layout: layouts/example.html

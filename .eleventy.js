@@ -26,18 +26,42 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter("add_link_to_flems", (content, title, flems, version) => {
+  eleventyConfig.addFilter("add_link_to_flems", (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
 
-    let flemsLinksArray = [
-      {
-        name: 'mithril ' + version,
-        type: 'script',
-        url: 'https://unpkg.com/mithril@' + version
+    if (!flemsSelected || flemsSelected === '') {
+      flemsSelected = '.js';
+    }
+
+    if (!Array.isArray(flemsFiles)) {
+      flemsFiles = ['.html', '.css', '.ts', '.js'];
+    }
+
+    let flemsLinksArray = [];
+
+    if (!Array.isArray(flemsLinks)) {
+      flemsLinks = [];
+    }
+
+    flemsLinksArray.push({
+      name: 'mithril@' + version,
+      type: 'script',
+      url: 'https://unpkg.com/mithril@' + version
+    });
+
+    for (let link of flemsLinks) {
+      if (typeof link === 'object') {
+        flemsLinksArray.push({
+          name: link.name,
+          type: link.type,
+          url: link.url
+        })
+      } else {
+        flemsLinksArray.push({
+          name: link,
+          type: 'script',
+          url: 'https://unpkg.com/' + link
+        })
       }
-    ];
-
-    if (!Array.isArray(flems)) {
-      flems = ['.html', '.css', '.ts', '.js'];
     }
 
     const languages = [
@@ -92,6 +116,7 @@ module.exports = function(eleventyConfig) {
         }
 
         let flemsName = language.name;
+        let flemsCompiler = '';
         let flemsContent = decode(match.substr(openTagLength, match.length - openTagLength - language.closeTag.length));
         let firstLine = flemsContent.split('\n')[0];
         let nameMatch = firstLine.match(language.filenameRegex);
@@ -100,14 +125,40 @@ module.exports = function(eleventyConfig) {
           flemsName = nameMatch[1];
         }
 
-        if (!flems.includes(flemsName)) {
+        let found = false;
+        for (let tmpFile of flemsFiles) {
+          if (typeof tmpFile === 'object') {
+            if (tmpFile.name === flemsName) {
+              if (tmpFile.compiler) {
+                flemsCompiler = tmpFile.compiler;
+              }
+              found = true;
+              break;
+            }
+          } else {
+            if (tmpFile === flemsName) {
+              found = true;
+              break;
+            }
+          }
+        }
+
+        if (!found) {
           continue;
         }
 
-        flemsFilesArray.push({
-          name: flemsName,
-          content: flemsContent
-        });
+        if (flemsCompiler !== '') {
+          flemsFilesArray.push({
+            name: flemsName,
+            compiler: flemsCompiler,
+            content: flemsContent
+          });
+        } else {
+          flemsFilesArray.push({
+            name: flemsName,
+            content: flemsContent
+          });
+        }
 
         fileNames.push(flemsName);
       }
@@ -117,8 +168,8 @@ module.exports = function(eleventyConfig) {
       return content;
     }
 
-    const flemsFiles = JSON.stringify(flemsFilesArray);
-    const flemsLinks = JSON.stringify(flemsLinksArray);
+    const jsonFlemsFiles = JSON.stringify(flemsFilesArray);
+    const jsonFlemsLinks = JSON.stringify(flemsLinksArray);
 
     let html = `
       <div class="modal-container">
@@ -137,9 +188,9 @@ module.exports = function(eleventyConfig) {
       </div>
       <script>
       Flems(document.getElementById("flems"), {
-        selected: '.js',
-        files: ${flemsFiles},
-        links: ${flemsLinks}
+        selected: '${flemsSelected}',
+        files: ${jsonFlemsFiles},
+        links: ${jsonFlemsLinks}
       });
       </script>
     `;

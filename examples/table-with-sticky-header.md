@@ -4,7 +4,7 @@ date: 2021-10-24
 tags: [table, sticky, header]
 level: beginner
 version: 2.0.4
-authors: [spacejack]
+author: spacejack
 credits: []
 links: []
 layout: layouts/example.html

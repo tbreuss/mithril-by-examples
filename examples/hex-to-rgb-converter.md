@@ -4,7 +4,7 @@ date: 2021-10-24
 tags: [hex, rgb, converter]
 level: beginner
 version: 2.0.4
-authors: [prompt-07]
+author: prompt-07
 credits: []
 links: []
 layout: layouts/example.html

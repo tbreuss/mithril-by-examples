@@ -11,7 +11,7 @@ eleventyExcludeFromCollections: true
       "tags": {{ data.tags | stringify | safe }},
       "level": "{{ data.level }}",
       "version": "{{ data.version }}",
-      "authors": {{ data.authors | stringify | safe }},
+      "author": "{{ data.author }}",
       "credits": {{ data.credits | stringify | safe }},
       "links": {{ data.links | stringify | safe }},
       "url": "{{ page.url }}"
