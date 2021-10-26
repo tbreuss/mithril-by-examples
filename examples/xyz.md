@@ -4,11 +4,16 @@ date: 2021-01-17
 tags: [basics]
 level: beginner
 version: 2.0.4
-authors: []
+author: ""
 credits: []
 links: []
 layout: layouts/example.html
-flems: [index.html, app.css, component.js, app.js]
+flems:
+  files:
+    - index.html
+    - app.css
+    - component.js
+    - app.js
 ---
 
 This example is for demonstration purposes only to show how things work.

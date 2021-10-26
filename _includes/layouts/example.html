@@ -4,13 +4,23 @@ templateClass: tmpl-post
 ---
 <h1>{{ title }}</h1>
 
-<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+<p>
+  <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+  {%- if author %}
+  <span class="author">
+    by&nbsp;<span class="author">{{ author }}</span>
+  </span>
+  {%- endif %}
+</p>
+
+<p>
 {%- for tag in tags | filterTagList -%}
 {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
 <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
 {%- endfor %}
+</p>
 
-{{ content | add_link_to_flems(title, flems, version) | safe }}
+{{ content | add_link_to_flems(title, flems.selected, flems.files, flems.links, version) | safe }}
 
 {%- if collections.posts %}
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
@@ -25,15 +35,6 @@ templateClass: tmpl-post
 {%- endif %}
 
 {% set maxExamples = collections.examples.length | min(3) %}
-
-{%- if authors.length > 0 %}
-  <div class="authors">
-  {% if authors.length == 1 %}Author{% else %}Authors{% endif %}:&nbsp;
-  {%- for author in authors -%}
-    {% if loop.index > 1  %}, {% endif %}<span class="author">{{ author }}</span>
-  {%- endfor %}
-  </div>
-{%- endif %}
 
 {%- if credits.length > 0 %}
   <div class="credits">

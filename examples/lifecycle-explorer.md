@@ -4,7 +4,7 @@ date: 2021-10-23
 tags: [lifecycle, oninit, onupdate, onremove, oncreate, onbeforeremove]
 level: beginner
 version: 2.0.4
-authors: [barneycarroll]
+author: barneycarroll
 credits: []
 links: []
 layout: layouts/example.html
