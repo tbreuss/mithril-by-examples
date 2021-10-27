@@ -1,5 +1,5 @@
 ---
-title: Authentication Wrapper Around `m.request`
+title: Authentication Wrapper Around m.request
 date: 2021-10-26
 tags: [jwt, local storage, wrapper, m.request]
 level: beginner
