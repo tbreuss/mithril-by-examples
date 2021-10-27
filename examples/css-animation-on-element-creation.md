@@ -4,7 +4,7 @@ date: 2021-10-19
 tags: [basics, animation]
 level: beginner
 version: 2.0.4
-author: ""
+author: mithril
 credits: []
 links: []
 layout: layouts/example.html

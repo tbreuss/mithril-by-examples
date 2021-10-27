@@ -4,7 +4,7 @@ date: 2021-10-26
 tags: [charts, stream, highchart]
 level: expert
 version: 2.0.4
-author: ""
+author: skyghis
 credits: []
 links: []
 layout: layouts/example.html
