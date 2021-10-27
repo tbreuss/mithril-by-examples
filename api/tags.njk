@@ -3,7 +3,7 @@ permalink: /api/tags.json
 eleventyExcludeFromCollections: true
 ---
 [
-  {%- for tag in collections.tagList %}
+  {%- for tag in collections.tagList | sort %}
   {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
     {
       "name": "{{ tag }}",
