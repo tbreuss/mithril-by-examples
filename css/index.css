@@ -162,6 +162,9 @@ p code, li code {
   list-style: none;
   padding: 0;
 }
+.postlist li {
+  margin-bottom: 0.75rem;
+}
 .postlist-item {
   display: flex;
   flex-wrap: wrap;
@@ -185,11 +188,9 @@ p code, li code {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  padding-left: 0.1em;
   padding-right: .25em;
-  text-underline-position: from-font;
-  text-underline-offset: 0;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
+  display: block;
 }
 .postlist-item-active .postlist-link {
   font-weight: bold;
@@ -217,6 +218,11 @@ p code, li code {
   text-decoration: none;
   line-height: 1.8;
 }
+.postlist .post-tag {
+  line-height: 1;
+  margin-right: 0;
+}
+
 a[href].post-tag,
 a[href].post-tag:visited {
   color: inherit;
