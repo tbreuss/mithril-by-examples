@@ -1,7 +1,7 @@
 ---
 title: Force Component Re-Init without Routing
 date: 2021-10-16
-tags: [components, oninit, key]
+tags: [component, oninit, key]
 level: beginner
 version: 2.0.4
 author: osban

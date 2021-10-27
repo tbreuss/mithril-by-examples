@@ -1,7 +1,7 @@
 ---
 title: Authentication Wrapper Around `m.request`
 date: 2021-10-26
-tags: [jwt, local storage, wrapper, request]
+tags: [jwt, local storage, wrapper, m.request]
 level: beginner
 version: 2.0.4
 author: cmnstmntmn

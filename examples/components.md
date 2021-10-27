@@ -1,7 +1,7 @@
 ---
 title: Components
 date: 2021-10-16
-tags: [basics, official]
+tags: [basics, component, official]
 level: beginner
 version: 2.0.4
 author: mithril
