@@ -5,8 +5,6 @@ tags: [jwt, local storage, wrapper, m.request]
 level: beginner
 version: 2.0.4
 author: cmnstmntmn
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

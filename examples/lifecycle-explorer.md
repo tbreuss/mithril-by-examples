@@ -5,8 +5,6 @@ tags: [lifecycle, oninit, onupdate, onremove, oncreate, onbeforeremove]
 level: beginner
 version: 2.0.4
 author: barneycarroll
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

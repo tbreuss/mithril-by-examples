@@ -5,7 +5,6 @@ tags: [state, component]
 level: intermediate
 version: 2.0.4
 author: kevinfiol
-credits: []
 layout: layouts/example.html
 ---
 

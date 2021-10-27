@@ -5,8 +5,6 @@ tags: [react, lifecycle, dom, component]
 level: expert
 version: 2.0.4
 author: barneycarroll
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   files:

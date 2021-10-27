@@ -5,8 +5,6 @@ tags: [modal, bulma]
 level: beginner
 version: 2.0.4
 author: mike-ward
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   links:

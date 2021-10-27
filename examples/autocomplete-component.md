@@ -5,8 +5,6 @@ tags: [autocomplete, forms, input]
 level: beginner
 version: 2.0.4
 author: stephanhoyer
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   files:

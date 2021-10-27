@@ -5,8 +5,6 @@ tags: [animation, clock, official, svg]
 level: beginner
 version: 2.0.4
 author: mithril
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

@@ -5,11 +5,11 @@ tags: [state, component, mitosis]
 level: intermediate
 version: 2.0.4
 author: kevinfiol
-credits: [porsager, foxdonut]
 layout: layouts/example.html
 ---
 
 In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+Credits for porsager and foxdonut.
 
 ## JavaScript
 

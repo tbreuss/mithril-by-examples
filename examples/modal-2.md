@@ -5,8 +5,6 @@ tags: [modal, dialog, component]
 level: advanced
 version: 2.0.4
 author: spacejack
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   selected: app.js

@@ -5,8 +5,6 @@ tags: [table, sticky, header]
 level: beginner
 version: 2.0.4
 author: spacejack
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

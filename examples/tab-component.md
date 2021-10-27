@@ -5,8 +5,6 @@ tags: [component, tab]
 level: beginner
 version: 1.1.6
 author: barneycarroll
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   selected: app.js

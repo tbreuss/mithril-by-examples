@@ -5,8 +5,6 @@ tags: [m.request, async, await]
 level: beginner
 version: 2.0.4
 author: viniciusCamargo
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

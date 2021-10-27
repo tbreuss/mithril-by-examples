@@ -5,8 +5,6 @@ tags: [animation, dbmonster, official]
 level: beginner
 version: 2.0.4
 author: mithril
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   files:

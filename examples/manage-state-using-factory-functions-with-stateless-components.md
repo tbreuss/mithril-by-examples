@@ -5,10 +5,10 @@ tags: [mitosis, state, component]
 level: intermediate
 version: 2.0.4
 author: kevinfiol
-credits: [porsager, foxdonut]
 layout: layouts/example.html
 ---
 
+Credits for porsager and foxdonut.
 
 ## JavaScript
 

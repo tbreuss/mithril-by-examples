@@ -5,8 +5,6 @@ tags: [calendar, component]
 level: beginner
 version: 2.0.4
 author: stephanhoyer
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

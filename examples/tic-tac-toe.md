@@ -5,8 +5,6 @@ tags: [game, stream, ramda]
 level: expert
 version: 2.0.4
 author: boazblake
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   links:

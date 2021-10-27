@@ -5,8 +5,6 @@ tags: [bss, css]
 level: beginner
 version: 1.1.6
 author: porsager
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   links:

@@ -5,8 +5,6 @@ tags: [7guis]
 level: beginner
 version: 2.0.4
 author: narayand16
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

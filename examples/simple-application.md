@@ -5,8 +5,6 @@ tags: [model, list, form, layout, tutorial, official]
 level: beginner
 version: 1.1.6
 author: mithril
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   files:

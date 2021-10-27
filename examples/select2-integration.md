@@ -5,8 +5,6 @@ tags: [jquery, form, select, 3rd-party]
 level: beginner
 version: 2.0.4
 author: kevinfiol
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   links:

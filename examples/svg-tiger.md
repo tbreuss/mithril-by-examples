@@ -5,8 +5,6 @@ tags: [animation, official, svg, tiger]
 level: beginner
 version: 2.0.4
 author: mithril
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

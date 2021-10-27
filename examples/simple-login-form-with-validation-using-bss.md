@@ -5,8 +5,6 @@ tags: [form, login, bss, validation]
 level: beginner
 version: 2.0.4
 author: smuemd
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   links:

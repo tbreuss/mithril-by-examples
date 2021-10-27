@@ -5,8 +5,6 @@ tags: [hex, rgb, converter]
 level: beginner
 version: 2.0.4
 author: prompt-07
-credits: []
-links: []
 layout: layouts/example.html
 ---
 

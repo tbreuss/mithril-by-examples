@@ -5,8 +5,6 @@ tags: [charts, stream, highchart, m.request]
 level: expert
 version: 2.0.4
 author: skyghis
-credits: []
-links: []
 layout: layouts/example.html
 flems:
   files:

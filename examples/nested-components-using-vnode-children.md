@@ -5,8 +5,6 @@ tags: [component, nested]
 level: beginner
 version: 2.0.4
 author: tbreuss
-credits: []
-links: []
 layout: layouts/example.html
 ---
 
