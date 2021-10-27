@@ -1,7 +1,7 @@
 ---
 title: Simple Application
 date: 2021-10-16
-tags: [model, list, form, layout, tutorial]
+tags: [model, list, form, layout, tutorial, official]
 level: beginner
 version: 1.1.6
 author: mithril

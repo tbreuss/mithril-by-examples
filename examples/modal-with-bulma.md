@@ -6,7 +6,7 @@ level: beginner
 version: 2.0.4
 author: mike-ward
 credits: []
-links: [https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css]
+links: []
 layout: layouts/example.html
 flems:
   links:

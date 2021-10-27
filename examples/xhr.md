@@ -1,7 +1,7 @@
 ---
 title: XHR
 date: 2021-10-16
-tags: [basics]
+tags: [basics, official]
 level: beginner
 version: 2.0.4
 author: mithril
