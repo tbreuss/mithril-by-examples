@@ -238,6 +238,16 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
 
+  eleventyConfig.addCollection("authorList", function(collection) {
+    let authorSet = new Set();
+    collection.getAll().forEach(item => {
+      if (item.data.author && item.data.author.length > 0) {
+        authorSet.add(item.data.author)
+      }
+    });
+    return filterTagList([...authorSet]);
+  });
+
   // Create an array of all tags
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();

@@ -4,7 +4,7 @@ title: About
 templateClass: tmpl-post
 eleventyNavigation:
   key: About
-  order: 3
+  order: 4
 ---
 
 MithrilJS by Examples is a website to learn MithrilJS – a JavaScript Framework for Building Brilliant Applications.

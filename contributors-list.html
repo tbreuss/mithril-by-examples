@@ -1,0 +1,17 @@
+---
+title: Contributors
+permalink: /contributors/
+layout: layouts/home.html
+eleventyNavigation:
+  key: Contributors
+  order: 3
+---
+<h1>Contributors</h1>
+
+<ul>
+{% for author in collections.authorList | sort %}
+  <li>{{ author }}</li>
+{% endfor %}
+</ul>
+
+<p>Ordered from A to Z.</p>

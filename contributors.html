@@ -1,0 +1,24 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: author
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - tagList
+    - authorList
+  addAllPagesToCollections: true
+layout: layouts/home.html
+eleventyComputed:
+  title: Contributed by “{{ author }}”
+permalink: /contributors/{{ author | slug }}/
+---
+<h1>Contributed by “{{ author }}”</h1>
+
+{% set examplesList = collections[ authorList ] %}
+{% include "examples_list.html" %}
+
+<p>See <a href="{{ '/contributors/' | url }}">all tags</a>.</p>
