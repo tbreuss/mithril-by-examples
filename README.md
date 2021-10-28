@@ -1,5 +1,7 @@
 # Learn MithrilJS by Examples
 
+<https://mithril-by-examples.tebe.ch>
+
 ## What is this?
 
 MithrilJS by Examples was created for new users to learn MithrilJS by reviewing real code snippets and by asking questions.
