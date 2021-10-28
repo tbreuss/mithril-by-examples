@@ -184,8 +184,9 @@ p code, li code {
   font-size: 0.8125em; /* 13px /16 */
   color: var(--darkgray);
 }
-.postlist-date {
-  word-spacing: -0.5px;
+.postlist-author {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--darkgray);
 }
 .postlist-link {
   padding-right: .25em;
