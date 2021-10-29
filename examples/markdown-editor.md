@@ -7,10 +7,8 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 flems:
-  links:
-    - name: marked.min.js
-    - type: js
-    - url: https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js
+  files: []
+  links: []
 ---
 
 This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
@@ -77,3 +75,5 @@ h1, h2, h3, h4, h5, h6, p {
     resize: none;
 }
 ~~~
+
+Visit <https://mithril.js.org/examples.html> to see a live demo.
