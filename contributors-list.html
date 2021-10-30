@@ -1,0 +1,18 @@
+---
+title: Contributors
+permalink: /contributors/
+layout: layouts/home.html
+eleventyNavigation:
+  key: Contributors
+  order: 3
+---
+<h1>Contributors</h1>
+
+<ul class="postlist">
+{% for author in collections.authorList | sort %}
+  {% set authorUrl %}/contributors/{{ author | slug }}/{% endset %}
+  <li><a href="{{ authorUrl | url }}" class="postlist-link">{{ author }}</a></li>
+{% endfor %}
+</ul>
+
+<p>Contributors are ordered from A to Z.</p>

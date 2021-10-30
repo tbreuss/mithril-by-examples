@@ -1,0 +1,13 @@
+---
+permalink: /api/contributors.json
+eleventyExcludeFromCollections: true
+---
+[
+  {%- for author in collections.authorList | sort %}
+  {%- set authorUrl %}/contributors/{{ author | slug }}/{% endset %}
+    {
+      "name": "{{ author }}",
+      "url": "{{ authorUrl | url }}"
+    }{{ '' if loop.last else ',' }}
+  {%- endfor %}
+]
