@@ -1,2 +1,7 @@
 AddType application/json json
 ErrorDocument 404 /404.html
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^mithril-by-examples.tebe.ch [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://mithril-by-examples.tebe.ch/$1 [R,L]
