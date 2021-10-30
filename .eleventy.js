@@ -6,8 +6,14 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const {decode} = require('html-entities');
+const util = require('util')
 
 module.exports = function(eleventyConfig) {
+
+  eleventyConfig.addFilter('dumper', obj => {
+    return util.inspect(obj)
+  });
+
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
@@ -238,6 +244,11 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
 
+  eleventyConfig.addFilter('filterBy', function(collection, author) {
+    if (!author) return collection;
+    return collection.filter(item => item.data.author === author)
+  });
+
   eleventyConfig.addCollection("authorList", function(collection) {
     let authorSet = new Set();
     collection.getAll().forEach(item => {
@@ -245,7 +256,7 @@ module.exports = function(eleventyConfig) {
         authorSet.add(item.data.author)
       }
     });
-    return filterTagList([...authorSet]);
+    return [...authorSet];
   });
 
   // Create an array of all tags

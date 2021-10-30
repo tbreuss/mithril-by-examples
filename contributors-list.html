@@ -8,10 +8,11 @@ eleventyNavigation:
 ---
 <h1>Contributors</h1>
 
-<ul>
+<ul class="postlist">
 {% for author in collections.authorList | sort %}
-  <li>{{ author }}</li>
+  {% set authorUrl %}/contributors/{{ author | slug }}/{% endset %}
+  <li><a href="{{ authorUrl | url }}" class="postlist-link">{{ author }}</a></li>
 {% endfor %}
 </ul>
 
-<p>Ordered from A to Z.</p>
+<p>Contributors are ordered from A to Z.</p>
