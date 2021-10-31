@@ -12,8 +12,6 @@ eleventyExcludeFromCollections: true
       "level": "{{ data.level }}",
       "version": "{{ data.version }}",
       "author": "{{ data.author }}",
-      "credits": {{ data.credits | stringify | safe }},
-      "links": {{ data.links | stringify | safe }},
       "url": "{{ page.url }}"
     }{{ '' if loop.last else ',' }}
   {%- endfor %}
