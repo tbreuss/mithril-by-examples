@@ -7,8 +7,9 @@ templateClass: tmpl-post
 <p>
   <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
   {%- if author %}
+  {%- set contributorUrl %}/contributors/{{ author | slug }}/{% endset -%}
   <span class="author">
-    by&nbsp;<span class="author">{{ author }}</span>
+    by&nbsp;<span class="author"><a href="{{ contributorUrl | url }}">{{ author }}</a></span>
   </span>
   {%- endif %}
 </p>
