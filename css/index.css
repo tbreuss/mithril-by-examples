@@ -39,10 +39,10 @@ a[href] {
 a[href]:visited {
   color: var(--navy);
 }
-main {
+main.content {
   padding: 1rem;
 }
-main :first-child {
+main.content :first-child {
   margin-top: 0;
 }
 header {

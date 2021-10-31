@@ -4,9 +4,11 @@
 input[type="checkbox"] {
   display:none;
 }
-input[type="checkbox"]:checked ~ .modal,
 input[type="checkbox"]:checked ~ .modal-background {
   display: block;
+}
+input[type="checkbox"]:checked ~ .modal {
+  display: flex;
 }
 .modal-background {
   width: 100%;
@@ -31,6 +33,8 @@ input[type="checkbox"]:checked ~ .modal-background {
   background-color: #fff;
   box-sizing: border-box;
   z-index: 9999;
+  flex-direction: column;
+  overflow-y: hidden;
 }
 .modal > p {
   padding: 15px;
