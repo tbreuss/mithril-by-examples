@@ -1,23 +1,27 @@
-# Learn MithrilJS by Examples
+# Mithril by Examples
+
+> The missing website with up-to-date code examples that I always looked for...
 
 <https://mithril-by-examples.tebe.ch>
 
 ## What is this?
 
-MithrilJS by Examples was created for new users to learn MithrilJS by reviewing real code snippets and by asking questions.
-This repository is a collection of code samples containing working explanations.
+`Mithril by Examples` was created for (me and) new users to learn Mithril.js — a javascript framework for building brilliant applications.
 
-**Currently, the code snippets are not in any particular order, and the website is under heavy construction.**
+This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains code samples that can be seen, reviewed and run.
 
-## Official MithrilJS Resources
+The code snippets are up-to-date, and they just work!
+
+## Mithril Resources
+
+### Official
 
 - [Website](https://mithril.js.org)
 - [Simple Application Tutorial](https://mithril.js.org/simple-application.html)
 - [API Reference](https://mithril.js.org/api.html)
 - [GitHub Repo](https://github.com/MithrilJS/mithril.js)
-- [Gitter Chat](https://gitter.im/mithriljs/mithril.js)
 
-## MithrilJS Community
+### Community
 
 - [Gitter Chat Room](https://gitter.im/mithriljs/mithril.js)
 - Use `#mithriljs` on Twitter and other social media.
@@ -25,4 +29,9 @@ This repository is a collection of code samples containing working explanations.
 ## Install & Run
 
 The website is built using [Eleventy](https://www.11ty.dev), a simpler static site generator.
+
 Please follow the instructions at <https://www.11ty.dev/docs/getting-started/> to install and run the project locally.
+
+## Contributing
+
+If you're interested in contributing to `Mithril by Examples`, please read our [contributing guide](Contribute.md).
