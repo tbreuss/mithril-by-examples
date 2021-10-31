@@ -1,6 +1,6 @@
 # Mithril by Examples
 
-> The missing addition to Mithril.js with many up-to-date code examples that I often searched for...
+> The missing addition to Mithril.js website with many up-to-date code examples that are often searched for...
 
 <https://mithril-by-examples.tebe.ch>
 
