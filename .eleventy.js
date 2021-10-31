@@ -244,9 +244,14 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
 
-  eleventyConfig.addFilter('filterBy', function(collection, author) {
+  eleventyConfig.addFilter('filterByAuthor', function(collection, author) {
     if (!author) return collection;
     return collection.filter(item => item.data.author === author)
+  });
+
+  eleventyConfig.addFilter('filterByTag', function(collection, tag) {
+    if (!tag) return collection;
+    return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
   });
 
   eleventyConfig.addCollection("authorList", function(collection) {
