@@ -1,14 +1,8 @@
 ---
 pagination:
-  data: collections
+  data: collections.tagList
   size: 1
   alias: tag
-  filter:
-    - all
-    - nav
-    - post
-    - posts
-    - tagList
   addAllPagesToCollections: true
 layout: layouts/home.html
 eleventyComputed:
@@ -17,7 +11,8 @@ permalink: /tags/{{ tag | slug }}/
 ---
 <h1>Tagged “{{ tag }}”</h1>
 
-{% set examplesList = collections[ tag ] %}
+{% set examplesList = collections.examples | filterByTag(tag) %}
+
 {% include "examples_list.html" %}
 
 <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>

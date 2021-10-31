@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 <h1>Contributed by “{{ author }}”</h1>
 
-{% set examplesList = collections.examples | filterBy(author) %}
+{% set examplesList = collections.examples | filterByAuthor(author) %}
 
 {% include "examples_list.html" %}
 
