@@ -125,7 +125,7 @@ var Layout = {
 
 ~~~js
 // app.js
-m.route.prefix('#')
+m.route.prefix = "#"
 m.route(document.body, "/list", {
     "/list": {
         render: function() {
