@@ -1,7 +1,7 @@
 ---
 title: Conway Game Of Life
 date: 2021-10-26
-tags: [game, stream, ramda]
+tags: [game, m.stream, ramda]
 level: expert
 version: 2.0.4
 author: boazblake
