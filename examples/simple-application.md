@@ -3,7 +3,7 @@ title: Simple Application
 date: 2021-10-16
 tags: [model, list, form, layout, tutorial, official]
 level: beginner
-version: 1.1.6
+version: 2.0.4
 author: mithril
 layout: layouts/example.html
 flems:
