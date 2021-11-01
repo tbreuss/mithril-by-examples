@@ -1,7 +1,7 @@
 ---
 title: Focus an Input
 date: 2021-10-22
-tags: [forms, input, focus, dom, oncreate]
+tags: [form, input, focus, dom, oncreate]
 level: beginner
 version: 2.0.4
 author: stephanhoyer
