@@ -3,7 +3,7 @@ title: Simple Application
 date: 2021-10-16
 tags: [model, list, form, layout, tutorial, official]
 level: beginner
-version: 1.1.6
+version: 2.0.4
 author: mithril
 layout: layouts/example.html
 flems:
@@ -51,7 +51,7 @@ var User = {
         return m.request({
             method: "PUT",
             url: "https://rem-rest-api.herokuapp.com/api/users/" + User.current.id,
-            data: User.current,
+            body: User.current,
             withCredentials: true,
         })
     }
@@ -66,7 +66,7 @@ var UserList = {
     oninit: User.loadList,
     view: function() {
         return m(".user-list", User.list.map(function(user) {
-            return m("a.user-list-item", {href: "/edit/" + user.id, oncreate: m.route.link}, user.firstName + " " + user.lastName)
+            return m(m.route.Link, {href: "/edit/" + user.id, class: 'user-list-item'}, user.firstName + " " + user.lastName)
         }))
     }
 }
@@ -87,12 +87,12 @@ var UserForm = {
             }, [
             m("label.label", "First name"),
             m("input.input[type=text][placeholder=First name]", {
-                oninput: m.withAttr("value", function(value) {User.current.firstName = value}),
+                oninput: function(e) {User.current.firstName = e.target.value},
                 value: User.current.firstName
             }),
             m("label.label", "Last name"),
             m("input.input[placeholder=Last name]", {
-                oninput: m.withAttr("value", function(value) {User.current.lastName = value}),
+                oninput: function(e) {User.current.lastName = e.target.value},
                 value: User.current.lastName
             }),
             m("button.button[type=submit]", "Save"),
@@ -110,9 +110,8 @@ var Layout = {
     view: function(vnode) {
         return m("main.layout", [
             m("nav.menu", [
-                m("a", {
-                  href: '/list',
-                  oncreate: m.route.link
+                m(m.route.Link, {
+                  href: '/list'
                 }, "Users")
             ]),
             m("section", vnode.children)
@@ -125,7 +124,7 @@ var Layout = {
 
 ~~~js
 // app.js
-m.route.prefix('#')
+m.route.prefix = '#'
 m.route(document.body, "/list", {
     "/list": {
         render: function() {
