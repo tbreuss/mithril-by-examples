@@ -1,7 +1,7 @@
 ---
 title: Todo MVC (Traditional)
 date: 2021-10-29
-tags: [todomvc]
+tags: [todomvc, m.route]
 level: expert
 version: 2.0.4
 author: osban

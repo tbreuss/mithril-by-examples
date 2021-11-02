@@ -1,7 +1,7 @@
 ---
 title: XYZ Example to Show How Things Work
 date: 2021-01-17
-tags: [basics]
+tags: [basics, m.mount]
 level: beginner
 version: 2.0.4
 author: tbreuss

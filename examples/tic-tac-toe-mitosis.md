@@ -1,7 +1,7 @@
 ---
 title: Tic-Tac-Toe (Mitosis)
 date: 2021-10-31
-tags: [game, mitosis]
+tags: [game, mitosis, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

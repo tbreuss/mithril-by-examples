@@ -1,7 +1,7 @@
 ---
 title: Manage State using Pojos
 date: 2021-10-19
-tags: [state, component, pojo]
+tags: [state, component, pojo, m.mount]
 level: intermediate
 version: 2.0.4
 author: kevinfiol

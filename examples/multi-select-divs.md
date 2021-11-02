@@ -1,7 +1,7 @@
 ---
 title: Multi Select List of DIVs
 date: 2020-09-24
-tags: [select, form]
+tags: [select, form, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

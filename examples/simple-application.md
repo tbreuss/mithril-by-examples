@@ -1,7 +1,7 @@
 ---
 title: Simple Application
 date: 2021-10-16
-tags: [model, list, form, layout, tutorial, official]
+tags: [model, list, form, layout, tutorial, official, m.request, m.route, vnode]
 level: beginner
 version: 2.0.4
 author: mithril

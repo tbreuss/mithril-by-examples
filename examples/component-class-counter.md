@@ -1,7 +1,7 @@
 ---
 title: Component Class Counter
 date: 2020-09-24
-tags: [component, class, state, counter]
+tags: [component, class, state, counter, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

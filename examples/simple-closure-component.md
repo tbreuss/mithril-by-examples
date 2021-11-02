@@ -1,7 +1,7 @@
 ---
 title: Simple Closure Component
 date: 2021-10-24
-tags: [component, closure]
+tags: [component, closure, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

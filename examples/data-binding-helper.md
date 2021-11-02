@@ -1,7 +1,7 @@
 ---
 title: Data Binding Helper
 date: 2020-09-24
-tags: [binding, helper]
+tags: [binding, helper, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

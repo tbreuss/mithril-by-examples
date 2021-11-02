@@ -1,7 +1,7 @@
 ---
 title: Simple Dependency Free Calendar Component
 date: 2021-10-16
-tags: [calendar, component]
+tags: [calendar, component, m.mount]
 level: beginner
 version: 2.0.4
 author: stephanhoyer

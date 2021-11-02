@@ -1,7 +1,7 @@
 ---
 title: React Refs in Mithril
 date: 2021-10-26
-tags: [dom, react, refs]
+tags: [dom, react, refs, m.mount, vnode]
 level: beginner
 version: 2.0.4
 author: stephanhoyer

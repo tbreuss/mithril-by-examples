@@ -1,7 +1,7 @@
 ---
 title: CSS Animation on Element Creation
 date: 2021-10-19
-tags: [basics, animation, official]
+tags: [basics, animation, official, m.mount]
 level: beginner
 version: 2.0.4
 author: mithril

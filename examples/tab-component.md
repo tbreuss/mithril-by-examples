@@ -1,7 +1,7 @@
 ---
 title: Tab Component
 date: 2021-10-16
-tags: [component, tab]
+tags: [component, tab, m.mount]
 level: beginner
 version: 1.1.6
 author: barneycarroll

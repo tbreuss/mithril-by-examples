@@ -1,7 +1,7 @@
 ---
 title: SVG Clock
 date: 2021-10-27
-tags: [animation, clock, official, svg]
+tags: [animation, official, svg, m.render]
 level: beginner
 version: 2.0.4
 author: mithril

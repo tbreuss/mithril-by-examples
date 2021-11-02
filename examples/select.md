@@ -1,7 +1,7 @@
 ---
 title: Select
 date: 2020-09-24
-tags: [form, select]
+tags: [form, select, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

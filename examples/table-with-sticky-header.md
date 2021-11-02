@@ -1,7 +1,7 @@
 ---
 title: Table with Sticky Header
 date: 2021-10-24
-tags: [table, sticky, header]
+tags: [table, sticky, header, m.mount]
 level: beginner
 version: 2.0.4
 author: spacejack

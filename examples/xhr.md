@@ -1,7 +1,7 @@
 ---
 title: XHR
 date: 2021-10-16
-tags: [basics, official, m.request]
+tags: [basics, official, m.request, m.mount]
 level: beginner
 version: 2.0.4
 author: mithril

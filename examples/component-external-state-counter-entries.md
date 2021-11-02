@@ -1,7 +1,7 @@
 ---
 title: Component External State Counter & Entries
 date: 2020-09-24
-tags: [component, state, counter]
+tags: [component, state, counter, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

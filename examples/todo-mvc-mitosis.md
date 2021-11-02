@@ -1,7 +1,7 @@
 ---
 title: Todo MVC (Mitosis)
 date: 2021-10-29
-tags: [todomvc, mitosis]
+tags: [todomvc, mitosis, m.route]
 level: expert
 version: 2.0.4
 author: osban

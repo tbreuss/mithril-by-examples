@@ -1,7 +1,7 @@
 ---
 title: Re-initializing a Component Using Key - With Routing
 date: 2020-09-24
-tags: [component, key]
+tags: [component, key, m.route, vnode]
 level: beginner
 version: 2.0.4
 author: osban

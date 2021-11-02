@@ -1,7 +1,7 @@
 ---
 title: Blurry Dogs
 date: 2021-10-31
-tags: [animation, m.stream]
+tags: [animation, m.stream, m.mount]
 level: beginner
 version: 2.0.4
 author: JAForbes
@@ -11,7 +11,7 @@ flems:
     - mithril-stream@2.0.0/stream.js
 ---
 
-This example was taken from [Mithril Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited. It shows random images requested by an API and displayed with an adjustable blur effect.
+This Mithril code example was taken from [Mithril Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited. It shows random dog images requested by an API and displayed with an adjustable blur effect.
 
 ~~~js
 function BlurryDog({attrs: {src, blur}}) {

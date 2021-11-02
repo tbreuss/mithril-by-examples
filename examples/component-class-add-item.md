@@ -1,7 +1,7 @@
 ---
 title: Component Class Add Item
 date: 2020-09-24
-tags: [component, class, state]
+tags: [component, class, state, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

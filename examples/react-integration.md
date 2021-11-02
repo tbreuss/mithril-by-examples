@@ -1,7 +1,7 @@
 ---
 title: React Integration
 date: 2021-10-26
-tags: [react, lifecycle, dom, component]
+tags: [react, lifecycle, dom, component, m.mount]
 level: expert
 version: 2.0.4
 author: barneycarroll

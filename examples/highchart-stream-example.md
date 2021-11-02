@@ -1,7 +1,7 @@
 ---
 title: Highchart Stream Example
 date: 2021-10-26
-tags: [charts, m.stream, highchart, m.request]
+tags: [charts, m.stream, highchart, m.request, m.mount]
 level: expert
 version: 2.0.4
 author: skyghis

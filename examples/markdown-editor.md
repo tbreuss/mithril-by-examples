@@ -1,7 +1,7 @@
 ---
 title: Markdown Editor
 date: 2021-10-27
-tags: [markdown, editor, official]
+tags: [markdown, editor, official, m.trust, m.mount]
 level: beginner
 version: 2.0.4
 author: mithril

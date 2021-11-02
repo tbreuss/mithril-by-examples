@@ -1,7 +1,7 @@
 ---
 title: Force Component Re-Init without Routing
 date: 2021-10-16
-tags: [component, oninit, key]
+tags: [component, key, m.mount, vnode]
 level: beginner
 version: 2.0.4
 author: osban

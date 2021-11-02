@@ -1,7 +1,7 @@
 ---
 title: Component Closure Add Item
 date: 2020-09-24
-tags: [component, closure, state]
+tags: [component, closure, state, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

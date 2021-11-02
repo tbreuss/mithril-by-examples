@@ -1,7 +1,7 @@
 ---
 title: Styled Component with BSS
 date: 2021-10-16
-tags: [bss, css]
+tags: [bss, css, m.mount]
 level: beginner
 version: 1.1.6
 author: porsager

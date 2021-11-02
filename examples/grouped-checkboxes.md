@@ -1,7 +1,7 @@
 ---
 title: Grouped Checkboxes
 date: 2021-10-24
-tags: [form, checkbox, radiobutton]
+tags: [form, checkbox, radiobutton, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

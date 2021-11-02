@@ -1,7 +1,7 @@
 ---
 title: Manage State using Simple Variables
 date: 2021-10-19
-tags: [state, component]
+tags: [state, component, m.mount]
 level: intermediate
 version: 2.0.4
 author: kevinfiol

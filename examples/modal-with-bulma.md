@@ -1,7 +1,7 @@
 ---
 title: Modal with Bulma
 date: 2021-10-26
-tags: [modal, bulma]
+tags: [modal, bulma, m.render, m.mount, vnode]
 level: beginner
 version: 2.0.4
 author: mike-ward

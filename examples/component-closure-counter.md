@@ -1,7 +1,7 @@
 ---
 title: Component Closure Counter
 date: 2020-09-24
-tags: [component, pojo, state, counter]
+tags: [component, pojo, state, counter, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

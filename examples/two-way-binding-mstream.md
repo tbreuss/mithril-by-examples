@@ -1,7 +1,7 @@
 ---
 title: Two-Way Binding - With m.stream
 date: 2020-09-24
-tags: [form, two-way-binding, m.stream]
+tags: [form, two-way-binding, m.stream, m.mount]
 level: beginner
 version: 2.0.4
 author: osban

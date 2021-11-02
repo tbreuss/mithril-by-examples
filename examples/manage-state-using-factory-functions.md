@@ -1,7 +1,7 @@
 ---
 title: Manage State using Factory Functions
 date: 2021-10-19
-tags: [state, component, mitosis]
+tags: [state, component, mitosis, m.mount]
 level: intermediate
 version: 2.0.4
 author: kevinfiol

@@ -1,7 +1,7 @@
 ---
 title: Parent-Child Communication
 date: 2020-09-24
-tags: [component, communication]
+tags: [component, communication, m.mount]
 level: beginner
 version: 2.0.4
 author: osban
