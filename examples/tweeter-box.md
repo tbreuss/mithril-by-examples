@@ -8,45 +8,48 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
-A small nonsense Tweeter Box using Mitosis for state management.
+A small nonsense Tweeter Box code example in Mithril using Mitosis for state management.
 This example is inspired by the Tweeter Box from Jorge Bucaran written as an example for Hyperapp.
+
+## Markup
 
 ~~~html
 <main id="app"></main>
 ~~~
 
+## JavaScript
+
 ~~~js
 const MAX_LENGTH = 140
 
 const State = () => ({
-  text: '',
-  count: MAX_LENGTH
+  message: '',
+  charsLeft: MAX_LENGTH
 })
 
 const Actions = state => ({
-  text: (text) => {
-    state.text = text
-    state.count = MAX_LENGTH - text.length
+  update: (text) => {
+    state.message = text.substr(0, MAX_LENGTH)
+    state.charsLeft = MAX_LENGTH - state.message.length
   },
   reset: () => {
-    state.text = ''
-    state.count = MAX_LENGTH
+    state.message = ''
+    state.charsLeft = MAX_LENGTH
   }
-});
+})
 
 const TweeterBox = (state, actions) => [
-  m('h1', 'Tweeter 📦'),
+  m('h1', 'Tweeter 🐤'),
   m('textarea', {
     placeholder: 'What\'s on your mind?',
     rows: 4,
-    maxlength: MAX_LENGTH,
-    value: state.text,
-    oninput: (e) => actions.text(e.target.value)
+    value: state.message,
+    oninput: (e) => actions.update(e.target.value)
   }),
   m('section', [
-    state.count,
+    state.charsLeft,
     m('button', {
-      disabled: state.count >= MAX_LENGTH,
+      disabled: state.charsLeft === MAX_LENGTH,
       onclick: actions.reset
     }, 'Tweet')
   ])
@@ -60,6 +63,8 @@ m.mount(document.getElementById('app'), () => {
   }
 })
 ~~~
+
+## Styles
 
 ~~~css
 @import "https://unpkg.com/water.css@2/out/water.min.css";
