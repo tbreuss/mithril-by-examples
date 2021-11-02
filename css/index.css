@@ -263,10 +263,6 @@ a[href].direct-link:focus:visited,
   color: #aaa;
 }
 
-.github-edit-link {
-  margin-top: 1.5rem;
-}
-
 .tmpl-home blockquote {
   border-left: 5px solid #aaaaaa;
   font-size: 1.25rem;

@@ -14,40 +14,23 @@ templateClass: tmpl-post
   {%- endif %}
 </p>
 
+{%- if (level) or (version) %}
+<p style="margin-top:-1em">
+  {%- if level %}Level: <span class="level">{{ level }}</span>{%- endif %}
+  {%- if version %} • Mithril Version: <span class="version">{{ version }}</span>{%- endif %}
+</p>
+{%- endif %}
+
 <p>
-{%- for tag in tags | filterTagList | sort -%}
-{%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-<a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-{%- endfor %}
+  {%- for tag in tags | filterTagList | sort -%}
+  {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+  {%- endfor %}
 </p>
 
 {{ content | add_link_to_flems(title, flems.selected, flems.files, flems.links, version) | safe }}
 
-{%- if collections.posts %}
-{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-{%- if nextPost or previousPost %}
-<hr>
-<ul>
-  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
-  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-</ul>
-{%- endif %}
-{%- endif %}
-
-{% set maxExamples = collections.examples.length | min(3) %}
-
-{%- if level %}
-  <div class="level">
-  Level:
-    <span class="level">{{ level }}</span>
-  </div>
-{%- endif %}
-
-{%- if version %}
-  <div class="version">
-  Mithril Version:
-    <span class="version">{{ version }}</span>
-  </div>
-{%- endif %}
-
+<p>
+  <a href="{{ '/examples/' | url }}">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/{{ page.inputPath }}">Edit this example on GitHub</a>
+</p>

@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Contributors
   order: 3
 ---
-<h1>Contributors</h1>
+<h1>{{ collections.authorList.length }} Contributors</h1>
 
 <ul class="postlist">
 {% for author in collections.authorList | sort %}
@@ -15,4 +15,4 @@ eleventyNavigation:
 {% endfor %}
 </ul>
 
-<p>{{ collections.authorList.length }} contributors ordered from A to Z.</p>
+<p>Contributors are ordered from A to Z.</p>

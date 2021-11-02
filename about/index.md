@@ -11,7 +11,7 @@ Mithril by Examples was created for (me and) new users to learn mithril.js — a
 
 This website is just a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains code samples that can be seen, reviewed and run.
 
-The code snippets listed here are up-to-date, and they just work!
+The code snippets listed on this website are up-to-date, and they just work.
 
 ## Mithril
 
@@ -29,11 +29,11 @@ The code snippets listed here are up-to-date, and they just work!
 
 ## Contributors
 
-The project could not exist without [the many contributors]({{ '/contributors/' | url }}), who spent hours creating their code examples and making them available here.
+The project could not exist without [the many contributors]({{ '/contributors/' | url }}), who spent hours creating their code examples and making them available here. 🙏 Thank you!
 
-&#128077; Thank you all!
+If you want to contribute, here is our [GitHub repository](https://github.com/tbreuss/mithril-by-examples).
 
 ## Me
 
-The website was created by [Thomas Breuss](https://www.tebe.ch).
-It was built using [Eleventy](https://www.11ty.dev), a simple static site generator, together with a few other things.
+This website was created by [Thomas Breuss](https://github.com/tbreuss).
+It was built using [Eleventy](https://www.11ty.dev), a simple static site generator, together with a few other fancy things.

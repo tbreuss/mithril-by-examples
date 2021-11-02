@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Tags
   order: 2
 ---
-<h1>Tags</h1>
+<h1>{{ collections.tagList.length }} Tags</h1>
 
 <p>
 {% for tag in collections.tagList | sort %}
@@ -15,4 +15,4 @@ eleventyNavigation:
 {% endfor %}
 </p>
 
-<p>{{ collections.tagList.length }} tags ordered from A to Z.</p>
+<p>Tags are ordered from A to Z.</p>
