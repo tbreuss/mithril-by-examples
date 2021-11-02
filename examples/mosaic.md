@@ -1,7 +1,7 @@
 ---
 title: Mosaic
 date: 2021-10-27
-tags: [animation, mosaic, official, m.render]
+tags: [animation, mosaic, official, m.render, dom, onbeforeremove]
 level: beginner
 version: 2.0.4
 author: mithril

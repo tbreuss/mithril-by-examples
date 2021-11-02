@@ -1,7 +1,7 @@
 ---
 title: Loading Message
 date: 2020-09-24
-tags: [loading, m.request, m.mount]
+tags: [loading, m.request, m.mount, m.redraw]
 level: beginner
 version: 2.0.4
 author: osban

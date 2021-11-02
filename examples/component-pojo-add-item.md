@@ -1,7 +1,7 @@
 ---
 title: Component Pojo Add Item
 date: 2020-09-24
-tags: [component, pojo, state, m.mount]
+tags: [component, pojo, state, m.mount, oninit]
 level: beginner
 version: 2.0.4
 author: osban

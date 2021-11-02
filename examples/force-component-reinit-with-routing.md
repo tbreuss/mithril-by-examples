@@ -1,7 +1,7 @@
 ---
 title: Force Component Re-Init with Routing
 date: 2021-10-16
-tags: [component, key, m.route, vnode]
+tags: [component, key, m.route, vnode, oninit]
 level: beginner
 version: 2.0.4
 author: osban

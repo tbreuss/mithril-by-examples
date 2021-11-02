@@ -1,7 +1,7 @@
 ---
 title: Async and Await Around m.request
 date: 2021-10-26
-tags: [m.request, async-await, m.mount]
+tags: [m.request, async-await, m.mount, api, oninit]
 level: beginner
 version: 2.0.4
 author: viniciusCamargo

@@ -1,7 +1,7 @@
 ---
 title: DB Monster
 date: 2021-10-27
-tags: [animation, dbmonster, official, m.mount]
+tags: [3rd-party, animation, official, m.mount, m.redraw]
 level: beginner
 version: 2.0.4
 author: mithril

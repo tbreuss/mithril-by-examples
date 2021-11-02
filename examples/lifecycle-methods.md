@@ -1,7 +1,7 @@
 ---
 title: Lifecycle Methods
 date: 2021-10-19
-tags: [component, lifecycle, official, m.mount, vnode]
+tags: [component, lifecycle, official, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: intermediate
 version: 2.0.4
 author: mithril

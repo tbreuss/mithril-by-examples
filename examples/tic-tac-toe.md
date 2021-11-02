@@ -1,7 +1,7 @@
 ---
 title: Tic Tac Toe
 date: 2021-10-26
-tags: [game, m.stream, ramda, m.mount]
+tags: [3rd-party, game, m.stream, m.mount, oncreate]
 level: expert
 version: 2.0.4
 author: boazblake

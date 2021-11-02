@@ -1,7 +1,7 @@
 ---
 title: Todo MVC
 date: 2021-10-27
-tags: [todomvc, official, m.route, vnode]
+tags: [todomvc, official, m.route, vnode, dom, onbeforeupdate, onupdate, oninit]
 level: beginner
 version: 2.0.4
 author: mithril

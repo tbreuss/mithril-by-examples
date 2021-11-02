@@ -1,7 +1,7 @@
 ---
 title: Re-initializing a Component Every Time - Without Routing
 date: 2020-09-24
-tags: [component, key, m.route]
+tags: [component, key, m.route, oninit]
 level: beginner
 version: 2.0.4
 author: osban

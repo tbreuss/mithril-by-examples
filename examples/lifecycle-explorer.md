@@ -1,7 +1,7 @@
 ---
 title: Lifecycle Explorer
 date: 2021-10-23
-tags: [lifecycle, m.render, m.mount, vnode]
+tags: [lifecycle, m.render, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: beginner
 version: 2.0.4
 author: barneycarroll

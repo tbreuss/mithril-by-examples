@@ -1,7 +1,7 @@
 ---
 title: Blurry Dogs
 date: 2021-10-31
-tags: [animation, m.stream, m.mount]
+tags: [animation, m.stream, m.mount, dom, api, oncreate]
 level: beginner
 version: 2.0.4
 author: JAForbes

@@ -1,7 +1,7 @@
 ---
 title: Select2 Integration
 date: 2021-10-26
-tags: [jquery, form, select, 3rd-party, m.mount]
+tags: [3rd-party, form, select, m.mount, dom, oncreate]
 level: beginner
 version: 2.0.4
 author: kevinfiol

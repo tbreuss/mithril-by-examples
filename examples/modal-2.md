@@ -1,7 +1,7 @@
 ---
 title: Modal
 date: 2021-10-26
-tags: [modal, dialog, component, m.mount]
+tags: [modal, dialog, component, m.mount, m.redraw, dom, onbeforeupdate, onremove, onbeforeremove, oncreate]
 level: advanced
 version: 2.0.4
 author: spacejack

@@ -1,7 +1,7 @@
 ---
 title: Loading Page
 date: 2020-09-24
-tags: [loading, m.mount]
+tags: [loading, m.mount, oninit]
 level: beginner
 version: 2.0.4
 author: osban

@@ -1,7 +1,7 @@
 ---
 title: CSS Animation on Element Removal
 date: 2021-10-19
-tags: [basics, animation, official, m.mount, vnode]
+tags: [basics, animation, official, m.mount, vnode, dom, onbeforeremove]
 level: beginner
 version: 2.0.4
 author: mithril

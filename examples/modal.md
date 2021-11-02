@@ -1,7 +1,7 @@
 ---
 title: Modal
 date: 2021-10-16
-tags: [modal, dialog, m.render, m.mount, vnode]
+tags: [modal, dialog, m.render, m.mount, vnode, bulma]
 level: beginner
 version: 2.0.4
 author: spacejack

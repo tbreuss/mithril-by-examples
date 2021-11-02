@@ -1,7 +1,7 @@
 ---
 title: Highchart Stream Example
 date: 2021-10-26
-tags: [charts, m.stream, highchart, m.request, m.mount]
+tags: [3rd-party, charts, m.stream, m.request, m.mount, dom, onremove, oncreate]
 level: expert
 version: 2.0.4
 author: skyghis
