@@ -8,9 +8,9 @@
 
 `Mithril by Examples` was created for (me and) new users to learn Mithril.js — a javascript framework for building brilliant applications.
 
-This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains code samples that can be seen, reviewed and run.
+This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains numerous code samples that can be seen, reviewed and run.
 
-The code snippets are up-to-date, and they just work!
+And the best thing is: The code snippets are up-to-date and just work!
 
 ## Mithril Resources
 
