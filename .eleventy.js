@@ -1,10 +1,9 @@
-const { DateTime } = require("luxon");
-const fs = require("fs");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
+const { DateTime } = require('luxon');
+const fs = require('fs');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
+const pluginNavigation = require('@11ty/eleventy-navigation');
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
 const {decode} = require('html-entities');
 const util = require('util')
 
@@ -16,31 +15,30 @@ module.exports = function(eleventyConfig) {
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
-  // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
 
   // Alias `layout: post` to `layout: layouts/post.njk`
-  // eleventyConfig.addLayoutAlias("example", "layouts/example.html");
+  // eleventyConfig.addLayoutAlias('example', 'layouts/example.html');
 
   // see https://rob.cogit8.org/posts/2020-10-28-simple-11ty-cache-busting/
-  eleventyConfig.addFilter("bust", (url) => {
-    const [urlPart, paramPart] = url.split("?");
-    const params = new URLSearchParams(paramPart || "");
-    params.set("v", DateTime.local().toFormat("X"));
+  eleventyConfig.addFilter('bust', (url) => {
+    const [urlPart, paramPart] = url.split('?');
+    const params = new URLSearchParams(paramPart || '');
+    params.set('v', DateTime.local().toFormat('X'));
     return `${urlPart}?${params}`;
   });
 
-  eleventyConfig.addFilter("stringify", (csvString) => {
+  eleventyConfig.addFilter('stringify', (csvString) => {
     if (!Array.isArray(csvString)) {
       return '[]';
     }
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter("add_link_to_flems", (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+  eleventyConfig.addFilter('add_link_to_flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
 
     if (!flemsSelected || flemsSelected === '') {
       flemsSelected = '.js';
@@ -212,8 +210,8 @@ module.exports = function(eleventyConfig) {
     return content + html;
   });
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+  eleventyConfig.addFilter('readableDate', dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('dd LLLL yyyy');
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
@@ -222,7 +220,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
+  eleventyConfig.addFilter('head', (array, n) => {
     if(!Array.isArray(array) || array.length === 0) {
       return [];
     }
@@ -234,15 +232,15 @@ module.exports = function(eleventyConfig) {
   });
 
   // Return the smallest number argument
-  eleventyConfig.addFilter("min", (...numbers) => {
+  eleventyConfig.addFilter('min', (...numbers) => {
     return Math.min.apply(null, numbers);
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1);
   }
 
-  eleventyConfig.addFilter("filterTagList", filterTagList)
+  eleventyConfig.addFilter('filterTagList', filterTagList)
 
   eleventyConfig.addFilter('filterByAuthor', function(collection, author) {
     if (!author) return collection;
@@ -254,30 +252,72 @@ module.exports = function(eleventyConfig) {
     return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
   });
 
-  eleventyConfig.addCollection("authorList", function(collection) {
-    let authorSet = new Set();
-    collection.getAll().forEach(item => {
-      if (item.data.author && item.data.author.length > 0) {
-        authorSet.add(item.data.author)
+  eleventyConfig.addCollection('authorMap', function(collection) {
+    let map = new Map();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        let key = item.data.author
+        if (!key || key.length <= 0) {
+          return
+        }
+        key = key.toLowerCase()
+        let author = {
+          name: item.data.author,
+          count: 1
+        }
+        if (map.has(key)) {
+          let count = map.get(key).count
+          author.count = count + 1
+        }
+        map.set(key, author)
       }
-    });
+    );
+    return [...map.entries()];
+  });
+
+  eleventyConfig.addCollection('authorList', function(collection) {
+    let authorSet = new Set();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        if (item.data.author && item.data.author.length > 0) {
+          authorSet.add(item.data.author)
+        }
+      });
     return [...authorSet];
   });
 
-  // Create an array of all tags
-  eleventyConfig.addCollection("tagList", function(collection) {
-    let tagSet = new Set();
-    collection.getAll().forEach(item => {
-      (item.data.tags || []).forEach(tag => tagSet.add(tag));
-    });
+  eleventyConfig.addCollection('tagMap', function(collection) {
+    let map = new Map();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        (item.data.tags || []).forEach(tag => {
+          let key = tag
+          if (!key || key.length <= 0) {
+            return
+          }
+          key = key.toLowerCase()
+          let tagObj = {
+            name: tag,
+            count: 1
+          }
+          if (map.has(key)) {
+            let count = map.get(key).count
+            tagObj.count = count + 1
+          }
+          map.set(key, tagObj)
+        });
+      });
+    return [...map.entries()];
+  });
 
+  // Create an array of all tags
+  eleventyConfig.addCollection('tagList', function(collection) {
+    let tagSet = new Set();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        (item.data.tags || []).forEach(tag => tagSet.add(tag));
+      });
     return filterTagList([...tagSet]);
   });
 
   eleventyConfig.addCollection('examplesLatest', collection => {
-    return collection
-      .getFilteredByGlob('./examples/*.md')
-      .sort(function(a, b) {
+    return collection.getFilteredByGlob('./examples/*.md').sort(function(a, b) {
         if (a.data.date > b.data.date) return -1;
         else if (a.data.date < b.data.date) return 1;
         else return 0;
@@ -285,9 +325,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection('examples', collection => {
-    return collection
-      .getFilteredByGlob('./examples/*.md')
-      .sort(function(a, b) {
+    return collection.getFilteredByGlob('./examples/*.md').sort(function(a, b) {
         let nameA = a.data.title.toUpperCase();
         let nameB = b.data.title.toUpperCase();
         if (nameA < nameB) return -1;
@@ -297,10 +335,10 @@ module.exports = function(eleventyConfig) {
   });
 
   // Copy the `img` and `css` folders to the output
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy(".htaccess");
-  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy('img');
+  eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('.htaccess');
+  eleventyConfig.addPassthroughCopy('robots.txt');
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
@@ -309,14 +347,14 @@ module.exports = function(eleventyConfig) {
     linkify: true
     }).use(markdownItAnchor, {
     permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
+      placement: 'after',
+      class: 'direct-link',
+      symbol: '#',
       level: [1,2,3,4],
     }),
-    slugify: eleventyConfig.getFilter("slug")
+    slugify: eleventyConfig.getFilter('slug')
   });
-  eleventyConfig.setLibrary("md", markdownLibrary);
+  eleventyConfig.setLibrary('md', markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)
   eleventyConfig.setBrowserSyncConfig({
@@ -324,9 +362,9 @@ module.exports = function(eleventyConfig) {
       ready: function(err, browserSync) {
         const content_404 = fs.readFileSync('_site/404.html');
 
-        browserSync.addMiddleware("*", (req, res) => {
+        browserSync.addMiddleware('*', (req, res) => {
           // Provides the 404 content without redirect.
-          res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
+          res.writeHead(404, {'Content-Type': 'text/html; charset=UTF-8'});
           res.write(content_404);
           res.end();
         });
@@ -340,10 +378,10 @@ module.exports = function(eleventyConfig) {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
     templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
+      'md',
+      'njk',
+      'html',
+      'liquid'
     ],
 
     // -----------------------------------------------------------------
@@ -357,24 +395,24 @@ module.exports = function(eleventyConfig) {
     // You can also pass this in on the command line using `--pathprefix`
 
     // Optional (default is shown)
-    pathPrefix: "/",
+    pathPrefix: '/',
     // -----------------------------------------------------------------
 
     // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
+    markdownTemplateEngine: 'njk',
 
     // Pre-process *.html files with: (default: `liquid`)
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: 'njk',
 
     // Opt-out of pre-processing global data JSON files: (default: `liquid`)
     dataTemplateEngine: false,
 
     // These are all optional (defaults are shown):
     dir: {
-      input: ".",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
+      input: '.',
+      includes: '_includes',
+      data: '_data',
+      output: '_site'
     }
   };
 };

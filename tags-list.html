@@ -6,12 +6,12 @@ eleventyNavigation:
   key: Tags
   order: 2
 ---
-<h1>{{ collections.tagList.length }} Tags</h1>
+<h1>{{ collections.tagMap.length }} Tags</h1>
 
 <p>
-{% for tag in collections.tagList | sort %}
-  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+{% for key, tag in collections.tagMap | sort %}
+  {% set tagUrl %}/tags/{{ tag.name | slug }}/{% endset %}
+  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag.name }} ({{ tag.count }})</a>
 {% endfor %}
 </p>
 

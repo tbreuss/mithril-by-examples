@@ -3,10 +3,11 @@ permalink: /api/contributors.json
 eleventyExcludeFromCollections: true
 ---
 [
-  {%- for author in collections.authorList | sort %}
-  {%- set authorUrl %}/contributors/{{ author | slug }}/{% endset %}
+  {%- for key, author in collections.authorMap | sort %}
+  {%- set authorUrl %}/contributors/{{ author.name | slug }}/{% endset %}
     {
-      "name": "{{ author }}",
+      "name": "{{ author.name }}",
+      "examples": {{ author.count }},
       "url": "{{ authorUrl | url }}"
     }{{ '' if loop.last else ',' }}
   {%- endfor %}
