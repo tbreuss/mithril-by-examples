@@ -6,12 +6,12 @@ eleventyNavigation:
   key: Contributors
   order: 3
 ---
-<h1>{{ collections.authorList.length }} Contributors</h1>
+<h1>{{ collections.authorMap.length }} Contributors</h1>
 
 <ul class="postlist">
-{% for author in collections.authorList | sort %}
-  {% set authorUrl %}/contributors/{{ author | slug }}/{% endset %}
-  <li><a href="{{ authorUrl | url }}" class="postlist-link">{{ author }}</a></li>
+{% for key, author in collections.authorMap | sort %}
+  {% set authorUrl %}/contributors/{{ author.name | slug }}/{% endset %}
+  <li><a href="{{ authorUrl | url }}" class="postlist-link">{{ author.name }} ({{ author.count }})</a></li>
 {% endfor %}
 </ul>
 
