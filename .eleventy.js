@@ -38,6 +38,81 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
+  eleventyConfig.addFilter('textifyTop', (content, title, date, tags, level, version, author, authorUrl) => {
+    console.log(title, date, tags, level, version, author);
+
+    let text = [];
+    if (author.length > 0) {
+      text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
+      text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
+    }
+
+    if (version.length > 0) {
+      text.push ("\n");
+      if (version === '2.0.4') {
+        text.push('The snippet is using the most current version ' + version + ' of Mithril JS framework.');
+      } else {
+        text.push('The snippet is using version ' + version + ' of Mithril JS framework.');
+      }
+    }
+
+    if (level.length > 0) {
+      switch(level) {
+        case 'beginner':
+          text.push('It is aimed at beginners and shows some basic recipes.');
+          break;
+        case 'advanced':
+          text.push('It is aimed at more advanced users and shows some things, that are not easy to achieve.');
+          break;
+        case 'intermediate':
+          text.push('It is aimed at intermediate users who are familiar with most of the aspects of the framework.');
+          break;
+        case 'expert':
+          text.push('It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.');
+          break;
+      }
+    }
+
+    /*
+    if (version.length > 0) {
+      text.push ("\n");
+      if (version === '2.0.4') {
+        text.push('If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+      } else {
+        text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+      }
+      text.push('Or simply fork the repository on GitHub, push your commits and send a pull request.')
+      text.push('For starting your work, you can click the edit link below.')
+    }
+    */
+
+    if (text.length > 0) {
+      return markdownLibrary.render(text.join("\n"));
+    }
+    return '';
+  });
+
+  eleventyConfig.addFilter('textifyBottom', (content, title, date, tags, level, version, author, authorUrl) => {
+
+    let text = [];
+
+    if (version.length > 0) {
+      text.push ("\n");
+      if (version === '2.0.4') {
+        text.push('If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+      } else {
+        text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+      }
+      text.push('Or simply fork the repository on GitHub, push your commits and send a pull request.')
+      text.push('For starting your work, you can click the edit link below.')
+    }
+
+    if (text.length > 0) {
+      return markdownLibrary.render(text.join("\n"));
+    }
+    return '';
+  });
+
   eleventyConfig.addFilter('add_link_to_flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
 
     if (!flemsSelected || flemsSelected === '') {
@@ -250,6 +325,28 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('filterByTag', function(collection, tag) {
     if (!tag) return collection;
     return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
+  });
+
+  eleventyConfig.addCollection('levelMap', function(collection) {
+    let map = new Map();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        let key = item.data.level
+        if (!key || key.length <= 0) {
+          return
+        }
+        key = key.toLowerCase()
+        let level = {
+          name: item.data.level,
+          count: 1
+        }
+        if (map.has(key)) {
+          let count = map.get(key).count
+          level.count = count + 1
+        }
+        map.set(key, level)
+      }
+    );
+    return [...map.entries()];
   });
 
   eleventyConfig.addCollection('authorMap', function(collection) {

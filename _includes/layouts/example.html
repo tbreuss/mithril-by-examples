@@ -28,7 +28,12 @@ templateClass: tmpl-post
   {%- endfor %}
 </p>
 
+{%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
+{{ "" | textifyTop(title, date | readableDate, tags, level, version, author, authorSlug | url) | safe }}
+
 {{ content | add_link_to_flems(title, flems.selected, flems.files, flems.links, version) | safe }}
+
+{{ "" | textifyBottom(title, date | readableDate, tags, level, version, author, authorSlug | url) | safe }}
 
 <p>
   <a href="{{ '/examples/' | url }}">See more code examples</a>
