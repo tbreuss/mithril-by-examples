@@ -38,10 +38,19 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter('textifyTop', (content, title, date, tags, level, version, author, authorUrl) => {
-    console.log(title, date, tags, level, version, author);
+  eleventyConfig.addFilter('textifyTop', (content, title, date, tags, level, version, author, authorUrl, link) => {
+
+    let apiMethods = (tags || []).filter(function (tag) {
+      return tag.includes('m.');
+    });
+
+    let lifecycleMethods = (tags || []).filter(function (tag) {
+      const methods = ['onbeforeupdate', 'onremove', 'onbeforeremove', 'onupdate', 'oncreate', 'oninit'];
+      return methods.indexOf(tag) >= 0;
+    });
 
     let text = [];
+
     if (author.length > 0) {
       text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
       text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
@@ -73,18 +82,22 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    /*
-    if (version.length > 0) {
-      text.push ("\n");
-      if (version === '2.0.4') {
-        text.push('If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
-      } else {
-        text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
-      }
-      text.push('Or simply fork the repository on GitHub, push your commits and send a pull request.')
-      text.push('For starting your work, you can click the edit link below.')
+    if (apiMethods.length > 1) {
+      text.push('Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + apiMethods.join(', ') + '.');
+    } else if (apiMethods.length === 1) {
+      text.push('In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s `' + apiMethods.join('') + '` API method.');
     }
-    */
+
+    if (lifecycleMethods.length > 1) {
+      text.push('It also demonstrates, how Mithril\'s lifecycle methods like ' + apiMethods.join(', ') + ' can be used.');
+    } else if (lifecycleMethods.length === 1) {
+      text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the `' + apiMethods.join('') + '` hook.');
+    }
+
+    if (link && (link.length > 0)) {
+      text.push('');
+      text.push('You can find [more information](' + link + ') here.');
+    }
 
     if (text.length > 0) {
       return markdownLibrary.render(text.join("\n"));

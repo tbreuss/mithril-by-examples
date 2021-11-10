@@ -29,7 +29,7 @@ templateClass: tmpl-post
 </p>
 
 {%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
-{{ "" | textifyTop(title, date | readableDate, tags, level, version, author, authorSlug | url) | safe }}
+{{ "" | textifyTop(title, date | readableDate, tags, level, version, author, authorSlug | url, link) | safe }}
 
 {{ content | add_link_to_flems(title, flems.selected, flems.files, flems.links, version) | safe }}
 
