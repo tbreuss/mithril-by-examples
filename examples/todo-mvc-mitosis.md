@@ -1,5 +1,6 @@
 ---
 title: Todo MVC (Mitosis)
+desc: Here is another Todo MVC implementation, this time using Mitosis for state management.
 date: 2021-10-29
 tags: [todomvc, mitosis, m.route, dom, onupdate]
 level: expert
@@ -17,8 +18,6 @@ flems:
     - app.js
     - .css
 ---
-
-Here is another Todo MVC implementation, this time using Mitosis for state management.
 
 ## Markup
 

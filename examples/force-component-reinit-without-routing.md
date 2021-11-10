@@ -1,5 +1,6 @@
 ---
 title: Force Component Re-Init without Routing
+desc: Force a component to re-initialize by using a key attribute.
 date: 2021-10-16
 tags: [component, key, m.mount, vnode, oninit]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Force a component to re-initialize by using a key attribute.
 
 ~~~js
 const text = () => [

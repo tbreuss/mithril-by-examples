@@ -1,5 +1,6 @@
 ---
 title: Select2 Integration
+desc: This example shows the integration of select2 3rd-party library.
 date: 2021-10-26
 tags: [3rd-party, form, select, m.mount, dom, oncreate]
 level: beginner

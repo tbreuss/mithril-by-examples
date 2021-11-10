@@ -1,5 +1,6 @@
 ---
 title: Highchart Stream Example
+desc: How to use highchart lib together with mithril and mithril-stream.
 date: 2021-10-26
 tags: [3rd-party, charts, m.stream, m.request, m.mount, dom, onremove, oncreate]
 level: expert
@@ -13,8 +14,6 @@ flems:
     - mithril@2.0.4/stream/stream.js
     - highcharts@6.1.1
 ---
-
-How to use highchart lib together with mithril and mithril-stream.
 
 ## JavaScript
 

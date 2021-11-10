@@ -1,5 +1,6 @@
 ---
 title: Simple Closure Component
+desc: This example shows a simple closure component.
 date: 2021-10-24
 tags: [component, closure, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-This example shows a simple closure component.
 
 ~~~js
 const closure = () => {

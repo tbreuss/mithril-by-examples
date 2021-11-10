@@ -1,5 +1,6 @@
 ---
 title: Blurry Dogs
+desc: "This Mithril code example was taken from [Mithril Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited. It shows random dog images requested by an API and displayed with an adjustable blur effect."
 date: 2021-10-31
 tags: [animation, m.stream, m.mount, dom, api, oncreate]
 level: beginner
@@ -10,8 +11,6 @@ flems:
   links:
     - mithril-stream@2.0.0/stream.js
 ---
-
-This Mithril code example was taken from [Mithril Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited. It shows random dog images requested by an API and displayed with an adjustable blur effect.
 
 ~~~js
 function BlurryDog({attrs: {src, blur}}) {

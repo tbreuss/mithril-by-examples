@@ -1,5 +1,6 @@
 ---
 title: Modal
+desc:
 date: 2021-10-26
 tags: [modal, dialog, component, m.mount, m.redraw, dom, onbeforeupdate, onremove, onbeforeremove, oncreate]
 level: advanced

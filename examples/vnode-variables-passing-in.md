@@ -1,5 +1,6 @@
 ---
 title: Vnode Examples of Passing Variables In
+desc: This is an example using Vnodes passing some variables in.
 date: 2020-09-24
 tags: [vnode, m.mount]
 level: beginner

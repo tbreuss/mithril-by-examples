@@ -1,5 +1,6 @@
 ---
 title: Loading Page
+desc: Example showing a loading page while loading external data.
 date: 2020-09-24
 tags: [loading, m.mount, oninit]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Example showing a loading page while loading external data.
 
 ~~~js
 const model = {

@@ -9,6 +9,21 @@ const util = require('util')
 
 module.exports = function(eleventyConfig) {
 
+  function parseItems(items, conjunction)
+  {
+    if (!Array.isArray(items)) {
+      return '';
+    }
+    let mappedItems = items.map((item) => {
+      return '`' + item + '`';
+    });
+    let lastItem = mappedItems.pop();
+    if (mappedItems.length > 0) {
+      return mappedItems.join(', ') + ' ' + conjunction + ' ' + lastItem;
+    }
+    return lastItem;
+  }
+
   eleventyConfig.addFilter('dumper', obj => {
     return util.inspect(obj)
   });
@@ -38,7 +53,7 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter('textifyTop', (content, title, date, tags, level, version, author, authorUrl, link) => {
+  eleventyConfig.addFilter('textifyTop', (content, title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
 
     let apiMethods = (tags || []).filter(function (tag) {
       return tag.includes('m.');
@@ -50,6 +65,11 @@ module.exports = function(eleventyConfig) {
     });
 
     let text = [];
+
+    if (description && (description.length > 0)) {
+      text.push(description);
+      text.push('');
+    }
 
     if (author.length > 0) {
       text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
@@ -83,21 +103,28 @@ module.exports = function(eleventyConfig) {
     }
 
     if (apiMethods.length > 1) {
-      text.push('Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + apiMethods.join(', ') + '.');
+      text.push('Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + parseItems(apiMethods, 'or') + '.');
     } else if (apiMethods.length === 1) {
-      text.push('In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s `' + apiMethods.join('') + '` API method.');
+      text.push('In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method.');
     }
 
     if (lifecycleMethods.length > 1) {
-      text.push('It also demonstrates, how Mithril\'s lifecycle methods like ' + apiMethods.join(', ') + ' can be used.');
+      text.push('It also demonstrates, how Mithril\'s lifecycle methods like ' + parseItems(lifecycleMethods, 'and') + ' can be used.');
     } else if (lifecycleMethods.length === 1) {
-      text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the `' + apiMethods.join('') + '` hook.');
+      text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.');
+    }
+
+    if (tags.indexOf('vnode') > 0) {
+      text.push('In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.');
     }
 
     if (link && (link.length > 0)) {
       text.push('');
       text.push('You can find [more information](' + link + ') here.');
     }
+
+    text.push('');
+    text.push('Enough said, here it is!');
 
     if (text.length > 0) {
       return markdownLibrary.render(text.join("\n"));

@@ -1,5 +1,6 @@
 ---
 title: Force Component Re-Init with Routing
+desc: Force a component to re-initialize by passing a key attribute when changing routes (four examples).
 date: 2021-10-16
 tags: [component, key, m.route, vnode, oninit]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Force a component to re-initialize by passing a key attribute when changing routes (four examples).
 
 ~~~js
 const text = () => [

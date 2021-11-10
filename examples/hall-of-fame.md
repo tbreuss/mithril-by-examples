@@ -1,5 +1,6 @@
 ---
 title: Hall of Fame
+desc:
 date: 2021-11-02
 tags: [bss, m.mount]
 level: beginner

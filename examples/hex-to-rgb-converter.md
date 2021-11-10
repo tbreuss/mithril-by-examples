@@ -1,5 +1,6 @@
 ---
 title: HEX to RGB Converter
+desc: Convert any Hex color code to its RGB value.
 date: 2021-10-24
 tags: [hex, rgb, converter, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: prompt-07
 layout: layouts/example.html
 ---
-
-Convert any Hex color code to its RGB value.
 
 ## HTML
 

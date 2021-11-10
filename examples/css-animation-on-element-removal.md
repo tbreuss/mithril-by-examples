@@ -1,5 +1,6 @@
 ---
 title: CSS Animation on Element Removal
+desc: Mithril offers the `onbeforeremove` hook that allows us to defer the removal of an element.
 date: 2021-10-19
 tags: [basics, animation, official, m.mount, vnode, dom, onbeforeremove]
 level: beginner
@@ -7,9 +8,6 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
-
-Mithril offers the `onbeforeremove` hook that allows us to defer the removal of an element.
-
 
 ## Styles
 

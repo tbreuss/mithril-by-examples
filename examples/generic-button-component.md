@@ -1,5 +1,6 @@
 ---
 title: Generic Button Component
+desc: Nice example using a data binding helper function.
 date: 2020-09-24
 tags: [component, button, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Nice example using a data binding helper function.
 
 ## JS
 
