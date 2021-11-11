@@ -9,6 +9,15 @@ const util = require('util')
 
 module.exports = function(eleventyConfig) {
 
+  function getCharCodes(s){
+    let charCodeArr = [];
+    for(let i = 0; i < s.length; i++){
+      let code = s.charCodeAt(i);
+      charCodeArr.push(code);
+    }
+    return charCodeArr;
+  }
+
   function parseItems(items, conjunction)
   {
     if (!Array.isArray(items)) {
@@ -22,6 +31,18 @@ module.exports = function(eleventyConfig) {
       return mappedItems.join(', ') + ' ' + conjunction + ' ' + lastItem;
     }
     return lastItem;
+  }
+
+  function sumDigits(n) {
+    return (n - 1) % 9 + 1;
+  }
+
+  function calcSumDigitsOfString(s) {
+    let ascii = getCharCodes(s);
+    let sum = ascii.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    return sumDigits(sum);
   }
 
   eleventyConfig.addFilter('dumper', obj => {
@@ -53,7 +74,18 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter('textifyTop', (content, title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
+  eleventyConfig.addShortcode('textifyTop', (title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
+    // some nice procedural programming ;-)
+
+    let textVariantNumber = calcSumDigitsOfString(title) % 3;
+
+    let authorExampleCount = 1;
+    authorMap.forEach((data) => {
+      if (author === data[0]) {
+        authorExampleCount = data[1].count;
+        return;
+      }
+    });
 
     let apiMethods = (tags || []).filter(function (tag) {
       return tag.includes('m.');
@@ -73,7 +105,11 @@ module.exports = function(eleventyConfig) {
 
     if (author.length > 0) {
       text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
-      text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
+      if (authorExampleCount > 2) {
+        text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
+      } else if(authorExampleCount === 2) {
+        text.push('<a href="' + authorUrl + '">Click here</a> to see another example contributed by the author.');
+      }
     }
 
     if (version.length > 0) {
@@ -109,22 +145,34 @@ module.exports = function(eleventyConfig) {
     }
 
     if (lifecycleMethods.length > 1) {
-      text.push('It also demonstrates, how Mithril\'s lifecycle methods like ' + parseItems(lifecycleMethods, 'and') + ' can be used.');
+      text.push('It also demonstrates, how Mithril\'s lifecycle methods (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.');
     } else if (lifecycleMethods.length === 1) {
       text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.');
     }
 
     if (tags.indexOf('vnode') > 0) {
-      text.push('In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.');
+      text.push([
+        'In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.',
+        'We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.',
+        'Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.'
+      ][textVariantNumber]);
     }
 
     if (link && (link.length > 0)) {
       text.push('');
-      text.push('You can find [more information](' + link + ') here.');
+      text.push([
+        'You can find [more information](' + link + ') here.',
+        'More information about this example [can be found here](' + link + ').',
+        '[Click here](' + link + '), if you need more information on that.',
+      ][textVariantNumber]);
     }
 
     text.push('');
-    text.push('Enough said, here it is!');
+    text.push([
+      'Enough said, here it is!',
+      'Ready? Here we go!',
+      'So, here are the code snippets.',
+    ][textVariantNumber]);
 
     if (text.length > 0) {
       return markdownLibrary.render(text.join("\n"));
@@ -132,19 +180,35 @@ module.exports = function(eleventyConfig) {
     return '';
   });
 
-  eleventyConfig.addFilter('textifyBottom', (content, title, date, tags, level, version, author, authorUrl) => {
+  eleventyConfig.addShortcode('textifyBottom', (title, date, tags, level, version, author, authorUrl) => {
+
+    let textVariantNumber = calcSumDigitsOfString(title) % 3;
 
     let text = [];
 
     if (version.length > 0) {
       text.push ("\n");
       if (version === '2.0.4') {
-        text.push('If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+        text.push([
+          'If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          'Do you see some improvements, that could be addressed here? Then let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          'Did you note a typo or something else? So let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+        ][textVariantNumber]);
       } else {
         text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
       }
-      text.push('Or simply fork the repository on GitHub, push your commits and send a pull request.')
-      text.push('For starting your work, you can click the edit link below.')
+
+      text.push([
+        'Or simply fork the repository on GitHub, push your commits and send a pull request.',
+        'As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.',
+        'Or much better: just fork the repository on GitHub, push your commits and send a pull request.'
+      ][textVariantNumber]);
+
+      text.push([
+        'For starting your work, you can click the edit link below. Thanks for contributing.',
+        'To start your work, click on the edit link below. Thank you for contributing to this repo.',
+        'Ready to start your work? Then click on the edit link below. Thanks in advance!'
+      ][textVariantNumber]);
     }
 
     if (text.length > 0) {
@@ -153,7 +217,7 @@ module.exports = function(eleventyConfig) {
     return '';
   });
 
-  eleventyConfig.addFilter('add_link_to_flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+  eleventyConfig.addShortcode('flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
 
     if (!flemsSelected || flemsSelected === '') {
       flemsSelected = '.js';
@@ -225,7 +289,7 @@ module.exports = function(eleventyConfig) {
     const matches = content.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
 
     if (!Array.isArray(matches)) {
-      return content;
+      return '';
     }
 
     let flemsFilesArray = [];
@@ -292,13 +356,53 @@ module.exports = function(eleventyConfig) {
     }
 
     if (flemsFilesArray.length === 0) {
-      return content;
+      return '';
     }
 
     const jsonFlemsFiles = JSON.stringify(flemsFilesArray);
     const jsonFlemsLinks = JSON.stringify(flemsLinksArray);
 
-    let html = `
+    const htmlDepsRows = flemsLinksArray.map((v) => {
+      return `<tr><td>${v.type}</td><td>${v.name}</td><td>${v.url}</td></tr>`;
+    }).join();
+
+    let html = '';
+
+    if (htmlDepsRows.length > 0) {
+      html += `
+        <div class="dependencies">
+          <h2 id="dependencies" tabindex="-1">Dependencies</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Type</th>
+                      <th>Name</th>
+                      <th>URL</th>
+                  </tr>
+              </thead>
+              <tbody>
+              ${htmlDepsRows}
+              </tbody>
+          </table>
+        </div>
+        <style>
+        .dependencies {
+            color: white;
+        }
+        .dependencies table {
+            margin-top: -1rem;
+        }
+        .dependencies h2, .dependencies th, .dependencies td {
+            color: var(--darkgray);
+        }
+        .dependencies th {
+          text-align: left;
+        }
+        </style>
+      `;
+    }
+
+    html += `
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
         <label for="modal" class="modal-background"></label>
@@ -322,7 +426,7 @@ module.exports = function(eleventyConfig) {
       </script>
     `;
 
-    return content + html;
+    return html;
   });
 
   eleventyConfig.addFilter('readableDate', dateObj => {
