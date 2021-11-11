@@ -1,5 +1,6 @@
 ---
 title: Todo MVC
+desc: "This example shows the famous TodoMVC real world application written in Mithril. It was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified."
 date: 2021-10-27
 tags: [todomvc, official, m.route, vnode, dom, onbeforeupdate, onupdate, oninit]
 level: beginner
@@ -13,9 +14,6 @@ flems:
     - app.css
     - app.js
 ---
-
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows the famous TodoMVC real world application written in Mithril.
 
 ## JS
 

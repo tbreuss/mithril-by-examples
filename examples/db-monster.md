@@ -1,5 +1,6 @@
 ---
 title: DB Monster
+desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows the well know DB monster application."
 date: 2021-10-27
 tags: [3rd-party, animation, official, m.mount, m.redraw]
 level: beginner
@@ -17,9 +18,6 @@ flems:
       type: script
       url: https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js
 ---
-
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows the well know DB monster application.
 
 ## ENV
 

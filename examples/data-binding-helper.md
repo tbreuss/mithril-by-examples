@@ -1,5 +1,6 @@
 ---
 title: Data Binding Helper
+desc: Nice example using a data binding helper function.
 date: 2020-09-24
 tags: [binding, helper, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Nice example using a data binding helper function.
 
 ~~~js
 const model = {

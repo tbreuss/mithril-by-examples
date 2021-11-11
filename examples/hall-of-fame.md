@@ -1,17 +1,17 @@
 ---
 title: Hall of Fame
+desc:
 date: 2021-11-02
 tags: [bss, m.mount]
 level: beginner
 version: 1.1.6
 author: artydev
+link: https://dev.to/artydev/mithril-hall-of-lame-3f7g
 layout: layouts/example.html
 flems:
   links:
     - bss@1.5.2
 ---
-
-This code example was taken from <https://dev.to/artydev/mithril-hall-of-lame-3f7g> and slightly refactored.
 
 ## Markup
 

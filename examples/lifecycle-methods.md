@@ -1,5 +1,6 @@
 ---
 title: Lifecycle Methods
+desc:
 date: 2021-10-19
 tags: [component, lifecycle, official, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: intermediate

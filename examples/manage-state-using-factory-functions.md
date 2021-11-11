@@ -1,5 +1,6 @@
 ---
 title: Manage State using Factory Functions
+desc: "In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest. Credits for porsager and foxdonut."
 date: 2021-10-19
 tags: [state, component, mitosis, m.mount]
 level: intermediate
@@ -7,9 +8,6 @@ version: 2.0.4
 author: kevinfiol
 layout: layouts/example.html
 ---
-
-In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
-Credits for porsager and foxdonut.
 
 ## JavaScript
 

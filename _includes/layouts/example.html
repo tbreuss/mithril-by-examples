@@ -28,9 +28,16 @@ templateClass: tmpl-post
   {%- endfor %}
 </p>
 
-{{ content | add_link_to_flems(title, flems.selected, flems.files, flems.links, version) | safe }}
+{%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
+{% textifyTop title, desc, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
 
-<p>
+{{ content | safe }}
+
+{% flems content, title, flems.selected, flems.files, flems.links, version %}
+
+{% textifyBottom title, date | readableDate, tags, level, version, author, authorSlug | url %}
+
+<p style="margin-top:2rem;">
   <a href="{{ '/examples/' | url }}">See more code examples</a>
   &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/{{ page.inputPath }}">Edit this example on GitHub</a>
 </p>

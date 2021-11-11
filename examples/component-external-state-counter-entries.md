@@ -1,5 +1,6 @@
 ---
 title: Component External State Counter & Entries
+desc: Component example with counter and entries using external state.
 date: 2020-09-24
 tags: [component, state, counter, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Component example with counter and entries using external state.
 
 ~~~js
 const model = {

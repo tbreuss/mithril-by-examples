@@ -1,5 +1,6 @@
 ---
 title: Autocomplete Component
+desc: "Autocomplete component with local options, conversion from a react example from <https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14>."
 date: 2021-10-26
 tags: [autocomplete, form, input, m.mount]
 level: beginner
@@ -12,9 +13,6 @@ flems:
     - autocomplete.js
     - app.js
 ---
-
-Autocomplete component with local options, conversion from a react example from <https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14>.
-
 
 ## CSS
 

@@ -1,5 +1,6 @@
 ---
 title: Conway Game Of Life
+desc: Conway Game Of Life using a central model for state management.
 date: 2021-10-26
 tags: [3rd-party, game, m.stream, m.mount, m.redraw, oninit]
 level: expert
@@ -11,8 +12,6 @@ flems:
     - ramda@0.26.1
     - mithril-stream@2.0.0/stream.js
 ---
-
-Conway Game Of Life using a central model for state management.
 
 ## JS
 

@@ -1,5 +1,6 @@
 ---
 title: Simple Application
+desc: This is the simple application from the official Website that shows off how to do most of the major things you would need to deal with while using Mithril.
 date: 2021-10-16
 tags: [model, list, form, layout, tutorial, official, m.request, m.route, vnode, api, oninit]
 level: beginner
@@ -15,8 +16,6 @@ flems:
     - app.js
     - .css
 ---
-
-This is the simple application from the official Website that shows off how to do most of the major things you would need to deal with while using Mithril.
 
 ## UserModel.js
 

@@ -1,5 +1,6 @@
 ---
 title: Mosaic
+desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows a mosaic effect on a picture using CSS."
 date: 2021-10-27
 tags: [animation, mosaic, official, m.render, dom, onbeforeremove]
 level: beginner
@@ -7,9 +8,6 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
-
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows a mosaic effect on a picture using CSS.
 
 ## JS
 

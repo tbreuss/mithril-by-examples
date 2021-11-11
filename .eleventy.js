@@ -9,6 +9,42 @@ const util = require('util')
 
 module.exports = function(eleventyConfig) {
 
+  function getCharCodes(s){
+    let charCodeArr = [];
+    for(let i = 0; i < s.length; i++){
+      let code = s.charCodeAt(i);
+      charCodeArr.push(code);
+    }
+    return charCodeArr;
+  }
+
+  function parseItems(items, conjunction)
+  {
+    if (!Array.isArray(items)) {
+      return '';
+    }
+    let mappedItems = items.map((item) => {
+      return '`' + item + '`';
+    });
+    let lastItem = mappedItems.pop();
+    if (mappedItems.length > 0) {
+      return mappedItems.join(', ') + ' ' + conjunction + ' ' + lastItem;
+    }
+    return lastItem;
+  }
+
+  function sumDigits(n) {
+    return (n - 1) % 9 + 1;
+  }
+
+  function calcSumDigitsOfString(s) {
+    let ascii = getCharCodes(s);
+    let sum = ascii.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    return sumDigits(sum);
+  }
+
   eleventyConfig.addFilter('dumper', obj => {
     return util.inspect(obj)
   });
@@ -38,7 +74,150 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
-  eleventyConfig.addFilter('add_link_to_flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+  eleventyConfig.addShortcode('textifyTop', (title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
+    // some nice procedural programming ;-)
+
+    let textVariantNumber = calcSumDigitsOfString(title) % 3;
+
+    let authorExampleCount = 1;
+    authorMap.forEach((data) => {
+      if (author === data[0]) {
+        authorExampleCount = data[1].count;
+        return;
+      }
+    });
+
+    let apiMethods = (tags || []).filter(function (tag) {
+      return tag.includes('m.');
+    });
+
+    let lifecycleMethods = (tags || []).filter(function (tag) {
+      const methods = ['onbeforeupdate', 'onremove', 'onbeforeremove', 'onupdate', 'oncreate', 'oninit'];
+      return methods.indexOf(tag) >= 0;
+    });
+
+    let text = [];
+
+    if (description && (description.length > 0)) {
+      text.push(description);
+      text.push('');
+    }
+
+    if (author.length > 0) {
+      text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
+      if (authorExampleCount > 2) {
+        text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
+      } else if(authorExampleCount === 2) {
+        text.push('<a href="' + authorUrl + '">Click here</a> to see another example contributed by the author.');
+      }
+    }
+
+    if (version.length > 0) {
+      text.push ("\n");
+      if (version === '2.0.4') {
+        text.push('The snippet is using the most current version ' + version + ' of Mithril JS framework.');
+      } else {
+        text.push('The snippet is using version ' + version + ' of Mithril JS framework.');
+      }
+    }
+
+    if (level.length > 0) {
+      switch(level) {
+        case 'beginner':
+          text.push('It is aimed at beginners and shows some basic recipes.');
+          break;
+        case 'advanced':
+          text.push('It is aimed at more advanced users and shows some things, that are not easy to achieve.');
+          break;
+        case 'intermediate':
+          text.push('It is aimed at intermediate users who are familiar with most of the aspects of the framework.');
+          break;
+        case 'expert':
+          text.push('It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.');
+          break;
+      }
+    }
+
+    if (apiMethods.length > 1) {
+      text.push('Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + parseItems(apiMethods, 'or') + '.');
+    } else if (apiMethods.length === 1) {
+      text.push('In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method.');
+    }
+
+    if (lifecycleMethods.length > 1) {
+      text.push('It also demonstrates, how Mithril\'s lifecycle methods (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.');
+    } else if (lifecycleMethods.length === 1) {
+      text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.');
+    }
+
+    if (tags.indexOf('vnode') > 0) {
+      text.push([
+        'In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.',
+        'We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.',
+        'Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.'
+      ][textVariantNumber]);
+    }
+
+    if (link && (link.length > 0)) {
+      text.push('');
+      text.push([
+        'You can find [more information](' + link + ') here.',
+        'More information about this example [can be found here](' + link + ').',
+        '[Click here](' + link + '), if you need more information on that.',
+      ][textVariantNumber]);
+    }
+
+    text.push('');
+    text.push([
+      'Enough said, here it is!',
+      'Ready? Here we go!',
+      'So, here are the code snippets.',
+    ][textVariantNumber]);
+
+    if (text.length > 0) {
+      return markdownLibrary.render(text.join("\n"));
+    }
+    return '';
+  });
+
+  eleventyConfig.addShortcode('textifyBottom', (title, date, tags, level, version, author, authorUrl) => {
+
+    let textVariantNumber = calcSumDigitsOfString(title) % 3;
+
+    let text = [];
+
+    if (version.length > 0) {
+      text.push ("\n");
+      if (version === '2.0.4') {
+        text.push([
+          'If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          'Do you see some improvements, that could be addressed here? Then let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          'Did you note a typo or something else? So let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+        ][textVariantNumber]);
+      } else {
+        text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+      }
+
+      text.push([
+        'Or simply fork the repository on GitHub, push your commits and send a pull request.',
+        'As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.',
+        'Or much better: just fork the repository on GitHub, push your commits and send a pull request.'
+      ][textVariantNumber]);
+
+      text.push([
+        'For starting your work, you can click the edit link below. Thanks for contributing.',
+        'To start your work, click on the edit link below. Thank you for contributing to this repo.',
+        'Ready to start your work? Then click on the edit link below. Thanks in advance!'
+      ][textVariantNumber]);
+    }
+
+    if (text.length > 0) {
+      return markdownLibrary.render(text.join("\n"));
+    }
+    return '';
+  });
+
+  eleventyConfig.addShortcode('flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
 
     if (!flemsSelected || flemsSelected === '') {
       flemsSelected = '.js';
@@ -110,7 +289,7 @@ module.exports = function(eleventyConfig) {
     const matches = content.match(/<code class="language-(.+?)">(.*?)<\/code>/sg);
 
     if (!Array.isArray(matches)) {
-      return content;
+      return '';
     }
 
     let flemsFilesArray = [];
@@ -177,13 +356,53 @@ module.exports = function(eleventyConfig) {
     }
 
     if (flemsFilesArray.length === 0) {
-      return content;
+      return '';
     }
 
     const jsonFlemsFiles = JSON.stringify(flemsFilesArray);
     const jsonFlemsLinks = JSON.stringify(flemsLinksArray);
 
-    let html = `
+    const htmlDepsRows = flemsLinksArray.map((v) => {
+      return `<tr><td>${v.type}</td><td>${v.name}</td><td>${v.url}</td></tr>`;
+    }).join();
+
+    let html = '';
+
+    if (htmlDepsRows.length > 0) {
+      html += `
+        <div class="dependencies">
+          <h2 id="dependencies" tabindex="-1">Dependencies</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Type</th>
+                      <th>Name</th>
+                      <th>URL</th>
+                  </tr>
+              </thead>
+              <tbody>
+              ${htmlDepsRows}
+              </tbody>
+          </table>
+        </div>
+        <style>
+        .dependencies {
+            color: white;
+        }
+        .dependencies table {
+            margin-top: -1rem;
+        }
+        .dependencies h2, .dependencies th, .dependencies td {
+            color: var(--darkgray);
+        }
+        .dependencies th {
+          text-align: left;
+        }
+        </style>
+      `;
+    }
+
+    html += `
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
         <label for="modal" class="modal-background"></label>
@@ -207,7 +426,7 @@ module.exports = function(eleventyConfig) {
       </script>
     `;
 
-    return content + html;
+    return html;
   });
 
   eleventyConfig.addFilter('readableDate', dateObj => {
@@ -250,6 +469,28 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('filterByTag', function(collection, tag) {
     if (!tag) return collection;
     return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
+  });
+
+  eleventyConfig.addCollection('levelMap', function(collection) {
+    let map = new Map();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+        let key = item.data.level
+        if (!key || key.length <= 0) {
+          return
+        }
+        key = key.toLowerCase()
+        let level = {
+          name: item.data.level,
+          count: 1
+        }
+        if (map.has(key)) {
+          let count = map.get(key).count
+          level.count = count + 1
+        }
+        map.set(key, level)
+      }
+    );
+    return [...map.entries()];
   });
 
   eleventyConfig.addCollection('authorMap', function(collection) {

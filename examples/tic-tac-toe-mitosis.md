@@ -1,5 +1,6 @@
 ---
 title: Tic-Tac-Toe (Mitosis)
+desc: This slim Tic-Tac-Toe example was written using the Mitosis pattern for state management. As an addition it offers a simple undo functionality. Well done!
 date: 2021-10-31
 tags: [game, mitosis, m.mount]
 level: beginner
@@ -16,8 +17,6 @@ flems:
     - .js
     - .css
 ---
-
-This slim Tic-Tac-Toe example was written using the Mitosis pattern for state management. As an addition it offers a simple undo functionality. Well done!
 
 ## State.js
 ~~~js

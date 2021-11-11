@@ -1,5 +1,6 @@
 ---
 title: Two-Way Binding - Plain
+desc: This is an example showing two-way binding with mithrils onboard tools.
 date: 2020-09-24
 tags: [form, two-way-binding, m.mount]
 level: beginner
@@ -7,7 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
 
 ~~~js
 const app = () => {

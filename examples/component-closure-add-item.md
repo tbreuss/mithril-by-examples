@@ -1,5 +1,6 @@
 ---
 title: Component Closure Add Item
+desc: Component example using javascript closure for state management.
 date: 2020-09-24
 tags: [component, closure, state, m.mount]
 level: beginner
@@ -7,8 +8,6 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
-
-Component example using javascript closure for state management.
 
 ~~~js
 const Foo = () => {

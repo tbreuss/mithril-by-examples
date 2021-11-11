@@ -1,5 +1,6 @@
 ---
 title: React Integration
+desc: Integrate react components into a mithrl app.
 date: 2021-10-26
 tags: [3rd-party, react, lifecycle, dom, component, m.mount, oncreate]
 level: expert
@@ -14,8 +15,6 @@ flems:
     - react/umd/react.development.js
     - react-dom/umd/react-dom.development.js
 ---
-
-Integrate react components into a mithrl app.
 
 ~~~js
 class ReactComponent extends React.Component {
