@@ -74,7 +74,7 @@ input[type="checkbox"]:checked ~ .modal {
 .example-label {
   box-sizing: border-box;
   display: inline-block;
-  margin: 1.5rem 0 !important;
+  margin: 1.5rem 0 3rem 0 !important;
   padding: 0.75rem 4rem;
   background-color: #375d91;
   color: #f9f9f9;

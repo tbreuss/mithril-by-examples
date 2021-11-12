@@ -31,9 +31,9 @@ templateClass: tmpl-post
 {%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
 {% textifyTop title, desc, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
 
-{{ content | safe }}
-
 {% flems content, title, flems.selected, flems.files, flems.links, version %}
+
+{{ content | safe }}
 
 {% textifyBottom title, date | readableDate, tags, level, version, author, authorSlug | url %}
 
