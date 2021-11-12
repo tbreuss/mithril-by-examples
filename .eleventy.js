@@ -181,6 +181,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode('textifyBottom', (title, date, tags, level, version, author, authorUrl) => {
+    // some nice procedural programming ;-)
 
     let textVariantNumber = calcSumDigitsOfString(title) % 3;
 
@@ -218,6 +219,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode('flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+    // some nice procedural programming ;-)
 
     if (!flemsSelected || flemsSelected === '') {
       flemsSelected = '.js';
@@ -362,47 +364,7 @@ module.exports = function(eleventyConfig) {
     const jsonFlemsFiles = JSON.stringify(flemsFilesArray);
     const jsonFlemsLinks = JSON.stringify(flemsLinksArray);
 
-    const htmlDepsRows = flemsLinksArray.map((v) => {
-      return `<tr><td>${v.type}</td><td>${v.name}</td><td>${v.url}</td></tr>`;
-    }).join();
-
-    let html = '';
-
-    if (htmlDepsRows.length > 0) {
-      html += `
-        <div class="dependencies">
-          <h2 id="dependencies" tabindex="-1">Dependencies</h2>
-          <table>
-              <thead>
-                  <tr>
-                      <th>Type</th>
-                      <th>Name</th>
-                      <th>URL</th>
-                  </tr>
-              </thead>
-              <tbody>
-              ${htmlDepsRows}
-              </tbody>
-          </table>
-        </div>
-        <style>
-        .dependencies {
-            color: white;
-        }
-        .dependencies table {
-            margin-top: -1rem;
-        }
-        .dependencies h2, .dependencies th, .dependencies td {
-            color: var(--darkgray);
-        }
-        .dependencies th {
-          text-align: left;
-        }
-        </style>
-      `;
-    }
-
-    html += `
+    let html = `
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
         <label for="modal" class="modal-background"></label>
@@ -425,6 +387,60 @@ module.exports = function(eleventyConfig) {
       });
       </script>
     `;
+
+    const htmlDepsRows = flemsLinksArray.map((v) => {
+      return `<tr><td class="capitalize">${v.type}</td><td>${v.name}</td><td>${v.url}</td></tr>`;
+    }).join();
+
+    if (htmlDepsRows.length > 0) {
+      html += `
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--${flemsLinksArray.length}">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ${htmlDepsRows}
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      `;
+    }
 
     return html;
   });
