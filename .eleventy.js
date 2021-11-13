@@ -542,6 +542,11 @@ module.exports = function(eleventyConfig) {
     return collection.filter(item => item.data.author === author)
   });
 
+  eleventyConfig.addFilter('filterByLevel', function(collection, level) {
+    if (!level) return collection;
+    return collection.filter(item => item.data.level === level)
+  });
+
   eleventyConfig.addFilter('filterByTag', function(collection, tag) {
     if (!tag) return collection;
     return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
@@ -567,6 +572,16 @@ module.exports = function(eleventyConfig) {
       }
     );
     return [...map.entries()];
+  });
+
+  eleventyConfig.addCollection('levelList', function(collection) {
+    let levelSet = new Set();
+    collection.getFilteredByGlob('./examples/*.*').forEach(item => {
+      if (item.data.level && item.data.level.length > 0) {
+        levelSet.add(item.data.level)
+      }
+    });
+    return [...levelSet];
   });
 
   eleventyConfig.addCollection('authorMap', function(collection) {

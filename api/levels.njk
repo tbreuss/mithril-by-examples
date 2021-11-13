@@ -1,0 +1,14 @@
+---
+permalink: /api/levels.json
+eleventyExcludeFromCollections: true
+---
+[
+  {%- for key, level in collections.levelMap %}
+  {%- set levelUrl %}/levels/{{ level.name | slug }}/{% endset %}
+    {
+      "name": "{{ level.name }}",
+      "examples": {{ level.count }},
+      "url": "{{ levelUrl | url }}"
+    }{{ '' if loop.last else ',' }}
+  {%- endfor %}
+]
