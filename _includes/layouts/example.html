@@ -35,7 +35,7 @@ templateClass: tmpl-post
 
 {{ content | safe }}
 
-{% textifyBottom title, date | readableDate, tags, level, version, author, authorSlug | url %}
+{% textifyBottom title, date | readableDate, tags, level, version %}
 
 <p style="margin-top:2rem;">
   <a href="{{ '/examples/' | url }}">See more code examples</a>

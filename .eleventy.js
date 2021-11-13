@@ -104,50 +104,106 @@ module.exports = function(eleventyConfig) {
     }
 
     if (author.length > 0) {
-      text.push('The example was contributed by ' + author + ' and last modified on ' + date + '.');
+      text.push([
+        'The example was contributed by ' + author + ' and last modified on ' + date + '.',
+        'The code sample was authored by ' + author + '. It was last modified on ' + date + '.',
+        'The example was written by ' + author + ', last edits were made on ' + date + '.',
+      ][textVariantNumber]);
       if (authorExampleCount > 2) {
-        text.push('<a href="' + authorUrl + '">Click here</a> to see more examples contributed by the author.');
+        text.push([
+          '[Click here](' + authorUrl + ') to see more examples contributed by the author.',
+          'Want to see more examples written by ' + author + '? Then [Click here](' + authorUrl + ').',
+          'The author has contributed some more snippets. [Click here](' + authorUrl + ') to see them all.'
+        ][textVariantNumber]);
       } else if(authorExampleCount === 2) {
-        text.push('<a href="' + authorUrl + '">Click here</a> to see another example contributed by the author.');
+        text.push([
+          '[Click here](' + authorUrl + ') to see another example contributed by the author.',
+          'Do you want to see another one written by ' + author + '? Then [Click here](' + authorUrl + ').',
+          'The author has written one more snippet. [Click here](' + authorUrl + ') to see it.'
+        ][textVariantNumber]);
       }
     }
 
     if (version.length > 0) {
       text.push ("\n");
       if (version === '2.0.4') {
-        text.push('The snippet is using the most current version ' + version + ' of Mithril JS framework.');
+        text.push([
+          'The snippet is using the most current version ' + version + ' of Mithril JS framework.',
+          'The snippet requires the latest version ' + version + ' of Mithril JS framework.',
+          'As a prerequisite for this snippet, the latest version ' + version + ' of Mithril JS framework is required.'
+        ][textVariantNumber]);
       } else {
-        text.push('The snippet is using version ' + version + ' of Mithril JS framework.');
+        text.push([
+          'The snippet is using version ' + version + ' of Mithril JS framework.',
+          'The snippet requires version ' + version + ' of Mithril JS framework.',
+          'As a prerequisite for this snippet, version ' + version + ' of Mithril JS framework is required.'
+        ][textVariantNumber]);
       }
     }
 
     if (level.length > 0) {
       switch(level) {
         case 'beginner':
-          text.push('It is aimed at beginners and shows some basic recipes.');
+          text.push([
+            'It is aimed at beginners and shows some basic recipes.',
+            'It is ideal for beginners showing some basic recipes.',
+            'Beginners should have no problems following this example, that simply shows some basic recipies.'
+          ][textVariantNumber]);
           break;
         case 'advanced':
-          text.push('It is aimed at more advanced users and shows some things, that are not easy to achieve.');
+          text.push([
+            'It is aimed at more advanced users and shows some things, that are not easy to achieve.',
+            'More advanced users should be able to follow this example, however it contains some first difficulties.',
+            'Advanced users belong to the target group of this example, meaning some framework knowledge should be there.'
+          ][textVariantNumber]);
           break;
         case 'intermediate':
-          text.push('It is aimed at intermediate users who are familiar with most of the aspects of the framework.');
+          text.push([
+            'It is aimed at intermediate users who are familiar with most of the aspects of the framework.',
+            'You should be familiar with most aspects of the framework. So the example is aimed at advanced users.',
+            'The example targets intermediate users, that are familiar with with most aspects of the framework.'
+          ][textVariantNumber]);
           break;
         case 'expert':
-          text.push('It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.');
+          text.push([
+            'It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.',
+            'As an expert user, who is familiar with all the aspects of Mithril and JS itself, you are able the follow the example easily.',
+            'The example really targets users on expert level, that are familiar with all aspects of Mithril and JS itself.'
+          ][textVariantNumber]);
           break;
       }
     }
 
+    if ((apiMethods.length > 0) || (lifecycleMethods.length > 0) || (tags.indexOf('vnode') > 0)) {
+      text.push('');
+    }
+
     if (apiMethods.length > 1) {
-      text.push('Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + parseItems(apiMethods, 'or') + '.');
+      text.push([
+        'Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + parseItems(apiMethods, 'or') + '.',
+        'In this example we can see some Mithril API methods like ' + parseItems(apiMethods, 'or') + ', besides Mithril\'s basic m() hyperscript function.',
+        'Here we can see use cases of different Mithril API methods like ' + parseItems(apiMethods, 'or') + ', besides the centrepiece m() hyperscript function.'
+      ][textVariantNumber]);
     } else if (apiMethods.length === 1) {
-      text.push('In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method.');
+      text.push([
+        'In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method.',
+        'In this example we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method, besides it core m() hyperscript function.',
+        'In this code sample Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method is use, besides the basic hyperscript function m().'
+      ][textVariantNumber]);
     }
 
     if (lifecycleMethods.length > 1) {
-      text.push('It also demonstrates, how Mithril\'s lifecycle methods (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.');
+      text.push([
+        'It also shows, how Mithril\'s hooks (called lifecycle methods) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'It also demonstrates, how Mithril\'s lifecycle methods (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'Moreover, it can also be seen how lifecycle methods (as known as hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.'
+      ][textVariantNumber]);
     } else if (lifecycleMethods.length === 1) {
-      text.push('It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.');
+      text.push([
+        'It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
+        'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril\'s lifecycle methods.',
+        'Moreover, it shows how the lifecycle method ' + parseItems(lifecycleMethods, 'and') + ' can be used (better know as hook).'
+      ][textVariantNumber]);
     }
 
     if (tags.indexOf('vnode') > 0) {
@@ -180,7 +236,7 @@ module.exports = function(eleventyConfig) {
     return '';
   });
 
-  eleventyConfig.addShortcode('textifyBottom', (title, date, tags, level, version, author, authorUrl) => {
+  eleventyConfig.addShortcode('textifyBottom', (title, date, tags, level, version) => {
     // some nice procedural programming ;-)
 
     let textVariantNumber = calcSumDigitsOfString(title) % 3;
@@ -196,7 +252,11 @@ module.exports = function(eleventyConfig) {
           'Did you note a typo or something else? So let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
         ][textVariantNumber]);
       } else {
-        text.push('🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).');
+        text.push([
+          '🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          '❓ Hey! Do you want to bring this code sample up to the latest version? Or do you see a bug or other improvements for this snippet? Then let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
+          '💪 This snippet uses an older Mithril version. Let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues) if you want to improve this example or update it to the latest Mithril version.'
+        ][textVariantNumber]);
       }
 
       text.push([
