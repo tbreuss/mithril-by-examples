@@ -4,14 +4,19 @@ title: API Methods
 ---
 
 One of the best things about Mitrhil.js is that it has a very small footprint.
-Therefore, the API methods are really manageable.
-Here is an overview of the API methods.
+And most of the time not even all methods are needed.
+Therefore, the number of API methods is really manageable.
+
+Often used in a project:
 
 - [m](#m)
 - [m.render](#m.render)
 - [m.mount](#m.mount)
 - [m.route](#m.route)
 - [m.request](#m.request)
+
+Rarely or never used in a project:
+
 - [m.jsonp](#m.jsonp)
 - [m.parseQueryString](#m.parsequerystring)
 - [m.buildQueryString](#m.buildquerystring)
@@ -20,6 +25,8 @@ Here is an overview of the API methods.
 - [m.trust](#m.trust)
 - [m.fragment](#m.fragment)
 - [m.redraw](#m.redraw)
+
+This means, you only have to know five API methods to build your brilliant SPA application. 👌
 
 <h2 id="m">m(selector, attributes, children)</h2>
 
