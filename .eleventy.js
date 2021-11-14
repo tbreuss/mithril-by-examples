@@ -180,15 +180,15 @@ module.exports = function(eleventyConfig) {
 
     if (apiMethods.length > 1) {
       text.push([
-        'Besides Mithril\'s hyperscript function m() we can see different Mithril API methods like ' + parseItems(apiMethods, 'or') + '.',
-        'In this example we can see some Mithril API methods like ' + parseItems(apiMethods, 'or') + ', besides Mithril\'s basic m() hyperscript function.',
-        'Here we can see use cases of different Mithril API methods like ' + parseItems(apiMethods, 'or') + ', besides the centrepiece m() hyperscript function.'
+        'Besides Mithril\'s hyperscript function m() we can see different [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + '.',
+        'In this example we can see some [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides Mithril\'s basic m() hyperscript function.',
+        'Here we can see use cases of different [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides the centrepiece m() hyperscript function.'
       ][textVariantNumber]);
     } else if (apiMethods.length === 1) {
       text.push([
-        'In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method.',
-        'In this example we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method, besides it core m() hyperscript function.',
-        'In this code sample Mithril\'s ' + parseItems(apiMethods, 'or') + ' API method is use, besides the basic hyperscript function m().'
+        'In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/).',
+        'In this example we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/), besides it core m() hyperscript function.',
+        'In this code sample Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/) is use, besides the basic hyperscript function m().'
       ][textVariantNumber]);
     }
 
