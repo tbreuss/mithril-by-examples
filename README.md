@@ -26,11 +26,35 @@ And the best thing is: The code snippets are up-to-date and just work!
 - [Gitter Chat Room](https://gitter.im/mithriljs/mithril.js)
 - Use `#mithriljs` on Twitter and other social media.
 
-## Install & Run
+## Getting started
 
 The website is built using [Eleventy](https://www.11ty.dev), a simpler static site generator.
 
-Please follow the instructions at <https://www.11ty.dev/docs/getting-started/> to install and run the project locally.
+Clone this repository:
+
+~~~bash
+git clone https://github.com/tbreuss/mithril-by-examples.git
+~~~
+
+Navigate to the directory:
+
+~~~bash
+cd mithril-by-examples
+~~~
+
+Install dependencies:
+
+~~~bash
+npm install
+~~~
+
+Run local web server and watch for changes:
+
+~~~bash
+npx eleventy --serve --port=8081
+~~~
+
+More information about [command line usage](https://www.11ty.dev/docs/usage/) can be found on Eleventy's website.
 
 ## Contributing
 
