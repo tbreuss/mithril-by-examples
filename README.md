@@ -8,7 +8,7 @@
 
 `Mithril by Examples` was created for (me and) new users to learn Mithril.js — a javascript framework for building brilliant applications.
 
-This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains numerous code samples that can be seen, reviewed and run.
+This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains numerous Mithril code samples that can be seen, reviewed and run.
 
 And the best thing is: The code snippets are up-to-date and just work!
 
@@ -53,6 +53,8 @@ Run local web server and watch for changes:
 ~~~bash
 npx eleventy --serve --port=8081
 ~~~
+
+Open http://localhost:8081 with your favorite browser.
 
 More information about [command line usage](https://www.11ty.dev/docs/usage/) can be found on Eleventy's website.
 
