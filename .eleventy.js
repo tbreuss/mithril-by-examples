@@ -194,15 +194,15 @@ module.exports = function(eleventyConfig) {
 
     if (lifecycleMethods.length > 1) {
       text.push([
-        'It also shows, how Mithril\'s hooks (called lifecycle methods) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
-        'It also demonstrates, how Mithril\'s lifecycle methods (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
-        'Moreover, it can also be seen how lifecycle methods (as known as hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.'
+        'It also shows, how Mithril\'s hooks (called [lifecycle methods](/lifecycle-methods/)) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'It also demonstrates, how Mithril\'s [lifecycle methods](/lifecycle-methods/) (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'Moreover, it can also be seen how [lifecycle methods](/lifecycle-methods/) (as known as hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.'
       ][textVariantNumber]);
     } else if (lifecycleMethods.length === 1) {
       text.push([
-        'It also shows, how Mithril\'s lifecycle methods can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
-        'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril\'s lifecycle methods.',
-        'Moreover, it shows how the lifecycle method ' + parseItems(lifecycleMethods, 'and') + ' can be used (better know as hook).'
+        'It also shows, how Mithril\'s [lifecycle methods](/lifecycle-methods/) can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
+        'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril\'s [lifecycle methods](/lifecycle-methods/).',
+        'Moreover, it shows how the [lifecycle method](/lifecycle-methods/) ' + parseItems(lifecycleMethods, 'and') + ' can be used (better know as hook).'
       ][textVariantNumber]);
     }
 
