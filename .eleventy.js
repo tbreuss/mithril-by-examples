@@ -478,6 +478,8 @@ module.exports = function(eleventyConfig) {
         }
         .dependencies__tableWrap {
             background-color: #282c34;
+            display: block;
+            overflow-x: auto;
         }
         /* strange things happen here */
         .dependencies__table {
