@@ -7,6 +7,13 @@ Components and virtual DOM nodes can have lifecycle methods, also known as hooks
 
 Lifecycle methods are only called as a side effect of a [m.render()](/tags/m.render/) call. They are not called if the DOM is modified outside of Mithril.
 
+- [oninit](#oninit)
+- [oncreate](#oncreate)
+- [onupdate](#onupdate)
+- [onbeforeremove](#onbeforeremove)
+- [onremove](#onremove)
+- [onbeforeupdate](#onbeforeupdate)
+
 ## oninit
 
 The oninit(vnode) hook is called before a vnode is touched by the virtual DOM engine.
