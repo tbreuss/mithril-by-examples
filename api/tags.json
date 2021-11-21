@@ -2,391 +2,391 @@
     {
       "name": "3rd-party",
       "examples": 6,
-      "url": "/tags/3rd-party/"
+      "url": "/mithril-by-examples/tags/3rd-party/"
     },
     {
       "name": "7guis",
       "examples": 7,
-      "url": "/tags/7guis/"
+      "url": "/mithril-by-examples/tags/7guis/"
     },
     {
       "name": "animation",
       "examples": 8,
-      "url": "/tags/animation/"
+      "url": "/mithril-by-examples/tags/animation/"
     },
     {
       "name": "api",
       "examples": 6,
-      "url": "/tags/api/"
+      "url": "/mithril-by-examples/tags/api/"
     },
     {
       "name": "async-await",
       "examples": 1,
-      "url": "/tags/async-await/"
+      "url": "/mithril-by-examples/tags/async-await/"
     },
     {
       "name": "autocomplete",
       "examples": 1,
-      "url": "/tags/autocomplete/"
+      "url": "/mithril-by-examples/tags/autocomplete/"
     },
     {
       "name": "basics",
       "examples": 8,
-      "url": "/tags/basics/"
+      "url": "/mithril-by-examples/tags/basics/"
     },
     {
       "name": "binding",
       "examples": 1,
-      "url": "/tags/binding/"
+      "url": "/mithril-by-examples/tags/binding/"
     },
     {
       "name": "bss",
       "examples": 3,
-      "url": "/tags/bss/"
+      "url": "/mithril-by-examples/tags/bss/"
     },
     {
       "name": "bulma",
       "examples": 2,
-      "url": "/tags/bulma/"
+      "url": "/mithril-by-examples/tags/bulma/"
     },
     {
       "name": "button",
       "examples": 1,
-      "url": "/tags/button/"
+      "url": "/mithril-by-examples/tags/button/"
     },
     {
       "name": "calendar",
       "examples": 1,
-      "url": "/tags/calendar/"
+      "url": "/mithril-by-examples/tags/calendar/"
     },
     {
       "name": "charts",
       "examples": 1,
-      "url": "/tags/charts/"
+      "url": "/mithril-by-examples/tags/charts/"
     },
     {
       "name": "checkbox",
       "examples": 1,
-      "url": "/tags/checkbox/"
+      "url": "/mithril-by-examples/tags/checkbox/"
     },
     {
       "name": "class",
       "examples": 2,
-      "url": "/tags/class/"
+      "url": "/mithril-by-examples/tags/class/"
     },
     {
       "name": "closure",
       "examples": 2,
-      "url": "/tags/closure/"
+      "url": "/mithril-by-examples/tags/closure/"
     },
     {
       "name": "communication",
       "examples": 1,
-      "url": "/tags/communication/"
+      "url": "/mithril-by-examples/tags/communication/"
     },
     {
       "name": "component",
       "examples": 26,
-      "url": "/tags/component/"
+      "url": "/mithril-by-examples/tags/component/"
     },
     {
       "name": "converter",
       "examples": 1,
-      "url": "/tags/converter/"
+      "url": "/mithril-by-examples/tags/converter/"
     },
     {
       "name": "counter",
       "examples": 4,
-      "url": "/tags/counter/"
+      "url": "/mithril-by-examples/tags/counter/"
     },
     {
       "name": "css",
       "examples": 1,
-      "url": "/tags/css/"
+      "url": "/mithril-by-examples/tags/css/"
     },
     {
       "name": "dialog",
       "examples": 2,
-      "url": "/tags/dialog/"
+      "url": "/mithril-by-examples/tags/dialog/"
     },
     {
       "name": "dom",
       "examples": 12,
-      "url": "/tags/dom/"
+      "url": "/mithril-by-examples/tags/dom/"
     },
     {
       "name": "editor",
       "examples": 1,
-      "url": "/tags/editor/"
+      "url": "/mithril-by-examples/tags/editor/"
     },
     {
       "name": "focus",
       "examples": 1,
-      "url": "/tags/focus/"
+      "url": "/mithril-by-examples/tags/focus/"
     },
     {
       "name": "form",
       "examples": 12,
-      "url": "/tags/form/"
+      "url": "/mithril-by-examples/tags/form/"
     },
     {
       "name": "game",
       "examples": 3,
-      "url": "/tags/game/"
+      "url": "/mithril-by-examples/tags/game/"
     },
     {
       "name": "header",
       "examples": 1,
-      "url": "/tags/header/"
+      "url": "/mithril-by-examples/tags/header/"
     },
     {
       "name": "helper",
       "examples": 1,
-      "url": "/tags/helper/"
+      "url": "/mithril-by-examples/tags/helper/"
     },
     {
       "name": "hex",
       "examples": 1,
-      "url": "/tags/hex/"
+      "url": "/mithril-by-examples/tags/hex/"
     },
     {
       "name": "input",
       "examples": 3,
-      "url": "/tags/input/"
+      "url": "/mithril-by-examples/tags/input/"
     },
     {
       "name": "jwt",
       "examples": 1,
-      "url": "/tags/jwt/"
+      "url": "/mithril-by-examples/tags/jwt/"
     },
     {
       "name": "key",
       "examples": 5,
-      "url": "/tags/key/"
+      "url": "/mithril-by-examples/tags/key/"
     },
     {
       "name": "layout",
       "examples": 2,
-      "url": "/tags/layout/"
+      "url": "/mithril-by-examples/tags/layout/"
     },
     {
       "name": "lifecycle",
       "examples": 3,
-      "url": "/tags/lifecycle/"
+      "url": "/mithril-by-examples/tags/lifecycle/"
     },
     {
       "name": "list",
       "examples": 1,
-      "url": "/tags/list/"
+      "url": "/mithril-by-examples/tags/list/"
     },
     {
       "name": "loading",
       "examples": 2,
-      "url": "/tags/loading/"
+      "url": "/mithril-by-examples/tags/loading/"
     },
     {
       "name": "local storage",
       "examples": 1,
-      "url": "/tags/local-storage/"
+      "url": "/mithril-by-examples/tags/local-storage/"
     },
     {
       "name": "login",
       "examples": 2,
-      "url": "/tags/login/"
+      "url": "/mithril-by-examples/tags/login/"
     },
     {
       "name": "m.mount",
       "examples": 64,
-      "url": "/tags/m.mount/"
+      "url": "/mithril-by-examples/tags/m.mount/"
     },
     {
       "name": "m.redraw",
       "examples": 4,
-      "url": "/tags/m.redraw/"
+      "url": "/mithril-by-examples/tags/m.redraw/"
     },
     {
       "name": "m.render",
       "examples": 9,
-      "url": "/tags/m.render/"
+      "url": "/mithril-by-examples/tags/m.render/"
     },
     {
       "name": "m.request",
       "examples": 7,
-      "url": "/tags/m.request/"
+      "url": "/mithril-by-examples/tags/m.request/"
     },
     {
       "name": "m.route",
       "examples": 11,
-      "url": "/tags/m.route/"
+      "url": "/mithril-by-examples/tags/m.route/"
     },
     {
       "name": "m.stream",
       "examples": 5,
-      "url": "/tags/m.stream/"
+      "url": "/mithril-by-examples/tags/m.stream/"
     },
     {
       "name": "m.trust",
       "examples": 1,
-      "url": "/tags/m.trust/"
+      "url": "/mithril-by-examples/tags/m.trust/"
     },
     {
       "name": "markdown",
       "examples": 1,
-      "url": "/tags/markdown/"
+      "url": "/mithril-by-examples/tags/markdown/"
     },
     {
       "name": "mitosis",
       "examples": 5,
-      "url": "/tags/mitosis/"
+      "url": "/mithril-by-examples/tags/mitosis/"
     },
     {
       "name": "modal",
       "examples": 6,
-      "url": "/tags/modal/"
+      "url": "/mithril-by-examples/tags/modal/"
     },
     {
       "name": "model",
       "examples": 1,
-      "url": "/tags/model/"
+      "url": "/mithril-by-examples/tags/model/"
     },
     {
       "name": "mosaic",
       "examples": 1,
-      "url": "/tags/mosaic/"
+      "url": "/mithril-by-examples/tags/mosaic/"
     },
     {
       "name": "nested",
       "examples": 1,
-      "url": "/tags/nested/"
+      "url": "/mithril-by-examples/tags/nested/"
     },
     {
       "name": "official",
       "examples": 16,
-      "url": "/tags/official/"
+      "url": "/mithril-by-examples/tags/official/"
     },
     {
       "name": "onbeforeremove",
       "examples": 5,
-      "url": "/tags/onbeforeremove/"
+      "url": "/mithril-by-examples/tags/onbeforeremove/"
     },
     {
       "name": "onbeforeupdate",
       "examples": 4,
-      "url": "/tags/onbeforeupdate/"
+      "url": "/mithril-by-examples/tags/onbeforeupdate/"
     },
     {
       "name": "oncreate",
       "examples": 10,
-      "url": "/tags/oncreate/"
+      "url": "/mithril-by-examples/tags/oncreate/"
     },
     {
       "name": "oninit",
       "examples": 15,
-      "url": "/tags/oninit/"
+      "url": "/mithril-by-examples/tags/oninit/"
     },
     {
       "name": "onremove",
       "examples": 4,
-      "url": "/tags/onremove/"
+      "url": "/mithril-by-examples/tags/onremove/"
     },
     {
       "name": "onupdate",
       "examples": 5,
-      "url": "/tags/onupdate/"
+      "url": "/mithril-by-examples/tags/onupdate/"
     },
     {
       "name": "pojo",
       "examples": 4,
-      "url": "/tags/pojo/"
+      "url": "/mithril-by-examples/tags/pojo/"
     },
     {
       "name": "radiobutton",
       "examples": 2,
-      "url": "/tags/radiobutton/"
+      "url": "/mithril-by-examples/tags/radiobutton/"
     },
     {
       "name": "react",
       "examples": 2,
-      "url": "/tags/react/"
+      "url": "/mithril-by-examples/tags/react/"
     },
     {
       "name": "resolver",
       "examples": 1,
-      "url": "/tags/resolver/"
+      "url": "/mithril-by-examples/tags/resolver/"
     },
     {
       "name": "rgb",
       "examples": 1,
-      "url": "/tags/rgb/"
+      "url": "/mithril-by-examples/tags/rgb/"
     },
     {
       "name": "route",
       "examples": 1,
-      "url": "/tags/route/"
+      "url": "/mithril-by-examples/tags/route/"
     },
     {
       "name": "select",
       "examples": 3,
-      "url": "/tags/select/"
+      "url": "/mithril-by-examples/tags/select/"
     },
     {
       "name": "state",
       "examples": 14,
-      "url": "/tags/state/"
+      "url": "/mithril-by-examples/tags/state/"
     },
     {
       "name": "sticky",
       "examples": 1,
-      "url": "/tags/sticky/"
+      "url": "/mithril-by-examples/tags/sticky/"
     },
     {
       "name": "svg",
       "examples": 3,
-      "url": "/tags/svg/"
+      "url": "/mithril-by-examples/tags/svg/"
     },
     {
       "name": "tab",
       "examples": 1,
-      "url": "/tags/tab/"
+      "url": "/mithril-by-examples/tags/tab/"
     },
     {
       "name": "table",
       "examples": 1,
-      "url": "/tags/table/"
+      "url": "/mithril-by-examples/tags/table/"
     },
     {
       "name": "textarea",
       "examples": 1,
-      "url": "/tags/textarea/"
+      "url": "/mithril-by-examples/tags/textarea/"
     },
     {
       "name": "todomvc",
       "examples": 3,
-      "url": "/tags/todomvc/"
+      "url": "/mithril-by-examples/tags/todomvc/"
     },
     {
       "name": "tutorial",
       "examples": 1,
-      "url": "/tags/tutorial/"
+      "url": "/mithril-by-examples/tags/tutorial/"
     },
     {
       "name": "two-way-binding",
       "examples": 2,
-      "url": "/tags/two-way-binding/"
+      "url": "/mithril-by-examples/tags/two-way-binding/"
     },
     {
       "name": "validation",
       "examples": 1,
-      "url": "/tags/validation/"
+      "url": "/mithril-by-examples/tags/validation/"
     },
     {
       "name": "vnode",
       "examples": 15,
-      "url": "/tags/vnode/"
+      "url": "/mithril-by-examples/tags/vnode/"
     },
     {
       "name": "wrapper",
       "examples": 2,
-      "url": "/tags/wrapper/"
+      "url": "/mithril-by-examples/tags/wrapper/"
     }
 ]
