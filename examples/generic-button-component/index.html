@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Generic Button Component | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Generic Button Component</h1>
+
+<p>
+  <time datetime="2020-09-24">24 September 2020</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/button/" class="post-tag">button</a><a href="/tags/component/" class="post-tag">component</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
+</p><p>Nice example using a data binding helper function.</p>
+<p>The example was written by osban, last edits were made on 24 September 2020.
+The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>So, here are the code snippets.</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Generic Button Component</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"const button = {\n  view: ({attrs: {type, text, onclick, color, disabled, left}}) =>\n    m('button', {\n      class: color || 'grey',\n      type:  type  || 'button',\n      disabled,\n      onclick,\n      style: 'float: ' + (left ? 'none' : 'right')\n    }, text)\n}\n\nconst app = {\n  view: () =>\n    m('div',\n      m(button, {text: 'bye',   color: 'blue', left: true}),\n      m(button, {text: 'hello', color: 'red',  left: true, onclick: () => p('click!')}),\n      m(button, {text: 'error', color: 'green'}),\n      m(button, {text: 'test'})\n    )\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"button {\n   height: 36px;\n   margin-left: 10px;\n   padding: 0 16px;\n   border: 0;\n   border-radius: 4px;\n   text-transform: uppercase;\n   font-weight: 500px;\n   font-size: 14px;\n   min-width: 64dp;\n   cursor: pointer;\n   outline: none\n}\n\n.grey {\n  background-color: #f1f1f1;\n  color: #616161\n}\n\n.grey:hover {\n  background-color: #ccc\n}\n\n.blue {\n  background-color: #349cfb;\n  color: #fff\n}\n\n.blue:hover {\n  background-color: #2c83d4\n}\n\n.red {\n  background-color: #eb2024;\n  color: #fff\n}\n\n.red:hover {\n  background-color: #b6191c\n}\n\n.green {\n  background-color: #33b679;\n  color: #fff\n}\n\n.green:hover {\n  background-color: #2a9928\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="js" tabindex="-1">JS <a class="direct-link" href="#js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const button = {
+  view: ({attrs: {type, text, onclick, color, disabled, left}}) =&gt;
+    m('button', {
+      class: color || 'grey',
+      type:  type  || 'button',
+      disabled,
+      onclick,
+      style: 'float: ' + (left ? 'none' : 'right')
+    }, text)
+}
+
+const app = {
+  view: () =&gt;
+    m('div',
+      m(button, {text: 'bye',   color: 'blue', left: true}),
+      m(button, {text: 'hello', color: 'red',  left: true, onclick: () =&gt; p('click!')}),
+      m(button, {text: 'error', color: 'green'}),
+      m(button, {text: 'test'})
+    )
+}
+
+m.mount(document.body, app)
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">button {
+   height: 36px;
+   margin-left: 10px;
+   padding: 0 16px;
+   border: 0;
+   border-radius: 4px;
+   text-transform: uppercase;
+   font-weight: 500px;
+   font-size: 14px;
+   min-width: 64dp;
+   cursor: pointer;
+   outline: none
+}
+
+.grey {
+  background-color: #f1f1f1;
+  color: #616161
+}
+
+.grey:hover {
+  background-color: #ccc
+}
+
+.blue {
+  background-color: #349cfb;
+  color: #fff
+}
+
+.blue:hover {
+  background-color: #2c83d4
+}
+
+.red {
+  background-color: #eb2024;
+  color: #fff
+}
+
+.red:hover {
+  background-color: #b6191c
+}
+
+.green {
+  background-color: #33b679;
+  color: #fff
+}
+
+.green:hover {
+  background-color: #2a9928
+}
+</code></pre>
+
+
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/generic-button-component.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/generic-button-component/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Component Class Counter | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Component Class Counter</h1>
+
+<p>
+  <time datetime="2020-09-24">24 September 2020</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/class/" class="post-tag">class</a><a href="/tags/component/" class="post-tag">component</a><a href="/tags/counter/" class="post-tag">counter</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/state/" class="post-tag">state</a>
+</p><p>This is not recommended, but if you have to: Counter component example based on a javascript class.</p>
+<p>The example was written by osban, last edits were made on 24 September 2020.
+The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>So, here are the code snippets.</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Component Class Counter</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"class app {\n  constructor() {\n    this.count = 0\n  }\n\n  view() {\n    return [\n      m('div',\n        m('h1', `Count: ${this.count}`),\n        m('button', {onclick: () => this.count++}, '+'),\n        m('button', {onclick: () => this.count--}, \"-\")\n      )\n    ]\n  }\n}\n\nm.mount(document.body, app)\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<pre><code class="language-js">class app {
+  constructor() {
+    this.count = 0
+  }
+
+  view() {
+    return [
+      m('div',
+        m('h1', `Count: ${this.count}`),
+        m('button', {onclick: () =&gt; this.count++}, '+'),
+        m('button', {onclick: () =&gt; this.count--}, &quot;-&quot;)
+      )
+    ]
+  }
+}
+
+m.mount(document.body, app)
+</code></pre>
+
+
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/component-class-counter.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/component-class-counter/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

@@ -1,0 +1,776 @@
+[
+    {
+      "title": "Async and Await Around m.request",
+      "date": "2021-10-26",
+      "tags": ["m.request","async-await","m.mount","api","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "viniciusCamargo",
+      "url": "/examples/async-and-await-around-mrequest/"
+    },
+    {
+      "title": "Authentication Wrapper Around m.request",
+      "date": "2021-10-26",
+      "tags": ["jwt","local storage","wrapper","m.request","m.route","m.mount","vnode","login","api"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "cmnstmntmn",
+      "url": "/examples/authentication-wrapper-around-mrequest/"
+    },
+    {
+      "title": "Autocomplete Component",
+      "date": "2021-10-26",
+      "tags": ["autocomplete","form","input","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "stephanhoyer",
+      "url": "/examples/autocomplete-component/"
+    },
+    {
+      "title": "Blurry Dogs",
+      "date": "2021-10-31",
+      "tags": ["animation","m.stream","m.mount","dom","api","oncreate"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "JAForbes",
+      "url": "/examples/blurry-dogs/"
+    },
+    {
+      "title": "Cells from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "",
+      "url": "/examples/7gui-cells/"
+    },
+    {
+      "title": "Circle Drawer from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "",
+      "url": "/examples/7gui-circle-drawer/"
+    },
+    {
+      "title": "Component Class Add Item",
+      "date": "2020-09-24",
+      "tags": ["component","class","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-class-add-item/"
+    },
+    {
+      "title": "Component Class Counter",
+      "date": "2020-09-24",
+      "tags": ["component","class","state","counter","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-class-counter/"
+    },
+    {
+      "title": "Component Closure Add Item",
+      "date": "2020-09-24",
+      "tags": ["component","closure","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-closure-add-item/"
+    },
+    {
+      "title": "Component Closure Counter",
+      "date": "2020-09-24",
+      "tags": ["component","pojo","state","counter","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-closure-counter/"
+    },
+    {
+      "title": "Component External State Counter &amp; Entries",
+      "date": "2020-09-24",
+      "tags": ["component","state","counter","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-external-state-counter-entries/"
+    },
+    {
+      "title": "Component Pojo Add Item",
+      "date": "2020-09-24",
+      "tags": ["component","pojo","state","m.mount","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-pojo-add-item/"
+    },
+    {
+      "title": "Component Pojo Counter",
+      "date": "2020-09-24",
+      "tags": ["component","pojo","state","counter","m.mount","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/component-pojo-counter/"
+    },
+    {
+      "title": "Components",
+      "date": "2021-10-16",
+      "tags": ["basics","component","official","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/components/"
+    },
+    {
+      "title": "Conway Game Of Life",
+      "date": "2021-10-26",
+      "tags": ["3rd-party","game","m.stream","m.mount","m.redraw","oninit"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "boazblake",
+      "url": "/examples/conway-game-of-life/"
+    },
+    {
+      "title": "Counter from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "narayand16",
+      "url": "/examples/7gui-counter/"
+    },
+    {
+      "title": "CRUD from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "",
+      "url": "/examples/7gui-crud/"
+    },
+    {
+      "title": "CSS Animation on Element Creation",
+      "date": "2021-10-19",
+      "tags": ["basics","animation","official","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/css-animation-on-element-creation/"
+    },
+    {
+      "title": "CSS Animation on Element Removal",
+      "date": "2021-10-19",
+      "tags": ["basics","animation","official","m.mount","vnode","dom","onbeforeremove"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/css-animation-on-element-removal/"
+    },
+    {
+      "title": "Data Binding Helper",
+      "date": "2020-09-24",
+      "tags": ["binding","helper","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/data-binding-helper/"
+    },
+    {
+      "title": "DB Monster",
+      "date": "2021-10-27",
+      "tags": ["3rd-party","animation","official","m.mount","m.redraw"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/db-monster/"
+    },
+    {
+      "title": "DOM Elements",
+      "date": "2021-10-16",
+      "tags": ["basics","official","m.render"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/dom-elements/"
+    },
+    {
+      "title": "Flight Booker from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "",
+      "url": "/examples/7gui-flight-booker/"
+    },
+    {
+      "title": "Focus an Input",
+      "date": "2021-10-22",
+      "tags": ["form","input","focus","dom","m.mount","oncreate"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "stephanhoyer",
+      "url": "/examples/focus-an-input/"
+    },
+    {
+      "title": "Force Component Re-Init with Routing",
+      "date": "2021-10-16",
+      "tags": ["component","key","m.route","vnode","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/force-component-reinit-with-routing/"
+    },
+    {
+      "title": "Force Component Re-Init without Routing",
+      "date": "2021-10-16",
+      "tags": ["component","key","m.mount","vnode","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/force-component-reinit-without-routing/"
+    },
+    {
+      "title": "Generic Button Component",
+      "date": "2020-09-24",
+      "tags": ["component","button","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/generic-button-component/"
+    },
+    {
+      "title": "Grouped Checkboxes",
+      "date": "2021-10-24",
+      "tags": ["form","checkbox","radiobutton","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/grouped-checkboxes/"
+    },
+    {
+      "title": "Hall of Fame",
+      "date": "2021-11-02",
+      "tags": ["bss","m.mount"],
+      "level": "beginner",
+      "version": "1.1.6",
+      "author": "artydev",
+      "url": "/examples/hall-of-fame/"
+    },
+    {
+      "title": "Hello World",
+      "date": "2021-10-16",
+      "tags": ["basics","official","m.render"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/hello-world/"
+    },
+    {
+      "title": "HEX to RGB Converter",
+      "date": "2021-10-24",
+      "tags": ["hex","rgb","converter","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "prompt-07",
+      "url": "/examples/hex-to-rgb-converter/"
+    },
+    {
+      "title": "Highchart Stream Example",
+      "date": "2021-10-26",
+      "tags": ["3rd-party","charts","m.stream","m.request","m.mount","dom","onremove","oncreate"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "skyghis",
+      "url": "/examples/highchart-stream-example/"
+    },
+    {
+      "title": "Layout with Header, Body, and Footer",
+      "date": "2020-09-24",
+      "tags": ["layout","m.route"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/layout-header-footer/"
+    },
+    {
+      "title": "Lifecycle Explorer",
+      "date": "2021-10-23",
+      "tags": ["lifecycle","m.render","m.mount","vnode","onbeforeupdate","onremove","onbeforeremove","onupdate","oncreate","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "barneycarroll",
+      "url": "/examples/lifecycle-explorer/"
+    },
+    {
+      "title": "Lifecycle Methods",
+      "date": "2021-10-19",
+      "tags": ["component","lifecycle","official","m.mount","vnode","onbeforeupdate","onremove","onbeforeremove","onupdate","oncreate","oninit"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/lifecycle-methods/"
+    },
+    {
+      "title": "Loading Message",
+      "date": "2020-09-24",
+      "tags": ["loading","m.request","m.mount","m.redraw"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/loading-message/"
+    },
+    {
+      "title": "Loading Page",
+      "date": "2020-09-24",
+      "tags": ["loading","m.mount","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/loading-page/"
+    },
+    {
+      "title": "Manage State using Factory Functions",
+      "date": "2021-10-19",
+      "tags": ["state","component","mitosis","m.mount"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "kevinfiol",
+      "url": "/examples/manage-state-using-factory-functions/"
+    },
+    {
+      "title": "Manage State using Factory Functions with Stateless Components",
+      "date": "2021-10-16",
+      "tags": ["mitosis","state","component","m.mount"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "kevinfiol",
+      "url": "/examples/manage-state-using-factory-functions-with-stateless-components/"
+    },
+    {
+      "title": "Manage State using Pojos",
+      "date": "2021-10-19",
+      "tags": ["state","component","pojo","m.mount"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "kevinfiol",
+      "url": "/examples/manage-state-using-pojos/"
+    },
+    {
+      "title": "Manage State using Simple Variables",
+      "date": "2021-10-19",
+      "tags": ["state","component","m.mount"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "kevinfiol",
+      "url": "/examples/manage-state-using-simple-variables/"
+    },
+    {
+      "title": "Markdown Editor",
+      "date": "2021-10-27",
+      "tags": ["markdown","editor","official","m.trust","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/markdown-editor/"
+    },
+    {
+      "title": "Modal",
+      "date": "2021-10-16",
+      "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/modal/"
+    },
+    {
+      "title": "Modal",
+      "date": "2021-10-26",
+      "tags": ["modal","dialog","component","m.mount","m.redraw","dom","onbeforeupdate","onremove","onbeforeremove","oncreate"],
+      "level": "advanced",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/modal-2/"
+    },
+    {
+      "title": "Modal External State",
+      "date": "2020-09-24",
+      "tags": ["modal","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/modal-external-state/"
+    },
+    {
+      "title": "Modal Internal State",
+      "date": "2020-09-24",
+      "tags": ["modal","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/modal-internal-state/"
+    },
+    {
+      "title": "Modal with Bulma",
+      "date": "2021-10-26",
+      "tags": ["modal","bulma","m.render","m.mount","vnode"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mike-ward",
+      "url": "/examples/modal-with-bulma/"
+    },
+    {
+      "title": "Mosaic",
+      "date": "2021-10-27",
+      "tags": ["animation","mosaic","official","m.render","dom","onbeforeremove"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/mosaic/"
+    },
+    {
+      "title": "Multi Select List of DIVs",
+      "date": "2020-09-24",
+      "tags": ["select","form","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/multi-select-divs/"
+    },
+    {
+      "title": "Nested Components Using Vnode Children",
+      "date": "2021-10-27",
+      "tags": ["component","nested","m.mount","vnode"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/nested-components-using-vnode-children/"
+    },
+    {
+      "title": "Parent-Child Communication",
+      "date": "2020-09-24",
+      "tags": ["component","communication","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/parent-child-communication/"
+    },
+    {
+      "title": "Radio Buttons",
+      "date": "2020-09-24",
+      "tags": ["form","input","radiobutton","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/radio-buttons/"
+    },
+    {
+      "title": "Re-initializing a Component Every Time - Without Routing",
+      "date": "2020-09-24",
+      "tags": ["component","key","m.route","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/re-initialize-component-every-time-with-routing/"
+    },
+    {
+      "title": "Re-initializing a Component Using Key - With Routing",
+      "date": "2020-09-24",
+      "tags": ["component","key","m.route","vnode"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/re-initialize-component-using-key-with-routing/"
+    },
+    {
+      "title": "Re-initializing a Component Using Key - Without Routing",
+      "date": "2020-09-24",
+      "tags": ["component","key","m.mount","vnode","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/re-initialize-component-using-key-without-routing/"
+    },
+    {
+      "title": "React Integration",
+      "date": "2021-10-26",
+      "tags": ["3rd-party","react","lifecycle","dom","component","m.mount","oncreate"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "barneycarroll",
+      "url": "/examples/react-integration/"
+    },
+    {
+      "title": "React Refs in Mithril",
+      "date": "2021-10-26",
+      "tags": ["dom","react","m.mount","vnode","oncreate"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "stephanhoyer",
+      "url": "/examples/react-refs-in-mithril/"
+    },
+    {
+      "title": "Route Resolver",
+      "date": "2020-09-24",
+      "tags": ["route","resolver","m.route"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/route-resolver/"
+    },
+    {
+      "title": "Routing",
+      "date": "2021-10-16",
+      "tags": ["basics","official","m.route"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/routing/"
+    },
+    {
+      "title": "Select",
+      "date": "2020-09-24",
+      "tags": ["form","select","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/select/"
+    },
+    {
+      "title": "Select2 Integration",
+      "date": "2021-10-26",
+      "tags": ["3rd-party","form","select","m.mount","dom","oncreate"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "kevinfiol",
+      "url": "/examples/select2-integration/"
+    },
+    {
+      "title": "Simple Application",
+      "date": "2021-10-16",
+      "tags": ["model","list","form","layout","tutorial","official","m.request","m.route","vnode","api","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/simple-application/"
+    },
+    {
+      "title": "Simple Closure Component",
+      "date": "2021-10-24",
+      "tags": ["component","closure","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/simple-closure-component/"
+    },
+    {
+      "title": "Simple Dependency Free Calendar Component",
+      "date": "2021-10-16",
+      "tags": ["calendar","component","m.mount","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "stephanhoyer",
+      "url": "/examples/simple-dependency-free-calendar-component/"
+    },
+    {
+      "title": "Simple Login Form with Validation using BSS",
+      "date": "2021-10-16",
+      "tags": ["form","login","bss","validation","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "smuemd",
+      "url": "/examples/simple-login-form-with-validation-using-bss/"
+    },
+    {
+      "title": "Simple Modal",
+      "date": "2020-09-24",
+      "tags": ["modal","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/modal-simple/"
+    },
+    {
+      "title": "Styled Component with BSS",
+      "date": "2021-10-16",
+      "tags": ["bss","css","m.mount"],
+      "level": "beginner",
+      "version": "1.1.6",
+      "author": "porsager",
+      "url": "/examples/styled-component-with-bss/"
+    },
+    {
+      "title": "SVG Clock",
+      "date": "2021-10-27",
+      "tags": ["animation","official","svg","m.render"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/svg-clock/"
+    },
+    {
+      "title": "SVG Ring",
+      "date": "2021-10-27",
+      "tags": ["animation","official","svg","m.render"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/svg-ring/"
+    },
+    {
+      "title": "SVG Tiger",
+      "date": "2021-10-27",
+      "tags": ["animation","official","svg","m.render"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/svg-tiger/"
+    },
+    {
+      "title": "Tab Component",
+      "date": "2021-10-16",
+      "tags": ["component","tab","m.mount"],
+      "level": "beginner",
+      "version": "1.1.6",
+      "author": "barneycarroll",
+      "url": "/examples/tab-component/"
+    },
+    {
+      "title": "Table with Sticky Header",
+      "date": "2021-10-24",
+      "tags": ["table","sticky","header","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/table-with-sticky-header/"
+    },
+    {
+      "title": "Temperature Converter from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "narayand16",
+      "url": "/examples/7gui-temperature-converter/"
+    },
+    {
+      "title": "Tic Tac Toe",
+      "date": "2021-10-26",
+      "tags": ["3rd-party","game","m.stream","m.mount","oncreate"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "boazblake",
+      "url": "/examples/tic-tac-toe/"
+    },
+    {
+      "title": "Tic-Tac-Toe (Mitosis)",
+      "date": "2021-10-31",
+      "tags": ["game","mitosis","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/tic-tac-toe-mitosis/"
+    },
+    {
+      "title": "Timer from 7GUIs",
+      "date": "2021-10-18",
+      "tags": ["7guis"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "",
+      "url": "/examples/7gui-timer/"
+    },
+    {
+      "title": "Todo MVC",
+      "date": "2021-10-27",
+      "tags": ["todomvc","official","m.route","vnode","dom","onbeforeupdate","onupdate","oninit"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/todo-mvc/"
+    },
+    {
+      "title": "Todo MVC (Mitosis)",
+      "date": "2021-10-29",
+      "tags": ["todomvc","mitosis","m.route","dom","onupdate"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/todo-mvc-mitosis/"
+    },
+    {
+      "title": "Todo MVC (Traditional)",
+      "date": "2021-10-29",
+      "tags": ["todomvc","m.route","dom","onupdate","oninit"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/todo-mvc-traditional/"
+    },
+    {
+      "title": "Tweeter Box",
+      "date": "2021-11-01",
+      "tags": ["form","textarea","state","mitosis","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/tweeter-box/"
+    },
+    {
+      "title": "Two-Way Binding - Plain",
+      "date": "2020-09-24",
+      "tags": ["form","two-way-binding","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/two-way-binding-plain/"
+    },
+    {
+      "title": "Two-Way Binding - With m.stream",
+      "date": "2020-09-24",
+      "tags": ["form","two-way-binding","m.stream","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/two-way-binding-mstream/"
+    },
+    {
+      "title": "Vnode Examples of Passing Variables In",
+      "date": "2020-09-24",
+      "tags": ["vnode","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/vnode-variables-passing-in/"
+    },
+    {
+      "title": "Wrapper on m.request",
+      "date": "2020-09-24",
+      "tags": ["m.request","api","wrapper"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/mrequest-wrapper/"
+    },
+    {
+      "title": "XHR",
+      "date": "2021-10-16",
+      "tags": ["basics","official","m.request","m.mount","api"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "mithril",
+      "url": "/examples/xhr/"
+    },
+    {
+      "title": "XYZ Example to Show How Things Work",
+      "date": "2021-01-17",
+      "tags": ["basics","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/xyz/"
+    }
+]

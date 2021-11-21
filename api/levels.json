@@ -1,0 +1,22 @@
+[
+    {
+      "name": "beginner",
+      "examples": 74,
+      "url": "/levels/beginner/"
+    },
+    {
+      "name": "intermediate",
+      "examples": 5,
+      "url": "/levels/intermediate/"
+    },
+    {
+      "name": "expert",
+      "examples": 6,
+      "url": "/levels/expert/"
+    },
+    {
+      "name": "advanced",
+      "examples": 1,
+      "url": "/levels/advanced/"
+    }
+]

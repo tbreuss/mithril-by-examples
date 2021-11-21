@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Table with Sticky Header | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Table with Sticky Header</h1>
+
+<p>
+  <time datetime="2021-10-24">24 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/spacejack/">spacejack</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/header/" class="post-tag">header</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/sticky/" class="post-tag">sticky</a><a href="/tags/table/" class="post-tag">table</a>
+</p><p>This example shows how to create a table with a sticky header.</p>
+<p>The example was contributed by spacejack and last modified on 24 October 2021.
+<a href="/contributors/spacejack/">Click here</a> to see more examples contributed by the author.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>In addition to the Mithril hyperscript function m(), here we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>.</p>
+<p>Enough said, here it is!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Table with Sticky Header</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".css","content":".sticky-table {\n  display: inline-block;\n  max-height: 30em;\n  overflow-x: hidden; /* Prevent Firefox h-scrollbar */\n  overflow-y: auto;\n  border: #666 1px solid;\n  border-collapse: collapse;\n}\n\n.sticky-table th {\n  text-align: left;\n  position: sticky;\n  top: 0;\n  background-color: #DDD;\n}\n\n.sticky-table td {\n  padding-right: 1em; /* Prevent Firefox overlap scrollbar */\n}\n"},{"name":".js","content":"function range(n) {\n  return Array.from(Array(n).keys())\n}\n\nconst randText = (function(){\n  const letters = 'abcdefghijklmnopqrstuvwxyz '\n  return function randText() {\n    const len = 3 + Math.floor(Math.random() * 12)\n    let s = ''\n    for (let i = 0; i < len; ++i) {\n      s += letters[Math.floor(Math.random() * letters.length)]\n    }\n    return s\n  }\n}())\n\nconst rows = 75\nconst cols = 5\n\nconst data = range(rows).map(() => range(cols).map(randText))\n\nconst StickyTable = {\n  view() {\n    return m('table.sticky-table',\n      m('thead',\n        m('tr',\n          range(cols).map(c => m('th', randText()))\n        )\n      ),\n      m('tbody',\n        data.map(row => m('tr',\n          row.map(col => m('td', col))\n        ))\n      )\n    )\n  }\n}\n\nm.mount(document.body, StickyTable)\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">.sticky-table {
+  display: inline-block;
+  max-height: 30em;
+  overflow-x: hidden; /* Prevent Firefox h-scrollbar */
+  overflow-y: auto;
+  border: #666 1px solid;
+  border-collapse: collapse;
+}
+
+.sticky-table th {
+  text-align: left;
+  position: sticky;
+  top: 0;
+  background-color: #DDD;
+}
+
+.sticky-table td {
+  padding-right: 1em; /* Prevent Firefox overlap scrollbar */
+}
+</code></pre>
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">function range(n) {
+  return Array.from(Array(n).keys())
+}
+
+const randText = (function(){
+  const letters = 'abcdefghijklmnopqrstuvwxyz '
+  return function randText() {
+    const len = 3 + Math.floor(Math.random() * 12)
+    let s = ''
+    for (let i = 0; i &lt; len; ++i) {
+      s += letters[Math.floor(Math.random() * letters.length)]
+    }
+    return s
+  }
+}())
+
+const rows = 75
+const cols = 5
+
+const data = range(rows).map(() =&gt; range(cols).map(randText))
+
+const StickyTable = {
+  view() {
+    return m('table.sticky-table',
+      m('thead',
+        m('tr',
+          range(cols).map(c =&gt; m('th', randText()))
+        )
+      ),
+      m('tbody',
+        data.map(row =&gt; m('tr',
+          row.map(col =&gt; m('td', col))
+        ))
+      )
+    )
+  }
+}
+
+m.mount(document.body, StickyTable)
+</code></pre>
+
+
+<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or simply fork the repository on GitHub, push your commits and send a pull request.
+For starting your work, you can click the edit link below. Thanks for contributing.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/table-with-sticky-header.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/table-with-sticky-header/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

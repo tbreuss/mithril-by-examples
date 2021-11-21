@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Modal Internal State | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Modal Internal State</h1>
+
+<p>
+  <time datetime="2020-09-24">24 September 2020</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/modal/" class="post-tag">modal</a><a href="/tags/state/" class="post-tag">state</a>
+</p><p>The example was contributed by osban and last modified on 24 September 2020.
+<a href="/contributors/osban/">Click here</a> to see more examples contributed by the author.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>In addition to the Mithril hyperscript function m(), here we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>.</p>
+<p>Enough said, here it is!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Modal Internal State</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"const Content = {\n  alert: {\n    view: ({attrs: {text, click}}) => [\n      m('div.c1',\n        m('div.c2', text),\n        m('button', {onclick: click}, \"OK\")\n      )\n    ]\n  }\n}\n\nconst Modal = {\n  view: ({attrs: {type, content}}) => [\n    m('div.modal',\n      m(Content[type], content)\n    )\n  ]\n}\n\nconst App = () => {\n  let showmodal = false\n\n  return {\n    view: () => [\n      m('h1', \"TEST\"),\n      m('button', {onclick: () => showmodal = true}, \"modal\"),\n      showmodal &&\n      m(Modal, {type: 'alert', content: {text: \"This is an alert\", click: () => showmodal = false}})\n    ]\n  }\n}\n\nm.mount(document.body, App)\n"},{"name":".css","content":".modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0,0,0,0.8);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.c1 {\n  text-align: center;\n  padding-bottom: 40px;\n  width: 200px;\n  height: 100px;\n  background: white\n}\n\n.c2 {\n  padding-top: 40px;\n  margin-bottom: 20px\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="js" tabindex="-1">JS <a class="direct-link" href="#js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const Content = {
+  alert: {
+    view: ({attrs: {text, click}}) =&gt; [
+      m('div.c1',
+        m('div.c2', text),
+        m('button', {onclick: click}, &quot;OK&quot;)
+      )
+    ]
+  }
+}
+
+const Modal = {
+  view: ({attrs: {type, content}}) =&gt; [
+    m('div.modal',
+      m(Content[type], content)
+    )
+  ]
+}
+
+const App = () =&gt; {
+  let showmodal = false
+
+  return {
+    view: () =&gt; [
+      m('h1', &quot;TEST&quot;),
+      m('button', {onclick: () =&gt; showmodal = true}, &quot;modal&quot;),
+      showmodal &amp;&amp;
+      m(Modal, {type: 'alert', content: {text: &quot;This is an alert&quot;, click: () =&gt; showmodal = false}})
+    ]
+  }
+}
+
+m.mount(document.body, App)
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c1 {
+  text-align: center;
+  padding-bottom: 40px;
+  width: 200px;
+  height: 100px;
+  background: white
+}
+
+.c2 {
+  padding-top: 40px;
+  margin-bottom: 20px
+}
+</code></pre>
+
+
+<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or simply fork the repository on GitHub, push your commits and send a pull request.
+For starting your work, you can click the edit link below. Thanks for contributing.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/modal-internal-state.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/modal-internal-state/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

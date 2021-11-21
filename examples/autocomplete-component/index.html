@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Autocomplete Component | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Autocomplete Component</h1>
+
+<p>
+  <time datetime="2021-10-26">26 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/stephanhoyer/">stephanhoyer</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/autocomplete/" class="post-tag">autocomplete</a><a href="/tags/form/" class="post-tag">form</a><a href="/tags/input/" class="post-tag">input</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
+</p><p>Autocomplete component with local options, conversion from a react example from <a href="https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14">https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14</a>.</p>
+<p>The code sample was authored by stephanhoyer. It was last modified on 26 October 2021.
+Want to see more examples written by stephanhoyer? Then <a href="/contributors/stephanhoyer/">Click here</a>.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
+<p>Ready? Here we go!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Autocomplete Component</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".css","content":"body {\n  background: #00b4cc;\n}\n.search {\n  width: 30rem;\n  margin: 10rem auto 2rem auto;\n  text-align: right;\n  position: relative;\n}\n.search-box {\n  border: 4px solid transparent;\n  border-radius: 2px;\n  font-size: 2rem;\n  width: 100%;\n  padding: 1rem;\n  transition: width 0.3s;\n}\n.search-box:focus {\n  width: 100%;\n  outline: none;\n  border: 4px solid #08a1b6;\n}\n.search-btn {\n  height: 100%;\n  width: 4em;\n  margin-top: -2em;\n  position: absolute;\n  top: 50%;\n  right: 0.5rem;\n\n  opacity: 0.2;\n  background-color: transparent;\n  border: 0;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAACnElEQVR4AcXZsUsbYRjH8e+dh2s1SyAGJwMJuDj1BIcEhJQIOnTq5F+QOf0jIq79A7oFh7aYyVBEkaZDC3awECc1AUXRIqUQotfFocnjJe/dk+b9PKP65Md7z13ee3Uwk2SNHKmngs5TnbDLJQqjA+RYZ4OXuDzvkSYf+cAJ44fPAYFhHeAzVhlqBBGrRoax8KjSJYhRXap4KCVoECiqQQKFLC0CZbXIElOBOwJ9cUchzm2Y5QsveN4tdfY4o00HSDHHPKuUmOV5v/D5SSSJ0MXfIY+HBB55dkIvRIIIvJDR28dnFJ/9kHH0MFaVDehRxlSZnuxAFUMZunKQKBJFUQ4wXTIYqcmPZ5GoFmUEahjw5eJTJI6ivBD4jCS/csrEVZZfU4yQk5OPhrwjcoRygQ0GVdCQf73OUEfisaMkHk1HDJHkYeDX82jlBzo+kCSEyxruwDP/EK1DbsWnhHDFgNTpodWjLgY9NECKfnvoyS4p8wBngN5Z/ABtQK8dP0AH0OuYB5iMqfAAMque7HJtHmAOPdnlxjzAPHqyy5V5gFX0ZJfj8AAn9CvhoeVRol8zPMAuj/xrlhW0Vpg1D3ApflhGR3b4wTlDvI24i4u+w9y0uyVrM213U1qxuy2/Z8bui8m23VezgGW7L6cBLdIWXs9FBAsHFCLCJI9opFMKXEzkkEp/IbK0bEdI0LARQRzVWoigPKy+Z5tlWooIiuP6NhVmAEiPNwLkqHDEw5CGx2wyDQDRI8T7l80U19xwxTFNmpwzKM1nFsyeCw7jFymCAxYjrHDp8r9cUOCUYRZ4Bw6AxVV47QJYXIVXLliNsOSC1Qh/XLAa4ZuDmmIcH1l2AaytwhZfmaAkn/qOb7eYBofJekOJJX7znfccAvwFyB3OeNys7d4AAAAASUVORK5CYII=\");\n}\n.search-btn:hover {\n  outline: none;\n  opacity: 0.4;\n  cursor: pointer;\n}\n.search-btn:focus {\n  outline: none;\n  opacity: 0.6;\n}\n\nul.options {\n  display: block;\n  list-style: none;\n  width: 30rem;\n  transition: width 0.3s;\n  margin: auto;\n  position: relative;\n}\n\nul.options li {\n  display: block;\n  background: white;\n  margin: 10px auto;\n  padding: 10px;\n  font-size: 1.2rem;\n  width: 100%;\n  border-radius: 2px;\n}\nul.options li:hover {\n  font-weight: bold;\n  color: #00b4cc;\n  cursor: pointer;\n  transition: 0.3s all;\n}\n\nul.options li.option-active {\n  background: whitesmoke;\n  font-size: 1.5rem;\n  color: #00b4cc;\n}\n.no-options {\n  color: white;\n}\n"},{"name":"autocomplete.js","content":"// autocomplete.js\nconst KEY_CODE_ENTER = 13\nconst KEY_CODE_UP = 38\nconst KEY_CODE_DOWN = 40\n\nfunction autocomplete ({attrs}) {\n  const options = attrs.options\n  let activeOption = 0\n  let filteredOptions = []\n  let showOptions = false\n  let userInput = ''\n\n  const oninput = (e) => {\n    userInput = e.target.value\n    showOptions = true\n    activeOption = 0\n    filteredOptions = options.filter(\n      optionName => optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1\n    )\n  }\n\n  const onclick = (e) => {\n    filteredOptions = []\n    showOptions = false\n    userInput = e.currentTarget.innerText\n  }\n\n  const onkeydown = (e) => {\n    if (e.keyCode === KEY_CODE_ENTER) {\n      userInput = filteredOptions[activeOption]\n      activeOption = 0\n      showOptions = false\n    } else if (e.keyCode === KEY_CODE_UP) {\n      if (activeOption === 0) {\n        return;\n      }\n      activeOption--\n    } else if (e.keyCode === KEY_CODE_DOWN) {\n      if (activeOption === filteredOptions.length - 1) {\n        return;\n      }\n      activeOption++\n    }\n  };\n\n  function view() {\n    let optionList\n    if (showOptions && userInput) {\n      if (filteredOptions.length) {\n        optionList = m(\n          'ul.options',\n          filteredOptions.map((optionName, index) => m(\n            'li',\n            {\n              className: index === activeOption ? 'option-active' : '',\n              key: optionName,\n              onclick\n            },\n            optionName\n          ))\n        )\n      } else {\n        optionList = m('.no-options', m('em', 'No Option!'))\n      }\n    }\n    return [\n      m('.search', [\n        m('input.search-box[type=text]', {\n          oninput,\n          onkeydown,\n          value: userInput\n        }),\n        m('input.search-btn[type=submit][value=]')\n      ]),\n      optionList\n    ]\n  }\n\n  return { view }\n}\n"},{"name":"app.js","content":"// app.js\nm.mount(document.body, {\n  view: () => m(autocomplete, {\n    options: [\n      'Papaya',\n      'Persimmon',\n      'Paw Paw',\n      'Prickly Pear',\n      'Peach',\n      'Pomegranate',\n      'Pineapple'\n    ]\n  })\n});\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">body {
+  background: #00b4cc;
+}
+.search {
+  width: 30rem;
+  margin: 10rem auto 2rem auto;
+  text-align: right;
+  position: relative;
+}
+.search-box {
+  border: 4px solid transparent;
+  border-radius: 2px;
+  font-size: 2rem;
+  width: 100%;
+  padding: 1rem;
+  transition: width 0.3s;
+}
+.search-box:focus {
+  width: 100%;
+  outline: none;
+  border: 4px solid #08a1b6;
+}
+.search-btn {
+  height: 100%;
+  width: 4em;
+  margin-top: -2em;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+
+  opacity: 0.2;
+  background-color: transparent;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAACnElEQVR4AcXZsUsbYRjH8e+dh2s1SyAGJwMJuDj1BIcEhJQIOnTq5F+QOf0jIq79A7oFh7aYyVBEkaZDC3awECc1AUXRIqUQotfFocnjJe/dk+b9PKP65Md7z13ee3Uwk2SNHKmngs5TnbDLJQqjA+RYZ4OXuDzvkSYf+cAJ44fPAYFhHeAzVhlqBBGrRoax8KjSJYhRXap4KCVoECiqQQKFLC0CZbXIElOBOwJ9cUchzm2Y5QsveN4tdfY4o00HSDHHPKuUmOV5v/D5SSSJ0MXfIY+HBB55dkIvRIIIvJDR28dnFJ/9kHH0MFaVDehRxlSZnuxAFUMZunKQKBJFUQ4wXTIYqcmPZ5GoFmUEahjw5eJTJI6ivBD4jCS/csrEVZZfU4yQk5OPhrwjcoRygQ0GVdCQf73OUEfisaMkHk1HDJHkYeDX82jlBzo+kCSEyxruwDP/EK1DbsWnhHDFgNTpodWjLgY9NECKfnvoyS4p8wBngN5Z/ABtQK8dP0AH0OuYB5iMqfAAMque7HJtHmAOPdnlxjzAPHqyy5V5gFX0ZJfj8AAn9CvhoeVRol8zPMAuj/xrlhW0Vpg1D3ApflhGR3b4wTlDvI24i4u+w9y0uyVrM213U1qxuy2/Z8bui8m23VezgGW7L6cBLdIWXs9FBAsHFCLCJI9opFMKXEzkkEp/IbK0bEdI0LARQRzVWoigPKy+Z5tlWooIiuP6NhVmAEiPNwLkqHDEw5CGx2wyDQDRI8T7l80U19xwxTFNmpwzKM1nFsyeCw7jFymCAxYjrHDp8r9cUOCUYRZ4Bw6AxVV47QJYXIVXLliNsOSC1Qh/XLAa4ZuDmmIcH1l2AaytwhZfmaAkn/qOb7eYBofJekOJJX7znfccAvwFyB3OeNys7d4AAAAASUVORK5CYII=&quot;);
+}
+.search-btn:hover {
+  outline: none;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.search-btn:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+ul.options {
+  display: block;
+  list-style: none;
+  width: 30rem;
+  transition: width 0.3s;
+  margin: auto;
+  position: relative;
+}
+
+ul.options li {
+  display: block;
+  background: white;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 2px;
+}
+ul.options li:hover {
+  font-weight: bold;
+  color: #00b4cc;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.options li.option-active {
+  background: whitesmoke;
+  font-size: 1.5rem;
+  color: #00b4cc;
+}
+.no-options {
+  color: white;
+}
+</code></pre>
+<h2 id="autocomplete.js" tabindex="-1">autocomplete.js <a class="direct-link" href="#autocomplete.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// autocomplete.js
+const KEY_CODE_ENTER = 13
+const KEY_CODE_UP = 38
+const KEY_CODE_DOWN = 40
+
+function autocomplete ({attrs}) {
+  const options = attrs.options
+  let activeOption = 0
+  let filteredOptions = []
+  let showOptions = false
+  let userInput = ''
+
+  const oninput = (e) =&gt; {
+    userInput = e.target.value
+    showOptions = true
+    activeOption = 0
+    filteredOptions = options.filter(
+      optionName =&gt; optionName.toLowerCase().indexOf(userInput.toLowerCase()) &gt; -1
+    )
+  }
+
+  const onclick = (e) =&gt; {
+    filteredOptions = []
+    showOptions = false
+    userInput = e.currentTarget.innerText
+  }
+
+  const onkeydown = (e) =&gt; {
+    if (e.keyCode === KEY_CODE_ENTER) {
+      userInput = filteredOptions[activeOption]
+      activeOption = 0
+      showOptions = false
+    } else if (e.keyCode === KEY_CODE_UP) {
+      if (activeOption === 0) {
+        return;
+      }
+      activeOption--
+    } else if (e.keyCode === KEY_CODE_DOWN) {
+      if (activeOption === filteredOptions.length - 1) {
+        return;
+      }
+      activeOption++
+    }
+  };
+
+  function view() {
+    let optionList
+    if (showOptions &amp;&amp; userInput) {
+      if (filteredOptions.length) {
+        optionList = m(
+          'ul.options',
+          filteredOptions.map((optionName, index) =&gt; m(
+            'li',
+            {
+              className: index === activeOption ? 'option-active' : '',
+              key: optionName,
+              onclick
+            },
+            optionName
+          ))
+        )
+      } else {
+        optionList = m('.no-options', m('em', 'No Option!'))
+      }
+    }
+    return [
+      m('.search', [
+        m('input.search-box[type=text]', {
+          oninput,
+          onkeydown,
+          value: userInput
+        }),
+        m('input.search-btn[type=submit][value=]')
+      ]),
+      optionList
+    ]
+  }
+
+  return { view }
+}
+</code></pre>
+<h2 id="app.js" tabindex="-1">app.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// app.js
+m.mount(document.body, {
+  view: () =&gt; m(autocomplete, {
+    options: [
+      'Papaya',
+      'Persimmon',
+      'Paw Paw',
+      'Prickly Pear',
+      'Peach',
+      'Pomegranate',
+      'Pineapple'
+    ]
+  })
+});
+</code></pre>
+
+
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
+To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/autocomplete-component.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/autocomplete-component/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

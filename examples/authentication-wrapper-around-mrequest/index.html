@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Authentication Wrapper Around m.request | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Authentication Wrapper Around m.request</h1>
+
+<p>
+  <time datetime="2021-10-26">26 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/cmnstmntmn/">cmnstmntmn</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/api/" class="post-tag">api</a><a href="/tags/jwt/" class="post-tag">jwt</a><a href="/tags/local-storage/" class="post-tag">local storage</a><a href="/tags/login/" class="post-tag">login</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.request/" class="post-tag">m.request</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/vnode/" class="post-tag">vnode</a><a href="/tags/wrapper/" class="post-tag">wrapper</a>
+</p><p>Example showing an authentication wrapper around Mithrils <code>m.request</code>.</p>
+<p>The example was written by cmnstmntmn, last edits were made on 26 October 2021.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>Here we can see use cases of different <a href="/api-methods/">Mithril API methods</a> like <code>m.request</code>, <code>m.route</code> or <code>m.mount</code>, besides the centrepiece m() hyperscript function.
+Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
+<p>So, here are the code snippets.</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Authentication Wrapper Around m.request</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"var api = {\n  request: (options) => {\n    options.config = xhr => {\n      xhr.setRequestHeader('Authorization', 'Bearer ' + api.token())\n      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')\n    }\n\n    return m.request(options).catch((error) => {\n      if(error.code == 401) m.route.set(\"/login\")\n\n      throw error\n    });\n\n  },\n  token: (value) => {\n    if (value)\n      localStorage.setItem('token', value)\n\n    return localStorage.getItem('token')\n  },\n  tokenRemove: () => localStorage.removeItem('token')\n}\n\n// -- utils\nfunction getRequestDemo() {\n  api.request({\n      method: \"GET\", url: \"https://httpbin.org/headers\"\n  }).then(function(response) {\n    //-- handle response\n    console.log('Success, Auth:', response.headers.Authorization)\n\t}).catch(function(e){\n    //-- handle error\n    console.error('Error!')\n  })\n}\n\nfunction checkAuth() {\n  if (!api.token())\n    return false\n  else\n    return true\n}\n\nfunction doFakeLogin(username) {\n  // -- simulate login\n  api.token(username)\n}\n\n// -- app code\n\nvar loginForm = {\n  model: {\n    username: '',\n    password: ''\n  },\n  view: function(vnode) {\n      return !checkAuth() ? [\n        m('input[type=\"text\"][placeholder=\"Username\"]', {\n          onkeyup: function(e){\n            vnode.state.model.username = e.target.value\n          }\n        }),\n        m('br'),\n        m('input[type=\"password\"][placeholder=\"Password\"]', {\n          onkeyup: function(e){\n            vnode.state.model.password = e.target.value\n          }\n        }),\n        m('br'),\n        m('button', {\n        onclick: () => doFakeLogin(vnode.state.model.username)\n      }, 'Login')\n    ]\n    : [\n        m('h2', 'Hooray!'),\n        m('button[type=\"button\"]', {\n          onclick: api.tokenRemove\n        }, 'Logout/Destroy token'),\n        m('br'),\n        m('button[type=\"button\"]', {\n          onclick: getRequestDemo\n        }, 'Make a POST request'),\n        m('span', 'and watch the request in the console')\n    ]\n  }\n}\n\nvar app = {\n  view: function(vnode) {\n    return [\n      m('h1', 'Wrapper around m.request to handle authentication with localstorage'),\n      m('ol',\n        m('li', 'login - markup only;'),\n        m('li', 'a token is added to sessionStorage;'),\n        checkAuth() && m('li', {style: \"color:green\"}, 'make a POST request - Authorization header is now present')\n      ),\n      //--\n      m(loginForm)\n    ]\n  }\n}\n\nm.mount(document.body, app);\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">var api = {
+  request: (options) =&gt; {
+    options.config = xhr =&gt; {
+      xhr.setRequestHeader('Authorization', 'Bearer ' + api.token())
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+    }
+
+    return m.request(options).catch((error) =&gt; {
+      if(error.code == 401) m.route.set(&quot;/login&quot;)
+
+      throw error
+    });
+
+  },
+  token: (value) =&gt; {
+    if (value)
+      localStorage.setItem('token', value)
+
+    return localStorage.getItem('token')
+  },
+  tokenRemove: () =&gt; localStorage.removeItem('token')
+}
+
+// -- utils
+function getRequestDemo() {
+  api.request({
+      method: &quot;GET&quot;, url: &quot;https://httpbin.org/headers&quot;
+  }).then(function(response) {
+    //-- handle response
+    console.log('Success, Auth:', response.headers.Authorization)
+	}).catch(function(e){
+    //-- handle error
+    console.error('Error!')
+  })
+}
+
+function checkAuth() {
+  if (!api.token())
+    return false
+  else
+    return true
+}
+
+function doFakeLogin(username) {
+  // -- simulate login
+  api.token(username)
+}
+
+// -- app code
+
+var loginForm = {
+  model: {
+    username: '',
+    password: ''
+  },
+  view: function(vnode) {
+      return !checkAuth() ? [
+        m('input[type=&quot;text&quot;][placeholder=&quot;Username&quot;]', {
+          onkeyup: function(e){
+            vnode.state.model.username = e.target.value
+          }
+        }),
+        m('br'),
+        m('input[type=&quot;password&quot;][placeholder=&quot;Password&quot;]', {
+          onkeyup: function(e){
+            vnode.state.model.password = e.target.value
+          }
+        }),
+        m('br'),
+        m('button', {
+        onclick: () =&gt; doFakeLogin(vnode.state.model.username)
+      }, 'Login')
+    ]
+    : [
+        m('h2', 'Hooray!'),
+        m('button[type=&quot;button&quot;]', {
+          onclick: api.tokenRemove
+        }, 'Logout/Destroy token'),
+        m('br'),
+        m('button[type=&quot;button&quot;]', {
+          onclick: getRequestDemo
+        }, 'Make a POST request'),
+        m('span', 'and watch the request in the console')
+    ]
+  }
+}
+
+var app = {
+  view: function(vnode) {
+    return [
+      m('h1', 'Wrapper around m.request to handle authentication with localstorage'),
+      m('ol',
+        m('li', 'login - markup only;'),
+        m('li', 'a token is added to sessionStorage;'),
+        checkAuth() &amp;&amp; m('li', {style: &quot;color:green&quot;}, 'make a POST request - Authorization header is now present')
+      ),
+      //--
+      m(loginForm)
+    ]
+  }
+}
+
+m.mount(document.body, app);
+</code></pre>
+
+
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/authentication-wrapper-around-mrequest.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/authentication-wrapper-around-mrequest/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

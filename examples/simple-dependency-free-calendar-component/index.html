@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Simple Dependency Free Calendar Component | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Simple Dependency Free Calendar Component</h1>
+
+<p>
+  <time datetime="2021-10-16">16 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/stephanhoyer/">stephanhoyer</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/calendar/" class="post-tag">calendar</a><a href="/tags/component/" class="post-tag">component</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/oninit/" class="post-tag">oninit</a>
+</p><p>Simple dependency free calendar component.</p>
+<p>The example was written by stephanhoyer, last edits were made on 16 October 2021.
+The author has contributed some more snippets. <a href="/contributors/stephanhoyer/">Click here</a> to see them all.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().
+Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better know as hook).</p>
+<p>So, here are the code snippets.</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Simple Dependency Free Calendar Component</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".css","content":".calendar {\n  width: 20rem;\n  display: grid;\n  grid-template-columns: 1fr 5fr 1fr;\n  text-align: center;\n}\n\n.days {\n  padding: 0;\n  grid-column: 1 / 4;\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n}\n\n.day {\n  list-style: none;\n}\n\n.day.nextMonth, .day.previousMonth {\n  color: silver;\n}\n\n.day.weekday-6.nextMonth, .day.weekday-6.previousMonth {\n  color: coral;\n}\n.day.weekday-6 {\n  color: red;\n}\n"},{"name":".js","content":"function times(n, fn) {\n  return Array(n).fill().map((_, index) => fn(index))\n}\n\nfunction daysInMonth (month, year) {\n  return new Date(year, month + 1, 0).getDate();\n}\n\nfunction getWeekday(year, month, day) {\n  return new Date(year, month, day).getDay();\n}\n\nfunction yearView(state) {\n  return [\n    m('button.previousYear', {\n      onclick: () => state.year -= 1\n    }, '<'),\n    m('.year', state.year),\n    m('button.nextYear', {\n      onclick: () => state.year += 1\n    }, '>'),\n  ]\n}\n\nfunction monthView(state) {\n  return [\n    m('button.previousMonth', {\n      onclick: () => {\n        if (state.month == 0) {\n          state.year -= 1\n          state.month = 12\n        }\n        state.month -= 1\n      }\n    }, '<'),\n    m('.month', state.month + 1),\n    m('button.nextMonth', {\n      onclick: () => {\n        if (state.month == 11) {\n          state.year += 1\n          state.month = -1\n        }\n        state.month += 1\n      }\n    }, '>'),\n  ]\n}\n\nfunction daysView(state) {\n  const daysInPreviousMonth = daysInMonth(state.month - 1, state.year)\n  return [\n    m('ul.days', [\n      times(getWeekday(state.year, state.month, 0), index => {\n        const day = index + 1 + daysInPreviousMonth - getWeekday(state.year, state.month, 0)\n        return m('li.day.previousMonth', {\n          className: `weekday-${getWeekday(state.year, state.month-1, day)}`\n        }, day)\n      }),\n      times(daysInMonth(state.month, state.year), day => m('li.day', {\n        className: `weekday-${getWeekday(state.year, state.month, day)}`\n      }, day + 1)),\n      times(7 - getWeekday(state.year, state.month + 1, 0), day => {\n        return m('li.day.nextMonth', {\n          className: `weekday-${getWeekday(state.year, state.month + 1, day)}`\n        }, day + 1)\n      }),\n    ])\n  ]\n}\n\nconst calendarComponent = {\n  oninit({state, attrs}) {\n    state.year = attrs.date.getFullYear()\n    state.month = attrs.date.getMonth()\n    state.day = attrs.date.getDate()\n  },\n  view({state}) {\n    return m('.calendar', [\n      yearView(state),\n      monthView(state),\n      daysView(state)\n    ])\n  }\n}\n\nm.mount(document.body, {\n  view() {\n    return m(calendarComponent, {\n      date: new Date()\n    })\n  }\n})\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">.calendar {
+  width: 20rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  text-align: center;
+}
+
+.days {
+  padding: 0;
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  list-style: none;
+}
+
+.day.nextMonth, .day.previousMonth {
+  color: silver;
+}
+
+.day.weekday-6.nextMonth, .day.weekday-6.previousMonth {
+  color: coral;
+}
+.day.weekday-6 {
+  color: red;
+}
+</code></pre>
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">function times(n, fn) {
+  return Array(n).fill().map((_, index) =&gt; fn(index))
+}
+
+function daysInMonth (month, year) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+function getWeekday(year, month, day) {
+  return new Date(year, month, day).getDay();
+}
+
+function yearView(state) {
+  return [
+    m('button.previousYear', {
+      onclick: () =&gt; state.year -= 1
+    }, '&lt;'),
+    m('.year', state.year),
+    m('button.nextYear', {
+      onclick: () =&gt; state.year += 1
+    }, '&gt;'),
+  ]
+}
+
+function monthView(state) {
+  return [
+    m('button.previousMonth', {
+      onclick: () =&gt; {
+        if (state.month == 0) {
+          state.year -= 1
+          state.month = 12
+        }
+        state.month -= 1
+      }
+    }, '&lt;'),
+    m('.month', state.month + 1),
+    m('button.nextMonth', {
+      onclick: () =&gt; {
+        if (state.month == 11) {
+          state.year += 1
+          state.month = -1
+        }
+        state.month += 1
+      }
+    }, '&gt;'),
+  ]
+}
+
+function daysView(state) {
+  const daysInPreviousMonth = daysInMonth(state.month - 1, state.year)
+  return [
+    m('ul.days', [
+      times(getWeekday(state.year, state.month, 0), index =&gt; {
+        const day = index + 1 + daysInPreviousMonth - getWeekday(state.year, state.month, 0)
+        return m('li.day.previousMonth', {
+          className: `weekday-${getWeekday(state.year, state.month-1, day)}`
+        }, day)
+      }),
+      times(daysInMonth(state.month, state.year), day =&gt; m('li.day', {
+        className: `weekday-${getWeekday(state.year, state.month, day)}`
+      }, day + 1)),
+      times(7 - getWeekday(state.year, state.month + 1, 0), day =&gt; {
+        return m('li.day.nextMonth', {
+          className: `weekday-${getWeekday(state.year, state.month + 1, day)}`
+        }, day + 1)
+      }),
+    ])
+  ]
+}
+
+const calendarComponent = {
+  oninit({state, attrs}) {
+    state.year = attrs.date.getFullYear()
+    state.month = attrs.date.getMonth()
+    state.day = attrs.date.getDate()
+  },
+  view({state}) {
+    return m('.calendar', [
+      yearView(state),
+      monthView(state),
+      daysView(state)
+    ])
+  }
+}
+
+m.mount(document.body, {
+  view() {
+    return m(calendarComponent, {
+      date: new Date()
+    })
+  }
+})
+</code></pre>
+
+
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/simple-dependency-free-calendar-component.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/simple-dependency-free-calendar-component/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

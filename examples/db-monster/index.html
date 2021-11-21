@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>DB Monster | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>DB Monster</h1>
+
+<p>
+  <time datetime="2021-10-27">27 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/3rd-party/" class="post-tag">3rd-party</a><a href="/tags/animation/" class="post-tag">animation</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.redraw/" class="post-tag">m.redraw</a><a href="/tags/official/" class="post-tag">official</a>
+</p><p>This example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified. It shows the well know DB monster application.</p>
+<p>The code sample was authored by mithril. It was last modified on 27 October 2021.
+Want to see more examples written by mithril? Then <a href="/contributors/mithril/">Click here</a>.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see some <a href="/api-methods/">Mithril API methods</a> like <code>m.mount</code> or <code>m.redraw</code>, besides Mithril's basic m() hyperscript function.</p>
+<p>Ready? Here we go!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>DB Monster</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":"ENV.js","content":"// ENV.js\nvar ENV = ENV || (function() {\n\n  var first = true;\n  var counter = 0;\n  var data;\n  var _base;\n  (_base = String.prototype).lpad || (_base.lpad = function(padding, toLength) {\n    return padding.repeat((toLength - this.length) / padding.length).concat(this);\n  });\n\n  function formatElapsed(value) {\n    str = parseFloat(value).toFixed(2);\n    if (value > 60) {\n      minutes = Math.floor(value / 60);\n      comps = (value % 60).toFixed(2).split('.');\n      seconds = comps[0].lpad('0', 2);\n      ms = comps[1];\n      str = minutes + \":\" + seconds + \".\" + ms;\n    }\n    return str;\n  }\n\n  function getElapsedClassName(elapsed) {\n    var className = 'Query elapsed';\n    if (elapsed >= 10.0) {\n      className += ' warn_long';\n    }\n    else if (elapsed >= 1.0) {\n      className += ' warn';\n    }\n    else {\n      className += ' short';\n    }\n    return className;\n  }\n\n  function countClassName(queries) {\n    var countClassName = \"label\";\n    if (queries >= 20) {\n      countClassName += \" label-important\";\n    }\n    else if (queries >= 10) {\n      countClassName += \" label-warning\";\n    }\n    else {\n      countClassName += \" label-success\";\n    }\n    return countClassName;\n  }\n\n  function updateQuery(object) {\n    if (!object) {\n      object = {};\n    }\n    var elapsed = Math.random() * 15;\n    object.elapsed = elapsed;\n    object.formatElapsed = formatElapsed(elapsed);\n    object.elapsedClassName = getElapsedClassName(elapsed);\n    object.query = \"SELECT blah FROM something\";\n    object.waiting = Math.random() < 0.5;\n    if (Math.random() < 0.2) {\n      object.query = \"<IDLE> in transaction\";\n    }\n    if (Math.random() < 0.1) {\n      object.query = \"vacuum\";\n    }\n    return object;\n  }\n\n  function cleanQuery(value) {\n    if (value) {\n      value.formatElapsed = \"\";\n      value.elapsedClassName = \"\";\n      value.query = \"\";\n      value.elapsed = null;\n      value.waiting = null;\n    } else {\n      return {\n        query: \"***\",\n        formatElapsed: \"\",\n        elapsedClassName: \"\"\n      };\n    }\n  }\n\n  function generateRow(object, keepIdentity, counter) {\n    var nbQueries = Math.floor((Math.random() * 10) + 1);\n    if (!object) {\n      object = {};\n    }\n    object.lastMutationId = counter;\n    object.nbQueries = nbQueries;\n    if (!object.lastSample) {\n      object.lastSample = {};\n    }\n    if (!object.lastSample.topFiveQueries) {\n      object.lastSample.topFiveQueries = [];\n    }\n    if (keepIdentity) {\n      // for Angular optimization\n      if (!object.lastSample.queries) {\n        object.lastSample.queries = [];\n        for (var l = 0; l < 12; l++) {\n          object.lastSample.queries[l] = cleanQuery();\n        }\n      }\n      for (var j in object.lastSample.queries) {\n        var value = object.lastSample.queries[j];\n        if (j <= nbQueries) {\n          updateQuery(value);\n        } else {\n          cleanQuery(value);\n        }\n      }\n    } else {\n      object.lastSample.queries = [];\n      for (var j = 0; j < 12; j++) {\n        if (j < nbQueries) {\n          var value = updateQuery(cleanQuery());\n          object.lastSample.queries.push(value);\n        } else {\n          object.lastSample.queries.push(cleanQuery());\n        }\n      }\n    }\n    for (var i = 0; i < 5; i++) {\n      var source = object.lastSample.queries[i];\n      object.lastSample.topFiveQueries[i] = source;\n    }\n    object.lastSample.nbQueries = nbQueries;\n    object.lastSample.countClassName = countClassName(nbQueries);\n    return object;\n  }\n\n  function getData(keepIdentity) {\n    var oldData = data;\n    if (!keepIdentity) { // reset for each tick when !keepIdentity\n      data = [];\n      for (var i = 1; i <= ENV.rows; i++) {\n        data.push({ dbname: 'cluster' + i, query: \"\", formatElapsed: \"\", elapsedClassName: \"\" });\n        data.push({ dbname: 'cluster' + i + ' slave', query: \"\", formatElapsed: \"\", elapsedClassName: \"\" });\n      }\n    }\n    if (!data) { // first init when keepIdentity\n      data = [];\n      for (var i = 1; i <= ENV.rows; i++) {\n        data.push({ dbname: 'cluster' + i });\n        data.push({ dbname: 'cluster' + i + ' slave' });\n      }\n      oldData = data;\n    }\n    for (var i in data) {\n      var row = data[i];\n      if (!keepIdentity && oldData && oldData[i]) {\n        row.lastSample = oldData[i].lastSample;\n      }\n      if (!row.lastSample || Math.random() < ENV.mutations()) {\n        counter = counter + 1;\n        if (!keepIdentity) {\n          row.lastSample = null;\n        }\n        generateRow(row, keepIdentity, counter);\n      } else {\n        data[i] = oldData[i];\n      }\n    }\n    first = false;\n    return {\n      toArray: function() {\n        return data;\n      }\n    };\n  }\n\n  var mutationsValue = 0.5;\n\n  function mutations(value) {\n    if (value) {\n      mutationsValue = value;\n      return mutationsValue;\n    } else {\n      return mutationsValue;\n    }\n  }\n\n  var body = document.querySelector('body');\n  var theFirstChild = body.firstChild;\n\n  var sliderContainer = document.createElement( 'div' );\n  sliderContainer.style.cssText = \"display: flex\";\n  var slider = document.createElement('input');\n  var text = document.createElement('label');\n  text.innerHTML = 'mutations : ' + (mutationsValue * 100).toFixed(0) + '%';\n  text.id = \"ratioval\";\n  slider.setAttribute(\"type\", \"range\");\n  slider.style.cssText = 'margin-bottom: 10px; margin-top: 5px';\n  slider.addEventListener('change', function(e) {\n    ENV.mutations(e.target.value / 100);\n    document.querySelector('#ratioval').innerHTML = 'mutations : ' + (ENV.mutations() * 100).toFixed(0) + '%';\n  });\n  sliderContainer.appendChild( text );\n  sliderContainer.appendChild( slider );\n  body.insertBefore( sliderContainer, theFirstChild );\n\n  return  {\n    generateData: getData,\n    rows: 50,\n    timeout: 0,\n    mutations: mutations\n  };\n})();\n"},{"name":"app.js","content":"// app.js\nperfMonitor.startFPSMonitor()\nperfMonitor.startMemMonitor()\nperfMonitor.initProfiler(\"render\")\n\nvar data = []\n\nm.mount(document.body, {\n\tview: function() {\n\t\treturn m(\"div\", [\n\t\t\tm(\"table\", {className: \"table table-striped latest-data\"}, [\n\t\t\t\tm(\"tbody\",\n\t\t\t\t\tdata.map(function(db) {\n\t\t\t\t\t\treturn m(\"tr\", {key: db.dbname}, [\n\t\t\t\t\t\t\tm(\"td\", {className: \"dbname\"}, db.dbname),\n\t\t\t\t\t\t\tm(\"td\", {className: \"query-count\"},  [\n\t\t\t\t\t\t\t\tm(\"span\", {className: db.lastSample.countClassName}, db.lastSample.nbQueries)\n\t\t\t\t\t\t\t]),\n\t\t\t\t\t\t\tdb.lastSample.topFiveQueries.map(function(query) {\n\t\t\t\t\t\t\t\treturn m(\"td\", {className: query.elapsedClassName}, [\n\t\t\t\t\t\t\t\t\tquery.formatElapsed,\n\t\t\t\t\t\t\t\t\tm(\"div\", {className: \"popover left\"}, [\n\t\t\t\t\t\t\t\t\t\tm(\"div\", {className: \"popover-content\"}, query.query),\n\t\t\t\t\t\t\t\t\t\tm(\"div\", {className: \"arrow\"})\n\t\t\t\t\t\t\t\t\t])\n\t\t\t\t\t\t\t\t])\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t])\n\t\t\t\t\t})\n\t\t\t\t)\n\t\t\t])\n\t\t])\n\t}\n})\n\nfunction update() {\n\trequestAnimationFrame(update)\n\n\tdata = ENV.generateData().toArray()\n\n\tperfMonitor.startProfile(\"render\")\n\tm.redraw()\n\tperfMonitor.endProfile(\"render\")\n}\n\nupdate()\n"},{"name":".html","content":"<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"description\" content=\"DBMON Mithril\" />\n  <meta charset=\"utf-8\">\n  <title>DB-Monster</title>\n</head>\n<body>\n<div id=\"app\"></div>\n</body>\n</html>\n"},{"name":".css","content":"body {\n    color: #333;\n    font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    font-size: 14px;\n    line-height: 1.42857143;\n    margin: 0;\n}\n\nlabel {\n    display: inline-block;\n    font-weight: 700;\n    margin-bottom: 5px;\n}\n\ninput[type=range] {\n    display: block;\n    width: 100%;\n}\n\ntable {\n    border-collapse: collapse;\n    border-spacing: 0;\n}\n\n:before, :after {\n    box-sizing: border-box;\n}\n\n.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {\n    border-top: 1px solid #ddd;\n    line-height: 1.42857143;\n    padding: 8px;\n    vertical-align: top;\n}\n\n.table {\n    width: 100%;\n}\n\n.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {\n    background: #f9f9f9;\n}\n\n.label {\n    border-radius: .25em;\n    color: #fff;\n    display: inline;\n    font-size: 75%;\n    font-weight: 700;\n    line-height: 1;\n    padding: .2em .6em .3em;\n    text-align: center;\n    vertical-align: baseline;\n    white-space: nowrap;\n}\n\n.label-success {\n    background-color: #5cb85c;\n}\n\n.label-warning {\n    background-color: #f0ad4e;\n}\n\n.popover {\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid #ccc;\n    border: 1px solid rgba(0, 0, 0, .2);\n    border-radius: 6px;\n    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);\n    display: none;\n    left: 0;\n    max-width: 276px;\n    padding: 1px;\n    position: absolute;\n    text-align: left;\n    top: 0;\n    white-space: normal;\n    z-index: 1010;\n}\n\n.popover > .arrow:after {\n    border-width: 10px;\n    content: \"\";\n}\n\n.popover.left {\n    margin-left: -10px;\n}\n\n.popover.left > .arrow {\n    border-right-width: 0;\n    border-left-color: rgba(0, 0, 0, .25);\n    margin-top: -11px;\n    right: -11px;\n    top: 50%;\n}\n\n.popover.left > .arrow:after {\n    border-left-color: #fff;\n    border-right-width: 0;\n    bottom: -10px;\n    content: \" \";\n    right: 1px;\n}\n\n.popover > .arrow {\n    border-width: 11px;\n}\n\n.popover > .arrow, .popover > .arrow:after {\n    border-color: transparent;\n    border-style: solid;\n    display: block;\n    height: 0;\n    position: absolute;\n    width: 0;\n}\n\n.popover-content {\n    padding: 9px 14px;\n}\n\n.Query {\n    position: relative;\n}\n\n.Query:hover .popover {\n    display: block;\n    left: -100%;\n    width: 100%;\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"perf-monitor.js","type":"script","url":"https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--2">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>perf-monitor.js</td><td>https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="env" tabindex="-1">ENV <a class="direct-link" href="#env" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// ENV.js
+var ENV = ENV || (function() {
+
+  var first = true;
+  var counter = 0;
+  var data;
+  var _base;
+  (_base = String.prototype).lpad || (_base.lpad = function(padding, toLength) {
+    return padding.repeat((toLength - this.length) / padding.length).concat(this);
+  });
+
+  function formatElapsed(value) {
+    str = parseFloat(value).toFixed(2);
+    if (value &gt; 60) {
+      minutes = Math.floor(value / 60);
+      comps = (value % 60).toFixed(2).split('.');
+      seconds = comps[0].lpad('0', 2);
+      ms = comps[1];
+      str = minutes + &quot;:&quot; + seconds + &quot;.&quot; + ms;
+    }
+    return str;
+  }
+
+  function getElapsedClassName(elapsed) {
+    var className = 'Query elapsed';
+    if (elapsed &gt;= 10.0) {
+      className += ' warn_long';
+    }
+    else if (elapsed &gt;= 1.0) {
+      className += ' warn';
+    }
+    else {
+      className += ' short';
+    }
+    return className;
+  }
+
+  function countClassName(queries) {
+    var countClassName = &quot;label&quot;;
+    if (queries &gt;= 20) {
+      countClassName += &quot; label-important&quot;;
+    }
+    else if (queries &gt;= 10) {
+      countClassName += &quot; label-warning&quot;;
+    }
+    else {
+      countClassName += &quot; label-success&quot;;
+    }
+    return countClassName;
+  }
+
+  function updateQuery(object) {
+    if (!object) {
+      object = {};
+    }
+    var elapsed = Math.random() * 15;
+    object.elapsed = elapsed;
+    object.formatElapsed = formatElapsed(elapsed);
+    object.elapsedClassName = getElapsedClassName(elapsed);
+    object.query = &quot;SELECT blah FROM something&quot;;
+    object.waiting = Math.random() &lt; 0.5;
+    if (Math.random() &lt; 0.2) {
+      object.query = &quot;&lt;IDLE&gt; in transaction&quot;;
+    }
+    if (Math.random() &lt; 0.1) {
+      object.query = &quot;vacuum&quot;;
+    }
+    return object;
+  }
+
+  function cleanQuery(value) {
+    if (value) {
+      value.formatElapsed = &quot;&quot;;
+      value.elapsedClassName = &quot;&quot;;
+      value.query = &quot;&quot;;
+      value.elapsed = null;
+      value.waiting = null;
+    } else {
+      return {
+        query: &quot;***&quot;,
+        formatElapsed: &quot;&quot;,
+        elapsedClassName: &quot;&quot;
+      };
+    }
+  }
+
+  function generateRow(object, keepIdentity, counter) {
+    var nbQueries = Math.floor((Math.random() * 10) + 1);
+    if (!object) {
+      object = {};
+    }
+    object.lastMutationId = counter;
+    object.nbQueries = nbQueries;
+    if (!object.lastSample) {
+      object.lastSample = {};
+    }
+    if (!object.lastSample.topFiveQueries) {
+      object.lastSample.topFiveQueries = [];
+    }
+    if (keepIdentity) {
+      // for Angular optimization
+      if (!object.lastSample.queries) {
+        object.lastSample.queries = [];
+        for (var l = 0; l &lt; 12; l++) {
+          object.lastSample.queries[l] = cleanQuery();
+        }
+      }
+      for (var j in object.lastSample.queries) {
+        var value = object.lastSample.queries[j];
+        if (j &lt;= nbQueries) {
+          updateQuery(value);
+        } else {
+          cleanQuery(value);
+        }
+      }
+    } else {
+      object.lastSample.queries = [];
+      for (var j = 0; j &lt; 12; j++) {
+        if (j &lt; nbQueries) {
+          var value = updateQuery(cleanQuery());
+          object.lastSample.queries.push(value);
+        } else {
+          object.lastSample.queries.push(cleanQuery());
+        }
+      }
+    }
+    for (var i = 0; i &lt; 5; i++) {
+      var source = object.lastSample.queries[i];
+      object.lastSample.topFiveQueries[i] = source;
+    }
+    object.lastSample.nbQueries = nbQueries;
+    object.lastSample.countClassName = countClassName(nbQueries);
+    return object;
+  }
+
+  function getData(keepIdentity) {
+    var oldData = data;
+    if (!keepIdentity) { // reset for each tick when !keepIdentity
+      data = [];
+      for (var i = 1; i &lt;= ENV.rows; i++) {
+        data.push({ dbname: 'cluster' + i, query: &quot;&quot;, formatElapsed: &quot;&quot;, elapsedClassName: &quot;&quot; });
+        data.push({ dbname: 'cluster' + i + ' slave', query: &quot;&quot;, formatElapsed: &quot;&quot;, elapsedClassName: &quot;&quot; });
+      }
+    }
+    if (!data) { // first init when keepIdentity
+      data = [];
+      for (var i = 1; i &lt;= ENV.rows; i++) {
+        data.push({ dbname: 'cluster' + i });
+        data.push({ dbname: 'cluster' + i + ' slave' });
+      }
+      oldData = data;
+    }
+    for (var i in data) {
+      var row = data[i];
+      if (!keepIdentity &amp;&amp; oldData &amp;&amp; oldData[i]) {
+        row.lastSample = oldData[i].lastSample;
+      }
+      if (!row.lastSample || Math.random() &lt; ENV.mutations()) {
+        counter = counter + 1;
+        if (!keepIdentity) {
+          row.lastSample = null;
+        }
+        generateRow(row, keepIdentity, counter);
+      } else {
+        data[i] = oldData[i];
+      }
+    }
+    first = false;
+    return {
+      toArray: function() {
+        return data;
+      }
+    };
+  }
+
+  var mutationsValue = 0.5;
+
+  function mutations(value) {
+    if (value) {
+      mutationsValue = value;
+      return mutationsValue;
+    } else {
+      return mutationsValue;
+    }
+  }
+
+  var body = document.querySelector('body');
+  var theFirstChild = body.firstChild;
+
+  var sliderContainer = document.createElement( 'div' );
+  sliderContainer.style.cssText = &quot;display: flex&quot;;
+  var slider = document.createElement('input');
+  var text = document.createElement('label');
+  text.innerHTML = 'mutations : ' + (mutationsValue * 100).toFixed(0) + '%';
+  text.id = &quot;ratioval&quot;;
+  slider.setAttribute(&quot;type&quot;, &quot;range&quot;);
+  slider.style.cssText = 'margin-bottom: 10px; margin-top: 5px';
+  slider.addEventListener('change', function(e) {
+    ENV.mutations(e.target.value / 100);
+    document.querySelector('#ratioval').innerHTML = 'mutations : ' + (ENV.mutations() * 100).toFixed(0) + '%';
+  });
+  sliderContainer.appendChild( text );
+  sliderContainer.appendChild( slider );
+  body.insertBefore( sliderContainer, theFirstChild );
+
+  return  {
+    generateData: getData,
+    rows: 50,
+    timeout: 0,
+    mutations: mutations
+  };
+})();
+</code></pre>
+<h2 id="js" tabindex="-1">JS <a class="direct-link" href="#js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// app.js
+perfMonitor.startFPSMonitor()
+perfMonitor.startMemMonitor()
+perfMonitor.initProfiler(&quot;render&quot;)
+
+var data = []
+
+m.mount(document.body, {
+	view: function() {
+		return m(&quot;div&quot;, [
+			m(&quot;table&quot;, {className: &quot;table table-striped latest-data&quot;}, [
+				m(&quot;tbody&quot;,
+					data.map(function(db) {
+						return m(&quot;tr&quot;, {key: db.dbname}, [
+							m(&quot;td&quot;, {className: &quot;dbname&quot;}, db.dbname),
+							m(&quot;td&quot;, {className: &quot;query-count&quot;},  [
+								m(&quot;span&quot;, {className: db.lastSample.countClassName}, db.lastSample.nbQueries)
+							]),
+							db.lastSample.topFiveQueries.map(function(query) {
+								return m(&quot;td&quot;, {className: query.elapsedClassName}, [
+									query.formatElapsed,
+									m(&quot;div&quot;, {className: &quot;popover left&quot;}, [
+										m(&quot;div&quot;, {className: &quot;popover-content&quot;}, query.query),
+										m(&quot;div&quot;, {className: &quot;arrow&quot;})
+									])
+								])
+							})
+						])
+					})
+				)
+			])
+		])
+	}
+})
+
+function update() {
+	requestAnimationFrame(update)
+
+	data = ENV.generateData().toArray()
+
+	perfMonitor.startProfile(&quot;render&quot;)
+	m.redraw()
+	perfMonitor.endProfile(&quot;render&quot;)
+}
+
+update()
+</code></pre>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;DBMON Mithril&quot; /&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;DB-Monster&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">body {
+    color: #333;
+    font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+input[type=range] {
+    display: block;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+:before, :after {
+    box-sizing: border-box;
+}
+
+.table &gt; thead &gt; tr &gt; th, .table &gt; tbody &gt; tr &gt; th, .table &gt; tfoot &gt; tr &gt; th, .table &gt; thead &gt; tr &gt; td, .table &gt; tbody &gt; tr &gt; td, .table &gt; tfoot &gt; tr &gt; td {
+    border-top: 1px solid #ddd;
+    line-height: 1.42857143;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.table {
+    width: 100%;
+}
+
+.table-striped &gt; tbody &gt; tr:nth-child(odd) &gt; td, .table-striped &gt; tbody &gt; tr:nth-child(odd) &gt; th {
+    background: #f9f9f9;
+}
+
+.label {
+    border-radius: .25em;
+    color: #fff;
+    display: inline;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    padding: .2em .6em .3em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.label-success {
+    background-color: #5cb85c;
+}
+
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+.popover {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    display: none;
+    left: 0;
+    max-width: 276px;
+    padding: 1px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    white-space: normal;
+    z-index: 1010;
+}
+
+.popover &gt; .arrow:after {
+    border-width: 10px;
+    content: &quot;&quot;;
+}
+
+.popover.left {
+    margin-left: -10px;
+}
+
+.popover.left &gt; .arrow {
+    border-right-width: 0;
+    border-left-color: rgba(0, 0, 0, .25);
+    margin-top: -11px;
+    right: -11px;
+    top: 50%;
+}
+
+.popover.left &gt; .arrow:after {
+    border-left-color: #fff;
+    border-right-width: 0;
+    bottom: -10px;
+    content: &quot; &quot;;
+    right: 1px;
+}
+
+.popover &gt; .arrow {
+    border-width: 11px;
+}
+
+.popover &gt; .arrow, .popover &gt; .arrow:after {
+    border-color: transparent;
+    border-style: solid;
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+}
+
+.popover-content {
+    padding: 9px 14px;
+}
+
+.Query {
+    position: relative;
+}
+
+.Query:hover .popover {
+    display: block;
+    left: -100%;
+    width: 100%;
+}
+</code></pre>
+
+
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
+To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/db-monster.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/db-monster/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

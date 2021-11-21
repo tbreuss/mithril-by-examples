@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Blurry Dogs | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Blurry Dogs</h1>
+
+<p>
+  <time datetime="2021-10-31">31 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/jaforbes/">JAForbes</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/animation/" class="post-tag">animation</a><a href="/tags/api/" class="post-tag">api</a><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.stream/" class="post-tag">m.stream</a><a href="/tags/oncreate/" class="post-tag">oncreate</a>
+</p><p>This Mithril code example was taken from <a href="https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2">Mithril Gitter</a> and slightly edited. It shows random dog images requested by an API and displayed with an adjustable blur effect.</p>
+<p>The code sample was authored by JAForbes. It was last modified on 31 October 2021.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see some <a href="/api-methods/">Mithril API methods</a> like <code>m.stream</code> or <code>m.mount</code>, besides Mithril's basic m() hyperscript function.
+It is also showing the <code>oncreate</code> hook, which is one of several Mithril's <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
+<p>Ready? Here we go!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Blurry Dogs</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"function BlurryDog({attrs: {src, blur}}) {\n\n  let el = m.stream()\n  let context = el.map(x => x.getContext('2d'))\n\n  let loaded = m.stream()\n  let image = src.map(src => {\n    let image = new Image()\n    image.src = src\n    image.onload = () => loaded(true)\n    return image\n  })\n\n  m.stream.merge([el, context, image, loaded, blur])\n    .map(([el, context, image, loaded, blur]) => {\n\n      if (!loaded) return;\n\n      requestAnimationFrame(() => {\n        el.width = el.width\n        context.filter = `blur(${blur}px)`\n        context.drawImage(image, 0, 0, el.width, el.height)\n      })\n    })\n\n  return {\n    view() {\n      return m('canvas', {\n        width: 200,\n        height: 200, oncreate: v => el(v.dom),\n        style: 'background: #DDD'\n      })\n    }\n  }\n}\n\nfunction RandomBlurryDog({attrs: {blur}}) {\n  let src = m.stream()\n\n  fetch('https://dog.ceo/api/breeds/image/random')\n    .then(x => x.json())\n    .then(x => src(x.message))\n\n  return {\n    view: () => m(BlurryDog, {src, blur})\n  }\n}\n\nfunction App() {\n\n  const blur = m.stream(5)\n  const count = m.stream(5)\n\n  function view() {\n    return m('.app',\n      {style: 'display: grid;'},\n      m('.form',\n        {style: 'display: grid; grid-template-columns: 1fr 3em 3em; gap: 1em;'},\n        m('label',\n          'Blur', m('input[type=range]', {\n            style: 'width: 100%; height: 2em;',\n            oninput: e => blur(e.target.valueAsNumber),\n            max: 10,\n            min: 0,\n            value: blur()\n          })\n        ),\n        m('button', {onclick: () => count(count() + 1)}, '+'),\n        m('button', {onclick: () => count(count() - 1)}, '-')\n      ),\n      m('.dogs',\n        Array(count()).fill(0).map(() =>\n          m(RandomBlurryDog, {blur})\n        )\n      )\n    )\n  }\n\n  return {view}\n}\n\nm.mount(document.body, App)\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--2">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>mithril-stream@2.0.0/stream.js</td><td>https://unpkg.com/mithril-stream@2.0.0/stream.js</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<pre><code class="language-js">function BlurryDog({attrs: {src, blur}}) {
+
+  let el = m.stream()
+  let context = el.map(x =&gt; x.getContext('2d'))
+
+  let loaded = m.stream()
+  let image = src.map(src =&gt; {
+    let image = new Image()
+    image.src = src
+    image.onload = () =&gt; loaded(true)
+    return image
+  })
+
+  m.stream.merge([el, context, image, loaded, blur])
+    .map(([el, context, image, loaded, blur]) =&gt; {
+
+      if (!loaded) return;
+
+      requestAnimationFrame(() =&gt; {
+        el.width = el.width
+        context.filter = `blur(${blur}px)`
+        context.drawImage(image, 0, 0, el.width, el.height)
+      })
+    })
+
+  return {
+    view() {
+      return m('canvas', {
+        width: 200,
+        height: 200, oncreate: v =&gt; el(v.dom),
+        style: 'background: #DDD'
+      })
+    }
+  }
+}
+
+function RandomBlurryDog({attrs: {blur}}) {
+  let src = m.stream()
+
+  fetch('https://dog.ceo/api/breeds/image/random')
+    .then(x =&gt; x.json())
+    .then(x =&gt; src(x.message))
+
+  return {
+    view: () =&gt; m(BlurryDog, {src, blur})
+  }
+}
+
+function App() {
+
+  const blur = m.stream(5)
+  const count = m.stream(5)
+
+  function view() {
+    return m('.app',
+      {style: 'display: grid;'},
+      m('.form',
+        {style: 'display: grid; grid-template-columns: 1fr 3em 3em; gap: 1em;'},
+        m('label',
+          'Blur', m('input[type=range]', {
+            style: 'width: 100%; height: 2em;',
+            oninput: e =&gt; blur(e.target.valueAsNumber),
+            max: 10,
+            min: 0,
+            value: blur()
+          })
+        ),
+        m('button', {onclick: () =&gt; count(count() + 1)}, '+'),
+        m('button', {onclick: () =&gt; count(count() - 1)}, '-')
+      ),
+      m('.dogs',
+        Array(count()).fill(0).map(() =&gt;
+          m(RandomBlurryDog, {blur})
+        )
+      )
+    )
+  }
+
+  return {view}
+}
+
+m.mount(document.body, App)
+</code></pre>
+
+
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
+To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/blurry-dogs.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/blurry-dogs/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

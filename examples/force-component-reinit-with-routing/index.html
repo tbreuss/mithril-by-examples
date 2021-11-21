@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Force Component Re-Init with Routing | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Force Component Re-Init with Routing</h1>
+
+<p>
+  <time datetime="2021-10-16">16 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/key/" class="post-tag">key</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/oninit/" class="post-tag">oninit</a><a href="/tags/vnode/" class="post-tag">vnode</a>
+</p><p>Force a component to re-initialize by passing a key attribute when changing routes (four examples).</p>
+<p>The example was contributed by osban and last modified on 16 October 2021.
+<a href="/contributors/osban/">Click here</a> to see more examples contributed by the author.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>In addition to the Mithril hyperscript function m(), here we can see an example of Mithril's <code>m.route</code> <a href="/api-methods/">API method</a>.
+It also shows, how Mithril's <a href="/lifecycle-methods/">lifecycle methods</a> can be used. This can be seen here by using the <code>oninit</code> hook.
+In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.</p>
+<p>Enough said, here it is!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Force Component Re-Init with Routing</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"const text = () => [\n  m('p', `Keys are used usually to distinguish similar vnodes from one another.\n    However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.\n    This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component\n    that doesn't provide an API to do so -- we could simply force the component to be re-created with new values.`\n  ),\n  m('p', `In this example 4 options with routing. Date.now() is used to make sure the key is different each time.\n    Thus, on a redraw, when Mithril doesn't find a new vnode with the old key, it discards the old vnode,\n    and creates a new one with the new key, and new values.`\n  ),\n  m('p', `Keep in mind that every sibling needs a key, otherwise it doesn't work.`),\n  m('hr')\n]\n\n// option 1 -> key is passed via attrs\nconst page1 = {\n  oninit: () => {console.log('init1')},\n  view: vnode => [\n    text(),\n    m('p', 'page1 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set('/page1', {key: Date.now()})}, 're-init')\n  ]\n}\n\n// option 2 -> key is passed as url parameter\nconst page2 = {\n  oninit: () => {console.log('init2')},\n  view: () => [\n    text(),\n    m('p', 'page2 ' + m.route.param('key')),\n    m('button', {onclick: () => m.route.set('/page2/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 3 -> id is passed as url parameter and also used as key\nconst page3 = {\n  oninit: () => {console.log('init3')},\n  view: vnode => [\n    text(),\n    m('p', 'page3 ' + vnode.attrs.id),\n    m('button', {onclick: () => m.route.set('/page3/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 4 -> use m.route.set() to re-init the current page\nconst page4 = {\n  oninit: () => {console.log('init4')},\n  view: vnode => [\n    text(),\n    m('p', 'page4 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set(m.route.get(), {key: Date.now()})}, 're-init')\n  ]\n}\n\nm.route(document.body, '/page1', { // change to /page2/1, /page3/1, or /page4\n  '/page1'     : page1,\n  '/page2/:key': page2,\n  '/page3/:id' : {render: vnode => m(page3, {id: vnode.attrs.id, key: vnode.attrs.id})},\n  '/page4'     : {render: vnode => m(page4, {key: vnode.attrs.key})}\n})\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<pre><code class="language-js">const text = () =&gt; [
+  m('p', `Keys are used usually to distinguish similar vnodes from one another.
+    However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.
+    This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component
+    that doesn't provide an API to do so -- we could simply force the component to be re-created with new values.`
+  ),
+  m('p', `In this example 4 options with routing. Date.now() is used to make sure the key is different each time.
+    Thus, on a redraw, when Mithril doesn't find a new vnode with the old key, it discards the old vnode,
+    and creates a new one with the new key, and new values.`
+  ),
+  m('p', `Keep in mind that every sibling needs a key, otherwise it doesn't work.`),
+  m('hr')
+]
+
+// option 1 -&gt; key is passed via attrs
+const page1 = {
+  oninit: () =&gt; {console.log('init1')},
+  view: vnode =&gt; [
+    text(),
+    m('p', 'page1 ' + (vnode.attrs.key || '')),
+    m('button', {onclick: () =&gt; m.route.set('/page1', {key: Date.now()})}, 're-init')
+  ]
+}
+
+// option 2 -&gt; key is passed as url parameter
+const page2 = {
+  oninit: () =&gt; {console.log('init2')},
+  view: () =&gt; [
+    text(),
+    m('p', 'page2 ' + m.route.param('key')),
+    m('button', {onclick: () =&gt; m.route.set('/page2/' + Date.now())}, 're-init')
+  ]
+}
+
+// option 3 -&gt; id is passed as url parameter and also used as key
+const page3 = {
+  oninit: () =&gt; {console.log('init3')},
+  view: vnode =&gt; [
+    text(),
+    m('p', 'page3 ' + vnode.attrs.id),
+    m('button', {onclick: () =&gt; m.route.set('/page3/' + Date.now())}, 're-init')
+  ]
+}
+
+// option 4 -&gt; use m.route.set() to re-init the current page
+const page4 = {
+  oninit: () =&gt; {console.log('init4')},
+  view: vnode =&gt; [
+    text(),
+    m('p', 'page4 ' + (vnode.attrs.key || '')),
+    m('button', {onclick: () =&gt; m.route.set(m.route.get(), {key: Date.now()})}, 're-init')
+  ]
+}
+
+m.route(document.body, '/page1', { // change to /page2/1, /page3/1, or /page4
+  '/page1'     : page1,
+  '/page2/:key': page2,
+  '/page3/:id' : {render: vnode =&gt; m(page3, {id: vnode.attrs.id, key: vnode.attrs.id})},
+  '/page4'     : {render: vnode =&gt; m(page4, {key: vnode.attrs.key})}
+})
+</code></pre>
+
+
+<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or simply fork the repository on GitHub, push your commits and send a pull request.
+For starting your work, you can click the edit link below. Thanks for contributing.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/force-component-reinit-with-routing.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/force-component-reinit-with-routing/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

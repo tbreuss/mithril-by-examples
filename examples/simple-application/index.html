@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Simple Application | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Simple Application</h1>
+
+<p>
+  <time datetime="2021-10-16">16 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/api/" class="post-tag">api</a><a href="/tags/form/" class="post-tag">form</a><a href="/tags/layout/" class="post-tag">layout</a><a href="/tags/list/" class="post-tag">list</a><a href="/tags/m.request/" class="post-tag">m.request</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/model/" class="post-tag">model</a><a href="/tags/official/" class="post-tag">official</a><a href="/tags/oninit/" class="post-tag">oninit</a><a href="/tags/tutorial/" class="post-tag">tutorial</a><a href="/tags/vnode/" class="post-tag">vnode</a>
+</p><p>This is the simple application from the official Website that shows off how to do most of the major things you would need to deal with while using Mithril.</p>
+<p>The example was written by mithril, last edits were made on 16 October 2021.
+The author has contributed some more snippets. <a href="/contributors/mithril/">Click here</a> to see them all.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>Here we can see use cases of different <a href="/api-methods/">Mithril API methods</a> like <code>m.request</code> or <code>m.route</code>, besides the centrepiece m() hyperscript function.
+Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better know as hook).
+Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
+<p>So, here are the code snippets.</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Simple Application</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":"UserModel.js","content":"// UserModel.js\nvar User = {\n    list: [],\n    loadList: function() {\n        return m.request({\n            method: \"GET\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users\",\n            withCredentials: true,\n        })\n        .then(function(result) {\n            User.list = result.data\n        })\n    },\n\n    current: {},\n    load: function(id) {\n        return m.request({\n            method: \"GET\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users/\" + id,\n            withCredentials: true,\n        })\n        .then(function(result) {\n            User.current = result\n        })\n    },\n\n    save: function() {\n        return m.request({\n            method: \"PUT\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users/\" + User.current.id,\n            body: User.current,\n            withCredentials: true,\n        })\n    }\n}\n"},{"name":"UserList.js","content":"// UserList.js\nvar UserList = {\n    oninit: User.loadList,\n    view: function() {\n        return m(\".user-list\", User.list.map(function(user) {\n            return m(m.route.Link, {href: \"/edit/\" + user.id, class: 'user-list-item'}, user.firstName + \" \" + user.lastName)\n        }))\n    }\n}\n"},{"name":"UserForm.js","content":"// UserForm.js\nvar UserForm = {\n    oninit: function(vnode) {User.load(vnode.attrs.id)},\n    view: function() {\n        return m(\"form\", {\n                onsubmit: function(e) {\n                    e.preventDefault()\n                    User.save()\n                }\n            }, [\n            m(\"label.label\", \"First name\"),\n            m(\"input.input[type=text][placeholder=First name]\", {\n                oninput: function(e) {User.current.firstName = e.target.value},\n                value: User.current.firstName\n            }),\n            m(\"label.label\", \"Last name\"),\n            m(\"input.input[placeholder=Last name]\", {\n                oninput: function(e) {User.current.lastName = e.target.value},\n                value: User.current.lastName\n            }),\n            m(\"button.button[type=submit]\", \"Save\"),\n        ])\n    }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nvar Layout = {\n    view: function(vnode) {\n        return m(\"main.layout\", [\n            m(\"nav.menu\", [\n                m(m.route.Link, {\n                  href: '/list'\n                }, \"Users\")\n            ]),\n            m(\"section\", vnode.children)\n        ])\n    }\n}\n"},{"name":"app.js","content":"// app.js\nm.route.prefix = '#'\nm.route(document.body, \"/list\", {\n    \"/list\": {\n        render: function() {\n            return m(Layout, m(UserList))\n        }\n    },\n    \"/edit/:id\": {\n        render: function(vnode) {\n            return m(Layout, m(UserForm, vnode.attrs))\n        }\n    },\n})\n"},{"name":".css","content":"body, .input, .button {\n  font: normal 16px Verdana;\n  margin: 20px;\n}\n\n.layout {\n  margin: 10px auto;\n  max-width: 1000px;\n}\n\n.menu {\n  margin: 0 0 30px;\n}\n\n.user-list {\n  list-style: none;\n  margin: 0 0 10px;\n  padding: 0;\n}\n\n.user-list-item {\n  background: #fafafa;\n  border: 1px solid #ddd;\n  color: #333;\n  display: block;\n  margin: 0 0 1px;\n  padding: 8px 15px;\n  text-decoration: none;\n}\n\n.user-list-item:hover {\n  text-decoration: underline;\n}\n\n.label {\n  display: block;\n  margin: 0 0 5px;\n}\n\n.input {\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  box-sizing: border-box;\n  display: block;\n  margin: 0 0 10px;\n  padding: 10px 15px;\n  width: 100%;\n}\n\n.button {\n  background: #eee;\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  color: #333;\n  display: inline-block;\n  margin: 0 0 10px;\n  padding: 10px 15px;\n  text-decoration: none;\n}\n\n.button:hover {\n  background: #e8e8e8;\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="usermodel.js" tabindex="-1">UserModel.js <a class="direct-link" href="#usermodel.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// UserModel.js
+var User = {
+    list: [],
+    loadList: function() {
+        return m.request({
+            method: &quot;GET&quot;,
+            url: &quot;https://rem-rest-api.herokuapp.com/api/users&quot;,
+            withCredentials: true,
+        })
+        .then(function(result) {
+            User.list = result.data
+        })
+    },
+
+    current: {},
+    load: function(id) {
+        return m.request({
+            method: &quot;GET&quot;,
+            url: &quot;https://rem-rest-api.herokuapp.com/api/users/&quot; + id,
+            withCredentials: true,
+        })
+        .then(function(result) {
+            User.current = result
+        })
+    },
+
+    save: function() {
+        return m.request({
+            method: &quot;PUT&quot;,
+            url: &quot;https://rem-rest-api.herokuapp.com/api/users/&quot; + User.current.id,
+            body: User.current,
+            withCredentials: true,
+        })
+    }
+}
+</code></pre>
+<h2 id="userlist.js" tabindex="-1">UserList.js <a class="direct-link" href="#userlist.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// UserList.js
+var UserList = {
+    oninit: User.loadList,
+    view: function() {
+        return m(&quot;.user-list&quot;, User.list.map(function(user) {
+            return m(m.route.Link, {href: &quot;/edit/&quot; + user.id, class: 'user-list-item'}, user.firstName + &quot; &quot; + user.lastName)
+        }))
+    }
+}
+</code></pre>
+<h2 id="userform.js" tabindex="-1">UserForm.js <a class="direct-link" href="#userform.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// UserForm.js
+var UserForm = {
+    oninit: function(vnode) {User.load(vnode.attrs.id)},
+    view: function() {
+        return m(&quot;form&quot;, {
+                onsubmit: function(e) {
+                    e.preventDefault()
+                    User.save()
+                }
+            }, [
+            m(&quot;label.label&quot;, &quot;First name&quot;),
+            m(&quot;input.input[type=text][placeholder=First name]&quot;, {
+                oninput: function(e) {User.current.firstName = e.target.value},
+                value: User.current.firstName
+            }),
+            m(&quot;label.label&quot;, &quot;Last name&quot;),
+            m(&quot;input.input[placeholder=Last name]&quot;, {
+                oninput: function(e) {User.current.lastName = e.target.value},
+                value: User.current.lastName
+            }),
+            m(&quot;button.button[type=submit]&quot;, &quot;Save&quot;),
+        ])
+    }
+}
+</code></pre>
+<h2 id="layout.js" tabindex="-1">Layout.js <a class="direct-link" href="#layout.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// Layout.js
+var Layout = {
+    view: function(vnode) {
+        return m(&quot;main.layout&quot;, [
+            m(&quot;nav.menu&quot;, [
+                m(m.route.Link, {
+                  href: '/list'
+                }, &quot;Users&quot;)
+            ]),
+            m(&quot;section&quot;, vnode.children)
+        ])
+    }
+}
+</code></pre>
+<h2 id="app.js" tabindex="-1">app.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// app.js
+m.route.prefix = '#'
+m.route(document.body, &quot;/list&quot;, {
+    &quot;/list&quot;: {
+        render: function() {
+            return m(Layout, m(UserList))
+        }
+    },
+    &quot;/edit/:id&quot;: {
+        render: function(vnode) {
+            return m(Layout, m(UserForm, vnode.attrs))
+        }
+    },
+})
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">body, .input, .button {
+  font: normal 16px Verdana;
+  margin: 20px;
+}
+
+.layout {
+  margin: 10px auto;
+  max-width: 1000px;
+}
+
+.menu {
+  margin: 0 0 30px;
+}
+
+.user-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.user-list-item {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  color: #333;
+  display: block;
+  margin: 0 0 1px;
+  padding: 8px 15px;
+  text-decoration: none;
+}
+
+.user-list-item:hover {
+  text-decoration: underline;
+}
+
+.label {
+  display: block;
+  margin: 0 0 5px;
+}
+
+.input {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 10px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.button {
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #333;
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #e8e8e8;
+}
+</code></pre>
+
+
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/simple-application.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/simple-application/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

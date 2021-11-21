@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Temperature Converter from 7GUIs | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Temperature Converter from 7GUIs</h1>
+
+<p>
+  <time datetime="2021-10-18">18 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/narayand16/">narayand16</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/7guis/" class="post-tag">7guis</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
+</p><p>The code sample was authored by narayand16. It was last modified on 18 October 2021.
+Do you want to see another one written by narayand16? Then <a href="/contributors/narayand16/">Click here</a>.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
+<p>Ready? Here we go!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Temperature Converter from 7GUIs</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Temperature Converter</title>\n</head>\n<body>\n</body>\n</html>\n"},{"name":".js","content":"let root = document.body\nlet tempInCelsius\nlet tempInFahrenheit\n\nlet temperatureConverter = {\n  view: function() {\n    return m(\"main\", [\n      m(\"input.input[type=text]\", {\n        oninput: function(e) {\n          tempInCelsius = getParsedInput(e.target.value);\n          tempInFahrenheit = tempInCelsius ? ((tempInCelsius * (9/5) + 32).toFixed(1)) : undefined;\n        },\n        value: tempInCelsius\n      }),\n      m(\"label.label\", \" Celsius = \"),\n      m(\"input.input[type=text]\", {\n        oninput: function(e) {\n          tempInFahrenheit = getParsedInput(e.target.value);\n          tempInCelsius = tempInFahrenheit ? (((tempInFahrenheit - 32) * (5/9)).toFixed(1)) : undefined;\n          },\n          value: tempInFahrenheit\n      }),\n      m(\"label.label\", \" Farenheit\")\n    ])\n  }\n}\n\nfunction getParsedInput(input) {\n  if(input && input.trim().length > 0) {\n    return isNaN(input) ? null : input;\n  }\n}\n\nm.mount(root, temperatureConverter)\n\n\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<p>Challenges: bidirectional data flow, user-provided text input.</p>
+<p>The task is to build a frame containing two textfields TC and TF representing the temperature in Celsius and Fahrenheit, respectively. Initially, both TC and TF are empty. When the user enters a numerical value into TC the corresponding value in TF is automatically updated and vice versa. When the user enters a non-numerical string into TC the value in TF is not updated and vice versa. The formula for converting a temperature C in Celsius into a temperature F in Fahrenheit is C = (F - 32) * (5/9) and the dual direction is F = C * (9/5) + 32.</p>
+<p>See <a href="https://eugenkiss.github.io/7guis/tasks#temp">https://eugenkiss.github.io/7guis/tasks#temp</a>.</p>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;head&gt;
+  &lt;meta charset=utf-8&gt;
+  &lt;title&gt;Temperature Converter&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">let root = document.body
+let tempInCelsius
+let tempInFahrenheit
+
+let temperatureConverter = {
+  view: function() {
+    return m(&quot;main&quot;, [
+      m(&quot;input.input[type=text]&quot;, {
+        oninput: function(e) {
+          tempInCelsius = getParsedInput(e.target.value);
+          tempInFahrenheit = tempInCelsius ? ((tempInCelsius * (9/5) + 32).toFixed(1)) : undefined;
+        },
+        value: tempInCelsius
+      }),
+      m(&quot;label.label&quot;, &quot; Celsius = &quot;),
+      m(&quot;input.input[type=text]&quot;, {
+        oninput: function(e) {
+          tempInFahrenheit = getParsedInput(e.target.value);
+          tempInCelsius = tempInFahrenheit ? (((tempInFahrenheit - 32) * (5/9)).toFixed(1)) : undefined;
+          },
+          value: tempInFahrenheit
+      }),
+      m(&quot;label.label&quot;, &quot; Farenheit&quot;)
+    ])
+  }
+}
+
+function getParsedInput(input) {
+  if(input &amp;&amp; input.trim().length &gt; 0) {
+    return isNaN(input) ? null : input;
+  }
+}
+
+m.mount(root, temperatureConverter)
+
+
+</code></pre>
+
+
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
+To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/7gui-temperature-converter.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/7gui-temperature-converter/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

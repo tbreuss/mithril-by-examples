@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tAP5VtcpL3YMRki-uW5DJlXlu8kQSqCRKVHZTHBmhkQ" />
+    <title>Markdown Editor | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1637514517">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1637514517">
+    <link rel="stylesheet" href="/css/modal.css?v=1637514517">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Markdown Editor</h1>
+
+<p>
+  <time datetime="2021-10-27">27 October 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/editor/" class="post-tag">editor</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.trust/" class="post-tag">m.trust</a><a href="/tags/markdown/" class="post-tag">markdown</a><a href="/tags/official/" class="post-tag">official</a>
+</p><p>This example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified. It shows a very simple markdown editor using marked.js.</p>
+<p>The example was contributed by mithril and last modified on 27 October 2021.
+<a href="/contributors/mithril/">Click here</a> to see more examples contributed by the author.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>Besides Mithril's hyperscript function m() we can see different <a href="/api-methods/">Mithril API methods</a> like <code>m.trust</code> or <code>m.mount</code>.</p>
+<p>Enough said, here it is!</p>
+
+
+
+
+<h2 id="js" tabindex="-1">JS <a class="direct-link" href="#js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">//model
+var state = {
+	text: &quot;# Markdown Editor\n\nType on the left panel and see the result on the right panel&quot;,
+	update: function(value) {
+		state.text = value
+	}
+}
+
+//view
+var Editor = {
+	view: function() {
+		return [
+			m(&quot;textarea.input&quot;, {
+				oninput: function (e) {
+				  state.update(e.target.value)
+        },
+				value: state.text
+			}),
+			m(&quot;.preview&quot;, m.trust(marked(state.text))),
+		]
+	}
+}
+
+m.mount(document.body, Editor)
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">html, body {
+    height: 100%;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0 0 10px;
+}
+
+#editor {
+    display: flex;
+    height: 100%;
+}
+
+.input, .preview {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+}
+
+.input {
+    border: 0;
+    border-right: 1px solid #ccc;
+    outline: none;
+    resize: none;
+}
+</code></pre>
+<p>Visit <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> to see a live demo.</p>
+
+
+<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or simply fork the repository on GitHub, push your commits and send a pull request.
+For starting your work, you can click the edit link below. Thanks for contributing.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/markdown-editor.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/markdown-editor/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>
