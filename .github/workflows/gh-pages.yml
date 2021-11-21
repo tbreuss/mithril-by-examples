@@ -1,4 +1,4 @@
-name: Eleventy Build
+name: Build & Deploy Eleventy to GitHub Pages
 
 on:
   push:
@@ -20,8 +20,8 @@ jobs:
 
       - run: npx eleventy --pathprefix 'mithril-by-examples'
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./_site
