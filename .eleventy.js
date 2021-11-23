@@ -674,7 +674,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('.htaccess');
   eleventyConfig.addPassthroughCopy('robots.txt');
   eleventyConfig.addPassthroughCopy('CNAME');
-  eleventyConfig.addPassthroughCopy('google07bb7d52589062d0.html');
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
