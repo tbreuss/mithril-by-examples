@@ -2,21 +2,21 @@
     {
       "name": "beginner",
       "examples": 74,
-      "url": "/mithril-by-examples/levels/beginner/"
+      "url": "/levels/beginner/"
     },
     {
       "name": "intermediate",
       "examples": 5,
-      "url": "/mithril-by-examples/levels/intermediate/"
+      "url": "/levels/intermediate/"
     },
     {
       "name": "expert",
       "examples": 6,
-      "url": "/mithril-by-examples/levels/expert/"
+      "url": "/levels/expert/"
     },
     {
       "name": "advanced",
       "examples": 1,
-      "url": "/mithril-by-examples/levels/advanced/"
+      "url": "/levels/advanced/"
     }
 ]
