@@ -1,2 +1,2 @@
-Sitemap: https://mithril-by-examples.tebe.ch/sitemap.xml
+Sitemap: https://mithril-by-examples.js.org/sitemap.xml
 

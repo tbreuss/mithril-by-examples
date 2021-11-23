@@ -2,7 +2,7 @@
 
 > The missing addition to Mithril.js website with many up-to-date code examples that are often searched for and just work...
 
-<https://mithril-by-examples.tebe.ch>
+<https://mithril-by-examples.js.org>
 
 ## What is this?
 
