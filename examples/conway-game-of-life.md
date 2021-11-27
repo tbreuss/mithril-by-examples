@@ -16,262 +16,205 @@ flems:
 ## JS
 
 ~~~js
-const Stream  = m.stream
 const compose = R.compose
+const flatten = R.flatten
 const range = R.range
 const without = R.without
 const values = R.values
+const prop = R.prop
+const root = document.getElementById('GameOfLife')
+const log = m => v => {console.log(m,v); return v}
 
-const siblingCoords = [[-1, 0],[-1, 1],[0, 1],[1, 1],[1, 0],[1, -1],[0, -1],[-1, -1]]
+const SIBLING_COORDS = [[-1, 0],[-1, 1],[0, 1],[1, 1],[1, 0],[1, -1],[0, -1],[-1, -1]]
 
 const model = {
-  isRunning: Stream(false),
-  board: {},
-  delay: Stream(1000),
-  randomized: Stream(15),
-  size: Stream(30),
-  width: Stream(800),
-  lifecycle: Stream(0)
+  isRunning: false, 
+  matrix: [],
+  delay: 300,
+  size: 50,
+  width: 1000,
+  generation: 0
 }
 
 const restart = (mdl) => {
-  mdl.isRunning(false)
-  mdl.delay(1000)
-  mdl.randomized(15)
-  mdl.size(30)
-  mdl.width(800)
-  mdl.lifecycle(0)
+  mdl.isRunning = false
+  mdl.delay = 300
+  mdl.size = 50
+  mdl.width = 1000
+  mdl.generation = 0
+  mdl.matrix = []
   return mdl
 }
 
-
-const withinBounds = (limit) => (coords) =>
+const withinBounds = (limit) => (coords) => 
   !(coords.includes(limit) || coords.includes(-1))
-
-const toSiblingModel = (acc, sibling) => {
-  acc[sibling] = false
-  return acc
-}
-
-const calcSiblings = (limit) => (sibCoords) => (coords) =>
+  
+const toSiblings = (limit) => (sibCoords) => (coords) =>
   sibCoords
     .map((sib) => [sib[0] + coords[0], sib[1] + coords[1]])
     .filter(withinBounds(limit))
-    .reduce(toSiblingModel, {})
 
-const makeCell = (mdl) => (size) => (idx) => {
-  let coords = [idx % size, Math.floor(idx / size)]
-  let siblings = calcSiblings(size)(siblingCoords)(coords)
-  let cell = {
-    key: idx,
-    value: "",
+const toCell = (size, coords) =>  {
+  let siblings = toSiblings(size)(SIBLING_COORDS)(coords)
+  return {
     isAlive: false,
     coords,
-    siblings
+    siblings: siblings.map(s => s.toString())
   }
-  mdl.board[coords] = cell
+}
+const toMatrix = (width, xs) =>
+    xs.reduce((rows, key, index) => 
+      (index % width == 0 
+        ? rows.push([key]) 
+        : rows[rows.length-1].push(key)) && rows, 
+      []);
 
+const createMatrix = mdl => {
+  let cellsArray = range(0, mdl.size * mdl.size)
+  let cellsMatrix = toMatrix(mdl.size, cellsArray)
+  mdl.matrix = cellsMatrix.map((row, rowIdx) => 
+    row.map((key, idx) => 
+      toCell(mdl.size, [idx, rowIdx])))
+      
   return mdl
 }
-
-const makeBoardFromSize = (mdl, size) => {
-  mdl.size(size)
-  return range(0, size * size).map(makeCell(mdl)(size))
-}
-
-const calculateCell = (mdl) => {
-  Object.keys(mdl.board).map((cell) => {
-    let cellsAlive = without([false], values(mdl.board[cell].siblings)).length
-
-    if (mdl.board[cell].isAlive) {
-      if (cellsAlive <= 2) {
-        mdl.board[cell].isAlive = false
+ 
+const initGame = ({attrs:{mdl}}) => createMatrix(mdl)
+ 
+const makeNewGame = compose(createMatrix,restart)
+ 
+const calcNextPhase = (mdl) => {
+  let cellsArray = flatten(mdl.matrix)
+  let cells =  cellsArray.reduce((acc, cell) => {
+      acc[cell.coords] = cell.isAlive
+      return acc},{})
+      
+  const getCellStatus = coord => cells[coord.toString()]
+  
+  cellsArray.map((cell) => {
+    let neighborsAlive =  without([false, undefined],(cell.siblings.map(getCellStatus)))
+    if (cell.isAlive) {
+      if (neighborsAlive.length <= 2) {
+        cell.isAlive = false
       }
 
-      if ([2, 3].includes(cellsAlive)) {
-        mdl.board[cell].isAlive = true
+      if ([2, 3].includes(neighborsAlive.length)) {
+        cell.isAlive = true
       }
 
-      if (cellsAlive > 3) {
-        mdl.board[cell].isAlive = false
+      if (neighborsAlive.length > 3) {
+        cell.isAlive = false
       }
     } else {
-      if (cellsAlive == 3) {
-        mdl.board[cell].isAlive = true
+      if (neighborsAlive.length == 3) {
+        cell.isAlive = true
       }
     }
   })
   return mdl
 }
 
-const updateSiblings = (mdl) => {
-  Object.keys(mdl.board).map((cell) =>
-    Object.keys(mdl.board[cell].siblings).map(
-      (sibling) =>
-        (mdl.board[cell].siblings[sibling] = mdl.board[sibling].isAlive)
-    )
-  )
-
-  return mdl
-}
-
 const runGOL = (mdl) => {
-  if (mdl.isRunning()) {
-    mdl.lifecycle(mdl.lifecycle() + 1)
+  if (mdl.isRunning) {
+   mdl.generation++
     setTimeout(() => {
       m.redraw()
-      return runGOL(updateCells(mdl))
-    }, mdl.delay())
+      return runGOL(calcNextPhase(mdl))
+    }, mdl.delay )
   } else {
     return mdl
   }
 }
 
-const randomizeCells = (mdl) => {
-  let randomCells = Object.keys(mdl.board)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, Math.floor((mdl.randomized() / 100) * (mdl.size() * mdl.size())))
-
-  randomCells.map((cell) => (mdl.board[cell].isAlive = true))
-
-  return mdl
-}
-
-
-const initBoard = mdl =>   {
-  makeBoardFromSize(mdl, Number(mdl.size()))
-  createSeed(mdl)
-}
-
-const makeNewGame = mdl => e => {
-  restart(mdl)
-  initBoard(mdl)
-}
-
 const advanceLifeCycle = mdl => (e) => {
-  mdl.isRunning(false)
-  mdl.lifecycle(mdl.lifecycle() + 1)
-  updateCells(mdl)
+  mdl.isRunning = false
+  mdl.generation++
+  calcNextPhase(mdl)
 }
 
 const goForth = mdl => (e) => {
-  mdl.isRunning(true)
+  mdl.isRunning = true
   runGOL(mdl)
 }
 
-const randomize = mdl => (e) =>{
-  mdl.randomized(e.target.value)
-  initBoard(mdl)
+const setDelay = mdl => (e) => mdl.delay = e.target.value
+
+const setMatrixSize = mdl => (e) => {
+  mdl.size = e.target.value
+  createMatrix(mdl)
+}
+const Matrix = {
+  view: ({ attrs: { mdl } }) =>   
+    m('Table',
+      { style: { width: `${mdl.width}px` } },
+      mdl.matrix.map((row) =>
+      m('tr', row.map((cell) => 
+        m('td', {
+        class: cell.isAlive ? 'alive' : 'dead',
+        style: {
+          height: `${mdl.width / mdl.size  }px`,
+          },
+        onclick: () => cell.isAlive = !cell.isAlive}
+        )))))
 }
 
-const setDelay = mdl => (e) => mdl.delay(e.target.value)
-
-const setBoardSize = mdl => (e) => {
-  mdl.size(e.target.value)
-  initBoard(mdl)
-}
-
-const updateCells = compose(calculateCell, updateSiblings)
-const createSeed = compose(updateSiblings, randomizeCells)
-
-const Cell = {
-  view: ({ attrs: { mdl, cell } }) => {
-    return m(".cell", {
-      class: cell.isAlive ? "alive" : "dead",
-      style: {
-        fontSize: `${mdl.width() / mdl.size() / 2}px`,
-        height: `${mdl.width() / mdl.size() / 2}px`,
-        flex: `1 1 ${mdl.width() / mdl.size()}px`
-      },
-      onclick: () => {
-        mdl.board[cell.coords].isAlive = !cell.isAlive
-        updateSiblings(mdl)
-      }
+const Input =  {
+  view: ({ attrs: { mdl, label, min, max, step, value, fn } }) => [
+    m('label', [label,
+    m('input', {
+      inputmode: 'numeric',
+      pattern:'[0-9]*',
+      type: 'number',
+      min,
+      max,
+      step,
+      value,
+      oninput: e => fn(e)
     })
-  }
+    ])
+  ]
 }
 
-const Board = ({ attrs: { mdl } }) => {
-  makeBoardFromSize(mdl, Number(mdl.size()))
-  return {
-    oninit: ({ attrs: { mdl } }) => createSeed(mdl),
-    view: ({ attrs: { mdl } }) => {
-      return m(
-        ".board",
-        { style: { width: `${mdl.width()}px` } },
-        Object.keys(mdl.board).map((coord) => {
-          let cell = mdl.board[coord]
-          return m(Cell, { key: cell.key, cell, mdl })
-        })
-      )
-    }
-  }
-}
-
-const Input = () => {
-  return {
-    view: ({ attrs: { mdl, label, min, max, step, value, fn } }) => [
-      m("label", [label,
-      m("input[type='number']", {
-        inputmode: 'numeric',
-        pattern:"[0-9]*",
-        min,
-        max,
-        step,
-        value,
-        onchange: e => fn(e)
-      })
-      ])
-    ]
-  }
-}
-
-const Button = () => {
-  return {
-    view:({attrs:{mdl, label, fn}}) => m(
-        "button", {onclick: (e) => fn(e)},
-        label
-      )
-  }
+const Button = {
+  view:({attrs:{mdl, label, fn}}) => 
+    m('button', {onclick: (e) => fn(e)}, label)
 }
 
 const TopRow = {
   view:({attrs:{mdl}})=>
-   m('.topRow', [m(Button, {mdl, fn: makeNewGame(mdl), label: 'New Game'}),
-      m(Button, {mdl, fn: advanceLifeCycle(mdl), label:"Advance 1 Lifecycle"}),
-      m(Button, {mdl, fn:goForth(mdl), label:"Go Forth"})])
+   m('.topRow', [
+      m(Button, {mdl, fn:() => makeNewGame(mdl), label: 'Restart'}),
+      m(Button, {mdl, fn: advanceLifeCycle(mdl), label:'Advance 1 Generation'}),
+      m(Button, {mdl, fn:goForth(mdl), label:'Go Forth'})])
 }
 
 const BottomRow = {
   view:({attrs:{mdl}})=>
     m('.bottomRow',[
-      m(Input, { mdl, label: 'Randomize(%):', min:0, max:100, step:1, value:mdl.randomized(), fn:randomize(mdl) }),
-      m(Input, { mdl, label: 'Delay(ms):', min:0, max:1000, step:100, value:mdl.delay(), fn:setDelay(mdl) }),
-      m(Input, { mdl, label: 'size:', min:30, max:100, step:10, value:mdl.size(), fn: setBoardSize(mdl) })])
+      m(Input, { mdl, label: 'Delay(ms):', min:0, max:1000, step:100, value:mdl.delay, fn:setDelay(mdl) }),
+      m(Input, { mdl, label: 'size:', min:10, max:1000, step:10, value:mdl.size, fn: setMatrixSize(mdl) })])
 }
-
-
+ 
 const Toolbar = {
   view: ({ attrs: { mdl } }) =>
-    m(".toolbar", [
+    m('.toolbar', [
       m(TopRow, {mdl}),
       m(BottomRow, {mdl})
     ])
 }
 
 const GameOfLife = {
+  oninit: initGame,
   view: ({ attrs: { mdl } }) => {
-    return m(".container", [
+    return m('.container', [
+      m('h2', `generation: ${mdl.generation}`),
       m(Toolbar, { mdl }),
-      m(Board, {
-        mdl
-      }),
-      m("h2", `lifecycle: ${mdl.lifecycle()}`)
+      m(Matrix, { mdl }),
     ])
   }
 }
 
-m.mount(document.body , {view:() => m(GameOfLife, {mdl:model})})
+m.mount(root, {view:() => m(GameOfLife, {mdl:model})})
 ~~~
 
 ## CSS
@@ -304,55 +247,34 @@ m.mount(document.body , {view:() => m(GameOfLife, {mdl:model})})
   justify-content: space-around;
 }
 
+input,
 button {
-	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+	text-transform: uppercase;
+	background: #ffffff;
+	padding: 20px;
+	border: 4px solid #20bf6b !important;
+	border-radius: 6px;
+	display: inline-block;
+	transition: all 0.3s ease 0s;
+
 }
+
+input,
 button:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
-}
-button:active {
-	position:relative;
-	top:1px;
+/*   color: #20bf6b !important; */
+	border-radius: 50px;
+	border-color: #494949 !important;
+	transition: all 0.3s ease 0s;
 }
 
-label > * {
-  padding: 10px;
-  margin: 10px;
-	background: #1abc9c;
-	color: #fff;
-	font-size: 1em;
-	line-height: 30px;
-	text-align: center;
-	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-	border-radius: 15px;
+Table{
+  margin: 0 auto;
+  border: dashed 1px #8e44ad;
 }
 
-.board {
-  display: flex;
-  flex-flow: wrap;
-  width: 800px;
-  background: #ecf0f1;
-}
-
-.cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #8e44ad;
+td {
   cursor: pointer;
+  border-radius: 35%;
 }
 
 .alive {
