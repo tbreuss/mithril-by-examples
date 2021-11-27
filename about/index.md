@@ -4,7 +4,7 @@ title: About
 templateClass: tmpl-post
 eleventyNavigation:
   key: About
-  order: 4
+  order: 5
 ---
 
 Mithril by Examples was created for (me and) new users to learn mithril.js — a javascript framework for building brilliant applications.
