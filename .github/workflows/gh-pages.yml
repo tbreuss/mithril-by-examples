@@ -2,8 +2,6 @@ name: Build & Deploy Eleventy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*"
 
