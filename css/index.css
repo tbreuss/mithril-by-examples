@@ -273,3 +273,15 @@ a[href].direct-link:focus:visited,
   color: #999999;
   line-height: 1.5rem;
 }
+
+.search__input {
+  font-size: 1rem;
+  padding: 0.25rem;
+  width: 14em;
+}
+
+.search__reset {
+  font-size: 1rem;
+  padding: 0.25rem;
+  margin-left: 0.25rem;
+}
