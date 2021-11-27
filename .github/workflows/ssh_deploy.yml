@@ -2,8 +2,8 @@ name: Deploy Eleventy via SSH
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - notexistingbranch
 
 jobs:
   build:
