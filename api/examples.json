@@ -379,21 +379,21 @@
     },
     {
       "title": "Modal",
-      "date": "2021-10-16",
-      "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
-      "level": "beginner",
-      "version": "2.0.4",
-      "author": "spacejack",
-      "url": "/examples/modal/"
-    },
-    {
-      "title": "Modal",
       "date": "2021-10-26",
       "tags": ["modal","dialog","component","m.mount","m.redraw","dom","onbeforeupdate","onremove","onbeforeremove","oncreate"],
       "level": "advanced",
       "version": "2.0.4",
       "author": "spacejack",
       "url": "/examples/modal-2/"
+    },
+    {
+      "title": "Modal",
+      "date": "2021-10-16",
+      "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/modal/"
     },
     {
       "title": "Modal External State",
@@ -592,6 +592,15 @@
       "version": "2.0.4",
       "author": "osban",
       "url": "/examples/modal-simple/"
+    },
+    {
+      "title": "Simple Search Form Filtering Prefetched Data",
+      "date": "2021-11-27",
+      "tags": ["form","m.mount","m.request","oninit","oncreate","onupdate","state","mitosis"],
+      "level": "advanced",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/simple-search-form-filtering-preloaded-data/"
     },
     {
       "title": "Styled Component with BSS",

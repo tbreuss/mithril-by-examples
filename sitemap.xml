@@ -345,6 +345,10 @@
     <lastmod>2021-11-02</lastmod>
   </url>
   <url>
+    <loc>https://mithril-by-examples.js.org/examples/simple-search-form-filtering-preloaded-data/</loc>
+    <lastmod>2021-11-27</lastmod>
+  </url>
+  <url>
     <loc>https://mithril-by-examples.js.org/about/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
@@ -354,6 +358,10 @@
   </url>
   <url>
     <loc>https://mithril-by-examples.js.org/contributors/</loc>
+    <lastmod>2021-11-27</lastmod>
+  </url>
+  <url>
+    <loc>https://mithril-by-examples.js.org/contributors/artydev/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
@@ -373,7 +381,7 @@
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
-    <loc>https://mithril-by-examples.js.org/contributors/kevinfiol/</loc>
+    <loc>https://mithril-by-examples.js.org/contributors/cmnstmntmn/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
@@ -389,7 +397,7 @@
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
-    <loc>https://mithril-by-examples.js.org/contributors/artydev/</loc>
+    <loc>https://mithril-by-examples.js.org/contributors/kevinfiol/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
@@ -425,10 +433,6 @@
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>
-    <loc>https://mithril-by-examples.js.org/contributors/cmnstmntmn/</loc>
-    <lastmod>2021-11-27</lastmod>
-  </url>
-  <url>
     <loc>https://mithril-by-examples.js.org/examples/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
@@ -458,6 +462,10 @@
   </url>
   <url>
     <loc>https://mithril-by-examples.js.org/lifecycle-methods/</loc>
+    <lastmod>2021-11-27</lastmod>
+  </url>
+  <url>
+    <loc>https://mithril-by-examples.js.org/search/</loc>
     <lastmod>2021-11-27</lastmod>
   </url>
   <url>

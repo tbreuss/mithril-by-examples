@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
+    <title>Simple Search Form Filtering Prefetched Data | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1638011653">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638011653">
+    <link rel="stylesheet" href="/css/modal.css?v=1638011653">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/search/">Search</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Simple Search Form Filtering Prefetched Data</h1>
+
+<p>
+  <time datetime="2021-11-27">27 November 2021</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">advanced</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/form/" class="post-tag">form</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.request/" class="post-tag">m.request</a><a href="/tags/mitosis/" class="post-tag">mitosis</a><a href="/tags/oncreate/" class="post-tag">oncreate</a><a href="/tags/oninit/" class="post-tag">oninit</a><a href="/tags/onupdate/" class="post-tag">onupdate</a><a href="/tags/state/" class="post-tag">state</a>
+</p><p>This example shows a simple search form that filters prefetched data. It is using the Mitosis pattern for stage management. A live example can be seen here on this website.</p>
+<p>The code sample was authored by tbreuss. It was last modified on 27 November 2021.
+Want to see more examples written by tbreuss? Then <a href="/contributors/tbreuss/">Click here</a>.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
+More advanced users should be able to follow this example, however it contains some first difficulties.</p>
+<p>In this example we can see some <a href="/api-methods/">Mithril API methods</a> like <code>m.mount</code> or <code>m.request</code>, besides Mithril's basic m() hyperscript function.
+It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>oninit</code>, <code>oncreate</code> and <code>onupdate</code> can be used.</p>
+<p>Ready? Here we go!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Simple Search Form Filtering Prefetched Data</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"  const State = () => ({\n    formData: {\n      input: ''\n    },\n    rawData: [],\n    filteredData: [],\n  })\n\n  const Actions = state => ({\n    filter: (input) => {\n      state.formData.input = input\n      input = input.trim()\n      if (input.length === 0) {\n        state.filteredData = []\n        return\n      }\n      const words = input.split(' ')\n      state.filteredData = state.rawData.filter(example => {\n        let filtered = false\n        words.map(word => {\n          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {\n            filtered = true\n          }\n        })\n        return filtered\n      })\n    },\n    reset: () => {\n      state.formData.input = ''\n      state.filteredData = []\n    }\n  })\n\n  const Form = {\n    view: ({attrs: {state, actions}}) => m('.search', [\n      m('input[type=text]', {\n        placeholder: 'Search for examples...',\n        oncreate: ({dom}) => setTimeout(() => dom.focus()),\n        onupdate: ({dom}) => setTimeout(() => dom.focus()),\n        oninput: (e) => {\n          actions.filter(e.target.value)\n        },\n        value: state.formData.input\n      }),\n      state.formData.input.length > 0\n        ? m('button', {onclick: actions.reset}, 'Reset')\n        : ''\n    ])\n  }\n\n  const List = {\n    view: ({attrs: {state, actions}}) => {\n      return state.filteredData.length > 0\n        ? m('ul', state.filteredData.map(example => {\n            return m('li', example.title)\n          })\n        )\n        : state.formData.input.length > 0\n          ? m('p', 'Your search did not match any examples.')\n          : ''\n    }\n  }\n\n  const apiUrl = 'https://mithril-by-examples.js.org/api/examples.json'\n  const state = State()\n  const actions = Actions(state)\n\n  m.mount(document.body, {\n    oninit: async function () {\n      state.rawData = await m.request(apiUrl)\n    },\n    view: () => [\n      m(Form, {state, actions}),\n      m(List, {state, actions})\n    ]\n  })\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">  const State = () =&gt; ({
+    formData: {
+      input: ''
+    },
+    rawData: [],
+    filteredData: [],
+  })
+
+  const Actions = state =&gt; ({
+    filter: (input) =&gt; {
+      state.formData.input = input
+      input = input.trim()
+      if (input.length === 0) {
+        state.filteredData = []
+        return
+      }
+      const words = input.split(' ')
+      state.filteredData = state.rawData.filter(example =&gt; {
+        let filtered = false
+        words.map(word =&gt; {
+          if (example.title.toLowerCase().indexOf(word.toLowerCase()) &gt; -1) {
+            filtered = true
+          }
+        })
+        return filtered
+      })
+    },
+    reset: () =&gt; {
+      state.formData.input = ''
+      state.filteredData = []
+    }
+  })
+
+  const Form = {
+    view: ({attrs: {state, actions}}) =&gt; m('.search', [
+      m('input[type=text]', {
+        placeholder: 'Search for examples...',
+        oncreate: ({dom}) =&gt; setTimeout(() =&gt; dom.focus()),
+        onupdate: ({dom}) =&gt; setTimeout(() =&gt; dom.focus()),
+        oninput: (e) =&gt; {
+          actions.filter(e.target.value)
+        },
+        value: state.formData.input
+      }),
+      state.formData.input.length &gt; 0
+        ? m('button', {onclick: actions.reset}, 'Reset')
+        : ''
+    ])
+  }
+
+  const List = {
+    view: ({attrs: {state, actions}}) =&gt; {
+      return state.filteredData.length &gt; 0
+        ? m('ul', state.filteredData.map(example =&gt; {
+            return m('li', example.title)
+          })
+        )
+        : state.formData.input.length &gt; 0
+          ? m('p', 'Your search did not match any examples.')
+          : ''
+    }
+  }
+
+  const apiUrl = 'https://mithril-by-examples.js.org/api/examples.json'
+  const state = State()
+  const actions = Actions(state)
+
+  m.mount(document.body, {
+    oninit: async function () {
+      state.rawData = await m.request(apiUrl)
+    },
+    view: () =&gt; [
+      m(Form, {state, actions}),
+      m(List, {state, actions})
+    ]
+  })
+</code></pre>
+
+
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
+To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/simple-search-form-filtering-preloaded-data.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/simple-search-form-filtering-preloaded-data/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

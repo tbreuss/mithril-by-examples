@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
+    <title>Search | Mithril by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1638011653">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638011653">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item nav-item-active"><a href="/search/">Search</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-home">
+      <h1>Search</h1>
+
+<div id="search"></div>
+<script src="https://unpkg.com/mithril/mithril.js"></script>
+<script>
+
+  const State = () => ({
+    formData: {
+      input: ''
+    },
+    rawData: [],
+    filteredData: [],
+  })
+
+  const Actions = state => ({
+    filter: (input) => {
+      state.formData.input = input
+      input = input.trim()
+      if (input.length === 0) {
+        state.filteredData = []
+        return
+      }
+      const words = input.split(' ')
+      state.filteredData = state.rawData.filter(example => {
+        let filtered = false
+        words.map(word => {
+          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {
+            filtered = true
+          }
+        })
+        return filtered
+      })
+    },
+    reset: () => {
+      state.formData.input = ''
+      state.filteredData = []
+    }
+  })
+
+  const Form = {
+    view: ({attrs: {state, actions}}) => m('.search', [
+      m('input.search__input[type=text]', {
+        placeholder: 'Search for examples...',
+        oncreate: ({dom}) => setTimeout(() => dom.focus()),
+        onupdate: ({dom}) => setTimeout(() => dom.focus()),
+        oninput: (e) => {
+          actions.filter(e.target.value)
+        },
+        value: state.formData.input
+      }),
+      state.formData.input.length > 0
+        ? m('button.search__reset', {onclick: actions.reset}, 'Reset')
+        : ''
+    ])
+  }
+
+  const List = {
+    view: ({attrs: {state, actions}}) => {
+      return state.filteredData.length > 0
+        ? m('ul.postlist', state.filteredData.map(example => {
+            return m('li', m('a.postlist-link', {href: example.url}, example.title))
+          })
+        )
+        : state.formData.input.length > 0
+          ? m('p', 'Your search did not match any examples.')
+          : ''
+    }
+  }
+
+  const state = State()
+  const actions = Actions(state)
+
+  m.mount(document.getElementById('search'), {
+    oninit: async function () {
+      state.rawData = await m.request('/api/examples.json')
+    },
+    view: () => [
+      m(Form, {state, actions}),
+      m(List, {state, actions})
+    ]
+  })
+</script>
+
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /search/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

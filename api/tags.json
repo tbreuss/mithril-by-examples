@@ -126,7 +126,7 @@
     },
     {
       "name": "form",
-      "examples": 12,
+      "examples": 13,
       "url": "/tags/form/"
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "name": "m.mount",
-      "examples": 64,
+      "examples": 65,
       "url": "/tags/m.mount/"
     },
     {
@@ -211,7 +211,7 @@
     },
     {
       "name": "m.request",
-      "examples": 7,
+      "examples": 8,
       "url": "/tags/m.request/"
     },
     {
@@ -236,7 +236,7 @@
     },
     {
       "name": "mitosis",
-      "examples": 5,
+      "examples": 6,
       "url": "/tags/mitosis/"
     },
     {
@@ -276,12 +276,12 @@
     },
     {
       "name": "oncreate",
-      "examples": 10,
+      "examples": 11,
       "url": "/tags/oncreate/"
     },
     {
       "name": "oninit",
-      "examples": 15,
+      "examples": 16,
       "url": "/tags/oninit/"
     },
     {
@@ -291,7 +291,7 @@
     },
     {
       "name": "onupdate",
-      "examples": 5,
+      "examples": 6,
       "url": "/tags/onupdate/"
     },
     {
@@ -331,7 +331,7 @@
     },
     {
       "name": "state",
-      "examples": 14,
+      "examples": 15,
       "url": "/tags/state/"
     },
     {
