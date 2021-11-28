@@ -28,7 +28,7 @@ layout: layouts/example.html
         state.filteredData = []
         return
       }
-      const words = input.split(' ')
+      const words = input.split(/\s+/)
       state.filteredData = state.rawData.filter(example => {
         let filtered = false
         words.map(word => {
