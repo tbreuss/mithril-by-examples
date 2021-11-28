@@ -6,13 +6,14 @@ eleventyNavigation:
   key: Search
   order: 4
 ---
-<div id="search"></div>
+<div id="search" class="search"></div>
 <script src="https://unpkg.com/mithril/mithril.js"></script>
 <script>
 
   const State = () => ({
     formData: {
-      input: ''
+      input: '',
+      words: []
     },
     rawData: [],
     filteredData: [],
@@ -27,6 +28,7 @@ eleventyNavigation:
         return
       }
       const words = input.split(' ')
+      state.formData.words = words
       state.filteredData = state.rawData.filter(example => {
         let filtered = false
         words.map(word => {
@@ -39,19 +41,27 @@ eleventyNavigation:
     },
     reset: () => {
       state.formData.input = ''
+      state.formData.words = []
       state.filteredData = []
     }
   })
 
+  const focus = () => ({dom}) => setTimeout(() => dom.focus())
+  const filter = (e) => actions.filter(e.target.value)
+  const highlight = (string, words) => {
+    const pattern = new RegExp(words.join('|'), 'gi')
+    return string.replace(pattern, function (x) {
+      return '<span class="search__highlighted">' + x + '</span>';
+    })
+  }
+
   const Form = {
-    view: ({attrs: {state, actions}}) => m('.search', [
+    view: ({attrs: {state, actions}}) => m('.search__form', [
       m('input.search__input[type=text]', {
         placeholder: 'Search for examples...',
-        oncreate: ({dom}) => setTimeout(() => dom.focus()),
-        onupdate: ({dom}) => setTimeout(() => dom.focus()),
-        oninput: (e) => {
-          actions.filter(e.target.value)
-        },
+        oncreate: focus,
+        onupdate: focus,
+        oninput: filter,
         value: state.formData.input
       }),
       state.formData.input.length > 0
@@ -63,8 +73,8 @@ eleventyNavigation:
   const List = {
     view: ({attrs: {state, actions}}) => {
       return state.filteredData.length > 0
-        ? m('ul.postlist', state.filteredData.map(example => {
-            return m('li', m('a.postlist-link', {href: example.url}, example.title))
+        ? m('ul.search__results', state.filteredData.map(example => {
+            return m('li.search__result', m('a.search__link', {href: example.url}, m.trust(highlight(example.title, state.formData.words))))
           })
         )
         : state.formData.input.length > 0
