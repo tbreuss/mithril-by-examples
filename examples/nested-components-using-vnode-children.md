@@ -9,6 +9,8 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const Child = {
   view: function(vnode) {
@@ -39,4 +41,10 @@ const App = {
 }
 
 m.mount(document.body, App);
+~~~
+
+## CSS
+
+~~~css
+@import "https://unpkg.com/water.css@2/out/water.min.css";
 ~~~

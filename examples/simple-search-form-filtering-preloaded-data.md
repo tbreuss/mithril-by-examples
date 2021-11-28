@@ -91,3 +91,12 @@ layout: layouts/example.html
     ]
   })
 ~~~
+
+## CSS
+
+~~~css
+@import "https://unpkg.com/water.css@2/out/water.min.css";
+input {
+  display: inline;
+}
+~~~

@@ -35,10 +35,7 @@ flems:
 
 ~~~css
 /* app.css */
-body {
-  background-color: lightblue;
-  color: darkblue;
-}
+@import "https://unpkg.com/water.css@2/out/water.min.css";
 ~~~
 
 ## JavaScript
