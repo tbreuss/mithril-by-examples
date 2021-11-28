@@ -45,16 +45,18 @@ layout: layouts/example.html
     }
   })
 
+  const focus = ({dom}) => setTimeout(() => dom.focus())
+
+  const filter = (e) => actions.filter(e.target.value)
+
   const Form = {
     view: ({attrs: {state, actions}}) => m('.search', [
       m('input[type=text]', {
         placeholder: 'Search for examples...',
-        oncreate: ({dom}) => setTimeout(() => dom.focus()),
-        onupdate: ({dom}) => setTimeout(() => dom.focus()),
-        oninput: (e) => {
-          actions.filter(e.target.value)
-        },
-        value: state.formData.input
+        value: state.formData.input,
+        oncreate: focus,
+        onupdate: focus,
+        oninput: filter
       }),
       state.formData.input.length > 0
         ? m('button', {onclick: actions.reset}, 'Reset')
