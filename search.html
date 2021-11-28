@@ -6,9 +6,11 @@ eleventyNavigation:
   key: Search
   order: 4
 ---
-<div id="search" class="search"></div>
-<script src="https://unpkg.com/mithril/mithril.js"></script>
+<div class="search" id="search"></div>
+<script src="/js/mithril.min.js"></script>
 <script>
+
+  // State & Actions
 
   const State = () => ({
     formData: {
@@ -46,14 +48,21 @@ eleventyNavigation:
     }
   })
 
-  const focus = () => ({dom}) => setTimeout(() => dom.focus())
+  const state = State()
+  const actions = Actions(state)
+
+  // Helpers
+
+  const focus = ({dom}) => setTimeout(() => dom.focus())
   const filter = (e) => actions.filter(e.target.value)
   const highlight = (string, words) => {
     const pattern = new RegExp(words.join('|'), 'gi')
-    return string.replace(pattern, function (x) {
-      return '<span class="search__highlighted">' + x + '</span>';
+    return string.replace(pattern, (word) => {
+      return '<span class="search__highlighted">' + word + '</span>';
     })
   }
+
+  // Components
 
   const Form = {
     view: ({attrs: {state, actions}}) => m('.search__form', [
@@ -71,10 +80,12 @@ eleventyNavigation:
   }
 
   const List = {
-    view: ({attrs: {state, actions}}) => {
+    view: ({attrs: {state}}) => {
       return state.filteredData.length > 0
         ? m('ul.search__results', state.filteredData.map(example => {
-            return m('li.search__result', m('a.search__link', {href: example.url}, m.trust(highlight(example.title, state.formData.words))))
+            return m('li.search__result', m('a.search__link', {href: example.url}, m.trust(
+              highlight(example.title, state.formData.words)
+            )))
           })
         )
         : state.formData.input.length > 0
@@ -83,16 +94,13 @@ eleventyNavigation:
     }
   }
 
-  const state = State()
-  const actions = Actions(state)
-
   m.mount(document.getElementById('search'), {
-    oninit: async function () {
+    oninit: async () => {
       state.rawData = await m.request('/api/examples.json')
     },
     view: () => [
       m(Form, {state, actions}),
-      m(List, {state, actions})
+      m(List, {state})
     ]
   })
 </script>
