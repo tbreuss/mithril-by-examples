@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Nested Components Using Vnode Children | Mithril by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1638011653">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638011653">
-    <link rel="stylesheet" href="/css/modal.css?v=1638011653">
+    <link rel="stylesheet" href="/css/index.css?v=1638166964">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638166964">
+    <link rel="stylesheet" href="/css/modal.css?v=1638166964">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -61,7 +61,7 @@ In this example we can also see the usecase of Vnodes (virtual DOM nodes) which 
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".js","content":"const Child = {\n  view: function(vnode) {\n    return m('div',\n      m('h3', vnode.attrs.title),\n      m('p', vnode.attrs.text)\n    );\n  }\n};\n\nconst Parent = {\n  view: function(vnode) {\n    return m('div', [\n      m('h2', 'Parent Title'),\n      vnode.children\n    ]);\n  }\n};\n\nconst App = {\n  view: function() {\n    return m(Parent, [\n      m(Child, { title: 'Child Title 1', text: 'Text Number 1' }),\n      m(Child, { title: 'Child Title 2', text: 'Text Number 2' }),\n      m(Child, { title: 'Child Title 3', text: 'Text Number 3' })\n    ]);\n  }\n}\n\nm.mount(document.body, App);\n"}],
+        files: [{"name":".js","content":"const Child = {\n  view: function(vnode) {\n    return m('div',\n      m('h3', vnode.attrs.title),\n      m('p', vnode.attrs.text)\n    );\n  }\n};\n\nconst Parent = {\n  view: function(vnode) {\n    return m('div', [\n      m('h2', 'Parent Title'),\n      vnode.children\n    ]);\n  }\n};\n\nconst App = {\n  view: function() {\n    return m(Parent, [\n      m(Child, { title: 'Child Title 1', text: 'Text Number 1' }),\n      m(Child, { title: 'Child Title 2', text: 'Text Number 2' }),\n      m(Child, { title: 'Child Title 3', text: 'Text Number 3' })\n    ]);\n  }\n}\n\nm.mount(document.body, App);\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -115,6 +115,7 @@ In this example we can also see the usecase of Vnodes (virtual DOM nodes) which 
         </style>
       
 
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">const Child = {
   view: function(vnode) {
     return m('div',
@@ -144,6 +145,9 @@ const App = {
 }
 
 m.mount(document.body, App);
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
 </code></pre>
 
 

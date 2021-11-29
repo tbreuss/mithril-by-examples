@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Simple Search Form Filtering Prefetched Data | Mithril by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1638011653">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638011653">
-    <link rel="stylesheet" href="/css/modal.css?v=1638011653">
+    <link rel="stylesheet" href="/css/index.css?v=1638166964">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638166964">
+    <link rel="stylesheet" href="/css/modal.css?v=1638166964">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -61,7 +61,7 @@ It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle meth
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".js","content":"  const State = () => ({\n    formData: {\n      input: ''\n    },\n    rawData: [],\n    filteredData: [],\n  })\n\n  const Actions = state => ({\n    filter: (input) => {\n      state.formData.input = input\n      input = input.trim()\n      if (input.length === 0) {\n        state.filteredData = []\n        return\n      }\n      const words = input.split(' ')\n      state.filteredData = state.rawData.filter(example => {\n        let filtered = false\n        words.map(word => {\n          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {\n            filtered = true\n          }\n        })\n        return filtered\n      })\n    },\n    reset: () => {\n      state.formData.input = ''\n      state.filteredData = []\n    }\n  })\n\n  const Form = {\n    view: ({attrs: {state, actions}}) => m('.search', [\n      m('input[type=text]', {\n        placeholder: 'Search for examples...',\n        oncreate: ({dom}) => setTimeout(() => dom.focus()),\n        onupdate: ({dom}) => setTimeout(() => dom.focus()),\n        oninput: (e) => {\n          actions.filter(e.target.value)\n        },\n        value: state.formData.input\n      }),\n      state.formData.input.length > 0\n        ? m('button', {onclick: actions.reset}, 'Reset')\n        : ''\n    ])\n  }\n\n  const List = {\n    view: ({attrs: {state, actions}}) => {\n      return state.filteredData.length > 0\n        ? m('ul', state.filteredData.map(example => {\n            return m('li', example.title)\n          })\n        )\n        : state.formData.input.length > 0\n          ? m('p', 'Your search did not match any examples.')\n          : ''\n    }\n  }\n\n  const apiUrl = 'https://mithril-by-examples.js.org/api/examples.json'\n  const state = State()\n  const actions = Actions(state)\n\n  m.mount(document.body, {\n    oninit: async function () {\n      state.rawData = await m.request(apiUrl)\n    },\n    view: () => [\n      m(Form, {state, actions}),\n      m(List, {state, actions})\n    ]\n  })\n"}],
+        files: [{"name":".js","content":"  const State = () => ({\n    formData: {\n      input: ''\n    },\n    rawData: [],\n    filteredData: [],\n  })\n\n  const Actions = state => ({\n    filter: (input) => {\n      state.formData.input = input\n      input = input.trim()\n      if (input.length === 0) {\n        state.filteredData = []\n        return\n      }\n      const words = input.split(/\\s+/)\n      state.filteredData = state.rawData.filter(example => {\n        let filtered = false\n        words.map(word => {\n          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {\n            filtered = true\n          }\n        })\n        return filtered\n      })\n    },\n    reset: () => {\n      state.formData.input = ''\n      state.filteredData = []\n    }\n  })\n\n  const focus = ({dom}) => setTimeout(() => dom.focus())\n\n  const filter = (e) => actions.filter(e.target.value)\n\n  const Form = {\n    view: ({attrs: {state, actions}}) => m('.search', [\n      m('input[type=text]', {\n        placeholder: 'Search for examples...',\n        value: state.formData.input,\n        oncreate: focus,\n        onupdate: focus,\n        oninput: filter\n      }),\n      state.formData.input.length > 0\n        ? m('button', {onclick: actions.reset}, 'Reset')\n        : ''\n    ])\n  }\n\n  const List = {\n    view: ({attrs: {state, actions}}) => {\n      return state.filteredData.length > 0\n        ? m('ul', state.filteredData.map(example => {\n            return m('li', example.title)\n          })\n        )\n        : state.formData.input.length > 0\n          ? m('p', 'Your search did not match any examples.')\n          : ''\n    }\n  }\n\n  const apiUrl = 'https://mithril-by-examples.js.org/api/examples.json'\n  const state = State()\n  const actions = Actions(state)\n\n  m.mount(document.body, {\n    oninit: async function () {\n      state.rawData = await m.request(apiUrl)\n    },\n    view: () => [\n      m(Form, {state, actions}),\n      m(List, {state, actions})\n    ]\n  })\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\ninput {\n  display: inline;\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -132,7 +132,7 @@ It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle meth
         state.filteredData = []
         return
       }
-      const words = input.split(' ')
+      const words = input.split(/\s+/)
       state.filteredData = state.rawData.filter(example =&gt; {
         let filtered = false
         words.map(word =&gt; {
@@ -149,16 +149,18 @@ It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle meth
     }
   })
 
+  const focus = ({dom}) =&gt; setTimeout(() =&gt; dom.focus())
+
+  const filter = (e) =&gt; actions.filter(e.target.value)
+
   const Form = {
     view: ({attrs: {state, actions}}) =&gt; m('.search', [
       m('input[type=text]', {
         placeholder: 'Search for examples...',
-        oncreate: ({dom}) =&gt; setTimeout(() =&gt; dom.focus()),
-        onupdate: ({dom}) =&gt; setTimeout(() =&gt; dom.focus()),
-        oninput: (e) =&gt; {
-          actions.filter(e.target.value)
-        },
-        value: state.formData.input
+        value: state.formData.input,
+        oncreate: focus,
+        onupdate: focus,
+        oninput: filter
       }),
       state.formData.input.length &gt; 0
         ? m('button', {onclick: actions.reset}, 'Reset')
@@ -192,6 +194,12 @@ It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle meth
       m(List, {state, actions})
     ]
   })
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
+input {
+  display: inline;
+}
 </code></pre>
 
 
