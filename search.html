@@ -61,7 +61,10 @@ eleventyNavigation:
       return '<span class="search__highlighted">' + word + '</span>';
     })
   }
-  const splitInput = (input) => input.trim().split(' ')
+  const splitInput = (input) => {
+    input = input.trim()
+    return input.length > 0 ? input.split(/\s+/) : []
+  }
   const filterDataByWords = (data, words) => data.filter(item => {
     let filtered = true
     words.map(word => {
@@ -75,7 +78,7 @@ eleventyNavigation:
   const Form = {
     view: ({attrs: {state}}) => m('.search__form', [
       m('input.search__input[type=text]', {
-        placeholder: 'Search for examples...',
+        placeholder: 'e.g. component',
         oncreate: focus,
         onupdate: focus,
         oninput: filter,
@@ -100,7 +103,7 @@ eleventyNavigation:
         ]
         : state.formData.input.length > 0
           ? m('p', 'Your search did not match any examples.')
-          : ''
+          : m('p', 'Search here for examples.')
     }
   }
 
