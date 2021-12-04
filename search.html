@@ -32,10 +32,12 @@ eleventyNavigation:
       const words = input.split(' ')
       state.formData.words = words
       state.filteredData = state.rawData.filter(example => {
-        let filtered = false
+        let filtered = true
         words.map(word => {
           if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {
-            filtered = true
+            filtered &= true
+          } else {
+            filtered &= false
           }
         })
         return filtered
@@ -82,12 +84,14 @@ eleventyNavigation:
   const List = {
     view: ({attrs: {state}}) => {
       return state.filteredData.length > 0
-        ? m('ul.search__results', state.filteredData.map(example => {
+        ? [
+          m('p', state.filteredData.length + ' examples found:'),
+          m('ul.search__results', state.filteredData.map(example => {
             return m('li.search__result', m('a.search__link', {href: example.url}, m.trust(
               highlight(example.title, state.formData.words)
             )))
-          })
-        )
+          }))
+        ]
         : state.formData.input.length > 0
           ? m('p', 'Your search did not match any examples.')
           : ''
