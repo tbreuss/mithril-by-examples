@@ -24,22 +24,15 @@ eleventyNavigation:
   const Actions = state => ({
     filter: (input) => {
       state.formData.input = input
-      input = input.trim()
-      if (input.length === 0) {
+      state.formData.words = splitInput(input)
+      if (state.formData.words.length === 0) {
         state.filteredData = []
         return
       }
-      const words = input.split(' ')
-      state.formData.words = words
-      state.filteredData = state.rawData.filter(example => {
-        let filtered = false
-        words.map(word => {
-          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {
-            filtered = true
-          }
-        })
-        return filtered
-      })
+      state.filteredData = filterDataByWords(
+        state.rawData,
+        state.formData.words
+      )
     },
     reset: () => {
       state.formData.input = ''
@@ -54,27 +47,45 @@ eleventyNavigation:
   // Helpers
 
   const focus = ({dom}) => setTimeout(() => dom.focus())
-  const filter = (e) => actions.filter(e.target.value)
+  const filter = (e) => {
+    localStorage.setItem('search', e.target.value)
+    actions.filter(e.target.value)
+  }
+  const reset = () => {
+    localStorage.setItem('search', '')
+    actions.reset()
+  }
   const highlight = (string, words) => {
     const pattern = new RegExp(words.join('|'), 'gi')
     return string.replace(pattern, (word) => {
       return '<span class="search__highlighted">' + word + '</span>';
     })
   }
+  const splitInput = (input) => {
+    input = input.trim()
+    return input.length > 0 ? input.split(/\s+/) : []
+  }
+  const filterDataByWords = (data, words) => data.filter(item => {
+    let filtered = true
+    words.map(word => {
+      filtered &= item.title.toLowerCase().indexOf(word.toLowerCase()) > -1
+    })
+    return filtered
+  })
 
   // Components
 
   const Form = {
-    view: ({attrs: {state, actions}}) => m('.search__form', [
+    view: ({attrs: {state}}) => m('.search__form', [
       m('input.search__input[type=text]', {
-        placeholder: 'Search for examples...',
+        placeholder: 'e.g. component',
         oncreate: focus,
         onupdate: focus,
         oninput: filter,
         value: state.formData.input
       }),
       state.formData.input.length > 0
-        ? m('button.search__reset', {onclick: actions.reset}, 'Reset')
+        ? m('button.search__reset', {onclick: reset}, 'Reset')
         : ''
     ])
   }
@@ -82,21 +93,29 @@ eleventyNavigation:
   const List = {
     view: ({attrs: {state}}) => {
       return state.filteredData.length > 0
-        ? m('ul.search__results', state.filteredData.map(example => {
+        ? [
+          m('p', state.filteredData.length + ' examples found.'),
+          m('ul.search__results', state.filteredData.map(example => {
             return m('li.search__result', m('a.search__link', {href: example.url}, m.trust(
               highlight(example.title, state.formData.words)
             )))
-          })
-        )
+          }))
+        ]
         : state.formData.input.length > 0
           ? m('p', 'Your search did not match any examples.')
-          : ''
+          : m('p', 'Search here for examples.')
     }
   }
+
+  // Application
 
   m.mount(document.getElementById('search'), {
     oninit: async () => {
       state.rawData = await m.request('/api/examples.json')
+      const input = localStorage.getItem('search') || ''
+      if (input.length > 0) {
+        actions.filter(input)
+      }
     },
     view: () => [
       m(Form, {state, actions}),
