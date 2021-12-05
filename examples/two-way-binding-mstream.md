@@ -12,6 +12,7 @@ flems:
     - mithril-stream/stream.js
 ---
 
+## JavaScript
 
 ~~~js
 const s = m.stream

@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const comp = {
   oninit: vnode => console.log('init ' + vnode.attrs.name),

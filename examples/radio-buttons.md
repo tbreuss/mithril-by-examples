@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const model = {
   yesno: "Yes"
@@ -35,6 +37,8 @@ const app = {
 
 m.mount(document.body, app)
 ~~~
+
+## CSS
 
 ~~~css
 label {

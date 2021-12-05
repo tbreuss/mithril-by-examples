@@ -12,6 +12,8 @@ flems:
   links:[]
 ---
 
+## JavaScript
+
 ~~~js
 // m.request wrapper api.js
 const handlers = {

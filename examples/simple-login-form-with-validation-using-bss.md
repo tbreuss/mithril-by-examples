@@ -12,6 +12,8 @@ flems:
     - bss@1.2.8
 ---
 
+## JavaScript
+
 ~~~js
 import b from 'bss'
 

@@ -19,7 +19,7 @@ flems:
       url: https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js
 ---
 
-## ENV
+## ENV.js
 
 ~~~js
 // ENV.js
@@ -236,7 +236,7 @@ var ENV = ENV || (function() {
 })();
 ~~~
 
-## JS
+## JavaScript
 
 ~~~js
 // app.js

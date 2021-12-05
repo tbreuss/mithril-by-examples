@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 // option 1 -> key is passed via attrs
 const page1 = {

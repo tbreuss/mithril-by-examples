@@ -9,7 +9,7 @@ author: mithril
 layout: layouts/example.html
 ---
 
-## JS
+## JavaScript
 
 ~~~js
 var root = document.body

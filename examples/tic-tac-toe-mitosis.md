@@ -150,7 +150,7 @@ const Game = {
 export default Game
 ~~~
 
-## JS
+## JavaScript
 
 ~~~js
 import State   from './state'

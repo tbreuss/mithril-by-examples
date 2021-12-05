@@ -9,7 +9,7 @@ author: osban
 layout: layouts/example.html
 ---
 
-## JS
+## JavaScript
 
 ~~~js
 const button = {
