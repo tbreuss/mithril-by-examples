@@ -81,11 +81,6 @@ module.exports = function(eleventyConfig) {
       matches = []
     }
 
-    matches.map(function(val){
-      const match = val.match(/<h2 id="(.+)" tabindex=".+">(.+)<a.*>*<\/a><\/h2>/i)
-      toc.push([match[1], match[2].trim()])
-    })
-
     let toc = []
 
     const noFlems = Array.isArray(flemsFiles)
@@ -96,6 +91,11 @@ module.exports = function(eleventyConfig) {
     if (version && !noFlems) {
       toc.push(['dependencies', 'Dependencies'])
     }
+
+    matches.map(function(val){
+      const match = val.match(/<h2 id="(.+)" tabindex=".+">(.+)<a.*>*<\/a><\/h2>/i)
+      toc.push([match[1], match[2].trim()])
+    })
 
     if (toc.length === 0) {
       return ''

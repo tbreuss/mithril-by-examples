@@ -38,7 +38,7 @@ flems:
 @import "https://unpkg.com/water.css@2/out/water.min.css";
 ~~~
 
-## JavaScript
+## Component.js
 
 ~~~js
 // component.js
@@ -51,6 +51,8 @@ const XYZ = {
   }
 }
 ~~~
+
+## App.js
 
 ~~~js
 // app.js
