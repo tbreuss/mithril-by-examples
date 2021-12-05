@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>XYZ Example to Show How Things Work | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1638611571">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638611571">
-    <link rel="stylesheet" href="/css/modal.css?v=1638611571">
+    <link rel="stylesheet" href="/css/index.css?v=1638698222">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1638698222">
+    <link rel="stylesheet" href="/css/modal.css?v=1638698222">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -33,7 +33,12 @@
 </p>
 
 <p><a href="/tags/basics/" class="post-tag">basics</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
-</p><p>This example is for demonstration purposes only to show how things work.</p>
+</p>
+
+<div class="toc">
+        <h2 class="toc__heading">Contents</h2>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#component.js">Component.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">App.js</a></li></ol>
+    </div><p>This example is for demonstration purposes only to show how things work.</p>
 <p>The example was written by tbreuss, last edits were made on 17 January 2021.
 The author has contributed some more snippets. <a href="/contributors/tbreuss/">Click here</a> to see them all.</p>
 <p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
@@ -131,7 +136,7 @@ Beginners should have no problems following this example, that simply shows some
 <pre><code class="language-css">/* app.css */
 @import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
 </code></pre>
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<h2 id="component.js" tabindex="-1">Component.js <a class="direct-link" href="#component.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// component.js
 const XYZ = {
   view: function() {
@@ -142,6 +147,7 @@ const XYZ = {
   }
 }
 </code></pre>
+<h2 id="app.js" tabindex="-1">App.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// app.js
 m.mount(document.getElementById('xyz'), XYZ)
 </code></pre>
