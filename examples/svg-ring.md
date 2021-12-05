@@ -34,7 +34,7 @@ layout: layouts/example.html
 }
 ~~~
 
-## JS
+## JavaScript
 
 ~~~js
 // https://codepen.io/RobinVr/pen/kEoqc

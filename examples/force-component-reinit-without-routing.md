@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const text = () => [
   m('p', `Keys are used usually to distinguish similar vnodes from one another.

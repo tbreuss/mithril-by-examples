@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const app = {
   oninit: v => {v.state.els = ["first item"]},

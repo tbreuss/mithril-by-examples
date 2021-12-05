@@ -74,6 +74,44 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(csvString);
   });
 
+  eleventyConfig.addShortcode('toc', (content, version, flemsFiles, flemsLinks) => {
+    const regex = /<h2 id=".*?" tabindex=".*?">.+?<\/h2>/ig
+    let matches = content.match(regex);
+    if (!Array.isArray(matches)) {
+      matches = []
+    }
+
+    let toc = []
+
+    const noFlems = Array.isArray(flemsFiles)
+      && (flemsFiles.length === 0)
+      && Array.isArray(flemsLinks)
+      && (flemsLinks.length === 0)
+
+    if (version && !noFlems) {
+      toc.push(['dependencies', 'Dependencies'])
+    }
+
+    matches.map(function(val){
+      const match = val.match(/<h2 id="(.+)" tabindex=".+">(.+)<a.*>*<\/a><\/h2>/i)
+      toc.push([match[1], match[2].trim()])
+    })
+
+    if (toc.length === 0) {
+      return ''
+    }
+
+    let list = '';
+    toc.map((f) => {
+      list += `<li class="toc__item"><a clas="toc__link" href="#${f[0]}">${f[1]}</a></li>`
+    });
+
+    return `<div class="toc">
+        <h2 class="toc__heading">Contents</h2>
+        <ol class="toc__list">${list}</ol>
+    </div>`
+  });
+
   eleventyConfig.addShortcode('textifyTop', (title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
     // some nice procedural programming ;-)
 
@@ -417,7 +455,7 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    if (flemsFilesArray.length === 0) {
+    if (flemsFilesArray.length === 0 && flemsLinksArray.length === 0) {
       return '';
     }
 

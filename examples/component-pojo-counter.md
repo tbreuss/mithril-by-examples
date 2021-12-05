@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 const pojo = {
   oninit: v => {v.state.count = 0},

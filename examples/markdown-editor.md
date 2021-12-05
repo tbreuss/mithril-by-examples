@@ -12,7 +12,7 @@ flems:
   links: []
 ---
 
-## JS
+## JavaScript
 
 ~~~js
 //model

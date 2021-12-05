@@ -9,7 +9,7 @@ author: mithril
 layout: layouts/example.html
 ---
 
-## JS
+## JavaScript
 
 ~~~js
 var clock = m("svg[viewBox='0 0 300 300'][xmlns='http://www.w3.org/2000/svg'][xmlns:xlink='http://www.w3.org/1999/xlink']", [

@@ -15,7 +15,7 @@ flems:
     - app.js
 ---
 
-## JS
+## JavaScript
 
 ~~~js
 // app.js
@@ -171,6 +171,8 @@ m.route(document.getElementById("todoapp"), "/", {
 </html>
 ~~~
 
+## Base.css
+
 ~~~css
 /* base.css */
 hr {
@@ -315,6 +317,8 @@ hr {
 	}
 }
 ~~~
+
+## App.css
 
 ~~~css
 /* app.css */

@@ -12,6 +12,8 @@ flems:
     - mithril-stream@2.0.0/stream.js
 ---
 
+## JavaScript
+
 ~~~js
 function BlurryDog({attrs: {src, blur}}) {
 

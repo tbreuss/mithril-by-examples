@@ -16,6 +16,8 @@ flems:
     - react-dom/umd/react-dom.development.js
 ---
 
+## JavaScript
+
 ~~~js
 class ReactComponent extends React.Component {
   constructor(){

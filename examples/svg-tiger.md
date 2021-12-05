@@ -34,7 +34,7 @@ layout: layouts/example.html
 }
 ~~~
 
-## JS
+## JavaScript
 
 ~~~js
 var tiger = m("svg[id='svg2'][version='1.1'][viewBox='0 0 900 900'][xmlns='http://www.w3.org/2000/svg']",

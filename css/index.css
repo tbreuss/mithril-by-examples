@@ -309,3 +309,20 @@ a[href].direct-link:focus:visited,
 .search__highlighted {
   background-color: #ffffa0;
 }
+
+/* toc */
+
+.toc {
+  border: 1px solid var(--gray);
+  border-radius: 0.25em;
+  padding: 1rem 1rem;
+  display: inline-block;
+}
+.toc__heading {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.toc__list {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}

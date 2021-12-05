@@ -9,6 +9,8 @@ author: stephanhoyer
 layout: layouts/example.html
 ---
 
+## JavaScript
+
 ~~~js
 m.mount(document.body, {
   view: () => [

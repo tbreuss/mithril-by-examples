@@ -9,6 +9,7 @@ author: osban
 layout: layouts/example.html
 ---
 
+## JavaScript
 
 ~~~js
 const full   = {view: vnode => m('h1', vnode.attrs.test)}

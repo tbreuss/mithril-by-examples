@@ -19,7 +19,7 @@ flems:
 <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
 ~~~
 
-## JS
+## JavaScript
 
 ~~~js
 const Stream = m.stream
