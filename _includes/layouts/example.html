@@ -28,6 +28,8 @@ templateClass: tmpl-post
   {%- endfor %}
 </p>
 
+{% toc content, version, flems.files, flems.links %}
+
 {%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
 {% textifyTop title, desc, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
 
