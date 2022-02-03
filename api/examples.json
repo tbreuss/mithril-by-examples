@@ -379,21 +379,21 @@
     },
     {
       "title": "Modal",
-      "date": "2021-10-26",
-      "tags": ["modal","dialog","component","m.mount","m.redraw","dom","onbeforeupdate","onremove","onbeforeremove","oncreate"],
-      "level": "advanced",
-      "version": "2.0.4",
-      "author": "spacejack",
-      "url": "/examples/modal-2/"
-    },
-    {
-      "title": "Modal",
       "date": "2021-10-16",
       "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
       "level": "beginner",
       "version": "2.0.4",
       "author": "spacejack",
       "url": "/examples/modal/"
+    },
+    {
+      "title": "Modal",
+      "date": "2021-10-26",
+      "tags": ["modal","dialog","component","m.mount","m.redraw","dom","onbeforeupdate","onremove","onbeforeremove","oncreate"],
+      "level": "advanced",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/modal-2/"
     },
     {
       "title": "Modal External State",
