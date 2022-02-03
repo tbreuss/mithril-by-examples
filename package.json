@@ -1,7 +1,7 @@
 {
-  "name": "eleventy-base-blog",
-  "version": "5.0.2",
-  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "name": "mithril-by-examples",
+  "version": "1.0.0",
+  "description": "Learn Mithril.js by seeing, reviewing, and running up-to-date code examples.",
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
@@ -11,18 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
+    "url": "git@github.com:tbreuss/mithril-by-examples.git"
   },
   "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
+    "name": "Thomas Breuss",
+    "url": "https://github.com/tbreuss"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+    "url": "https://github.com/tbreuss/mithril-by-examples/issues"
   },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+  "homepage": "https://mithril-by-examples.js.org",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-navigation": "^0.3.2",
