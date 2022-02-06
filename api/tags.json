@@ -86,7 +86,7 @@
     },
     {
       "name": "component",
-      "examples": 26,
+      "examples": 27,
       "url": "/tags/component/"
     },
     {
@@ -150,6 +150,11 @@
       "url": "/tags/hex/"
     },
     {
+      "name": "icons",
+      "examples": 1,
+      "url": "/tags/icons/"
+    },
+    {
       "name": "input",
       "examples": 3,
       "url": "/tags/input/"
@@ -196,7 +201,7 @@
     },
     {
       "name": "m.mount",
-      "examples": 65,
+      "examples": 66,
       "url": "/tags/m.mount/"
     },
     {
@@ -341,7 +346,7 @@
     },
     {
       "name": "svg",
-      "examples": 3,
+      "examples": 4,
       "url": "/tags/svg/"
     },
     {

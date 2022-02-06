@@ -288,6 +288,15 @@
       "url": "/examples/highchart-stream-example/"
     },
     {
+      "title": "Icon Component",
+      "date": "2022-02-06",
+      "tags": ["component","icons","m.mount","svg"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/icon-component/"
+    },
+    {
       "title": "Layout with Header, Body, and Footer",
       "date": "2020-09-24",
       "tags": ["layout","m.route"],
