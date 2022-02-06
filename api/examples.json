@@ -324,6 +324,15 @@
       "url": "/examples/lifecycle-methods/"
     },
     {
+      "title": "Loading Button Component",
+      "date": "2022-01-29",
+      "tags": ["animation","button","component","loading","m.mount","m.redraw","vnode"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/loading-button-component/"
+    },
+    {
       "title": "Loading Message",
       "date": "2020-09-24",
       "tags": ["loading","m.request","m.mount","m.redraw"],

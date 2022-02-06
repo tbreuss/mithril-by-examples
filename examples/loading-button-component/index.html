@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
+    <title>Loading Button Component | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1644157493">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1644157493">
+    <link rel="stylesheet" href="/css/modal.css?v=1644157493">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <ul class="nav">
+        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
+        <li class="nav-item"><a href="/tags/">Tags</a></li>
+        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
+        <li class="nav-item"><a href="/search/">Search</a></li>
+        <li class="nav-item"><a href="/about/">About</a></li>
+      </ul>
+    </header>
+    <main class="content tmpl-post">
+      <h1>Loading Button Component</h1>
+
+<p>
+  <time datetime="2022-01-29">29 January 2022</time><span class="author">
+    by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
+  </span>
+</p>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+</p>
+
+<p><a href="/tags/animation/" class="post-tag">animation</a><a href="/tags/button/" class="post-tag">button</a><a href="/tags/component/" class="post-tag">component</a><a href="/tags/loading/" class="post-tag">loading</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.redraw/" class="post-tag">m.redraw</a><a href="/tags/vnode/" class="post-tag">vnode</a>
+</p>
+
+<div class="toc">
+        <h2 class="toc__heading">Contents</h2>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#styles">Styles</a></li></ol>
+    </div><p>Here is an example of a button whose loading and disabled states are controlled by the parent component. When you click the button, a loading animation is displayed. At the same time, the button goes into the <code>disabled</code> state. After the work is done (i.e. a server response received), the button returns to its initial state. The animation in this example was made with pure CSS animation.</p>
+<p>The example was contributed by tbreuss and last modified on 29 January 2022.
+<a href="/contributors/tbreuss/">Click here</a> to see more examples contributed by the author.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>Besides Mithril's hyperscript function m() we can see different <a href="/api-methods/">Mithril API methods</a> like <code>m.mount</code> or <code>m.redraw</code>.
+In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.</p>
+<p>Enough said, here it is!</p>
+
+
+
+      <div class="modal-container">
+        <label for="modal" class="example-label">Show Live Example in Flems</label>
+        <label for="modal" class="modal-background"></label>
+        <input type="checkbox" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <h3>Loading Button Component</h3>
+            <label for="modal">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+            </label>
+          </div>
+          <div id="flems" class="modal-body"></div>
+        </div>
+      </div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        selected: '.js',
+        files: [{"name":".js","content":"const LoadingButton = {\n  view: (v) => m('button', {\n      type: v.attrs.type || 'submit',\n      class: v.attrs.class || '',\n      onclick: v.attrs.onclick || null,\n      disabled: v.attrs.loading\n    }, [\n    v.attrs.loading ? m('div.spinner') : '',\n    m('div', v.children),\n  ])\n}\n\nconst request = () => new Promise((resolve, reject) => {\n  let wait = setTimeout(() => {\n    resolve('Response received')\n  }, 1500)\n})\n\nconst state = {\n  loading: false,\n  text: []\n}\n\nconst app = () => {\n  return {\n    view: () => m('div',\n      m('h1', 'Loading Button'),\n      m('div.buttons',\n        m(LoadingButton, {\n          loading: state.loading,\n          onclick: () => {\n            state.loading = true\n            state.text.push('Request sent')\n            m.redraw()\n            request().then((response) => {\n              state.loading = false\n              state.text.push(response)\n              m.redraw() // not necessary in a real m.request\n            })\n          }\n        }, 'Make Request'),\n        state.text.length ? m(LoadingButton, {\n          onclick: () => {\n            state.text = []\n          }\n        }, 'Reset Log') : '',\n      ),\n      m('div.log',\n        state.text.map((t) => m('div', '> ' + t))\n      )\n    )\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\ndiv.buttons {\n  margin-bottom: 0.5em;\n}\n\nbutton div {\n  float: left;\n}\n\n.spinner,\n.spinner:after {\n  border-radius: 50%;\n  width: 1.5em;\n  height: 1.5em;\n}\n\n.spinner {\n  margin-right: 0.5em;\n  font-size: 10px;\n  position: relative;\n  text-indent: -9999em;\n  border-top: .2em solid white;\n  border-right: .2em solid white;\n  border-bottom: .2em solid white;\n  border-left: .2em solid transparent;\n  transform: translateZ(0);\n  animation: spinning 1s infinite linear;\n}\n\n@keyframes spinning {\n  0% { transform: rotate(0deg) }\n  100% { transform: rotate(360deg) }\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <style>
+        .dependencies {
+            color: #282c34;
+            margin-bottom: 2rem;
+        }
+        .dependencies__tableWrap {
+            background-color: #282c34;
+            display: block;
+            overflow-x: auto;
+        }
+        /* strange things happen here */
+        .dependencies__table {
+            margin: -1rem 0 0 0 !important;
+            padding: 1em;
+        }
+        .dependencies__table--1 {
+            margin-top: 0 !important;
+        }
+        .dependencies__table th, .dependencies__table td {
+            color: #abb2bf;
+            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+            font-size: 14px;
+        }
+        .dependencies__table th {
+          text-align: left;
+        }
+        .capitalize {
+            text-transform: capitalize;
+        }
+        </style>
+      
+
+<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const LoadingButton = {
+  view: (v) =&gt; m('button', {
+      type: v.attrs.type || 'submit',
+      class: v.attrs.class || '',
+      onclick: v.attrs.onclick || null,
+      disabled: v.attrs.loading
+    }, [
+    v.attrs.loading ? m('div.spinner') : '',
+    m('div', v.children),
+  ])
+}
+
+const request = () =&gt; new Promise((resolve, reject) =&gt; {
+  let wait = setTimeout(() =&gt; {
+    resolve('Response received')
+  }, 1500)
+})
+
+const state = {
+  loading: false,
+  text: []
+}
+
+const app = () =&gt; {
+  return {
+    view: () =&gt; m('div',
+      m('h1', 'Loading Button'),
+      m('div.buttons',
+        m(LoadingButton, {
+          loading: state.loading,
+          onclick: () =&gt; {
+            state.loading = true
+            state.text.push('Request sent')
+            m.redraw()
+            request().then((response) =&gt; {
+              state.loading = false
+              state.text.push(response)
+              m.redraw() // not necessary in a real m.request
+            })
+          }
+        }, 'Make Request'),
+        state.text.length ? m(LoadingButton, {
+          onclick: () =&gt; {
+            state.text = []
+          }
+        }, 'Reset Log') : '',
+      ),
+      m('div.log',
+        state.text.map((t) =&gt; m('div', '&gt; ' + t))
+      )
+    )
+  }
+}
+
+m.mount(document.body, app)
+</code></pre>
+<h2 id="styles" tabindex="-1">Styles <a class="direct-link" href="#styles" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
+
+div.buttons {
+  margin-bottom: 0.5em;
+}
+
+button div {
+  float: left;
+}
+
+.spinner,
+.spinner:after {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.spinner {
+  margin-right: 0.5em;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: .2em solid white;
+  border-right: .2em solid white;
+  border-bottom: .2em solid white;
+  border-left: .2em solid transparent;
+  transform: translateZ(0);
+  animation: spinning 1s infinite linear;
+}
+
+@keyframes spinning {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+</code></pre>
+
+
+<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or simply fork the repository on GitHub, push your commits and send a pull request.
+For starting your work, you can click the edit link below. Thanks for contributing.</p>
+
+
+<p style="margin-top:2rem;">
+  <a href="/examples/">See more code examples</a>
+  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/loading-button-component.md">Edit this example on GitHub</a>
+</p>
+
+    </main>
+    <footer></footer>
+    <!-- Current page: /examples/loading-button-component/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</html>

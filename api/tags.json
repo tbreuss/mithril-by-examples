@@ -11,7 +11,7 @@
     },
     {
       "name": "animation",
-      "examples": 8,
+      "examples": 9,
       "url": "/tags/animation/"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
       "name": "button",
-      "examples": 1,
+      "examples": 2,
       "url": "/tags/button/"
     },
     {
@@ -86,7 +86,7 @@
     },
     {
       "name": "component",
-      "examples": 27,
+      "examples": 28,
       "url": "/tags/component/"
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       "name": "loading",
-      "examples": 2,
+      "examples": 3,
       "url": "/tags/loading/"
     },
     {
@@ -201,12 +201,12 @@
     },
     {
       "name": "m.mount",
-      "examples": 66,
+      "examples": 67,
       "url": "/tags/m.mount/"
     },
     {
       "name": "m.redraw",
-      "examples": 4,
+      "examples": 5,
       "url": "/tags/m.redraw/"
     },
     {
@@ -386,7 +386,7 @@
     },
     {
       "name": "vnode",
-      "examples": 15,
+      "examples": 16,
       "url": "/tags/vnode/"
     },
     {
