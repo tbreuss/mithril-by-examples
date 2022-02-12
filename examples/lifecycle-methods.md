@@ -1,6 +1,6 @@
 ---
 title: Lifecycle Methods
-desc:
+abstract: An example showing all lifecycle methods from Mithril.
 date: 2021-10-19
 tags: [component, lifecycle, official, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: intermediate
@@ -8,6 +8,8 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+An example showing all lifecycle methods from Mithril.
 
 ## JavaScript
 

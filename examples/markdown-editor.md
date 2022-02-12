@@ -1,6 +1,6 @@
 ---
 title: Markdown Editor
-desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows a very simple markdown editor using marked.js."
+abstract: This example shows a very simple markdown editor using marked.js.
 date: 2021-10-27
 tags: [markdown, editor, official, m.trust, m.mount]
 level: beginner
@@ -11,6 +11,9 @@ flems:
   files: []
   links: []
 ---
+
+This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
+It shows a very simple markdown editor using marked.js.
 
 ## JavaScript
 

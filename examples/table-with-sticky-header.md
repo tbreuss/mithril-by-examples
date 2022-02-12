@@ -1,6 +1,6 @@
 ---
 title: Table with Sticky Header
-desc: This example shows how to create a table with a sticky header.
+abstract: This example shows how to create a table with a sticky header.
 date: 2021-10-24
 tags: [table, sticky, header, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: spacejack
 layout: layouts/example.html
 ---
+
+This example shows how to create a table with a sticky header.
 
 ## CSS
 

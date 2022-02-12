@@ -1,6 +1,6 @@
 ---
 title: Modal External State
-desc:
+abstract:
 date: 2020-09-24
 tags: [modal, state, m.mount]
 level: beginner

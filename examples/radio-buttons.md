@@ -1,6 +1,6 @@
 ---
 title: Radio Buttons
-desc:
+abstract:
 date: 2020-09-24
 tags: [form, input, radiobutton, m.mount]
 level: beginner

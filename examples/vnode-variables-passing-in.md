@@ -1,6 +1,6 @@
 ---
 title: Vnode Examples of Passing Variables In
-desc: This is an example using Vnodes passing some variables in.
+abstract: This is an example using Vnodes passing some variables in.
 date: 2020-09-24
 tags: [vnode, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+This is an example using Vnodes passing some variables in.
 
 ## JavaScript
 

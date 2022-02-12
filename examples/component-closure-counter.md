@@ -1,6 +1,6 @@
 ---
 title: Component Closure Counter
-desc: Counter component example based on javascript closure.
+abstract: Counter component example based on javascript closure.
 date: 2020-09-24
 tags: [component, pojo, state, counter, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Counter component example based on javascript closure.
 
 ## JavaScript
 

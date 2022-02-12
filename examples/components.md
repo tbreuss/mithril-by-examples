@@ -1,6 +1,6 @@
 ---
 title: Components
-desc: "This example was taken from the official website at <https://mithril.js.org/index.html#components>."
+abstract: This example was taken from the official website.
 date: 2021-10-16
 tags: [basics, component, official, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+This example was taken from the official website at <https://mithril.js.org/index.html#components>.
 
 ## HTML
 

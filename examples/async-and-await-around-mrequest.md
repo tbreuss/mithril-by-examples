@@ -1,6 +1,6 @@
 ---
 title: Async and Await Around m.request
-desc: Demonstrate async and await around Mitrhils `m.request`.
+abstract: Demonstrate async and await around Mitrhils `m.request`.
 date: 2021-10-26
 tags: [m.request, async-await, m.mount, api, oninit]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: viniciusCamargo
 layout: layouts/example.html
 ---
+
+Demonstrate async and await around Mitrhils `m.request`.
 
 ## JavaScript
 

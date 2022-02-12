@@ -1,6 +1,6 @@
 ---
 title: Tab Component
-desc: "Demonstration how to create a tab view, where tab toggle buttons communicate there activation state though a surrounding wrapper component using tab ids."
+abstract: Demonstration how to create a tab view, where tab toggle buttons communicate there activation state though a surrounding wrapper component using tab ids.
 date: 2021-10-16
 tags: [component, tab, m.mount]
 level: beginner
@@ -17,6 +17,8 @@ flems:
       type: css
       url: https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css
 ---
+
+Demonstration how to create a tab view, where tab toggle buttons communicate there activation state though a surrounding wrapper component using tab ids.
 
 ## Tabs.js
 

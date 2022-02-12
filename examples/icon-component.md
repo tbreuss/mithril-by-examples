@@ -1,6 +1,6 @@
 ---
 title: Icon Component
-desc: Have you already needed icons in your Mithril project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from [Feather Icons](https://feathericons.com/). So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.
+abstract: This example shows a solution for a simple Icon component and suitable SVG icons.
 date: 2022-02-06
 tags: [component, icons, m.mount, svg]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: tbreuss
 layout: layouts/example.html
 ---
+
+Have you already needed icons in your Mithril project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from [Feather Icons](https://feathericons.com/). So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.
 
 ## JavaScript
 

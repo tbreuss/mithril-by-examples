@@ -1,6 +1,6 @@
 ---
 title: SVG Clock
-desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows an animated clock using SVG."
+abstract: This example shows an animated clock using SVG.
 date: 2021-10-27
 tags: [animation, official, svg, m.render]
 level: beginner
@@ -8,6 +8,9 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
+It shows an animated clock using SVG.
 
 ## JavaScript
 

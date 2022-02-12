@@ -1,6 +1,6 @@
 ---
 title: CSS Animation on Element Creation
-desc: Animating an element via CSS when the element is created is simple. Just add an animation to a CSS class normally.
+abstract: Animating an element via CSS when the element is created is simple. Just add an animation to a CSS class normally.
 date: 2021-10-19
 tags: [basics, animation, official, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+Animating an element via CSS when the element is created is simple. Just add an animation to a CSS class normally.
 
 ## Styles
 

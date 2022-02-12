@@ -1,6 +1,6 @@
 ---
 title: Parent-Child Communication
-desc: Parent-child communication where a child changes the parent.
+abstract: Parent-child communication where a child changes the parent.
 date: 2020-09-24
 tags: [component, communication, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Parent-child communication where a child changes the parent.
 
 ## JavaScript
 

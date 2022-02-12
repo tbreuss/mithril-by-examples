@@ -1,6 +1,6 @@
 ---
 title: Authentication Wrapper Around m.request
-desc: Example showing an authentication wrapper around Mithrils `m.request`.
+abstract: Example showing an authentication wrapper around Mithrils `m.request`.
 date: 2021-10-26
 tags: [jwt, local storage, wrapper, m.request, m.route, m.mount, vnode, login, api]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: cmnstmntmn
 layout: layouts/example.html
 ---
+
+Example showing an authentication wrapper around Mithrils `m.request`.
 
 ## JavaScript
 

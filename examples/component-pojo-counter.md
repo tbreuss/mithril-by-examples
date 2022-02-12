@@ -1,6 +1,6 @@
 ---
 title: Component Pojo Counter
-desc: Counter component example based on plain old javascript object (POJO).
+abstract: Counter component example based on plain old javascript object (POJO).
 date: 2020-09-24
 tags: [component, pojo, state, counter, m.mount, oninit]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Counter component example based on plain old javascript object (POJO).
 
 ## JavaScript
 

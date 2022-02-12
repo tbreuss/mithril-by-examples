@@ -1,6 +1,6 @@
 ---
 title: Styled Component with BSS
-desc: Use bss (Better Style Sheets) like styled components, but way simpler.
+abstract: Use bss (Better Style Sheets) like styled components, but way simpler.
 date: 2021-10-16
 tags: [bss, css, m.mount]
 level: beginner
@@ -11,6 +11,8 @@ flems:
   links:
     - bss@1.2.10
 ---
+
+Use bss (Better Style Sheets) like styled components, but way simpler.
 
 ## JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Two-Way Binding - With m.stream
-desc: This is an example showing two-way binding with mithrils own stream library.
+abstract: This is an example showing two-way binding with mithrils own stream library.
 date: 2020-09-24
 tags: [form, two-way-binding, m.stream, m.mount]
 level: beginner
@@ -11,6 +11,8 @@ flems:
   links:
     - mithril-stream/stream.js
 ---
+
+This is an example showing two-way binding with mithrils own stream library.
 
 ## JavaScript
 

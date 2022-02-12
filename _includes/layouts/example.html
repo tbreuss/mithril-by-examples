@@ -30,12 +30,10 @@ templateClass: tmpl-post
 
 {% toc content, version, flems.files, flems.links %}
 
+{{ content | flems(title, flems.selected, flems.files, flems.links, version) | safe }}
+
 {%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
-{% textifyTop title, desc, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
-
-{% flems content, title, flems.selected, flems.files, flems.links, version %}
-
-{{ content | safe }}
+{% textifyTop title, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
 
 {% textifyBottom title, date | readableDate, tags, level, version %}
 

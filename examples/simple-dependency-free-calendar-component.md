@@ -1,6 +1,6 @@
 ---
 title: Simple Dependency Free Calendar Component
-desc: Simple dependency free calendar component.
+abstract: Simple dependency free calendar component.
 date: 2021-10-16
 tags: [calendar, component, m.mount, oninit]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: stephanhoyer
 layout: layouts/example.html
 ---
+
+Simple dependency free calendar component.
 
 ## CSS
 

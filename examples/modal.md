@@ -1,6 +1,6 @@
 ---
 title: Modal
-desc:
+abstract:
 date: 2021-10-16
 tags: [modal, dialog, m.render, m.mount, vnode, bulma]
 level: beginner

@@ -1,6 +1,6 @@
 ---
 title: Simple Login Form with Validation using BSS
-desc: Form for user name and email with validation and error messages.
+abstract: Form for user name and email with validation and error messages.
 date: 2021-10-16
 tags: [form, login, bss, validation, m.mount]
 level: beginner
@@ -11,6 +11,8 @@ flems:
   links:
     - bss@1.2.8
 ---
+
+Form for user name and email with validation and error messages.
 
 ## JavaScript
 

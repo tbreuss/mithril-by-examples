@@ -1,6 +1,6 @@
 ---
 title: Lifecycle Explorer
-desc: Interactive sandbox to check the order of Mithrils life cycle events for nested DOM structure.
+abstract: Interactive sandbox to check the order of Mithrils life cycle events for nested DOM structure.
 date: 2021-10-23
 tags: [lifecycle, m.render, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: barneycarroll
 layout: layouts/example.html
 ---
+
+Interactive sandbox to check the order of Mithrils life cycle events for nested DOM structure.
 
 ## JavaScript
 

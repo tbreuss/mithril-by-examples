@@ -1,6 +1,6 @@
 ---
 title: Manage State using Simple Variables
-desc: "In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest. Below is an example of a simple Counter application written with Mithril."
+abstract: An example as a simple Counter application written with Mithril.
 date: 2021-10-19
 tags: [state, component, m.mount]
 level: intermediate
@@ -8,6 +8,9 @@ version: 2.0.4
 author: kevinfiol
 layout: layouts/example.html
 ---
+
+In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+Below is an example of a simple Counter application written with Mithril.
 
 ## JavaScript
 

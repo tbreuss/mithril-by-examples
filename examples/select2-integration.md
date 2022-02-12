@@ -1,6 +1,6 @@
 ---
 title: Select2 Integration
-desc: This example shows the integration of select2 3rd-party library.
+abstract: This example shows the integration of select2 3rd-party library.
 date: 2021-10-26
 tags: [3rd-party, form, select, m.mount, dom, oncreate]
 level: beginner
@@ -12,6 +12,8 @@ flems:
     - jquery@3.3.1
     - select2@4.0.6-rc.1
 ---
+
+This example shows the integration of select2 3rd-party library.
 
 ## HTML
 

@@ -1,6 +1,6 @@
 ---
 title: Todo MVC (Traditional)
-desc: Here is another Todo MVC implementation, this time a more traditional one.
+abstract: Here is another Todo MVC implementation, this time a more traditional one.
 date: 2021-10-29
 tags: [todomvc, m.route, dom, onupdate, oninit]
 level: expert
@@ -18,6 +18,8 @@ flems:
     - app.js
     - .css
 ---
+
+Here is another Todo MVC implementation, this time a more traditional one.
 
 ## Markup
 

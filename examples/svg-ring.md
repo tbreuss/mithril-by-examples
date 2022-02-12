@@ -1,6 +1,6 @@
 ---
 title: SVG Ring
-desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows an SVG with multiple paths animating with css using delay and stroke offset. The example was originally written by <https://codepen.io/RobinVr/pen/kEoqc>."
+abstract: This example shows an SVG with multiple paths animating with css using delay and stroke offset.
 date: 2021-10-27
 tags: [animation, official, svg, m.render]
 level: beginner
@@ -8,6 +8,10 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
+It shows an SVG with multiple paths animating with css using delay and stroke offset.
+The example was originally written by <https://codepen.io/RobinVr/pen/kEoqc>.
 
 ## HTML
 

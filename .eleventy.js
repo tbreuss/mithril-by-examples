@@ -5,7 +5,8 @@ const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const {decode} = require('html-entities');
-const util = require('util')
+const util = require('util');
+const { exit } = require('process');
 
 module.exports = function(eleventyConfig) {
 
@@ -101,6 +102,8 @@ module.exports = function(eleventyConfig) {
       return ''
     }
 
+    toc.push(['contribute', 'Contribute'])
+
     let list = '';
     toc.map((f) => {
       list += `<li class="toc__item"><a clas="toc__link" href="#${f[0]}">${f[1]}</a></li>`
@@ -112,7 +115,7 @@ module.exports = function(eleventyConfig) {
     </div>`
   });
 
-  eleventyConfig.addShortcode('textifyTop', (title, description, date, tags, level, version, author, authorUrl, link, authorMap) => {
+  eleventyConfig.addShortcode('textifyTop', (title, date, tags, level, version, author, authorUrl, link, authorMap) => {
     // some nice procedural programming ;-)
 
     let textVariantNumber = calcSumDigitsOfString(title) % 3;
@@ -135,32 +138,6 @@ module.exports = function(eleventyConfig) {
     });
 
     let text = [];
-
-    if (description && (description.length > 0)) {
-      text.push(description);
-      text.push('');
-    }
-
-    if (author.length > 0) {
-      text.push([
-        'The example was contributed by ' + author + ' and last modified on ' + date + '.',
-        'The code sample was authored by ' + author + '. It was last modified on ' + date + '.',
-        'The example was written by ' + author + ', last edits were made on ' + date + '.',
-      ][textVariantNumber]);
-      if (authorExampleCount > 2) {
-        text.push([
-          '[Click here](' + authorUrl + ') to see more examples contributed by the author.',
-          'Want to see more examples written by ' + author + '? Then [Click here](' + authorUrl + ').',
-          'The author has contributed some more snippets. [Click here](' + authorUrl + ') to see them all.'
-        ][textVariantNumber]);
-      } else if(authorExampleCount === 2) {
-        text.push([
-          '[Click here](' + authorUrl + ') to see another example contributed by the author.',
-          'Do you want to see another one written by ' + author + '? Then [Click here](' + authorUrl + ').',
-          'The author has written one more snippet. [Click here](' + authorUrl + ') to see it.'
-        ][textVariantNumber]);
-      }
-    }
 
     if (version.length > 0) {
       text.push ("\n");
@@ -261,12 +238,27 @@ module.exports = function(eleventyConfig) {
       ][textVariantNumber]);
     }
 
-    text.push('');
-    text.push([
-      'Enough said, here it is!',
-      'Ready? Here we go!',
-      'So, here are the code snippets.',
-    ][textVariantNumber]);
+    if (author.length > 0) {
+      text.push ("\n");
+      text.push([
+        'The example was contributed by ' + author + ' and last modified on ' + date + '.',
+        'The code sample was authored by ' + author + '. It was last modified on ' + date + '.',
+        'The example was written by ' + author + ', last edits were made on ' + date + '.',
+      ][textVariantNumber]);
+      if (authorExampleCount > 2) {
+        text.push([
+          '[Click here](' + authorUrl + ') to see more examples contributed by the author.',
+          'Want to see more examples written by ' + author + '? Then [Click here](' + authorUrl + ').',
+          'The author has contributed some more snippets. [Click here](' + authorUrl + ') to see them all.'
+        ][textVariantNumber]);
+      } else if(authorExampleCount === 2) {
+        text.push([
+          '[Click here](' + authorUrl + ') to see another example contributed by the author.',
+          'Do you want to see another one written by ' + author + '? Then [Click here](' + authorUrl + ').',
+          'The author has written one more snippet. [Click here](' + authorUrl + ') to see it.'
+        ][textVariantNumber]);
+      }
+    }
 
     if (text.length > 0) {
       return markdownLibrary.render(text.join("\n"));
@@ -283,6 +275,7 @@ module.exports = function(eleventyConfig) {
 
     if (version.length > 0) {
       text.push ("\n");
+      text.push ("## Contribute");
       if (version === '2.0.4') {
         text.push([
           'If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
@@ -316,7 +309,7 @@ module.exports = function(eleventyConfig) {
     return '';
   });
 
-  eleventyConfig.addShortcode('flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+  function flemsButton(content, title, flemsSelected, flemsFiles, flemsLinks, version) {
     // some nice procedural programming ;-)
 
     if (!flemsSelected || flemsSelected === '') {
@@ -543,7 +536,7 @@ module.exports = function(eleventyConfig) {
     }
 
     return html;
-  });
+  };
 
   eleventyConfig.addFilter('readableDate', dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('dd LLLL yyyy');
@@ -590,6 +583,19 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('filterByTag', function(collection, tag) {
     if (!tag) return collection;
     return collection.filter(item => item.data.tags.indexOf(tag) !== -1)
+  });
+
+  eleventyConfig.addFilter('flems', (content, title, flemsSelected, flemsFiles, flemsLinks, version) => {
+    const flems = flemsButton(content, title, flemsSelected, flemsFiles, flemsLinks, version)
+
+    const firstHeadingPosition = content.indexOf('<h2')
+    if (firstHeadingPosition == -1) {
+      return flems + content
+    }
+
+    return content.substring(0, firstHeadingPosition)
+      + flems
+      + content.substring(firstHeadingPosition)
   });
 
   eleventyConfig.addCollection('levelMap', function(collection) {

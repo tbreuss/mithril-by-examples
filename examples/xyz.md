@@ -1,6 +1,6 @@
 ---
 title: XYZ Example to Show How Things Work
-desc: This example is for demonstration purposes only to show how things work.
+abstract: This example is for demonstration purposes only to show how things work.
 date: 2021-01-17
 tags: [basics, m.mount]
 level: beginner
@@ -14,6 +14,8 @@ flems:
     - component.js
     - app.js
 ---
+
+This example is for demonstration purposes only to show how things work.
 
 ## HTML
 

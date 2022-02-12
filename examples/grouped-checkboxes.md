@@ -1,6 +1,6 @@
 ---
 title: Grouped Checkboxes
-desc: Form with multiple checkboxes that are grouped so that only one checkbox per group can be selected, like radio buttons.
+abstract: Form with multiple checkboxes that are grouped so that only one checkbox per group can be selected, like radio buttons.
 date: 2021-10-24
 tags: [form, checkbox, radiobutton, m.mount]
 level: beginner
@@ -8,6 +8,8 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Form with multiple checkboxes that are grouped so that only one checkbox per group can be selected, like radio buttons.
 
 ## CSS
 

@@ -1,6 +1,6 @@
 ---
 title: Simple Modal
-desc:
+abstract:
 date: 2020-09-24
 tags: [modal, m.mount]
 level: beginner
