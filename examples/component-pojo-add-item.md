@@ -1,6 +1,6 @@
 ---
 title: Component Pojo Add Item
-abstract: Component state example using plain old javascript object (POJO).
+abstract: Component state example using plain old JavaScript object (POJO).
 date: 2020-09-24
 tags: [component, pojo, state, m.mount, oninit]
 level: beginner
@@ -9,7 +9,7 @@ author: osban
 layout: layouts/example.html
 ---
 
-Component state example using plain old javascript object (POJO).
+Component state example using plain old JavaScript object (POJO).
 
 ## JavaScript
 

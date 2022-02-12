@@ -1,6 +1,6 @@
 ---
 title: Component Class Counter
-abstract: "This is not recommended, but if you have to: Counter component example based on a javascript class."
+abstract: This is the classic counter example, that shows a value, that can be increased or decreased by clicking on of two buttons.
 date: 2020-09-24
 tags: [component, class, state, counter, m.mount]
 level: beginner
@@ -9,8 +9,9 @@ author: osban
 layout: layouts/example.html
 ---
 
-An example using a Component class, that displays two buttons with onclick-Events.
-This is not recommended, but if you have to: Counter component example based on a javascript class.
+This is another example showing a very simple Component class.
+It is one of the classic examples, that shows a counter, that can be increased or decreased by clicking one of two appropriate buttons.
+Using classes isn't really recommended, but of course if you have to, it will work just fine with Mithril.
 
 ## JavaScript
 

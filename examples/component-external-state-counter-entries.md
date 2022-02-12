@@ -9,7 +9,10 @@ author: osban
 layout: layouts/example.html
 ---
 
-Component example with counter and entries using external state.
+This is an example showing a very simple Component and a simple Pojo for state management.
+In this case the model for state management is a global variable.
+The example is a variant of the classic counter, that shows a count value together with a list of entries. By clicking a button the counter will increase and a new entry will be appended to the list.
+Handling status with global variables works, but for the sake of clarity it only makes sense in very simple projects.
 
 ## JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Component Class Add Item
-abstract: "This is not recommended, but if you have to: Class based example for state management."
+abstract: This is an example showing a very simple Component class, that handles state and ads items by cklicking a button.
 date: 2020-09-24
 tags: [component, class, state, m.mount]
 level: beginner
@@ -9,8 +9,9 @@ author: osban
 layout: layouts/example.html
 ---
 
-An example using a Component class, that adds an item.
-This is not recommended, but if you have to: Class based example for state management.
+This is an example showing a very simple Component class, that handles state and adds another item when clicking on a button.
+Using classes isn't really recommended, but of course if you have to, it will work just fine with Mithril.
+
 
 ## JavaScript
 
