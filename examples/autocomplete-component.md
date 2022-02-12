@@ -9,12 +9,119 @@ author: stephanhoyer
 layout: layouts/example.html
 flems:
   files:
+    - Autocomplete.js
+    - App.js
     - .css
-    - autocomplete.js
-    - app.js
 ---
 
-Autocomplete component with local options, conversion from a react example from <https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14>.
+This example shows an autocomplete component with local options.
+The code is a conversion from a React component example from <https://blog.bitsrc.io/building-a-react-autocomplete-component-from-scratch-3f4d5618aa14>.
+In this snippet several events like `onclick`, `oninput`, and `onkeydown` are used.
+The last one allows you to select and accept a suggestion using the up, down, and enter key.
+
+## Autocomplete.js
+
+~~~js
+// Autocomplete.js
+const KEY_CODE_ENTER = 13
+const KEY_CODE_UP = 38
+const KEY_CODE_DOWN = 40
+
+function Autocomplete ({attrs}) {
+  const options = attrs.options
+  let activeOption = 0
+  let filteredOptions = []
+  let showOptions = false
+  let userInput = ''
+
+  const oninput = (e) => {
+    userInput = e.target.value
+    showOptions = true
+    activeOption = 0
+    filteredOptions = options.filter(
+      optionName => optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    )
+  }
+
+  const onclick = (e) => {
+    filteredOptions = []
+    showOptions = false
+    userInput = e.currentTarget.innerText
+  }
+
+  const onkeydown = (e) => {
+    if (e.keyCode === KEY_CODE_ENTER) {
+      userInput = filteredOptions[activeOption]
+      activeOption = 0
+      showOptions = false
+    } else if (e.keyCode === KEY_CODE_UP) {
+      if (activeOption === 0) {
+        return;
+      }
+      activeOption--
+    } else if (e.keyCode === KEY_CODE_DOWN) {
+      if (activeOption === filteredOptions.length - 1) {
+        return;
+      }
+      activeOption++
+    }
+  };
+
+  function view() {
+    let optionList
+    if (showOptions && userInput) {
+      if (filteredOptions.length) {
+        optionList = m(
+          'ul.options',
+          filteredOptions.map((optionName, index) => m(
+            'li',
+            {
+              className: index === activeOption ? 'option-active' : '',
+              key: optionName,
+              onclick
+            },
+            optionName
+          ))
+        )
+      } else {
+        optionList = m('.no-options', m('em', 'No Option!'))
+      }
+    }
+    return [
+      m('.search', [
+        m('input.search-box[type=text]', {
+          oninput,
+          onkeydown,
+          value: userInput
+        }),
+        m('input.search-btn[type=submit][value=]')
+      ]),
+      optionList
+    ]
+  }
+
+  return { view }
+}
+~~~
+
+## App.js
+
+~~~js
+// App.js
+m.mount(document.body, {
+  view: () => m(Autocomplete, {
+    options: [
+      'Papaya',
+      'Persimmon',
+      'Paw Paw',
+      'Prickly Pear',
+      'Peach',
+      'Pomegranate',
+      'Pineapple'
+    ]
+  })
+});
+~~~
 
 ## CSS
 
@@ -99,108 +206,4 @@ ul.options li.option-active {
 .no-options {
   color: white;
 }
-~~~
-
-## autocomplete.js
-
-~~~js
-// autocomplete.js
-const KEY_CODE_ENTER = 13
-const KEY_CODE_UP = 38
-const KEY_CODE_DOWN = 40
-
-function autocomplete ({attrs}) {
-  const options = attrs.options
-  let activeOption = 0
-  let filteredOptions = []
-  let showOptions = false
-  let userInput = ''
-
-  const oninput = (e) => {
-    userInput = e.target.value
-    showOptions = true
-    activeOption = 0
-    filteredOptions = options.filter(
-      optionName => optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    )
-  }
-
-  const onclick = (e) => {
-    filteredOptions = []
-    showOptions = false
-    userInput = e.currentTarget.innerText
-  }
-
-  const onkeydown = (e) => {
-    if (e.keyCode === KEY_CODE_ENTER) {
-      userInput = filteredOptions[activeOption]
-      activeOption = 0
-      showOptions = false
-    } else if (e.keyCode === KEY_CODE_UP) {
-      if (activeOption === 0) {
-        return;
-      }
-      activeOption--
-    } else if (e.keyCode === KEY_CODE_DOWN) {
-      if (activeOption === filteredOptions.length - 1) {
-        return;
-      }
-      activeOption++
-    }
-  };
-
-  function view() {
-    let optionList
-    if (showOptions && userInput) {
-      if (filteredOptions.length) {
-        optionList = m(
-          'ul.options',
-          filteredOptions.map((optionName, index) => m(
-            'li',
-            {
-              className: index === activeOption ? 'option-active' : '',
-              key: optionName,
-              onclick
-            },
-            optionName
-          ))
-        )
-      } else {
-        optionList = m('.no-options', m('em', 'No Option!'))
-      }
-    }
-    return [
-      m('.search', [
-        m('input.search-box[type=text]', {
-          oninput,
-          onkeydown,
-          value: userInput
-        }),
-        m('input.search-btn[type=submit][value=]')
-      ]),
-      optionList
-    ]
-  }
-
-  return { view }
-}
-~~~
-
-## app.js
-
-~~~js
-// app.js
-m.mount(document.body, {
-  view: () => m(autocomplete, {
-    options: [
-      'Papaya',
-      'Persimmon',
-      'Paw Paw',
-      'Prickly Pear',
-      'Peach',
-      'Pomegranate',
-      'Pineapple'
-    ]
-  })
-});
 ~~~

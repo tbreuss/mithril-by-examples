@@ -9,7 +9,10 @@ author: viniciusCamargo
 layout: layouts/example.html
 ---
 
-Demonstrate async and await around Mitrhils `m.request`.
+This example demonstrates the use of JavaScripts `async` and `await` keywords.
+In this case the keywords are used for the `oninit` lifecycle method and act as simple wrapper around Mithrils `m.request`.
+The api request itself is surrounded by a `try...catch` block.
+Let's see the example.
 
 ## JavaScript
 

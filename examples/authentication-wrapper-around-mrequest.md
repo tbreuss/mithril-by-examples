@@ -9,7 +9,10 @@ author: cmnstmntmn
 layout: layouts/example.html
 ---
 
-Example showing an authentication wrapper around Mithrils `m.request`.
+This example is showing an authentication wrapper around Mithrils `m.request`.
+Normally, we would store and retrieve the bearer token in the browsers `window.localStorage` or `window.sessionStorage`.
+In this example this is only hinted while doing some kind of fake authentication, but you should get the point.
+So, let's see the example.
 
 ## JavaScript
 
