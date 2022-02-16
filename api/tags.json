@@ -31,7 +31,7 @@
     },
     {
       "name": "basics",
-      "examples": 8,
+      "examples": 9,
       "url": "/tags/basics/"
     },
     {
@@ -86,7 +86,7 @@
     },
     {
       "name": "component",
-      "examples": 28,
+      "examples": 29,
       "url": "/tags/component/"
     },
     {
@@ -201,7 +201,7 @@
     },
     {
       "name": "m.mount",
-      "examples": 67,
+      "examples": 68,
       "url": "/tags/m.mount/"
     },
     {
@@ -266,7 +266,7 @@
     },
     {
       "name": "official",
-      "examples": 16,
+      "examples": 17,
       "url": "/tags/official/"
     },
     {

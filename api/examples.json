@@ -531,6 +531,15 @@
       "url": "/examples/react-refs-in-mithril/"
     },
     {
+      "title": "Redraw Event Introspection",
+      "date": "2022-02-16",
+      "tags": ["basics","component","official","m.mount"],
+      "level": "expert",
+      "version": "2.0.4",
+      "author": "JAForbes",
+      "url": "/examples/redraw-event-introspect/"
+    },
+    {
       "title": "Route Resolver",
       "date": "2020-09-24",
       "tags": ["route","resolver","m.route"],
