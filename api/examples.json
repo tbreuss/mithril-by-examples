@@ -533,7 +533,7 @@
     {
       "title": "Redraw Event Introspection",
       "date": "2022-02-16",
-      "tags": ["basics","component","official","m.mount"],
+      "tags": ["event","m.mount","m.redraw","m.request"],
       "level": "expert",
       "version": "2.0.4",
       "author": "JAForbes",

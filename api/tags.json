@@ -31,7 +31,7 @@
     },
     {
       "name": "basics",
-      "examples": 9,
+      "examples": 8,
       "url": "/tags/basics/"
     },
     {
@@ -86,7 +86,7 @@
     },
     {
       "name": "component",
-      "examples": 29,
+      "examples": 28,
       "url": "/tags/component/"
     },
     {
@@ -118,6 +118,11 @@
       "name": "editor",
       "examples": 1,
       "url": "/tags/editor/"
+    },
+    {
+      "name": "event",
+      "examples": 1,
+      "url": "/tags/event/"
     },
     {
       "name": "focus",
@@ -206,7 +211,7 @@
     },
     {
       "name": "m.redraw",
-      "examples": 5,
+      "examples": 6,
       "url": "/tags/m.redraw/"
     },
     {
@@ -216,7 +221,7 @@
     },
     {
       "name": "m.request",
-      "examples": 8,
+      "examples": 9,
       "url": "/tags/m.request/"
     },
     {
@@ -266,7 +271,7 @@
     },
     {
       "name": "official",
-      "examples": 17,
+      "examples": 16,
       "url": "/tags/official/"
     },
     {
