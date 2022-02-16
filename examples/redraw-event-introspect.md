@@ -2,7 +2,7 @@
 title: Redraw Event Introspection
 desc: 'This example shows a solution to introspect m.request, and all other event handlers, that triggers an m.redraw. This answers a question that virtually everyone in Mithril.js wonders about: when does an m.redraw fire? The example was taken from Mithrils [Gitter channel](https://gitter.im/mithriljs/mithril.js?at=620cd454dc191b3d69b45b9d). Thanks go to JAForbes for this useful script.'
 date: 2022-02-16
-tags: [basics, component, official, m.mount]
+tags: [event, m.mount, m.redraw, m.request]
 level: expert
 version: 2.0.4
 author: JAForbes
