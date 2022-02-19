@@ -1,6 +1,6 @@
 ---
 title: Async and Await Around m.request
-abstract: Demonstrate async and await around Mithrils `m.request`.
+abstract: Demonstrate async and await around Mithril.js' `m.request`.
 date: 2021-10-26
 tags: [m.request, async-await, m.mount, api, oninit]
 level: beginner
@@ -10,7 +10,7 @@ layout: layouts/example.html
 ---
 
 This example demonstrates the use of JavaScripts `async` and `await` keywords.
-In this case the keywords are used for the `oninit` lifecycle method and act as simple wrapper around Mithrils `m.request`.
+In this case the keywords are used for the `oninit` lifecycle method and act as simple wrapper around Mithril.js' `m.request`.
 The api request itself is surrounded by a `try...catch` block.
 Let's see the example.
 
