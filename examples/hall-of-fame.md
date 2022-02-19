@@ -12,11 +12,9 @@ flems:
     - bss@1.5.2
 ---
 
-## Markup
-
-~~~html
-<div id="root"></div>
-~~~
+This very nice example is showing a *Hall of Fame* of different JavaScript frameworks and libraries.
+In the live example you can vote for each framework, the number of votes is shown, and you can reset all votes by clicking a button.
+The example shows how to handle state with Mithril.js, and it's also shows the use case of [Better Style Sheets](https://github.com/porsager/bss) (BSS), a simpler way to do CSS in Javascript directly on the elements you're styling.
 
 ## JavaScript
 
@@ -169,4 +167,8 @@ let App = {
 m.mount(root, App)
 ~~~
 
+## Markup
 
+~~~html
+<div id="root"></div>
+~~~

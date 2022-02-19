@@ -13,7 +13,10 @@ flems:
     - mithril-stream@2.0.0/stream.js
 ---
 
-Conway Game Of Life using a central model for state management.
+Conway Game Of Life is a complex example showing a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.
+This example is using a central model for state management.
+Besides that the example requires ramda.js, a practical functional library for JavaScript, and Mithril.js' own stream library.
 
 ## JavaScript
 

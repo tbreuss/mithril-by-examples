@@ -9,7 +9,9 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/index.html#components>.
+This is an example of a very simple Mithril.js component, which is just an object with a view function.
+To activate the component, we have to use `m.mount`.
+The example was taken from the official website at <https://mithril.js.org/index.html#components>.
 
 ## HTML
 

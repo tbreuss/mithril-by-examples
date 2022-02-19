@@ -9,13 +9,8 @@ author: prompt-07
 layout: layouts/example.html
 ---
 
-Convert any Hex color code to its RGB value.
-
-## HTML
-
-~~~html
-<div id='wrap'></div>
-~~~
+This example shows a simple converter, that converts any Hex color code to its RGB value.
+You can enter e hex color and the appropriate RGB value is shown and the HTML body takes the color you entered.
 
 ## JavaScript
 
@@ -89,4 +84,10 @@ function fetchColor({attrs}) {
 
 	return {view}
 }
+~~~
+
+## HTML
+
+~~~html
+<div id='wrap'></div>
 ~~~

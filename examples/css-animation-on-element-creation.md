@@ -9,7 +9,10 @@ author: mithril
 layout: layouts/example.html
 ---
 
-Animating an element via CSS when the element is created is simple. Just add an animation to a CSS class normally.
+A simple example animating an element via CSS when the element is created.
+This is straight-forward by just adding an CSS animation to a class normally.
+There is no need for specific Mithril.js code.
+This example was taken from the official website at <https://mithril.js.org/animation.html#animation-on-element-creation> and slightly modified.
 
 ## Styles
 
@@ -36,5 +39,3 @@ const FancyComponent = {
 
 m.mount(document.body, FancyComponent)
 ~~~
-
-This example was taken from the official website at <https://mithril.js.org/animation.html#animation-on-element-creation> and slightly modified.

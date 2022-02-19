@@ -9,7 +9,8 @@ author: stephanhoyer
 layout: layouts/example.html
 ---
 
-Shows how to focus an input element on load right away.
+This example shows how to focus an input element on load right away.
+It is doing so by using Mithril.js' `oncreate` lifecycle method, that is called after a DOM element is created and attached to the document.
 
 ## JavaScript
 

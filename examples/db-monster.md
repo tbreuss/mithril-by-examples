@@ -19,8 +19,9 @@ flems:
       url: https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js
 ---
 
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows the well know DB monster application.
+This example shows the well known DB monster application, that displays a data grid while cells are mutated at various mutation speeds.
+The script is requiring [performance monitor](https://github.com/localvoid/perf-monitor), a simple UI component that helps you measure performance.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## ENV.js
 

@@ -9,7 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
-Component state example using plain old JavaScript object (POJO).
+This is an example how to use component state with plain old JavaScript objects (POJO).
+State can be accessed via the vnode.state property, which is available to all lifecycle methods as well as the view method of a component.
 
 ## JavaScript
 

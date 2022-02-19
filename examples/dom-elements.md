@@ -9,6 +9,8 @@ author: mithril
 layout: layouts/example.html
 ---
 
+This is a basic example showing Mithril.js' `m()` function to describe any HTML structure you want.
+So, here we see some markup together with a CSS class on the title element.
 This example was taken from the official website at <https://mithril.js.org/index.html#dom-elements>.
 
 ## HTML

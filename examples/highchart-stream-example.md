@@ -15,7 +15,9 @@ flems:
     - highcharts@6.1.1
 ---
 
-How to use highchart lib together with mithril and mithril-stream.
+This example shows how to use 3rd party libraries together with mithril and mithril-stream.
+The external library here is [https://www.highcharts.com/](highcharts.js) besides Mithril.js` own stream library.
+In the demo two charts and three buttons are rendered, that can be used to interact with the rendered charts.
 
 ## JavaScript
 

@@ -9,7 +9,8 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/index.html#hello-world>."
+This example show the classic *Hello World* in Mithril.js.
+The example was taken from the official website at <https://mithril.js.org/index.html#hello-world>."
 
 ## HTML
 

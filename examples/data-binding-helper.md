@@ -9,7 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
-Nice example using a data binding helper function.
+Here we have a nice little example using a data binding helper function.
+This function makes data binding very easy by just including the binder in the view method of the component.
 
 ## JavaScript
 

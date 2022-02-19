@@ -9,7 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
-Counter component example based on plain old JavaScript object (POJO).
+This is a Counter component example based on a plain old JavaScript object (POJO).
+State is handled via the vnode.state property, which is available to all lifecycle methods as well as the view method of a component.
 
 ## JavaScript
 

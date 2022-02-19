@@ -9,7 +9,10 @@ author: mithril
 layout: layouts/example.html
 ---
 
-Mithril offers the `onbeforeremove` hook that allows us to defer the removal of an element.
+This is an example using CSS animation on element removal.
+The difficulty here is that we must wait until the animation is complete before we can actually remove the element.
+Therefore Mithril.js offers the `onbeforeremove` hook that allows us to defer the removal of an element.
+This example was taken from the official website at <https://mithril.js.org/animation.html#animation-on-element-removal> and slightly modified.
 
 ## Styles
 
@@ -55,5 +58,3 @@ var FancyComponent = {
 
 m.mount(document.body, Toggler)
 ~~~
-
-This example was taken from the official website at <https://mithril.js.org/animation.html#animation-on-element-removal> and slightly modified.
