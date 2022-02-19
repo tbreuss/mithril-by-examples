@@ -11,7 +11,7 @@ layout: layouts/example.html
 
 This is another example showing a very simple Component class.
 It is one of the classic examples, that shows a counter, that can be increased or decreased by clicking one of two appropriate buttons.
-Using classes isn't really recommended, but of course if you have to, it will work just fine with Mithril.
+Using classes isn't really recommended, but of course if you have to, it will work just fine with Mithril.js.
 
 ## JavaScript
 

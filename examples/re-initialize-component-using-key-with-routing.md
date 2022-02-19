@@ -11,7 +11,7 @@ layout: layouts/example.html
 
 To distinguish similar vnodes from eachother, use the KEY attribute (keyword), and give it a unique value.
 Keep in mind that all siblings must be keyed for it to work.
-See also the Mithril docs.
+See also the Mithril.js docs.
 This can be used to force a component to re-instantiate/re-initialize.
 In this example 4 options with routing. Date.now() is used to make sure the KEY is different each time.
 To try out the different options, change the default route to the specific option.

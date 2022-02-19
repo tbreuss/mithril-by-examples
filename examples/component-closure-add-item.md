@@ -11,7 +11,7 @@ layout: layouts/example.html
 
 This is an example showing a very simple JavaScript closure for state management.
 The example shows a list that can be expanded by one item by clicking the add button.
-Handling state with JavaScript closures is one of the recommended ways in Mithril.
+Handling state with JavaScript closures is one of the recommended ways in Mithril.js.
 
 ## JavaScript
 

@@ -3,7 +3,7 @@ layout: layouts/main.html
 title: API Methods
 ---
 
-One of the best things about Mitrhil.js is that it has a very small footprint.
+One of the best things about Mithril.js is that it has a very small footprint.
 And most of the time not even all methods are needed.
 Therefore, the number of API methods is really manageable.
 
@@ -30,7 +30,7 @@ This means, you only have to know five API methods to build your brilliant SPA a
 
 <h2 id="m">m(selector, attributes, children)</h2>
 
-Hyperscript function that represents an HTML element in a Mithril view.
+Hyperscript function that represents an HTML element in a Mithril.js view.
 
 ~~~js
 m("div.class#id", {title: "title"}, ["children"])

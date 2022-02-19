@@ -143,15 +143,15 @@ module.exports = function(eleventyConfig) {
       text.push ("\n");
       if (version === '2.0.4') {
         text.push([
-          'The snippet is using the most current version ' + version + ' of Mithril JS framework.',
-          'The snippet requires the latest version ' + version + ' of Mithril JS framework.',
-          'As a prerequisite for this snippet, the latest version ' + version + ' of Mithril JS framework is required.'
+          'The snippet is using the most current version ' + version + ' of Mithril.js framework.',
+          'The snippet requires the latest version ' + version + ' of Mithril.js framework.',
+          'As a prerequisite for this snippet, the latest version ' + version + ' of Mithril.js framework is required.'
         ][textVariantNumber]);
       } else {
         text.push([
-          'The snippet is using version ' + version + ' of Mithril JS framework.',
-          'The snippet requires version ' + version + ' of Mithril JS framework.',
-          'As a prerequisite for this snippet, version ' + version + ' of Mithril JS framework is required.'
+          'The snippet is using version ' + version + ' of Mithril.js framework.',
+          'The snippet requires version ' + version + ' of Mithril.js framework.',
+          'As a prerequisite for this snippet, version ' + version + ' of Mithril.js framework is required.'
         ][textVariantNumber]);
       }
     }
@@ -182,8 +182,8 @@ module.exports = function(eleventyConfig) {
         case 'expert':
           text.push([
             'It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.',
-            'As an expert user, who is familiar with all the aspects of Mithril and JS itself, you are able the follow the example easily.',
-            'The example really targets users on expert level, that are familiar with all aspects of Mithril and JS itself.'
+            'As an expert user, who is familiar with all the aspects of Mithril.js and JavaScript itself, you are able the follow the example easily.',
+            'The example really targets users on expert level, that are familiar with all aspects of Mithril.js and JavaScript itself.'
           ][textVariantNumber]);
           break;
       }
@@ -195,28 +195,28 @@ module.exports = function(eleventyConfig) {
 
     if (apiMethods.length > 1) {
       text.push([
-        'Besides Mithril\'s hyperscript function m() we can see different [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + '.',
-        'In this example we can see some [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides Mithril\'s basic m() hyperscript function.',
-        'Here we can see use cases of different [Mithril API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides the centrepiece m() hyperscript function.'
+        'Besides Mithril.js\' hyperscript function m() we can see different [Mithril.js API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + '.',
+        'In this example we can see some [Mithril.js API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides Mithril.js\' basic m() hyperscript function.',
+        'Here we can see use cases of different [Mithril.js API methods](/api-methods/) like ' + parseItems(apiMethods, 'or') + ', besides the centrepiece m() hyperscript function.'
       ][textVariantNumber]);
     } else if (apiMethods.length === 1) {
       text.push([
-        'In addition to the Mithril hyperscript function m(), here we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/).',
-        'In this example we can see an example of Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/), besides it core m() hyperscript function.',
-        'In this code sample Mithril\'s ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/) is use, besides the basic hyperscript function m().'
+        'In addition to the Mithril.js hyperscript function m(), here we can see an example of Mithril.js\' ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/).',
+        'In this example we can see an example of Mithril.js\' ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/), besides it core m() hyperscript function.',
+        'In this code sample Mithril.js\' ' + parseItems(apiMethods, 'or') + ' [API method](/api-methods/) is use, besides the basic hyperscript function m().'
       ][textVariantNumber]);
     }
 
     if (lifecycleMethods.length > 1) {
       text.push([
-        'It also shows, how Mithril\'s hooks (called [lifecycle methods](/lifecycle-methods/)) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
-        'It also demonstrates, how Mithril\'s [lifecycle methods](/lifecycle-methods/) (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'It also shows, how Mithril.js\' hooks (called [lifecycle methods](/lifecycle-methods/)) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
+        'It also demonstrates, how Mithril.js\' [lifecycle methods](/lifecycle-methods/) (aka hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.',
         'Moreover, it can also be seen how [lifecycle methods](/lifecycle-methods/) (as known as hooks) like ' + parseItems(lifecycleMethods, 'and') + ' can be used.'
       ][textVariantNumber]);
     } else if (lifecycleMethods.length === 1) {
       text.push([
-        'It also shows, how Mithril\'s [lifecycle methods](/lifecycle-methods/) can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
-        'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril\'s [lifecycle methods](/lifecycle-methods/).',
+        'It also shows, how Mithril.js\' [lifecycle methods](/lifecycle-methods/) can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
+        'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril.js\' [lifecycle methods](/lifecycle-methods/).',
         'Moreover, it shows how the [lifecycle method](/lifecycle-methods/) ' + parseItems(lifecycleMethods, 'and') + ' can be used (better know as hook).'
       ][textVariantNumber]);
     }
@@ -286,7 +286,7 @@ module.exports = function(eleventyConfig) {
         text.push([
           '🤫 Shh! If anyone want\'s to bring this code snippet up to the current version, or has other improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
           '❓ Hey! Do you want to bring this code sample up to the latest version? Or do you see a bug or other improvements for this snippet? Then let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
-          '💪 This snippet uses an older Mithril version. Let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues) if you want to improve this example or update it to the latest Mithril version.'
+          '💪 This snippet uses an older Mithril.js version. Let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues) if you want to improve this example or update it to the latest Mithril.js version.'
         ][textVariantNumber]);
       }
 

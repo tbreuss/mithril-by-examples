@@ -1,4 +1,4 @@
-# Mithril by Examples
+# Mithril.js by Examples
 
 > The missing addition to Mithril.js website with many up-to-date code examples that are often searched for and just work...
 
@@ -6,13 +6,13 @@
 
 ## What is this?
 
-`Mithril by Examples` was created for (me and) new users to learn Mithril.js — a javascript framework for building brilliant applications.
+`Mithril.js by Examples` was created for (me and) new users to learn Mithril.js — a javascript framework for building brilliant applications.
 
-This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains numerous Mithril code samples that can be seen, reviewed and run.
+This website is simply a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains numerous Mithril.js code samples that can be seen, reviewed and run.
 
 And the best thing is: The code snippets are up-to-date and just work!
 
-## Mithril Resources
+## Mithril.js Resources
 
 ### Official
 
@@ -60,4 +60,4 @@ More information about [command line usage](https://www.11ty.dev/docs/usage/) ca
 
 ## Contributing
 
-If you're interested in contributing to `Mithril by Examples`, please read our [contributing guide](Contribute.md).
+If you're interested in contributing to `Mithril.js by Examples`, please read our [contributing guide](Contribute.md).

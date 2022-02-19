@@ -1,6 +1,6 @@
 ---
 title: Manage State using Pojos
-abstract: In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+abstract: In Mithril.js you are free to structure your state data however you'd like, and Mithril.js takes care of the rest.
 date: 2021-10-19
 tags: [state, component, pojo, m.mount]
 level: intermediate
@@ -9,7 +9,7 @@ author: kevinfiol
 layout: layouts/example.html
 ---
 
-In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+In Mithril.js you are free to structure your state data however you'd like, and Mithril.js takes care of the rest.
 Below is a versatile state container using plain JavaScript objects for state and actions.
 
 ## JavaScript

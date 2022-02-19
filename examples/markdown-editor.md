@@ -14,6 +14,7 @@ flems:
 
 This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 It shows a very simple markdown editor using marked.js.
+Visit <https://mithril.js.org/examples.html> to see a live demo.
 
 ## JavaScript
 
@@ -76,5 +77,3 @@ h1, h2, h3, h4, h5, h6, p {
     resize: none;
 }
 ~~~
-
-Visit <https://mithril.js.org/examples.html> to see a live demo.

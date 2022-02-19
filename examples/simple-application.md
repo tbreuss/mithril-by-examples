@@ -1,6 +1,6 @@
 ---
 title: Simple Application
-abstract: This example shows off how to do most of the major things you would need to deal with while using Mithril.
+abstract: This example shows off how to do most of the major things you would need to deal with while using Mithril.js.
 date: 2021-10-16
 tags: [model, list, form, layout, tutorial, official, m.request, m.route, vnode, api, oninit]
 level: beginner
@@ -18,7 +18,7 @@ flems:
 ---
 
 This is the simple application from the official Website.
-It shows off how to do most of the major things you would need to deal with while using Mithril.
+It shows off how to do most of the major things you would need to deal with while using Mithril.js.
 
 ## UserModel.js
 

@@ -12,11 +12,11 @@ layout: layouts/example.html
 This is an example that forces a component to re-initialize by using a key attribute.
 
 Keys are used usually to distinguish similar vnodes from one another.
-However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.
+However, due to how Mithril.js treats keyed vnodes, we can use keys to force a vnode to be re-created.
 This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component that doesn't provide an API to do so - we could simply force the component to be re-created with new values.
 
 In this example we create 2 instances of component, but assign a key only to the 'foo' instance; note that the value of the assigned key changes every time.
-Thus, on a redraw, when Mithril doesn't find a new vnode with the old key, it discards the old vnode, and creates a new one with the new key, and new values.
+Thus, on a redraw, when Mithril.js doesn't find a new vnode with the old key, it discards the old vnode, and creates a new one with the new key, and new values.
 
 Keep in mind that every sibling needs a key, otherwise it doesn't work.
 

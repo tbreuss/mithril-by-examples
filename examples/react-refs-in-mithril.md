@@ -1,5 +1,5 @@
 ---
-title: React Refs in Mithril
+title: React Refs in Mithril.js
 abstract: Shows how to access dom nodes of a component, much like reacts refs.
 date: 2021-10-26
 tags: [dom, react, m.mount, vnode, oncreate]

@@ -1,2 +1,1 @@
 Sitemap: https://mithril-by-examples.js.org/sitemap.xml
-

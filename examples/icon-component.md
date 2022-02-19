@@ -9,7 +9,7 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
-Have you already needed icons in your Mithril project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from [Feather Icons](https://feathericons.com/). So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.
+Have you already needed icons in your Mithril.js project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from [Feather Icons](https://feathericons.com/). So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.
 
 ## JavaScript
 
@@ -33,7 +33,7 @@ const Icon = {
 const app = () => {
   return {
     view: () => m('div',
-      m('h1', 'The Mithril Way'),
+      m('h1', 'The Mithril.js Way'),
       m('ul',
         m('li', m(Icon, {name: 'help', class: 'yellow'}), m('span', 'Doubt it?')),
         m('li', m(Icon, {name: 'checked', class: 'green'}), m('span', 'Try it.')),

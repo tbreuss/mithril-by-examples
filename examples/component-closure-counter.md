@@ -11,7 +11,7 @@ layout: layouts/example.html
 
 This is another example showing a very simple JavaScript closure.
 It is one of the classic examples, that shows a counter, that can be increased or decreased by clicking one of two appropriate buttons.
-Handling state with JavaScript closures is one of the recommended ways in Mithril.
+Handling state with JavaScript closures is one of the recommended ways in Mithril.js.
 
 ## JavaScript
 

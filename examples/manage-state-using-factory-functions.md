@@ -1,6 +1,6 @@
 ---
 title: Manage State using Factory Functions
-abstract: In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+abstract: In Mithril.js you are free to structure your state data however you'd like, and Mithril.js takes care of the rest.
 date: 2021-10-19
 tags: [state, component, mitosis, m.mount]
 level: intermediate
@@ -9,7 +9,7 @@ author: kevinfiol
 layout: layouts/example.html
 ---
 
-In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest.
+In Mithril.js you are free to structure your state data however you'd like, and Mithril.js takes care of the rest.
 Credits for porsager and foxdonut.
 
 ## JavaScript

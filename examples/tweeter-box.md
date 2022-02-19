@@ -1,6 +1,6 @@
 ---
 title: Tweeter Box
-abstract: A small nonsense Tweeter Box code example in Mithril using Mitosis for state management.
+abstract: A small nonsense Tweeter Box code example in Mithril.js using Mitosis for state management.
 date: 2021-11-01
 tags: [form, textarea, state, mitosis, m.mount]
 level: beginner
@@ -9,7 +9,7 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
-A small nonsense Tweeter Box code example in Mithril using Mitosis for state management. This example is inspired by the Tweeter Box from Jorge Bucaran written as an example for Hyperapp.
+A small nonsense Tweeter Box code example in Mithril.js using Mitosis for state management. This example is inspired by the Tweeter Box from Jorge Bucaran written as an example for Hyperapp.
 
 ## Markup
 

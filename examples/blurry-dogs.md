@@ -12,7 +12,7 @@ flems:
     - mithril-stream@2.0.0/stream.js
 ---
 
-This Mithril code example was taken from [Mithril Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited.
+This Mithril.js code example was taken from [Mithril.js Gitter](https://gitter.im/mithriljs/mithril.js?at=617e0eaf98c13e75500896f2) and slightly edited.
 It shows random dog images requested by the [Dog API](https://dog.ceo/dog-api/) and displayed with an adjustable blur effect.
 The blur effect can be adjust by using a slider, that applies a value between 1 and 10 using the `CanvasRenderingContext2D.filter`.
 The filter is part of the `Canvas API`, the JavaScript Canvas 2D API, which provides a means for drawing graphics via JavaScript and the HTML `<canvas>` element.

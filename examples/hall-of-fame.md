@@ -137,7 +137,7 @@ function Lib() {
 }
 
 // I could have done a Json object...this is easier to read
-const Libs = ['Mithril', 'AppRun', 'HyperApp', "Svelte", "Stencil"]
+const Libs = ['Mithril.js', 'AppRun', 'HyperApp', "Svelte", "Stencil"]
 
 const Links = {
  Mithril: 'https://mithril.js.org/',
@@ -148,7 +148,7 @@ const Links = {
 }
 
 const Claims = {
-  Mithril: "Mithril is a modern client-side Javascript framework for building Single Page Applications. It's small (< 8kb gzip), fast and provides routing and XHR utilities out of the box",
+  Mithril: "Mithril.js is a modern client-side Javascript framework for building Single Page Applications. It's small (< 8kb gzip), fast and provides routing and XHR utilities out of the box",
   AppRun: "AppRun is a 3K library for building applications using the elm architecture and event publication and subscription.",
   HyperApp: "1 kB JavaScript micro-framework for building declarative web applications ",
   Svelte: "The magical disappearing UI framework The web's JavaScript bloat crisis, solved. Svelte turns your templates into tiny, framework-less vanilla JavaScript.",
@@ -161,7 +161,7 @@ let App = {
 		m(layoutCards, Libs.map(item => m(Lib, { name: item }))),
 		m('h2', 'Number of votes: ' + globalCount),
 		m('button', {onclick: () => globalCount = 0}, "reset votes"),
-    m(creditStyle, "Made with the awesome and lightweight Mithril")
+    m(creditStyle, "Made with the awesome and lightweight Mithril.js")
 	]
 }
 m.mount(root, App)

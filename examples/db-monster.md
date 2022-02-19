@@ -297,7 +297,7 @@ update()
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="description" content="DBMON Mithril" />
+  <meta name="description" content="DBMON Mithril.js" />
   <meta charset="utf-8">
   <title>DB-Monster</title>
 </head>
