@@ -9,7 +9,11 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
-Here is an example of a button whose loading and disabled states are controlled by the parent component. When you click the button, a loading animation is displayed. At the same time, the button goes into the `disabled` state. After the work is done (i.e. a server response received), the button returns to its initial state. The animation in this example was made with pure CSS animation.
+Here is an example of a button whose loading and disabled states are controlled by the parent component.
+When you click the button, a loading animation is displayed.
+At the same time, the button goes into the `disabled` state.
+After the work is done (i.e. a server response received), the button returns to its initial state.
+The animation in this example was made with pure CSS animation.
 
 ## JavaScript
 

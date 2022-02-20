@@ -1,5 +1,5 @@
 ---
-title: Modal External State
+title: Modal with External State
 abstract:
 date: 2020-09-24
 tags: [modal, state, m.mount]
@@ -8,6 +8,9 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+In this example we see a Modal component using state that is handled outside the component.
+So, the message is managed in an simple external state object and injected into the modal within the onclick handler.
 
 ## JavaScript
 

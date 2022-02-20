@@ -9,7 +9,9 @@ author: tbreuss
 layout: layouts/example.html
 ---
 
-A small nonsense Tweeter Box code example in Mithril.js using Mitosis for state management. This example is inspired by the Tweeter Box from Jorge Bucaran written as an example for Hyperapp.
+This Mithril.js example is a small nonsense *Tweeter Box* using Mitosis for state management.
+It shows a textarea HTML element with a counter starting at 140, that is counted down with every char entered.
+The example is inspired by Jorge Bucaran's *Tweeter Box*, who wrote it as an example for Hyperapp.
 
 ## Markup
 

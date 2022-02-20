@@ -9,7 +9,9 @@ author: mithril
 layout: layouts/example.html
 ---
 
-An example showing all lifecycle methods from Mithril.js.
+Here we have an example showing all lifecycle methods from Mithril.js.
+This is very useful for seeing how things work and in what order.
+The example was taken from the official website at <https://mithril.js.org/components.html#lifecycle-methods> and slightly modified.
 
 ## JavaScript
 
@@ -50,6 +52,3 @@ m.mount(document.body, {
   view: () => m(ComponentWithHooks, {oninit: initialize})
 });
 ~~~
-
-
-This example was taken from the official website at <https://mithril.js.org/components.html#lifecycle-methods> and slightly modified.

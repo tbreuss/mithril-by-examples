@@ -9,9 +9,9 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows an SVG with multiple paths animating with css using delay and stroke offset.
-The example was originally written by <https://codepen.io/RobinVr/pen/kEoqc>.
+This example shows an SVG with multiple paths animated with CSS using delay and stroke offset.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
+It was originally written by <https://codepen.io/RobinVr/pen/kEoqc>.
 
 ## HTML
 

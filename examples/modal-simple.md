@@ -9,6 +9,10 @@ author: osban
 layout: layouts/example.html
 ---
 
+This is another Modal component based on Vanilla CSS and some very simple Mithril.js code.
+The modal text is injected her, so the example is quite flexible even though it's so simple.
+Of course, for a real use case it has to be expanded slightly.
+
 ## JavaScript
 
 ~~~js

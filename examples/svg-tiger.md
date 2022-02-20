@@ -9,8 +9,8 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows a tiger built with SVG.
+This example shows a tiger that is built with SVG.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## HTML
 

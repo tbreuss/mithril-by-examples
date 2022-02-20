@@ -1,5 +1,5 @@
 ---
-title: Modal Internal State
+title: Modal with Internal State
 abstract:
 date: 2020-09-24
 tags: [modal, state, m.mount]
@@ -8,6 +8,10 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+In this example we see a Modal component using internal state.
+For the content of the modal we have a Content component, that supports different types of modals like Alert, Confirmation, or others.
+Type and message attributes are injected into the Modal component, therefore no external state is needed.
 
 ## JavaScript
 

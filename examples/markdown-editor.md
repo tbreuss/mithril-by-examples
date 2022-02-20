@@ -2,26 +2,26 @@
 title: Markdown Editor
 abstract: This example shows a very simple markdown editor using marked.js.
 date: 2021-10-27
-tags: [markdown, editor, official, m.trust, m.mount]
+tags: [3rd-party, markdown, editor, official, m.trust, m.mount]
 level: beginner
 version: 2.0.4
 author: mithril
 layout: layouts/example.html
 flems:
-  files: []
-  links: []
+  links:
+   - marked@0.6.0
 ---
 
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows a very simple markdown editor using marked.js.
-Visit <https://mithril.js.org/examples.html> to see a live demo.
+This example shows a very simple markdown editor using marked.js.
+Here we can also see how easy it is with Mithril.js to integrate and use 3rd-party libraries.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## JavaScript
 
 ~~~js
 //model
 var state = {
-	text: "# Markdown Editor\n\nType on the left panel and see the result on the right panel",
+	text: "# Markdown Editor\n\nType on the top panel and see the result on the bottom panel",
 	update: function(value) {
 		state.text = value
 	}
@@ -64,15 +64,15 @@ h1, h2, h3, h4, h5, h6, p {
 
 .input, .preview {
     box-sizing: border-box;
-    height: 100%;
+    height: 50%;
     margin: 0;
     padding: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .input {
     border: 0;
-    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     outline: none;
     resize: none;
 }

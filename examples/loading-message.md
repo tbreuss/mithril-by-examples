@@ -9,7 +9,10 @@ author: osban
 layout: layouts/example.html
 ---
 
-Example showing a loading message while loading external data.
+This is an example showing a loading message using the conditional ternary operator while loading external data.
+In Mithril.js using the ternary operator is one of the ofting seen practices.
+
+Note: You have to click the refresh button in Flems to see the loading message.
 
 ## JavaScript
 

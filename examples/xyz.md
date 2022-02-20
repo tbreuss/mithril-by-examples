@@ -15,7 +15,7 @@ flems:
     - app.js
 ---
 
-This example is for demonstration purposes only to show how things work.
+This example is for demonstration purposes only and shows how things work with Eleventy, markdown, and rendering filters and functions.
 
 ## HTML
 

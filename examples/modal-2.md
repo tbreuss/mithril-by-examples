@@ -16,18 +16,21 @@ flems:
     - .css
 ---
 
+In this example we can see a modal example that is built with an Overlay, an OverlayContainer, and the Modal component itself.
+
+The Overlay component provides a full-screen cover element.
+It is mounted to a separate V/DOM tree appended to the body.
+Children supplied to Overlay are rendered into this tree.
+The Overlay component can be nested anywhere within your app's view but will be rendered to display overtop everything else.
+
+The Modal component uses the Overlay component to provide a full screen cover and renders a dialog-like widget within that waits for the user to click a button.
+A Modal instance can be nested anywhere within your app's view and will be rendered on top of everything else.
+For the Modal component at least one button should be provided otherwise there will be no way to close the modal.
+
 ## Overlay.js
 
 ~~~js
 // Overlay.js
-/**
-This Overlay component provides a full-screen cover element.
-It is mounted to a separate V/DOM tree appended to the body.
-Children supplied to Overlay are rendered into this tree.
-The Overlay component can be nested anywhere within your app's
-view but will be rendered to display overtop everything else.
-*/
-
 const Overlay = function() {
 	let dom
 	let children
@@ -71,12 +74,6 @@ const Overlay = function() {
 ~~~js
 // Modal.js
 /**
-This Modal component uses the Overlay component to provide a
-full screen cover and renders a dialog-like widget within that
-waits for the user to click a button. A Modal instance can
-be nested anywhere within your app's view and will be rendered
-on top of everything else.
-
 Expected attrs are as follows:
 
 interface Attrs {
@@ -85,9 +82,6 @@ interface Attrs {
   buttons: {id: string, text: string}[]
   onClose(id: string): void
 }
-
-At least one button should be provided otherwise there
-will be no way to close the modal.
 */
 
 const Modal = function(v) {

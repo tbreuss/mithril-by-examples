@@ -1,5 +1,5 @@
 ---
-title: Modal with Bulma
+title: Modal with Bulma II
 abstract: Modal using Bulma CSS framework.
 date: 2021-10-26
 tags: [modal, bulma, m.render, m.mount, vnode]
@@ -14,7 +14,7 @@ flems:
       url: https://unpkg.com/bulma@0.7.2/css/bulma.css
 ---
 
-Modal using Bulma CSS framework.
+This example seems to be the [same as here](/examples/modal/) and will be deleted from this repo soon.
 
 ## TypeScript
 

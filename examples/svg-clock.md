@@ -9,8 +9,8 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
-It shows an animated clock using SVG.
+This example is showing an animated clock using SVG.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## JavaScript
 
