@@ -18,7 +18,8 @@ flems:
       url: https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css
 ---
 
-Demonstration how to create a tab view, where tab toggle buttons communicate there activation state though a surrounding wrapper component using tab ids.
+This example demonstrates how to create a tab view, where tab toggle buttons communicate there activation state through a surrounding wrapper component using tab ids.
+
 
 ## Tabs.js
 

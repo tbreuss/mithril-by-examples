@@ -10,6 +10,7 @@ layout: layouts/example.html
 ---
 
 This example shows how to create a table with a sticky header.
+The table is filled with randomized fake data, the sticky behavior is made with pure CSS.
 
 ## CSS
 

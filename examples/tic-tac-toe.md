@@ -1,6 +1,6 @@
 ---
 title: Tic Tac Toe
-abstract: Tic Tac Toe using a central model for state management.
+abstract: Tic-Tac-Toe using a central model for state management.
 date: 2021-10-26
 tags: [3rd-party, game, m.stream, m.mount, oncreate]
 level: expert
@@ -13,7 +13,10 @@ flems:
     - mithril-stream@2.0.0/stream.js
 ---
 
-Tic Tac Toe using a central model for state management.
+In this example we can see and play the famous tic-tac-toe game against the computer.
+The game is using a central model for state management together with Mithril.js' own stream library.
+Besides that the 3rd-party library Ramda - A practical functional library for JavaScript programmers - is used.
+Well done and a very nice Mithril.js example.
 
 ## HTML
 

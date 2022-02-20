@@ -16,7 +16,8 @@ flems:
 ---
 
 This example shows the famous TodoMVC real world application written in Mithril.js.
-It was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
+As a real world example it shows the most used concepts, methods, API, and lifecycle methodes of Mithril.js.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## JavaScript
 

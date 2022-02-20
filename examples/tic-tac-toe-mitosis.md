@@ -18,7 +18,9 @@ flems:
     - .css
 ---
 
-This slim Tic-Tac-Toe example was written using the Mitosis pattern for state management. As an addition it offers a simple undo functionality. Well done!
+This simple but complete Tic-Tac-Toe example was written using the Mitosis pattern for state management.
+As an addition it offers a simple undo functionality.
+Well done!
 
 ## State.js
 ~~~js
