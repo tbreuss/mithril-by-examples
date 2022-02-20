@@ -7,11 +7,14 @@ eleventyNavigation:
   order: 5
 ---
 
-Mithril.js by Examples was created for new users including me to learn Mithril.js — a javascript framework for building brilliant applications.
+*Mithril.js by Examples* was created for new users including me to learn Mithril.js - a JavaScript framework for building brilliant applications.
 
-This website is just a wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground - and contains code samples that can be seen, reviewed and run.
+The website itself is a simple wrapper for the wonderful [Flems](https://flems.io) - a static browser code playground.
+It contains numerous Mithril.js code samples that can be seen, reviewed and run by the help of Flems.
+Besides that all examples can be searched or can be listed by tags, contributes, or levels.
 
-The code snippets listed on this website are up-to-date, and they just work.
+But the best thing is: The code snippets are up-to-date and just work!
+
 
 ## Mithril.js
 
