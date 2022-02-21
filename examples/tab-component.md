@@ -19,7 +19,7 @@ flems:
 ---
 
 This example demonstrates how to create a tab view, where tab toggle buttons communicate there activation state through a surrounding wrapper component using tab ids.
-
+The example is using Tailwind.css for the UI part.
 
 ## Tabs.js
 
