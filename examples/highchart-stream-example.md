@@ -1,6 +1,6 @@
 ---
 title: Highchart Stream Example
-desc: How to use highchart lib together with mithril and mithril-stream.
+abstract: How to use highchart lib together with Mithril.js and mithril-stream.
 date: 2021-10-26
 tags: [3rd-party, charts, m.stream, m.request, m.mount, dom, onremove, oncreate]
 level: expert
@@ -14,6 +14,10 @@ flems:
     - mithril@2.0.4/stream/stream.js
     - highcharts@6.1.1
 ---
+
+This example shows how to use 3rd party libraries together with Mithril.js and mithril-stream.
+The external library here is [https://www.highcharts.com/](highcharts.js) besides Mithril.js' own stream library.
+In the demo two charts and three buttons are rendered, that can be used to interact with the rendered charts.
 
 ## JavaScript
 

@@ -1,7 +1,7 @@
-Contributing to Mithril by Examples
-===================================
+Contributing to Mithril.js by Examples
+======================================
 
-Mithril by Examples was created for new users to learn Mithril by reviewing real code snippets and by asking questions.
+Mithril.js by Examples was created for new users to learn Mithril.js by reviewing real code snippets and by asking questions.
 This repository is a collection of code samples containing working explanations.
 
 We welcome contributions to our [GitHub repository](https://github.com/tbreuss/mithril-by-examples).

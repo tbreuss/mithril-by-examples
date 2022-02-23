@@ -1,6 +1,6 @@
 ---
 title: Authentication Wrapper Around m.request
-desc: Example showing an authentication wrapper around Mithrils `m.request`.
+abstract: Example showing an authentication wrapper around Mithril.js' `m.request`.
 date: 2021-10-26
 tags: [jwt, local storage, wrapper, m.request, m.route, m.mount, vnode, login, api]
 level: beginner
@@ -8,6 +8,11 @@ version: 2.0.4
 author: cmnstmntmn
 layout: layouts/example.html
 ---
+
+This example is showing an authentication wrapper around Mithril.js' `m.request`.
+Normally, we would store and retrieve the bearer token in the browsers `window.localStorage` or `window.sessionStorage`.
+In this example this is only hinted while doing some kind of fake authentication, but you should get the point.
+So, let's see the example.
 
 ## JavaScript
 

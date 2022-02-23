@@ -1,6 +1,6 @@
 ---
 title: Radio Buttons
-desc:
+abstract:
 date: 2020-09-24
 tags: [form, input, radiobutton, m.mount]
 level: beginner
@@ -8,6 +8,9 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Handling radio and checkboxes is often a little bit special.
+This example demonstrates how to use radio buttons in a Mithril.js application.
 
 ## JavaScript
 

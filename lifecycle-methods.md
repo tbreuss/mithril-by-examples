@@ -5,7 +5,7 @@ title: Lifecycle Methods
 
 Components and virtual DOM nodes can have lifecycle methods, also known as hooks, which are called at various points during the lifetime of a DOM element.
 
-Lifecycle methods are only called as a side effect of a [m.render()](/tags/m.render/) call. They are not called if the DOM is modified outside of Mithril.
+Lifecycle methods are only called as a side effect of a [m.render()](/tags/m.render/) call. They are not called if the DOM is modified outside of Mithril.js.
 
 - [oninit](#oninit)
 - [oncreate](#oncreate)
@@ -39,7 +39,7 @@ It is not called when an element is created or when it is recycled.
 ## onbeforeremove
 
 The onbeforeremove(vnode) hook is called before a DOM element is detached from the document.
-If a Promise is returned, Mithril only detaches the DOM element after the promise completes.
+If a Promise is returned, Mithril.js only detaches the DOM element after the promise completes.
 This hook is only called on the DOM element that loses its parentNode, but it does not get called in its child elements.
 
 [Show examples using ”onbeforeremove”](/tags/onbeforeremove/)
@@ -55,7 +55,7 @@ This hook is called on any element that is removed from the document.
 ## onbeforeupdate
 
 The onbeforeupdate(vnode, old) hook is called before a vnode is diffed in an update.
-If this function is defined and returns false, Mithril prevents a diff from happening to the vnode, and consequently to the vnode's children.
+If this function is defined and returns false, Mithril.js prevents a diff from happening to the vnode, and consequently to the vnode's children.
 
 [Show examples using ”onbeforeupdate”](/tags/onbeforeupdate/)
 

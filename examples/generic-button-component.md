@@ -1,6 +1,6 @@
 ---
 title: Generic Button Component
-desc: Nice example using a data binding helper function.
+abstract: Nice example using a data binding helper function.
 date: 2020-09-24
 tags: [component, button, m.mount]
 level: beginner
@@ -9,10 +9,13 @@ author: osban
 layout: layouts/example.html
 ---
 
+This is an example showing a generic button component, that can be used to render buttons in different types, colors, floats, and more.
+It shows also, that implementing a custom compononent in Mithril.js is really simple.
+
 ## JavaScript
 
 ~~~js
-const button = {
+const Button = {
   view: ({attrs: {type, text, onclick, color, disabled, left}}) =>
     m('button', {
       class: color || 'grey',
@@ -26,10 +29,10 @@ const button = {
 const app = {
   view: () =>
     m('div',
-      m(button, {text: 'bye',   color: 'blue', left: true}),
-      m(button, {text: 'hello', color: 'red',  left: true, onclick: () => p('click!')}),
-      m(button, {text: 'error', color: 'green'}),
-      m(button, {text: 'test'})
+      m(Button, {text: 'bye',   color: 'blue', left: true}),
+      m(Button, {text: 'hello', color: 'red',  left: true, onclick: () => p('click!')}),
+      m(Button, {text: 'error', color: 'green'}),
+      m(Button, {text: 'test'})
     )
 }
 

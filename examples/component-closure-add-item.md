@@ -1,6 +1,6 @@
 ---
 title: Component Closure Add Item
-desc: Component example using javascript closure for state management.
+abstract: Component example using JavaScript closure for state management.
 date: 2020-09-24
 tags: [component, closure, state, m.mount]
 level: beginner
@@ -8,6 +8,10 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+This is an example showing a very simple JavaScript closure for state management.
+The example shows a list that can be expanded by one item by clicking the add button.
+Handling state with JavaScript closures is one of the recommended ways in Mithril.js.
 
 ## JavaScript
 

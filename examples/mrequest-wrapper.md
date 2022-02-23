@@ -1,6 +1,6 @@
 ---
 title: Wrapper on m.request
-desc: Wrapper example for m.request allowing an easier and snappier api handling.
+abstract: Wrapper example for m.request allowing an easier and snappier api handling.
 date: 2020-09-24
 tags: [m.request, api, wrapper]
 level: beginner
@@ -11,6 +11,9 @@ flems:
   files:[]
   links:[]
 ---
+
+This is an example showing a wrapper for Mithril.js' `m.request` that allows an easier and snappier api handling.
+Especially the possibility of adding custom handlers to specific http status codes is a plus.
 
 ## JavaScript
 

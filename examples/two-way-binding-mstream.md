@@ -1,6 +1,6 @@
 ---
 title: Two-Way Binding - With m.stream
-desc: This is an example showing two-way binding with mithrils own stream library.
+abstract: This is an example showing two-way binding with mithrils own stream library.
 date: 2020-09-24
 tags: [form, two-way-binding, m.stream, m.mount]
 level: beginner
@@ -11,6 +11,9 @@ flems:
   links:
     - mithril-stream/stream.js
 ---
+
+This is an example showing two-way binding with Mithril.js' own stream library.
+Here we can see the use of `m.stream` for a single variable which is then updated in the oninput event handler.
 
 ## JavaScript
 
@@ -23,7 +26,9 @@ const app = () => {
   return {
     view: () => [
       m('h1', `text: ${text()}`),
-      m('input', {oninput: e => text(e.target.value)})
+      m('input', {
+        oninput: e => text(e.target.value)
+      })
     ]
   }
 }

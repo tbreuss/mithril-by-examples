@@ -1,6 +1,6 @@
 ---
 title: Todo MVC (Mitosis)
-desc: Here is another Todo MVC implementation, this time using Mitosis for state management.
+abstract: Here is another TodoMVC implementation, this time using Mitosis for state management.
 date: 2021-10-29
 tags: [todomvc, mitosis, m.route, dom, onupdate]
 level: expert
@@ -18,6 +18,9 @@ flems:
     - app.js
     - .css
 ---
+
+Here is another TodoMVC implementation, this time using Mitosis for state management, see `actions.js` and `models.js`.
+As a realistic but still simple application example it shows Mithril.js' most used concepts, methods and lifecycle methodes.
 
 ## Markup
 

@@ -1,6 +1,6 @@
 ---
 title: Data Binding Helper
-desc: Nice example using a data binding helper function.
+abstract: Nice example using a data binding helper function.
 date: 2020-09-24
 tags: [binding, helper, m.mount]
 level: beginner
@@ -8,6 +8,9 @@ version: 2.0.4
 author: osban
 layout: layouts/example.html
 ---
+
+Here we have a nice little example using a data binding helper function.
+This function makes data binding very easy by just including the binder in the view method of the component.
 
 ## JavaScript
 

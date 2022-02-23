@@ -1,6 +1,6 @@
 ---
 title: Force Component Re-Init with Routing
-desc: Force a component to re-initialize by passing a key attribute when changing routes (four examples).
+abstract: Force a component to re-initialize by passing a key attribute when changing routes (four examples).
 date: 2021-10-16
 tags: [component, key, m.route, vnode, oninit]
 level: beginner
@@ -9,28 +9,24 @@ author: osban
 layout: layouts/example.html
 ---
 
+This is an example that forces a component to re-initialize by passing a key attribute when changing routes (four examples).
+Keys are used usually to distinguish similar vnodes from one another.
+However, due to how Mithril.js treats keyed vnodes, we can use keys to force a vnode to be re-created.
+This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component that doesn't provide an API to do so - we could simply force the component to be re-created with new values.
+
+In this example we see four options with routing.
+Date.now() is used to make sure the key is different each time.
+Thus, on a redraw, when Mithril.js doesn't find a new vnode with the old key, it discards the old vnode, and creates a new one with the new key, and new values.
+
+Keep in mind that every sibling needs a key, otherwise it doesn't work.
+
 ## JavaScript
 
 ~~~js
-const text = () => [
-  m('p', `Keys are used usually to distinguish similar vnodes from one another.
-    However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.
-    This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component
-    that doesn't provide an API to do so -- we could simply force the component to be re-created with new values.`
-  ),
-  m('p', `In this example 4 options with routing. Date.now() is used to make sure the key is different each time.
-    Thus, on a redraw, when Mithril doesn't find a new vnode with the old key, it discards the old vnode,
-    and creates a new one with the new key, and new values.`
-  ),
-  m('p', `Keep in mind that every sibling needs a key, otherwise it doesn't work.`),
-  m('hr')
-]
-
 // option 1 -> key is passed via attrs
 const page1 = {
   oninit: () => {console.log('init1')},
   view: vnode => [
-    text(),
     m('p', 'page1 ' + (vnode.attrs.key || '')),
     m('button', {onclick: () => m.route.set('/page1', {key: Date.now()})}, 're-init')
   ]

@@ -1,6 +1,6 @@
 ---
 title: Lifecycle Methods
-desc:
+abstract: An example showing all lifecycle methods from Mithril.js.
 date: 2021-10-19
 tags: [component, lifecycle, official, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: intermediate
@@ -8,6 +8,10 @@ version: 2.0.4
 author: mithril
 layout: layouts/example.html
 ---
+
+Here we have an example showing all lifecycle methods from Mithril.js.
+This is very useful for seeing how things work and in what order.
+The example was taken from the official website at <https://mithril.js.org/components.html#lifecycle-methods> and slightly modified.
 
 ## JavaScript
 
@@ -48,6 +52,3 @@ m.mount(document.body, {
   view: () => m(ComponentWithHooks, {oninit: initialize})
 });
 ~~~
-
-
-This example was taken from the official website at <https://mithril.js.org/components.html#lifecycle-methods> and slightly modified.

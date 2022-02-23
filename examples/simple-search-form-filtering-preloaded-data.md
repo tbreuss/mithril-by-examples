@@ -1,6 +1,6 @@
 ---
 title: Simple Search Form Filtering Prefetched Data
-desc: This example shows a simple search form that filters prefetched data. It is using the Mitosis pattern for stage management. A live example can be seen here on this website.
+abstract: This example shows a simple search form that filters prefetched data.
 date: 2021-11-27
 tags: [form, m.mount, m.request, oninit, oncreate, onupdate, state, mitosis]
 level: advanced
@@ -8,6 +8,10 @@ version: 2.0.4
 author: tbreuss
 layout: layouts/example.html
 ---
+
+This example shows a simple search form that filters prefetched data.
+It is using the Mitosis pattern for stage management.
+A live example can be seen here on this website.
 
 ## JavaScript
 

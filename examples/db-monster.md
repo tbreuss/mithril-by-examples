@@ -1,6 +1,6 @@
 ---
 title: DB Monster
-desc: "This example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified. It shows the well know DB monster application."
+abstract: This example shows the well know DB monster application.
 date: 2021-10-27
 tags: [3rd-party, animation, official, m.mount, m.redraw]
 level: beginner
@@ -18,6 +18,10 @@ flems:
       type: script
       url: https://localvoid.github.io/perf-monitor/0.1/perf-monitor.js
 ---
+
+This example shows the well known DB monster application, that displays a data grid while cells are mutated at various mutation speeds.
+The script is requiring [performance monitor](https://github.com/localvoid/perf-monitor), a simple UI component that helps you measure performance.
+The example was taken from the official website at <https://mithril.js.org/examples.html> and slightly modified.
 
 ## ENV.js
 
@@ -293,7 +297,7 @@ update()
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="description" content="DBMON Mithril" />
+  <meta name="description" content="DBMON Mithril.js" />
   <meta charset="utf-8">
   <title>DB-Monster</title>
 </head>
