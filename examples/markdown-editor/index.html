@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Markdown Editor | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,24 +29,20 @@
     by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
-<p><a href="/tags/editor/" class="post-tag">editor</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.trust/" class="post-tag">m.trust</a><a href="/tags/markdown/" class="post-tag">markdown</a><a href="/tags/official/" class="post-tag">official</a>
+<p><a href="/tags/3rd-party/" class="post-tag">3rd-party</a><a href="/tags/editor/" class="post-tag">editor</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.trust/" class="post-tag">m.trust</a><a href="/tags/markdown/" class="post-tag">markdown</a><a href="/tags/official/" class="post-tag">official</a>
 </p>
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li></ol>
-    </div><p>This example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified. It shows a very simple markdown editor using marked.js.</p>
-<p>The example was contributed by mithril and last modified on 27 October 2021.
-<a href="/contributors/mithril/">Click here</a> to see more examples contributed by the author.</p>
-<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
-It is aimed at beginners and shows some basic recipes.</p>
-<p>Besides Mithril's hyperscript function m() we can see different <a href="/api-methods/">Mithril API methods</a> like <code>m.trust</code> or <code>m.mount</code>.</p>
-<p>Enough said, here it is!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example shows a very simple markdown editor using marked.js.
+Here we can also see how easy it is with Mithril.js to integrate and use 3rd-party libraries.
+The example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -65,15 +61,15 @@ It is aimed at beginners and shows some basic recipes.</p>
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        files: [{"name":".js","content":"//model\nvar state = {\n\ttext: \"# Markdown Editor\\n\\nType on the top panel and see the result on the bottom panel\",\n\tupdate: function(value) {\n\t\tstate.text = value\n\t}\n}\n\n//view\nvar Editor = {\n\tview: function() {\n\t\treturn [\n\t\t\tm(\"textarea.input\", {\n\t\t\t\toninput: function (e) {\n\t\t\t\t  state.update(e.target.value)\n        },\n\t\t\t\tvalue: state.text\n\t\t\t}),\n\t\t\tm(\".preview\", m.trust(marked(state.text))),\n\t\t]\n\t}\n}\n\nm.mount(document.body, Editor)\n"},{"name":".css","content":"html, body {\n    height: 100%;\n    margin: 0;\n}\n\nh1, h2, h3, h4, h5, h6, p {\n    margin: 0 0 10px;\n}\n\n#editor {\n    display: flex;\n    height: 100%;\n}\n\n.input, .preview {\n    box-sizing: border-box;\n    height: 50%;\n    margin: 0;\n    padding: 10px;\n    width: 100%;\n}\n\n.input {\n    border: 0;\n    border-bottom: 1px solid #ccc;\n    outline: none;\n    resize: none;\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"marked@0.6.0","type":"script","url":"https://unpkg.com/marked@0.6.0"}]
       });
       </script>
     
         <div class="dependencies">
           <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
           <div class="dependencies__tableWrap">
-            <table class="dependencies__table dependencies__table--1">
+            <table class="dependencies__table dependencies__table--2">
                 <thead>
                     <tr>
                         <th>Type</th>
@@ -82,7 +78,7 @@ It is aimed at beginners and shows some basic recipes.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>marked@0.6.0</td><td>https://unpkg.com/marked@0.6.0</td></tr>
                 </tbody>
             </table>
           </div>
@@ -117,12 +113,10 @@ It is aimed at beginners and shows some basic recipes.</p>
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">//model
 var state = {
-	text: &quot;# Markdown Editor\n\nType on the left panel and see the result on the right panel&quot;,
+	text: &quot;# Markdown Editor\n\nType on the top panel and see the result on the bottom panel&quot;,
 	update: function(value) {
 		state.text = value
 	}
@@ -162,22 +156,27 @@ h1, h2, h3, h4, h5, h6, p {
 
 .input, .preview {
     box-sizing: border-box;
-    height: 100%;
+    height: 50%;
     margin: 0;
     padding: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .input {
     border: 0;
-    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     outline: none;
     resize: none;
 }
 </code></pre>
-<p>Visit <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> to see a live demo.</p>
+<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>Besides Mithril.js' hyperscript function m() we can see different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.trust</code> or <code>m.mount</code>.</p>
+<p>The example was contributed by mithril and last modified on 27 October 2021.
+<a href="/contributors/mithril/">Click here</a> to see more examples contributed by the author.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or simply fork the repository on GitHub, push your commits and send a pull request.
 For starting your work, you can click the edit link below. Thanks for contributing.</p>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Generic Button Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/button/" class="post-tag">button</a><a href="/tags/component/" class="post-tag">component</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
@@ -37,16 +37,11 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li></ol>
-    </div><p>Nice example using a data binding helper function.</p>
-<p>The example was written by osban, last edits were made on 24 September 2020.
-The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
-Beginners should have no problems following this example, that simply shows some basic recipies.</p>
-<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
-<p>So, here are the code snippets.</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This is an example showing a generic button component, that can be used to render buttons in different types, colors, floats, and more.
+It shows also, that implementing a custom compononent in Mithril.js is really simple.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -65,7 +60,7 @@ Beginners should have no problems following this example, that simply shows some
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".js","content":"const button = {\n  view: ({attrs: {type, text, onclick, color, disabled, left}}) =>\n    m('button', {\n      class: color || 'grey',\n      type:  type  || 'button',\n      disabled,\n      onclick,\n      style: 'float: ' + (left ? 'none' : 'right')\n    }, text)\n}\n\nconst app = {\n  view: () =>\n    m('div',\n      m(button, {text: 'bye',   color: 'blue', left: true}),\n      m(button, {text: 'hello', color: 'red',  left: true, onclick: () => p('click!')}),\n      m(button, {text: 'error', color: 'green'}),\n      m(button, {text: 'test'})\n    )\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"button {\n   height: 36px;\n   margin-left: 10px;\n   padding: 0 16px;\n   border: 0;\n   border-radius: 4px;\n   text-transform: uppercase;\n   font-weight: 500px;\n   font-size: 14px;\n   min-width: 64dp;\n   cursor: pointer;\n   outline: none\n}\n\n.grey {\n  background-color: #f1f1f1;\n  color: #616161\n}\n\n.grey:hover {\n  background-color: #ccc\n}\n\n.blue {\n  background-color: #349cfb;\n  color: #fff\n}\n\n.blue:hover {\n  background-color: #2c83d4\n}\n\n.red {\n  background-color: #eb2024;\n  color: #fff\n}\n\n.red:hover {\n  background-color: #b6191c\n}\n\n.green {\n  background-color: #33b679;\n  color: #fff\n}\n\n.green:hover {\n  background-color: #2a9928\n}\n"}],
+        files: [{"name":".js","content":"const Button = {\n  view: ({attrs: {type, text, onclick, color, disabled, left}}) =>\n    m('button', {\n      class: color || 'grey',\n      type:  type  || 'button',\n      disabled,\n      onclick,\n      style: 'float: ' + (left ? 'none' : 'right')\n    }, text)\n}\n\nconst app = {\n  view: () =>\n    m('div',\n      m(Button, {text: 'bye',   color: 'blue', left: true}),\n      m(Button, {text: 'hello', color: 'red',  left: true, onclick: () => p('click!')}),\n      m(Button, {text: 'error', color: 'green'}),\n      m(Button, {text: 'test'})\n    )\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"button {\n   height: 36px;\n   margin-left: 10px;\n   padding: 0 16px;\n   border: 0;\n   border-radius: 4px;\n   text-transform: uppercase;\n   font-weight: 500px;\n   font-size: 14px;\n   min-width: 64dp;\n   cursor: pointer;\n   outline: none\n}\n\n.grey {\n  background-color: #f1f1f1;\n  color: #616161\n}\n\n.grey:hover {\n  background-color: #ccc\n}\n\n.blue {\n  background-color: #349cfb;\n  color: #fff\n}\n\n.blue:hover {\n  background-color: #2c83d4\n}\n\n.red {\n  background-color: #eb2024;\n  color: #fff\n}\n\n.red:hover {\n  background-color: #b6191c\n}\n\n.green {\n  background-color: #33b679;\n  color: #fff\n}\n\n.green:hover {\n  background-color: #2a9928\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -117,10 +112,8 @@ Beginners should have no problems following this example, that simply shows some
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
-<pre><code class="language-js">const button = {
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const Button = {
   view: ({attrs: {type, text, onclick, color, disabled, left}}) =&gt;
     m('button', {
       class: color || 'grey',
@@ -134,10 +127,10 @@ Beginners should have no problems following this example, that simply shows some
 const app = {
   view: () =&gt;
     m('div',
-      m(button, {text: 'bye',   color: 'blue', left: true}),
-      m(button, {text: 'hello', color: 'red',  left: true, onclick: () =&gt; p('click!')}),
-      m(button, {text: 'error', color: 'green'}),
-      m(button, {text: 'test'})
+      m(Button, {text: 'bye',   color: 'blue', left: true}),
+      m(Button, {text: 'hello', color: 'red',  left: true, onclick: () =&gt; p('click!')}),
+      m(Button, {text: 'error', color: 'green'}),
+      m(Button, {text: 'test'})
     )
 }
 
@@ -194,8 +187,14 @@ m.mount(document.body, app)
   background-color: #2a9928
 }
 </code></pre>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>The example was written by osban, last edits were made on 24 September 2020.
+The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or much better: just fork the repository on GitHub, push your commits and send a pull request.
 Ready to start your work? Then click on the edit link below. Thanks in advance!</p>

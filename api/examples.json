@@ -389,20 +389,11 @@
     {
       "title": "Markdown Editor",
       "date": "2021-10-27",
-      "tags": ["markdown","editor","official","m.trust","m.mount"],
+      "tags": ["3rd-party","markdown","editor","official","m.trust","m.mount"],
       "level": "beginner",
       "version": "2.0.4",
       "author": "mithril",
       "url": "/examples/markdown-editor/"
-    },
-    {
-      "title": "Modal",
-      "date": "2021-10-16",
-      "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
-      "level": "beginner",
-      "version": "2.0.4",
-      "author": "spacejack",
-      "url": "/examples/modal/"
     },
     {
       "title": "Modal",
@@ -414,25 +405,16 @@
       "url": "/examples/modal-2/"
     },
     {
-      "title": "Modal External State",
-      "date": "2020-09-24",
-      "tags": ["modal","state","m.mount"],
-      "level": "beginner",
-      "version": "2.0.4",
-      "author": "osban",
-      "url": "/examples/modal-external-state/"
-    },
-    {
-      "title": "Modal Internal State",
-      "date": "2020-09-24",
-      "tags": ["modal","state","m.mount"],
-      "level": "beginner",
-      "version": "2.0.4",
-      "author": "osban",
-      "url": "/examples/modal-internal-state/"
-    },
-    {
       "title": "Modal with Bulma",
+      "date": "2021-10-16",
+      "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "spacejack",
+      "url": "/examples/modal/"
+    },
+    {
+      "title": "Modal with Bulma II",
       "date": "2021-10-26",
       "tags": ["modal","bulma","m.render","m.mount","vnode"],
       "level": "beginner",
@@ -441,7 +423,25 @@
       "url": "/examples/modal-with-bulma/"
     },
     {
-      "title": "Mosaic",
+      "title": "Modal with External State",
+      "date": "2020-09-24",
+      "tags": ["modal","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/modal-external-state/"
+    },
+    {
+      "title": "Modal with Internal State",
+      "date": "2020-09-24",
+      "tags": ["modal","state","m.mount"],
+      "level": "beginner",
+      "version": "2.0.4",
+      "author": "osban",
+      "url": "/examples/modal-internal-state/"
+    },
+    {
+      "title": "Mosaic Animation",
       "date": "2021-10-27",
       "tags": ["animation","mosaic","official","m.render","dom","onbeforeremove"],
       "level": "beginner",
@@ -522,7 +522,7 @@
       "url": "/examples/react-integration/"
     },
     {
-      "title": "React Refs in Mithril",
+      "title": "React Refs in Mithril.js",
       "date": "2021-10-26",
       "tags": ["dom","react","m.mount","vnode","oncreate"],
       "level": "beginner",
@@ -792,7 +792,7 @@
       "url": "/examples/mrequest-wrapper/"
     },
     {
-      "title": "XHR",
+      "title": "XHR Request",
       "date": "2021-10-16",
       "tags": ["basics","official","m.request","m.mount","api"],
       "level": "beginner",

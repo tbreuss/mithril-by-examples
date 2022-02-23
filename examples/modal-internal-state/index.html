@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
-    <title>Modal Internal State | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <title>Modal with Internal State | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -22,14 +22,14 @@
       </ul>
     </header>
     <main class="content tmpl-post">
-      <h1>Modal Internal State</h1>
+      <h1>Modal with Internal State</h1>
 
 <p>
   <time datetime="2020-09-24">24 September 2020</time><span class="author">
     by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/modal/" class="post-tag">modal</a><a href="/tags/state/" class="post-tag">state</a>
@@ -37,15 +37,12 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li></ol>
-    </div><p>The example was contributed by osban and last modified on 24 September 2020.
-<a href="/contributors/osban/">Click here</a> to see more examples contributed by the author.</p>
-<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
-It is aimed at beginners and shows some basic recipes.</p>
-<p>In addition to the Mithril hyperscript function m(), here we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>.</p>
-<p>Enough said, here it is!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>In this example we see a Modal component using internal state.
+For the content of the modal we have a Content component, that supports different types of modals like Alert, Confirmation, or others.
+Type and message attributes are injected into the Modal component, therefore no external state is needed.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -53,7 +50,7 @@ It is aimed at beginners and shows some basic recipes.</p>
         <input type="checkbox" id="modal">
         <div class="modal">
           <div class="modal-header">
-            <h3>Modal Internal State</h3>
+            <h3>Modal with Internal State</h3>
             <label for="modal">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
             </label>
@@ -116,9 +113,7 @@ It is aimed at beginners and shows some basic recipes.</p>
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">const Content = {
   alert: {
     view: ({attrs: {text, click}}) =&gt; [
@@ -179,11 +174,17 @@ m.mount(document.body, App)
   margin-bottom: 20px
 }
 </code></pre>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>The example was written by osban, last edits were made on 24 September 2020.
+The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
 
 
-<p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
-Or simply fork the repository on GitHub, push your commits and send a pull request.
-For starting your work, you can click the edit link below. Thanks for contributing.</p>
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
 
 
 <p style="margin-top:2rem;">

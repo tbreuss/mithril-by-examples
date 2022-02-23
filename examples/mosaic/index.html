@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
-    <title>Mosaic | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <title>Mosaic Animation | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -22,14 +22,14 @@
       </ul>
     </header>
     <main class="content tmpl-post">
-      <h1>Mosaic</h1>
+      <h1>Mosaic Animation</h1>
 
 <p>
   <time datetime="2021-10-27">27 October 2021</time><span class="author">
     by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/animation/" class="post-tag">animation</a><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.render/" class="post-tag">m.render</a><a href="/tags/mosaic/" class="post-tag">mosaic</a><a href="/tags/official/" class="post-tag">official</a><a href="/tags/onbeforeremove/" class="post-tag">onbeforeremove</a>
@@ -37,17 +37,12 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li></ol>
-    </div><p>This example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified. It shows a mosaic effect on a picture using CSS.</p>
-<p>The code sample was authored by mithril. It was last modified on 27 October 2021.
-Want to see more examples written by mithril? Then <a href="/contributors/mithril/">Click here</a>.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see an example of Mithril's <code>m.render</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
-It is also showing the <code>onbeforeremove</code> hook, which is one of several Mithril's <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example shows a mosaic effect on a picture using CSS.
+The effect is made by dividing, rotating, and fading out the picture (and vice versa).
+The example was taken from the official website at <a href="https://mithril.js.org/examples.html">https://mithril.js.org/examples.html</a> and slightly modified.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -55,7 +50,7 @@ It is also showing the <code>onbeforeremove</code> hook, which is one of several
         <input type="checkbox" id="modal">
         <div class="modal">
           <div class="modal-header">
-            <h3>Mosaic</h3>
+            <h3>Mosaic Animation</h3>
             <label for="modal">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
             </label>
@@ -118,9 +113,7 @@ It is also showing the <code>onbeforeremove</code> hook, which is one of several
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">var root = document.body
 
 var empty = []
@@ -199,8 +192,15 @@ run()
   }
 }
 </code></pre>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril.js' <code>m.render</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
+It is also showing the <code>onbeforeremove</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
+<p>The code sample was authored by mithril. It was last modified on 27 October 2021.
+Want to see more examples written by mithril? Then <a href="/contributors/mithril/">Click here</a>.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

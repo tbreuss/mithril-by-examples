@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Manage State using Pojos | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/kevinfiol/">kevinfiol</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">intermediate</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/pojo/" class="post-tag">pojo</a><a href="/tags/state/" class="post-tag">state</a>
@@ -37,16 +37,11 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>In Mithril you are free to structure your state data however you'd like, and Mithril takes care of the rest. Below is a versatile state container using plain JavaScript objects for state and actions.</p>
-<p>The example was written by kevinfiol, last edits were made on 19 October 2021.
-The author has contributed some more snippets. <a href="/contributors/kevinfiol/">Click here</a> to see them all.</p>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
-The example targets intermediate users, that are familiar with with most aspects of the framework.</p>
-<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
-<p>So, here are the code snippets.</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>In Mithril.js you are free to structure your state data however you'd like, and Mithril.js takes care of the rest.
+Below is a versatile state container using plain JavaScript objects for state and actions.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -117,9 +112,7 @@ The example targets intermediate users, that are familiar with with most aspects
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">const state = { count: 0 };
 
 const actions = {
@@ -141,8 +134,14 @@ m.mount(document.body, Counter);
 </code></pre>
 <p>With the above solution we are not modifying the state directly from within the view.
 This way the Counter component becomes more terse, yet more expressive.</p>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+The example targets intermediate users, that are familiar with with most aspects of the framework.</p>
+<p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>The example was written by kevinfiol, last edits were made on 19 October 2021.
+The author has contributed some more snippets. <a href="/contributors/kevinfiol/">Click here</a> to see them all.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or much better: just fork the repository on GitHub, push your commits and send a pull request.
 Ready to start your work? Then click on the edit link below. Thanks in advance!</p>

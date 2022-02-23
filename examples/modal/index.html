@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
-    <title>Modal | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <title>Modal with Bulma | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -22,14 +22,14 @@
       </ul>
     </header>
     <main class="content tmpl-post">
-      <h1>Modal</h1>
+      <h1>Modal with Bulma</h1>
 
 <p>
   <time datetime="2021-10-16">16 October 2021</time><span class="author">
     by&nbsp;<span class="author"><a href="/contributors/spacejack/">spacejack</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/bulma/" class="post-tag">bulma</a><a href="/tags/dialog/" class="post-tag">dialog</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.render/" class="post-tag">m.render</a><a href="/tags/modal/" class="post-tag">modal</a><a href="/tags/vnode/" class="post-tag">vnode</a>
@@ -37,16 +37,13 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#typescript">Typescript</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>The code sample was authored by spacejack. It was last modified on 16 October 2021.
-Want to see more examples written by spacejack? Then <a href="/contributors/spacejack/">Click here</a>.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see some <a href="/api-methods/">Mithril API methods</a> like <code>m.render</code> or <code>m.mount</code>, besides Mithril's basic m() hyperscript function.
-We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#typescript">Typescript</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>Here is an elegant example for a modal solution using Bulma CSS framework.
+The modal is created and rendered separately by using a simple utility function.
+It is then appended to the HTML body which ensures that the modal is always on top of everything.
+So simple, nice!</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -54,7 +51,7 @@ We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript d
         <input type="checkbox" id="modal">
         <div class="modal">
           <div class="modal-header">
-            <h3>Modal</h3>
+            <h3>Modal with Bulma</h3>
             <label for="modal">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
             </label>
@@ -65,7 +62,7 @@ We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript d
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Modal</title>\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css\">\n</head>\n<body>\n</body>\n</html>\n"},{"name":".ts","content":"function modal(content: string | m.Vnode) {\n    const view =\n        m('.modal is-active',\n            m('.modal-background', { onclick: () => modalContainer.remove() }),\n            m('.modal-content', m('.box', content)));\n\n    const modalContainer = document.createElement('div');\n    document.body.appendChild(modalContainer);\n    m.render(modalContainer, view);\n}\n"},{"name":".js","content":"const modalContent =\n  m('.title.has-text-centered', 'Title',\n    m('.subtitle', 'some content here'));\n\nconst app = {\n  view: () => m('.section',\n    m('button.button.subtitle',\n    { onclick: () => modal(modalContent) },\n    'Show Modal')\n    )\n}\n\nm.mount(document.body, app)\n"}],
+        files: [{"name":".ts","content":"function modal(content: string | m.Vnode) {\n    const view =\n        m('.modal is-active',\n            m('.modal-background', { onclick: () => modalContainer.remove() }),\n            m('.modal-content', m('.box', content)));\n\n    const modalContainer = document.createElement('div');\n    document.body.appendChild(modalContainer);\n    m.render(modalContainer, view);\n}\n"},{"name":".js","content":"const modalContent =\n  m('.title.has-text-centered', 'Title',\n    m('.subtitle', 'some content here'));\n\nconst app = {\n  view: () => m('.section',\n    m('button.button.subtitle',\n    { onclick: () => modal(modalContent) },\n    'Show Modal')\n    )\n}\n\nm.mount(document.body, app)\n"},{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Modal</title>\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css\">\n</head>\n<body>\n</body>\n</html>\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -117,21 +114,7 @@ We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript d
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
-<pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang=en&gt;
-&lt;head&gt;
-  &lt;meta charset=utf-8&gt;
-  &lt;title&gt;Modal&lt;/title&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h2 id="typescript" tabindex="-1">Typescript <a class="direct-link" href="#typescript" aria-hidden="true">#</a></h2>
+      <h2 id="typescript" tabindex="-1">Typescript <a class="direct-link" href="#typescript" aria-hidden="true">#</a></h2>
 <pre><code class="language-ts">function modal(content: string | m.Vnode) {
     const view =
         m('.modal is-active',
@@ -158,8 +141,27 @@ const app = {
 
 m.mount(document.body, app)
 </code></pre>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;head&gt;
+  &lt;meta charset=utf-8&gt;
+  &lt;title&gt;Modal&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.render</code> or <code>m.mount</code>, besides Mithril.js' basic m() hyperscript function.
+We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.</p>
+<p>The code sample was authored by spacejack. It was last modified on 16 October 2021.
+Want to see more examples written by spacejack? Then <a href="/contributors/spacejack/">Click here</a>.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>CSS Animation on Element Removal | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/animation/" class="post-tag">animation</a><a href="/tags/basics/" class="post-tag">basics</a><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/official/" class="post-tag">official</a><a href="/tags/onbeforeremove/" class="post-tag">onbeforeremove</a><a href="/tags/vnode/" class="post-tag">vnode</a>
@@ -37,18 +37,13 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#styles">Styles</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>Mithril offers the <code>onbeforeremove</code> hook that allows us to defer the removal of an element.</p>
-<p>The code sample was authored by mithril. It was last modified on 19 October 2021.
-Want to see more examples written by mithril? Then <a href="/contributors/mithril/">Click here</a>.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
-It is also showing the <code>onbeforeremove</code> hook, which is one of several Mithril's <a href="/lifecycle-methods/">lifecycle methods</a>.
-We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#styles">Styles</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This is an example using CSS animation on element removal.
+The difficulty here is that we must wait until the animation is complete before we can actually remove the element.
+Therefore Mithril.js offers the <code>onbeforeremove</code> hook that allows us to defer the removal of an element.
+This example was taken from the official website at <a href="https://mithril.js.org/animation.html#animation-on-element-removal">https://mithril.js.org/animation.html#animation-on-element-removal</a> and slightly modified.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -119,9 +114,7 @@ We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript d
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="styles" tabindex="-1">Styles <a class="direct-link" href="#styles" aria-hidden="true">#</a></h2>
+      <h2 id="styles" tabindex="-1">Styles <a class="direct-link" href="#styles" aria-hidden="true">#</a></h2>
 <pre><code class="language-css">.fancy {
   font-size: 2rem;
 }
@@ -160,9 +153,16 @@ var FancyComponent = {
 
 m.mount(document.body, Toggler)
 </code></pre>
-<p>This example was taken from the official website at <a href="https://mithril.js.org/animation.html#animation-on-element-removal">https://mithril.js.org/animation.html#animation-on-element-removal</a> and slightly modified.</p>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
+It is also showing the <code>onbeforeremove</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.
+We can also see the usecase of virtual DOM nodes (Vnodes) that is a JavaScript data structure describing a DOM tree.</p>
+<p>The code sample was authored by mithril. It was last modified on 19 October 2021.
+Want to see more examples written by mithril? Then <a href="/contributors/mithril/">Click here</a>.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Authentication Wrapper Around m.request | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/cmnstmntmn/">cmnstmntmn</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/api/" class="post-tag">api</a><a href="/tags/jwt/" class="post-tag">jwt</a><a href="/tags/local-storage/" class="post-tag">local storage</a><a href="/tags/login/" class="post-tag">login</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.request/" class="post-tag">m.request</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/vnode/" class="post-tag">vnode</a><a href="/tags/wrapper/" class="post-tag">wrapper</a>
@@ -37,16 +37,13 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>Example showing an authentication wrapper around Mithrils <code>m.request</code>.</p>
-<p>The example was written by cmnstmntmn, last edits were made on 26 October 2021.</p>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
-Beginners should have no problems following this example, that simply shows some basic recipies.</p>
-<p>Here we can see use cases of different <a href="/api-methods/">Mithril API methods</a> like <code>m.request</code>, <code>m.route</code> or <code>m.mount</code>, besides the centrepiece m() hyperscript function.
-Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
-<p>So, here are the code snippets.</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example is showing an authentication wrapper around Mithril.js' <code>m.request</code>.
+Normally, we would store and retrieve the bearer token in the browsers <code>window.localStorage</code> or <code>window.sessionStorage</code>.
+In this example this is only hinted while doing some kind of fake authentication, but you should get the point.
+So, let's see the example.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -117,9 +114,7 @@ Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaSc
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">var api = {
   request: (options) =&gt; {
     options.config = xhr =&gt; {
@@ -224,8 +219,14 @@ var app = {
 
 m.mount(document.body, app);
 </code></pre>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.request</code>, <code>m.route</code> or <code>m.mount</code>, besides the centrepiece m() hyperscript function.
+Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
+<p>The example was written by cmnstmntmn, last edits were made on 26 October 2021.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or much better: just fork the repository on GitHub, push your commits and send a pull request.
 Ready to start your work? Then click on the edit link below. Thanks in advance!</p>

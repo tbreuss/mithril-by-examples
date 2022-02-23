@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>HEX to RGB Converter | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/prompt-07/">prompt-07</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/converter/" class="post-tag">converter</a><a href="/tags/hex/" class="post-tag">hex</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/rgb/" class="post-tag">rgb</a>
@@ -37,15 +37,11 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>Convert any Hex color code to its RGB value.</p>
-<p>The code sample was authored by prompt-07. It was last modified on 24 October 2021.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example shows a simple converter, that converts any Hex color code to its RGB value.
+You can enter e hex color and the appropriate RGB value is shown and the HTML body takes the color you entered.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -64,7 +60,7 @@ It is ideal for beginners showing some basic recipes.</p>
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".html","content":"<div id='wrap'></div>\n"},{"name":".js","content":"var root = document.getElementById('wrap');\nvar userInput = '';\nvar r = '';\nvar g = '';\nvar b = '';\nvar store = '';\nm.mount(root, {\n\tview: ()=> m(fetchColor, {colorCode: '#4682b4'})\n});\n\nfunction checkForRGB(userInput){\n  if(userInput.length == 3){\n  \tuserInput =\n      userInput[0]\n      +userInput[0]\n      +userInput[1]\n      +userInput[1]\n      +userInput[2]\n      +userInput[2];\n  }\n\n  r = parseInt(userInput.slice(0,2), 16);\n  g = parseInt(userInput.slice(2,4), 16);\n  b = parseInt(userInput.slice(4,6), 16);\n\n  if( !(isNaN(r) || isNaN(g) || isNaN(b))){\n\n  \tdocument.body.style.backgroundColor = '#'+userInput;\n  \tlet str = \"rgb(\"+r+\",\"+g+\",\"+b+\")\";\n  \tdocument.getElementById('rgb').innerText = str;\n  }\n\n\n}\n\n\nfunction fetchColor({attrs}) {\n\n\tconst oninput = (e) => {\n\t\tuserInput = e.target.value;\n\t\tif(userInput.length == 3 || userInput.length == 6)\n\t\t\tcheckForRGB(userInput);\n\n\t}\n\n\tconst onkeydown = (e) =>{\n\t\tif(e.keyCode == 13){\n\n\t\t\tif(userInput.length == 3 || userInput.length == 6)\n\t\t\t\tcheckForRGB(userInput);\n\n\t\t}\n\t}\n\n\tfunction view(){\n\n\t\treturn m('div.wrap',\n\t\t\t[m('input.hex[placeholder=#hexacode]', {\n\t\t\t\toninput,\n\t\t\t\tonkeydown,\n\t\t\t\tvalue: userInput\n\t\t\t}),\n\t\t\t m('lable#rgb')]\n\t\t)\n\t}\n\n\n\treturn {view}\n}\n"}],
+        files: [{"name":".js","content":"var root = document.getElementById('wrap');\nvar userInput = '';\nvar r = '';\nvar g = '';\nvar b = '';\nvar store = '';\nm.mount(root, {\n\tview: ()=> m(fetchColor, {colorCode: '#4682b4'})\n});\n\nfunction checkForRGB(userInput){\n  if(userInput.length == 3){\n  \tuserInput =\n      userInput[0]\n      +userInput[0]\n      +userInput[1]\n      +userInput[1]\n      +userInput[2]\n      +userInput[2];\n  }\n\n  r = parseInt(userInput.slice(0,2), 16);\n  g = parseInt(userInput.slice(2,4), 16);\n  b = parseInt(userInput.slice(4,6), 16);\n\n  if( !(isNaN(r) || isNaN(g) || isNaN(b))){\n\n  \tdocument.body.style.backgroundColor = '#'+userInput;\n  \tlet str = \"rgb(\"+r+\",\"+g+\",\"+b+\")\";\n  \tdocument.getElementById('rgb').innerText = str;\n  }\n\n\n}\n\n\nfunction fetchColor({attrs}) {\n\n\tconst oninput = (e) => {\n\t\tuserInput = e.target.value;\n\t\tif(userInput.length == 3 || userInput.length == 6)\n\t\t\tcheckForRGB(userInput);\n\n\t}\n\n\tconst onkeydown = (e) =>{\n\t\tif(e.keyCode == 13){\n\n\t\t\tif(userInput.length == 3 || userInput.length == 6)\n\t\t\t\tcheckForRGB(userInput);\n\n\t\t}\n\t}\n\n\tfunction view(){\n\n\t\treturn m('div.wrap',\n\t\t\t[m('input.hex[placeholder=#hexacode]', {\n\t\t\t\toninput,\n\t\t\t\tonkeydown,\n\t\t\t\tvalue: userInput\n\t\t\t}),\n\t\t\t m('lable#rgb')]\n\t\t)\n\t}\n\n\n\treturn {view}\n}\n"},{"name":".html","content":"<div id='wrap'></div>\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -116,12 +112,7 @@ It is ideal for beginners showing some basic recipes.</p>
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
-<pre><code class="language-html">&lt;div id='wrap'&gt;&lt;/div&gt;
-</code></pre>
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">var root = document.getElementById('wrap');
 var userInput = '';
 var r = '';
@@ -192,8 +183,16 @@ function fetchColor({attrs}) {
 	return {view}
 }
 </code></pre>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;div id='wrap'&gt;&lt;/div&gt;
+</code></pre>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
+<p>The code sample was authored by prompt-07. It was last modified on 24 October 2021.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
-    <title>React Refs in Mithril | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <title>React Refs in Mithril.js | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -22,14 +22,14 @@
       </ul>
     </header>
     <main class="content tmpl-post">
-      <h1>React Refs in Mithril</h1>
+      <h1>React Refs in Mithril.js</h1>
 
 <p>
   <time datetime="2021-10-26">26 October 2021</time><span class="author">
     by&nbsp;<span class="author"><a href="/contributors/stephanhoyer/">stephanhoyer</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/oncreate/" class="post-tag">oncreate</a><a href="/tags/react/" class="post-tag">react</a><a href="/tags/vnode/" class="post-tag">vnode</a>
@@ -37,18 +37,10 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>Shows how access dom nodes of a component, much like reacts refs.</p>
-<p>The example was contributed by stephanhoyer and last modified on 26 October 2021.
-<a href="/contributors/stephanhoyer/">Click here</a> to see more examples contributed by the author.</p>
-<p>The snippet is using the most current version 2.0.4 of Mithril JS framework.
-It is aimed at beginners and shows some basic recipes.</p>
-<p>In addition to the Mithril hyperscript function m(), here we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>.
-It also shows, how Mithril's <a href="/lifecycle-methods/">lifecycle methods</a> can be used. This can be seen here by using the <code>oncreate</code> hook.
-In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.</p>
-<p>Enough said, here it is!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example shows how to access dom nodes of a component, much like Reacts refs.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -56,7 +48,7 @@ In this example we can also see the usecase of Vnodes (virtual DOM nodes) which 
         <input type="checkbox" id="modal">
         <div class="modal">
           <div class="modal-header">
-            <h3>React Refs in Mithril</h3>
+            <h3>React Refs in Mithril.js</h3>
             <label for="modal">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
             </label>
@@ -119,9 +111,7 @@ In this example we can also see the usecase of Vnodes (virtual DOM nodes) which 
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">function findRef(dom, ref) {
   return dom.matches(`[ref=${ref}]`) ? dom : dom.querySelector(`[ref=${ref}]`)
 }
@@ -138,8 +128,16 @@ const MyComponent = {
 
 m.mount(document.body, MyComponent)
 </code></pre>
+<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+It is aimed at beginners and shows some basic recipes.</p>
+<p>In addition to the Mithril.js hyperscript function m(), here we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>.
+It also shows, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> can be used. This can be seen here by using the <code>oncreate</code> hook.
+In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.</p>
+<p>The example was contributed by stephanhoyer and last modified on 26 October 2021.
+<a href="/contributors/stephanhoyer/">Click here</a> to see more examples contributed by the author.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or simply fork the repository on GitHub, push your commits and send a pull request.
 For starting your work, you can click the edit link below. Thanks for contributing.</p>

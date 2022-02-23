@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Highchart Stream Example | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/skyghis/">skyghis</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">expert</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/3rd-party/" class="post-tag">3rd-party</a><a href="/tags/charts/" class="post-tag">charts</a><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.request/" class="post-tag">m.request</a><a href="/tags/m.stream/" class="post-tag">m.stream</a><a href="/tags/oncreate/" class="post-tag">oncreate</a><a href="/tags/onremove/" class="post-tag">onremove</a>
@@ -37,16 +37,12 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>How to use highchart lib together with mithril and mithril-stream.</p>
-<p>The code sample was authored by skyghis. It was last modified on 26 October 2021.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-As an expert user, who is familiar with all the aspects of Mithril and JS itself, you are able the follow the example easily.</p>
-<p>In this example we can see some <a href="/api-methods/">Mithril API methods</a> like <code>m.stream</code>, <code>m.request</code> or <code>m.mount</code>, besides Mithril's basic m() hyperscript function.
-It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>onremove</code> and <code>oncreate</code> can be used.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This example shows how to use 3rd party libraries together with Mithril.js and mithril-stream.
+The external library here is <a href="highcharts.js">https://www.highcharts.com/</a> besides Mithril.js' own stream library.
+In the demo two charts and three buttons are rendered, that can be used to interact with the rendered charts.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -117,9 +113,7 @@ It also demonstrates, how Mithril's <a href="/lifecycle-methods/">lifecycle meth
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// app.js
 function Chart() {
   let chart;
@@ -182,8 +176,14 @@ m.mount(document.body, {
   ]
 });
 </code></pre>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+As an expert user, who is familiar with all the aspects of Mithril.js and JavaScript itself, you are able the follow the example easily.</p>
+<p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.stream</code>, <code>m.request</code> or <code>m.mount</code>, besides Mithril.js' basic m() hyperscript function.
+It also demonstrates, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>onremove</code> and <code>oncreate</code> can be used.</p>
+<p>The code sample was authored by skyghis. It was last modified on 26 October 2021.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

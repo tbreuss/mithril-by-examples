@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Force Component Re-Init without Routing | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/key/" class="post-tag">key</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/oninit/" class="post-tag">oninit</a><a href="/tags/vnode/" class="post-tag">vnode</a>
@@ -37,18 +37,16 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>Force a component to re-initialize by using a key attribute.</p>
-<p>The example was written by osban, last edits were made on 16 October 2021.
-The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril JS framework is required.
-Beginners should have no problems following this example, that simply shows some basic recipies.</p>
-<p>In this code sample Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().
-Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better know as hook).
-Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
-<p>So, here are the code snippets.</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This is an example that forces a component to re-initialize by using a key attribute.</p>
+<p>Keys are used usually to distinguish similar vnodes from one another.
+However, due to how Mithril.js treats keyed vnodes, we can use keys to force a vnode to be re-created.
+This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component that doesn't provide an API to do so - we could simply force the component to be re-created with new values.</p>
+<p>In this example we create 2 instances of component, but assign a key only to the 'foo' instance; note that the value of the assigned key changes every time.
+Thus, on a redraw, when Mithril.js doesn't find a new vnode with the old key, it discards the old vnode, and creates a new one with the new key, and new values.</p>
+<p>Keep in mind that every sibling needs a key, otherwise it doesn't work.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -67,7 +65,7 @@ Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaSc
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".js","content":"const text = () => [\n  m('p', `Keys are used usually to distinguish similar vnodes from one another.\n    However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.\n    This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component\n    that doesn't provide an API to do so -- we could simply force the component to be re-created with new values.`\n  ),\n  m('p', `In this example we create 2 instances of component, but assign a key only to the 'foo' instance; note that the\n    value of the assigned key changes every time. Thus, on a redraw, when Mithril doesn't find a new vnode\n    with the old key, it discards the old vnode, and creates a new one with the new key, and new values.`),\n  m('p', `Keep in mind that every sibling needs a key, otherwise it doesn't work.`),\n  m('hr')\n]\n\nconst component = {\n  oninit: vnode => console.log('init ' + vnode.attrs.name),\n  view: vnode => m('div', vnode.attrs.name + ' key: ' + vnode.attrs.key)\n}\n\nconst app = () => {\n  count = 0\n\n  return {\n    oninit: () => {console.log('init app')},\n    view: () => [\n      text(),\n      m('div', 'Test',\n        ['foo','bar'].map(x => m(component, {name: x, key: x === 'foo' && count}))\n      ),\n      m('button', {onclick: () => count++}, 'click')\n    ]\n  }\n}\n\nm.mount(document.body, app)\n"}],
+        files: [{"name":".js","content":"const component = {\n  oninit: vnode => console.log('init ' + vnode.attrs.name),\n  view: vnode => m('div', vnode.attrs.name + ' key: ' + vnode.attrs.key)\n}\n\nconst app = () => {\n  count = 0\n  return {\n    oninit: () => {console.log('init app')},\n    view: () => [\n      m('div', 'Test',\n        ['foo','bar'].map(x => m(component, {name: x, key: x === 'foo' && count}))\n      ),\n      m('button', {onclick: () => count++}, 'click')\n    ]\n  }\n}\n\nm.mount(document.body, app)\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -119,34 +117,17 @@ Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaSc
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
-<pre><code class="language-js">const text = () =&gt; [
-  m('p', `Keys are used usually to distinguish similar vnodes from one another.
-    However, due to how Mithril treats keyed vnodes, we can use keys to force a vnode to be re-created.
-    This could be useful for situations wherein we want to, say, modify attributes of a 3rd-party component
-    that doesn't provide an API to do so -- we could simply force the component to be re-created with new values.`
-  ),
-  m('p', `In this example we create 2 instances of component, but assign a key only to the 'foo' instance; note that the
-    value of the assigned key changes every time. Thus, on a redraw, when Mithril doesn't find a new vnode
-    with the old key, it discards the old vnode, and creates a new one with the new key, and new values.`),
-  m('p', `Keep in mind that every sibling needs a key, otherwise it doesn't work.`),
-  m('hr')
-]
-
-const component = {
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const component = {
   oninit: vnode =&gt; console.log('init ' + vnode.attrs.name),
   view: vnode =&gt; m('div', vnode.attrs.name + ' key: ' + vnode.attrs.key)
 }
 
 const app = () =&gt; {
   count = 0
-
   return {
     oninit: () =&gt; {console.log('init app')},
     view: () =&gt; [
-      text(),
       m('div', 'Test',
         ['foo','bar'].map(x =&gt; m(component, {name: x, key: x === 'foo' &amp;&amp; count}))
       ),
@@ -157,8 +138,16 @@ const app = () =&gt; {
 
 m.mount(document.body, app)
 </code></pre>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().
+Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better know as hook).
+Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
+<p>The example was written by osban, last edits were made on 16 October 2021.
+The author has contributed some more snippets. <a href="/contributors/osban/">Click here</a> to see them all.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or much better: just fork the repository on GitHub, push your commits and send a pull request.
 Ready to start your work? Then click on the edit link below. Thanks in advance!</p>

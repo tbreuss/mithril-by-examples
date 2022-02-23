@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Hall of Fame | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/artydev/">artydev</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">1.1.6</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">1.1.6</span>
 </p>
 
 <p><a href="/tags/bss/" class="post-tag">bss</a><a href="/tags/m.mount/" class="post-tag">m.mount</a>
@@ -37,15 +37,12 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#markup">Markup</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li></ol>
-    </div><p>The code sample was authored by artydev. It was last modified on 02 November 2021.</p>
-<p>The snippet requires version 1.1.6 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
-<p>More information about this example <a href="https://dev.to/artydev/mithril-hall-of-lame-3f7g">can be found here</a>.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#markup">Markup</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>This very nice example is showing a <em>Hall of Fame</em> of different JavaScript frameworks and libraries.
+In the live example you can vote for each framework, the number of votes is shown, and you can reset all votes by clicking a button.
+The example shows how to handle state with Mithril.js, and it's also shows the use case of <a href="https://github.com/porsager/bss">Better Style Sheets</a> (BSS), a simpler way to do CSS in Javascript directly on the elements you're styling.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -64,7 +61,7 @@ It is ideal for beginners showing some basic recipes.</p>
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".html","content":"<div id=\"root\"></div>\n"},{"name":".js","content":"let root = document.getElementById(\"root\")\n\nlet globalCount = 0\n\nb.css('body', b({\n   maxWidth: '80%',\n   margin: \"0 auto\"\n}))\n\nlet cardStyle = \"\" + b({\n\tborder: '1px solid black',\n\twidth: '250px',\n\theight: '230px',\n  textAlign: \"center\",\n  paddingTop: '20px',\n  ':hover' : {\n    cursor: 'pointer'\n  }\n})\n\nlet layoutCards = \"\" + b({\n\tdisplay: \"flex\",\n\tflexWrap: \"wrap\",\n\tjustifyContent: \"space-around\"\n})\n\nlet buttonContainer = \"\" + b({\n\ttextAlign: \"center\",\n\tborder: \"none\",\n\tmarginTop: \"10px\",\n\tmarginBottom: \"10px;\",\n\n})\n\nlet buttonStyle = \"button.\" + b({\n\tborder: \"none\",\n  width: \"250px\",\n\t\":hover\": {\n\t\tcursor: \"pointer\"\n\t}\n})\n\nlet hrefStyle = \"a.\" + b({\n  textDecoration: 'none',\n  color: \"#121212\",\n  fontSize: \"1.2rem\"\n})\n\nlet titleStyle = \"h1.\" + b({\n  textAlign: \"center\",\n  fontSize : \"2rem\"\n})\n\nlet creditStyle = \"p\" + b({\n  textAlign: \"center\"\n})\n\nlet claimStyle = \"p\" + b({\n  textAlign: \"left\",\n  padding:'10px',\n  lineHeight: \"1.5rem\"\n})\n\nlet unicode = \"\" + b({\n  fontSize: \"1.0rem\"\n})\n\nlet statUser = \"\" + b({\n  fontSize: \"1.0rem\",\n  marginTop: \"5px\"\n})\n\nfunction Card() {\n  let clickCard = link => {window.location.href = link}\n  let report = count => `like(s) : ${count} (${(100 * count/globalCount).toFixed(2)} %)`\n\treturn {\n\t\tview: ({attrs: {name, count, clickHandler}}) =>\n\t\t\tm(\"\",\n\t\t\t\tm(cardStyle, {onclick: () => clickCard(Links[name])}, [\n          m(hrefStyle, {href: Links[name]}, name),\n          Claims[name] && m(claimStyle, Claims[name])\n        ]),\n\t\t\t\tm(buttonContainer,\n          m(buttonStyle, {onclick: clickHandler},\n            m('p', [\n              m(unicode, m(\"span\", \"Vote \\u2192 \\ud83d\\udc4d\")),\n              m(statUser, (globalCount > 0 && report(count)))\n          ]))\n        )\n\t\t\t)\n\t}\n}\n\nfunction Lib() {\n\tlet count = 0\n\tlet clickHandler = () => {\n\t\tglobalCount++\n\t\tcount++\n\t}\n\tlet getPerCent = () => {\n\t\tlet percent = 0;\n\t\tif (globalCount > 0) {\n\t\t\tpercent = 100 * count / globalCount\n\t\t}\n\t\treturn `(${count}) / (${percent})`\n\t}\n\treturn {\n\t\tview: v =>\n      m(Card, {\n\t\t\t\tname: v.attrs.name,\n\t\t\t\tclickHandler,\n\t\t\t\tcount: globalCount == 0 ? 0 : count,\n\t\t\t\tgetPerCent\n\t\t\t})\n\t}\n}\n\n// I could have done a Json object...this is easier to read\nconst Libs = ['Mithril', 'AppRun', 'HyperApp', \"Svelte\", \"Stencil\"]\n\nconst Links = {\n Mithril: 'https://mithril.js.org/',\n AppRun: 'https://github.com/yysun/apprun',\n HyperApp: 'https://github.com/jorgebucaran/hyperapp',\n Svelte: 'https://github.com/sveltejs/svelte',\n Stencil: 'https://stenciljs.com/'\n}\n\nconst Claims = {\n  Mithril: \"Mithril is a modern client-side Javascript framework for building Single Page Applications. It's small (< 8kb gzip), fast and provides routing and XHR utilities out of the box\",\n  AppRun: \"AppRun is a 3K library for building applications using the elm architecture and event publication and subscription.\",\n  HyperApp: \"1 kB JavaScript micro-framework for building declarative web applications \",\n  Svelte: \"The magical disappearing UI framework The web's JavaScript bloat crisis, solved. Svelte turns your templates into tiny, framework-less vanilla JavaScript.\",\n  Stencil: \"The magical, reusable web component compiler\"\n}\n\nlet App = {\n\tview: () => [\n    m(titleStyle, \"Hall of Fame\"),\n\t\tm(layoutCards, Libs.map(item => m(Lib, { name: item }))),\n\t\tm('h2', 'Number of votes: ' + globalCount),\n\t\tm('button', {onclick: () => globalCount = 0}, \"reset votes\"),\n    m(creditStyle, \"Made with the awesome and lightweight Mithril\")\n\t]\n}\nm.mount(root, App)\n"}],
+        files: [{"name":".js","content":"let root = document.getElementById(\"root\")\n\nlet globalCount = 0\n\nb.css('body', b({\n   maxWidth: '80%',\n   margin: \"0 auto\"\n}))\n\nlet cardStyle = \"\" + b({\n\tborder: '1px solid black',\n\twidth: '250px',\n\theight: '230px',\n  textAlign: \"center\",\n  paddingTop: '20px',\n  ':hover' : {\n    cursor: 'pointer'\n  }\n})\n\nlet layoutCards = \"\" + b({\n\tdisplay: \"flex\",\n\tflexWrap: \"wrap\",\n\tjustifyContent: \"space-around\"\n})\n\nlet buttonContainer = \"\" + b({\n\ttextAlign: \"center\",\n\tborder: \"none\",\n\tmarginTop: \"10px\",\n\tmarginBottom: \"10px;\",\n\n})\n\nlet buttonStyle = \"button.\" + b({\n\tborder: \"none\",\n  width: \"250px\",\n\t\":hover\": {\n\t\tcursor: \"pointer\"\n\t}\n})\n\nlet hrefStyle = \"a.\" + b({\n  textDecoration: 'none',\n  color: \"#121212\",\n  fontSize: \"1.2rem\"\n})\n\nlet titleStyle = \"h1.\" + b({\n  textAlign: \"center\",\n  fontSize : \"2rem\"\n})\n\nlet creditStyle = \"p\" + b({\n  textAlign: \"center\"\n})\n\nlet claimStyle = \"p\" + b({\n  textAlign: \"left\",\n  padding:'10px',\n  lineHeight: \"1.5rem\"\n})\n\nlet unicode = \"\" + b({\n  fontSize: \"1.0rem\"\n})\n\nlet statUser = \"\" + b({\n  fontSize: \"1.0rem\",\n  marginTop: \"5px\"\n})\n\nfunction Card() {\n  let clickCard = link => {window.location.href = link}\n  let report = count => `like(s) : ${count} (${(100 * count/globalCount).toFixed(2)} %)`\n\treturn {\n\t\tview: ({attrs: {name, count, clickHandler}}) =>\n\t\t\tm(\"\",\n\t\t\t\tm(cardStyle, {onclick: () => clickCard(Links[name])}, [\n          m(hrefStyle, {href: Links[name]}, name),\n          Claims[name] && m(claimStyle, Claims[name])\n        ]),\n\t\t\t\tm(buttonContainer,\n          m(buttonStyle, {onclick: clickHandler},\n            m('p', [\n              m(unicode, m(\"span\", \"Vote \\u2192 \\ud83d\\udc4d\")),\n              m(statUser, (globalCount > 0 && report(count)))\n          ]))\n        )\n\t\t\t)\n\t}\n}\n\nfunction Lib() {\n\tlet count = 0\n\tlet clickHandler = () => {\n\t\tglobalCount++\n\t\tcount++\n\t}\n\tlet getPerCent = () => {\n\t\tlet percent = 0;\n\t\tif (globalCount > 0) {\n\t\t\tpercent = 100 * count / globalCount\n\t\t}\n\t\treturn `(${count}) / (${percent})`\n\t}\n\treturn {\n\t\tview: v =>\n      m(Card, {\n\t\t\t\tname: v.attrs.name,\n\t\t\t\tclickHandler,\n\t\t\t\tcount: globalCount == 0 ? 0 : count,\n\t\t\t\tgetPerCent\n\t\t\t})\n\t}\n}\n\n// I could have done a Json object...this is easier to read\nconst Libs = ['Mithril.js', 'AppRun', 'HyperApp', \"Svelte\", \"Stencil\"]\n\nconst Links = {\n Mithril: 'https://mithril.js.org/',\n AppRun: 'https://github.com/yysun/apprun',\n HyperApp: 'https://github.com/jorgebucaran/hyperapp',\n Svelte: 'https://github.com/sveltejs/svelte',\n Stencil: 'https://stenciljs.com/'\n}\n\nconst Claims = {\n  Mithril: \"Mithril.js is a modern client-side Javascript framework for building Single Page Applications. It's small (< 8kb gzip), fast and provides routing and XHR utilities out of the box\",\n  AppRun: \"AppRun is a 3K library for building applications using the elm architecture and event publication and subscription.\",\n  HyperApp: \"1 kB JavaScript micro-framework for building declarative web applications \",\n  Svelte: \"The magical disappearing UI framework The web's JavaScript bloat crisis, solved. Svelte turns your templates into tiny, framework-less vanilla JavaScript.\",\n  Stencil: \"The magical, reusable web component compiler\"\n}\n\nlet App = {\n\tview: () => [\n    m(titleStyle, \"Hall of Fame\"),\n\t\tm(layoutCards, Libs.map(item => m(Lib, { name: item }))),\n\t\tm('h2', 'Number of votes: ' + globalCount),\n\t\tm('button', {onclick: () => globalCount = 0}, \"reset votes\"),\n    m(creditStyle, \"Made with the awesome and lightweight Mithril.js\")\n\t]\n}\nm.mount(root, App)\n"},{"name":".html","content":"<div id=\"root\"></div>\n"}],
         links: [{"name":"mithril@1.1.6","type":"script","url":"https://unpkg.com/mithril@1.1.6"},{"name":"bss@1.5.2","type":"script","url":"https://unpkg.com/bss@1.5.2"}]
       });
       </script>
@@ -116,12 +113,7 @@ It is ideal for beginners showing some basic recipes.</p>
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="markup" tabindex="-1">Markup <a class="direct-link" href="#markup" aria-hidden="true">#</a></h2>
-<pre><code class="language-html">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
-</code></pre>
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">let root = document.getElementById(&quot;root&quot;)
 
 let globalCount = 0
@@ -240,7 +232,7 @@ function Lib() {
 }
 
 // I could have done a Json object...this is easier to read
-const Libs = ['Mithril', 'AppRun', 'HyperApp', &quot;Svelte&quot;, &quot;Stencil&quot;]
+const Libs = ['Mithril.js', 'AppRun', 'HyperApp', &quot;Svelte&quot;, &quot;Stencil&quot;]
 
 const Links = {
  Mithril: 'https://mithril.js.org/',
@@ -251,7 +243,7 @@ const Links = {
 }
 
 const Claims = {
-  Mithril: &quot;Mithril is a modern client-side Javascript framework for building Single Page Applications. It's small (&lt; 8kb gzip), fast and provides routing and XHR utilities out of the box&quot;,
+  Mithril: &quot;Mithril.js is a modern client-side Javascript framework for building Single Page Applications. It's small (&lt; 8kb gzip), fast and provides routing and XHR utilities out of the box&quot;,
   AppRun: &quot;AppRun is a 3K library for building applications using the elm architecture and event publication and subscription.&quot;,
   HyperApp: &quot;1 kB JavaScript micro-framework for building declarative web applications &quot;,
   Svelte: &quot;The magical disappearing UI framework The web's JavaScript bloat crisis, solved. Svelte turns your templates into tiny, framework-less vanilla JavaScript.&quot;,
@@ -264,13 +256,22 @@ let App = {
 		m(layoutCards, Libs.map(item =&gt; m(Lib, { name: item }))),
 		m('h2', 'Number of votes: ' + globalCount),
 		m('button', {onclick: () =&gt; globalCount = 0}, &quot;reset votes&quot;),
-    m(creditStyle, &quot;Made with the awesome and lightweight Mithril&quot;)
+    m(creditStyle, &quot;Made with the awesome and lightweight Mithril.js&quot;)
 	]
 }
 m.mount(root, App)
 </code></pre>
+<h2 id="markup" tabindex="-1">Markup <a class="direct-link" href="#markup" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>The snippet requires version 1.1.6 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
+<p>More information about this example <a href="https://dev.to/artydev/mithril-hall-of-lame-3f7g">can be found here</a>.</p>
+<p>The code sample was authored by artydev. It was last modified on 02 November 2021.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>❓ Hey! Do you want to bring this code sample up to the latest version? Or do you see a bug or other improvements for this snippet? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>

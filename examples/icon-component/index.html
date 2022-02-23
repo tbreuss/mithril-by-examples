@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Icon Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645016215">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645016215">
-    <link rel="stylesheet" href="/css/modal.css?v=1645016215">
+    <link rel="stylesheet" href="/css/index.css?v=1645626903">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Mithril by Examples</a></h1>
+      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
       <ul class="nav">
         <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
         <li class="nav-item"><a href="/tags/">Tags</a></li>
@@ -29,7 +29,7 @@
     by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
   </span>
 </p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril Version: <span class="version">2.0.4</span>
+<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
 </p>
 
 <p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/icons/" class="post-tag">icons</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/svg/" class="post-tag">svg</a>
@@ -37,16 +37,10 @@
 
 <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#styles">Styles</a></li></ol>
-    </div><p>Have you already needed icons in your Mithril project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from <a href="https://feathericons.com/">Feather Icons</a>. So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.</p>
-<p>The code sample was authored by tbreuss. It was last modified on 06 February 2022.
-Want to see more examples written by tbreuss? Then <a href="/contributors/tbreuss/">Click here</a>.</p>
-<p>The snippet requires the latest version 2.0.4 of Mithril JS framework.
-It is ideal for beginners showing some basic recipes.</p>
-<p>In this example we can see an example of Mithril's <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
-<p>Ready? Here we go!</p>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#styles">Styles</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
 
-
+<p>Have you already needed icons in your Mithril.js project and didn't know the easiest way to do this? Here comes a solution with a simple Icon component and suitable SVG icons. In this case we are using icons from <a href="https://feathericons.com/">Feather Icons</a>. So, the idea is to put the SVG code into the Icon Component, give it a suitable name and then use it by simply applying the Icon Component with the appropriate parameters. And the nice thing is, that you can use your own CSS classes too, see below.</p>
 
       <div class="modal-container">
         <label for="modal" class="example-label">Show Live Example in Flems</label>
@@ -65,7 +59,7 @@ It is ideal for beginners showing some basic recipes.</p>
       <script>
       Flems(document.getElementById("flems"), {
         selected: '.js',
-        files: [{"name":".js","content":"const icons = {\n  'heart': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-heart\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>`,\n  'checked': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-square\"><polyline points=\"9 11 12 14 22 4\"></polyline><path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11\"></path></svg>`,\n  'help': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg>`,\n}\n\nconst Icon = {\n  view: (v) => {\n    if (v.attrs.name in icons) {\n      let cssClass = v.attrs.class || ''\n      return m.trust(icons[v.attrs.name](cssClass))\n    }\n    return ''\n  }\n}\n\nconst app = () => {\n  return {\n    view: () => m('div',\n      m('h1', 'The Mithril Way'),\n      m('ul',\n        m('li', m(Icon, {name: 'help', class: 'yellow'}), m('span', 'Doubt it?')),\n        m('li', m(Icon, {name: 'checked', class: 'green'}), m('span', 'Try it.')),\n        m('li', m(Icon, {name: 'heart', class: 'red'}), m('span', 'Love it!'))\n      )\n    )\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\nul {\n  padding-left: 0;\n}\nli {\n  list-style-type: none;\n  margin-bottom: 1rem;\n}\nspan {\n  font-size: 2.2rem;\n  line-height: 2.2rem;\n  display: inline-block;\n  vertical-align: top;\n  margin-left: 1rem;\n}\nsvg {\n  height: 2.2rem;\n  width: auto;\n}\n.red {\n  stroke: red;\n  fill: red;\n}\n.green {\n  stroke: green;\n}\n.yellow {\n  stroke: yellow;\n}\n"}],
+        files: [{"name":".js","content":"const icons = {\n  'heart': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-heart\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>`,\n  'checked': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-square\"><polyline points=\"9 11 12 14 22 4\"></polyline><path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11\"></path></svg>`,\n  'help': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg>`,\n}\n\nconst Icon = {\n  view: (v) => {\n    if (v.attrs.name in icons) {\n      let cssClass = v.attrs.class || ''\n      return m.trust(icons[v.attrs.name](cssClass))\n    }\n    return ''\n  }\n}\n\nconst app = () => {\n  return {\n    view: () => m('div',\n      m('h1', 'The Mithril.js Way'),\n      m('ul',\n        m('li', m(Icon, {name: 'help', class: 'yellow'}), m('span', 'Doubt it?')),\n        m('li', m(Icon, {name: 'checked', class: 'green'}), m('span', 'Try it.')),\n        m('li', m(Icon, {name: 'heart', class: 'red'}), m('span', 'Love it!'))\n      )\n    )\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\nul {\n  padding-left: 0;\n}\nli {\n  list-style-type: none;\n  margin-bottom: 1rem;\n}\nspan {\n  font-size: 2.2rem;\n  line-height: 2.2rem;\n  display: inline-block;\n  vertical-align: top;\n  margin-left: 1rem;\n}\nsvg {\n  height: 2.2rem;\n  width: auto;\n}\n.red {\n  stroke: red;\n  fill: red;\n}\n.green {\n  stroke: green;\n}\n.yellow {\n  stroke: yellow;\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -117,9 +111,7 @@ It is ideal for beginners showing some basic recipes.</p>
             text-transform: capitalize;
         }
         </style>
-      
-
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">const icons = {
   'heart': (cssClass) =&gt; `&lt;svg class=&quot;${cssClass}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;feather feather-heart&quot;&gt;&lt;path d=&quot;M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;`,
   'checked': (cssClass) =&gt; `&lt;svg class=&quot;${cssClass}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;feather feather-check-square&quot;&gt;&lt;polyline points=&quot;9 11 12 14 22 4&quot;&gt;&lt;/polyline&gt;&lt;path d=&quot;M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11&quot;&gt;&lt;/path&gt;&lt;/svg&gt;`,
@@ -139,7 +131,7 @@ const Icon = {
 const app = () =&gt; {
   return {
     view: () =&gt; m('div',
-      m('h1', 'The Mithril Way'),
+      m('h1', 'The Mithril.js Way'),
       m('ul',
         m('li', m(Icon, {name: 'help', class: 'yellow'}), m('span', 'Doubt it?')),
         m('li', m(Icon, {name: 'checked', class: 'green'}), m('span', 'Try it.')),
@@ -182,8 +174,14 @@ svg {
   stroke: yellow;
 }
 </code></pre>
+<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+It is ideal for beginners showing some basic recipes.</p>
+<p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
+<p>The code sample was authored by tbreuss. It was last modified on 06 February 2022.
+Want to see more examples written by tbreuss? Then <a href="/contributors/tbreuss/">Click here</a>.</p>
 
 
+<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
