@@ -12,7 +12,8 @@ flems:
     - bss@1.2.10
 ---
 
-Use bss (Better Style Sheets) like styled components, but way simpler.
+This example shows the use of [Better Style Sheets](https://github.com/porsager/bss) known as BSS.
+It behaves like styled components, but way simpler.
 
 ## JavaScript
 

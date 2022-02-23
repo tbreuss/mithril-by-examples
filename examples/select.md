@@ -9,6 +9,9 @@ author: osban
 layout: layouts/example.html
 ---
 
+This example shows how to render a normal HTML select element.
+It also demonstrates how to catch the selected item using the `onchange` handler.
+
 ## JavaScript
 
 ~~~js

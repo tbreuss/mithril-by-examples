@@ -9,6 +9,9 @@ author: osban
 layout: layouts/example.html
 ---
 
+Handling radio and checkboxes is often a little bit special.
+This example demonstrates how to use radio buttons in a Mithril.js application.
+
 ## JavaScript
 
 ~~~js

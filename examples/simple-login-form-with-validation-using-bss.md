@@ -12,7 +12,7 @@ flems:
     - bss@1.2.8
 ---
 
-Form for user name and email with validation and error messages.
+This example shows a login form with fields for user name and email including validation and displaying of error messages.
 
 ## JavaScript
 

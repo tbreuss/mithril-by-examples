@@ -9,7 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
-Parent-child communication where a child changes the parent.
+This example demonstrates parent-child communication where a child changes the parent.
+This is one of the basic concepts in Mithril.js, of how to communicate between child and parent components.
 
 ## JavaScript
 

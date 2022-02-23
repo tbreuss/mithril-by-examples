@@ -14,6 +14,7 @@ flems:
 ---
 
 This example shows the integration of select2 3rd-party library.
+Whit it it's possible to search for an item and use the up/down keys to select an item.
 
 ## HTML
 

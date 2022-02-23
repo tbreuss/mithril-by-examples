@@ -9,7 +9,7 @@ author: stephanhoyer
 layout: layouts/example.html
 ---
 
-Shows how to access dom nodes of a component, much like reacts refs.
+This example shows how to access dom nodes of a component, much like Reacts refs.
 
 ## JavaScript
 

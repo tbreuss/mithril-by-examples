@@ -9,7 +9,7 @@ author: stephanhoyer
 layout: layouts/example.html
 ---
 
-Simple dependency free calendar component.
+This example shows a simple dependency free calendar component.
 
 ## CSS
 

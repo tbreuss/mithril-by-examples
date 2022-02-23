@@ -16,7 +16,7 @@ flems:
     - react-dom/umd/react-dom.development.js
 ---
 
-Integrate react components into a mithrl app.
+This examples shows how to integrate React components into a Mithril.js application.
 
 ## JavaScript
 

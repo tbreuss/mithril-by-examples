@@ -9,6 +9,9 @@ author: osban
 layout: layouts/example.html
 ---
 
+This is an example, that shows a checkbox like behavior, but for DIV elements.
+So, clicking on a div item in a list, toggles it to checked/uncheck state.
+
 ## JavaScript
 
 ~~~js

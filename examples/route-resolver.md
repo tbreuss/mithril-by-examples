@@ -9,6 +9,8 @@ author: osban
 layout: layouts/example.html
 ---
 
+This example shows how to use Mithril.js' own router.
+
 ## JavaScript
 
 ~~~js

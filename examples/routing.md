@@ -9,7 +9,8 @@ author: mithril
 layout: layouts/example.html
 ---
 
-This routing example was taken from the official website at <https://mithril.js.org/index.html#routing>.
+This example shows how to route between two pages in a Mithril.js application.
+The routing example was taken from the official website at <https://mithril.js.org/index.html#routing>.
 
 ## HTML
 

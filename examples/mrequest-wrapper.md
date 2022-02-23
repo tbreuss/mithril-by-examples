@@ -12,7 +12,8 @@ flems:
   links:[]
 ---
 
-Wrapper example for m.request allowing an easier and snappier api handling.
+This is an example showing a wrapper for Mithril.js' `m.request` that allows an easier and snappier api handling.
+Especially the possibility of adding custom handlers to specific http status codes is a plus.
 
 ## JavaScript
 
