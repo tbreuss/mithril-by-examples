@@ -3,13 +3,7 @@ title: Homepage
 layout: layouts/home.html
 ---
 
-<h1>Mithril.js by Examples</h1>
-
-<blockquote>
-  The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...
-</blockquote>
-
-<h2>Latest Mithril.js Examples</h2>
+<h1 style="margin-top:0">Latest Mithril.js Examples</h1>
 
 {% set maxExamples = collections.examplesLatest.length | min(5) %}
 {% set examplesList = collections.examplesLatest | head(maxExamples) %}

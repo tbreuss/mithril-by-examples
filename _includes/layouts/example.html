@@ -2,42 +2,50 @@
 layout: layouts/base.html
 templateClass: tmpl-post
 ---
-<h1>{{ title }}</h1>
+<div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
-  {%- if author %}
-  {%- set contributorUrl %}/contributors/{{ author | slug }}/{% endset -%}
-  <span class="author">
-    by&nbsp;<span class="author"><a href="{{ contributorUrl | url }}">{{ author }}</a></span>
-  </span>
-  {%- endif %}
-</p>
+        <h1>{{ title }}</h1>
 
-{%- if (level) or (version) %}
-<p style="margin-top:-1em">
-  {%- if level %}Level: <span class="level">{{ level }}</span>{%- endif %}
-  {%- if version %} • Mithril.js Version: <span class="version">{{ version }}</span>{%- endif %}
-</p>
-{%- endif %}
+        <p>
+          <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+          {%- if author %}
+          {%- set contributorUrl %}/contributors/{{ author | slug }}/{% endset -%}
+          <span class="author">
+            by&nbsp;<span class="author"><a href="{{ contributorUrl | url }}">{{ author }}</a></span>
+          </span>
+          {%- endif %}
+        </p>
 
-<p>
-  {%- for tag in tags | filterTagList | sort -%}
-  {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-  {%- endfor %}
-</p>
+        {%- if (level) or (version) %}
+        <p style="margin-top:-1.6rem">
+          {%- if level %}Level: <span class="level">{{ level }}</span>{%- endif %}
+          {%- if version %} • Mithril.js Version: <span class="version">{{ version }}</span>{%- endif %}
+        </p>
+        {%- endif %}
 
-{% toc content, version, flems.files, flems.links %}
+        <p>
+          {%- for tag in tags | filterTagList | sort -%}
+          {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+          <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+          {%- endfor %}
+        </p>
 
-{{ content | flems(title, flems.selected, flems.files, flems.links, version) | safe }}
+        {% toc content, version, flems.files, flems.links %}
 
-{%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
-{% textifyTop title, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
+        {{ content | flems(title, flems.selected, flems.files, flems.links, version) | safe }}
 
-{% textifyBottom title, date | readableDate, tags, level, version %}
+        {%- set authorSlug %}/contributors/{{ author | slug }}/{% endset -%}
+        {% textifyTop title, date | readableDate, tags, level, version, author, authorSlug | url, link, collections.authorMap %}
 
-<p style="margin-top:2rem;">
-  <a href="{{ '/examples/' | url }}">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/{{ page.inputPath }}">Edit this example on GitHub</a>
-</p>
+        {% textifyBottom title, date | readableDate, tags, level, version %}
+
+        <p style="margin-top:3.2rem;">
+          <a href="{{ '/examples/' | url }}">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/{{ page.inputPath }}">Edit this example on GitHub</a>
+        </p>
+
+    </div>
+  </div>
+</div>

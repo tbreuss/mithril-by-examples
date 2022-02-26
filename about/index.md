@@ -2,10 +2,9 @@
 layout: layouts/main.html
 title: About
 templateClass: tmpl-post
-eleventyNavigation:
-  key: About
-  order: 5
 ---
+
+# About
 
 *Mithril.js by Examples* was created for new users including me to learn Mithril.js - a JavaScript framework for building brilliant applications.
 
@@ -36,7 +35,7 @@ The project could not exist without [the many contributors]({{ '/contributors/' 
 
 If you want to contribute, here is our [GitHub repository](https://github.com/tbreuss/mithril-by-examples).
 
-## Me
+## About Me
 
 This website was created by [Thomas Breuss](https://github.com/tbreuss).
 It was built using [Eleventy](https://www.11ty.dev), a simple static site generator, together with a few other fancy things.
