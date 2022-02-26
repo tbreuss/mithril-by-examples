@@ -3,6 +3,8 @@ layout: layouts/main.html
 title: API Methods
 ---
 
+# API Methods
+
 One of the best things about Mithril.js is that it has a very small footprint.
 And most of the time not even all methods are needed.
 Therefore, the number of API methods is really manageable.

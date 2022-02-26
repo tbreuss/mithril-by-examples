@@ -3,6 +3,8 @@ layout: layouts/main.html
 title: Lifecycle Methods
 ---
 
+# Lifecycle Methods
+
 Components and virtual DOM nodes can have lifecycle methods, also known as hooks, which are called at various points during the lifetime of a DOM element.
 
 Lifecycle methods are only called as a side effect of a [m.render()](/tags/m.render/) call. They are not called if the DOM is modified outside of Mithril.js.

@@ -8,7 +8,7 @@ templateClass: tmpl-post
 
         <h1>{{ title }}</h1>
 
-        <p>
+        <p class="no-margin-bottom">
           <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
           {%- if author %}
           {%- set contributorUrl %}/contributors/{{ author | slug }}/{% endset -%}
@@ -19,17 +19,17 @@ templateClass: tmpl-post
         </p>
 
         {%- if (level) or (version) %}
-        <p style="margin-top:-1.6rem">
+        <p class="no-margin-bottom">
           {%- if level %}Level: <span class="level">{{ level }}</span>{%- endif %}
           {%- if version %} • Mithril.js Version: <span class="version">{{ version }}</span>{%- endif %}
         </p>
         {%- endif %}
 
         <p>
-          {%- for tag in tags | filterTagList | sort -%}
-          {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+          {% for tag in tags | filterTagList | sort %}
+          {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
           <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-          {%- endfor %}
+          {% endfor %}
         </p>
 
         {% toc content, version, flems.files, flems.links %}
