@@ -4,7 +4,6 @@ hljs.highlightAll();
 // adding target to external links
 [...document.links].forEach(link => {
   if (link.hostname != window.location.hostname) {
-    console.log(link.hostname, window.location.hostname)
     link.target = '_blank'
   }
 });
