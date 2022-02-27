@@ -4,7 +4,7 @@ title: About
 templateClass: tmpl-post
 ---
 
-# About
+# About This Website
 
 *Mithril.js by Examples* was created for new users including me to learn Mithril.js - a JavaScript framework for building brilliant applications.
 
