@@ -5,7 +5,7 @@ layout: layouts/main.html
 ---
 <h1>Level Overview</h1>
 
-<ul class="postlist">
+<ul class="unstyled">
   {% for key, level in collections.levelMap %}
   {% set levelUrl %}/levels/{{ level.name | slug }}/{% endset %}
   <li><a href="{{ levelUrl | url }}" class="postlist-link">{{ level.name }} ({{ level.count }})</a></li>

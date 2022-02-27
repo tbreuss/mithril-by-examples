@@ -58,7 +58,7 @@ body {
 
 .pure-menu-link {
   color: #222;
-  line-height: 1.5rem;
+  line-height: 1.5;
   padding: .5rem 1rem;
 }
 
@@ -180,11 +180,11 @@ body {
 }
 
 .custom-brand {
-  line-height: 1.5rem;
+  line-height: 1.5;
   padding: 0.5rem 1rem;
 }
 .custom-toggle {
-  line-height: 1.5rem;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 47.999em) {
@@ -208,15 +208,18 @@ body {
 .hero h1 {
   color: white;
   text-align: center;
-  margin: 1em 0 0 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .hero blockquote {
   font-size: 1.66rem;
   color: white;
-  margin: 1em auto;
   text-align: center;
-  padding: 0 4rem;
+  line-height: 1.4;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 35.5rem;
 }
 
 .hero__button {
@@ -231,7 +234,7 @@ body {
 .footer {
   background-color: #274aa7;
   margin-top: 4.5rem;
-  font-size: 0.8em;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   padding-top: 4.5rem;
   padding-bottom: 2rem;
@@ -250,7 +253,7 @@ body {
   margin-bottom: 2rem;
   background-color: rgba(255,255,255,0.5);
   border: none;
-  height: 1px;
+  height: 2px;
 }
 
 .footer-about__heading {
@@ -262,6 +265,7 @@ body {
 .footer-about__text {
   padding-right: 5em;
   margin-bottom: 3rem;
+  line-height: 1.6;
 }
 
 .footer-links__heading {
@@ -274,7 +278,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  line-height: 1.6em;
+  line-height: 1.6;
 }
 
 .footer-tools__heading {
@@ -287,7 +291,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  line-height: 1.6em;
+  line-height: 1.6;
 }
 
 @media screen and (min-width: 48em) { /* ≥ 768px */
@@ -338,7 +342,7 @@ body {
 .content p {
   margin: 0 0 1.6rem 0;
   font-size: 1rem;
-  line-height: 1.6rem;
+  line-height: 1.5;
 }
 
 .content p.no-margin-bottom {
@@ -354,7 +358,7 @@ body {
 }
 
 .content li {
-  line-height: 1.6rem;
+  line-height: 1.5;
 }
 
 .content p+ul {
@@ -363,14 +367,18 @@ body {
 
 .content table {
   margin-bottom: 2.6em;
-  font-size: 0.88em;
+  font-size: 0.8rem;
+}
+
+.content table td {
+  padding-right: 1rem;
 }
 
 .content pre {
   padding: 0;
   margin-bottom: 2.4rem;
   background-color: #E6E6E6;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   max-width: 1000px;
   position: relative;
 	z-index: 99;
@@ -496,7 +504,7 @@ a[href].direct-link:focus:visited,
 }
 
 #flems {
-  height: 32rem;
+  height: 28rem;
   margin-bottom: 3.5rem;
   border-left: 0.5rem solid rgb(246, 246, 246);
   border-right: 0.5rem solid rgb(246, 246, 246);
@@ -506,6 +514,39 @@ a[href].direct-link:focus:visited,
   display: none;
 }
 
+.unstyled {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.dependencies {
+  color: #282c34;
+  margin-bottom: 2rem;
+}
+.dependencies__tableWrap {
+  background-color: #282c34;
+  display: block;
+  overflow-x: auto;
+}
+/* strange things happen here */
+.dependencies__table {
+  margin: -1rem 0 0 0 !important;
+  padding: 1em;
+}
+.dependencies__table--1 {
+  margin-top: 0 !important;
+}
+.dependencies__table th, .dependencies__table td {
+  color: #abb2bf;
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  font-size: 14px;
+}
+.dependencies__table th {
+text-align: left;
+}
+.capitalize {
+  text-transform: capitalize;
+}
 
 /* =========================================================================
    INSPIRATIONS

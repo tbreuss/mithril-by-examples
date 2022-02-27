@@ -481,7 +481,7 @@ module.exports = function(eleventyConfig) {
     if (htmlDepsRows.length > 0) {
       html += `
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--${flemsLinksArray.length}">
                 <thead>
@@ -497,36 +497,6 @@ module.exports = function(eleventyConfig) {
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       `;
     }
 
