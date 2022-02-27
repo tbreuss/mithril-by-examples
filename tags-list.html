@@ -8,11 +8,57 @@ eleventyNavigation:
 ---
 <h1>{{ collections.tagMap.length }} Tags</h1>
 
-<p>
-{% for key, tag in collections.tagMap | sort %}
-  {% set tagUrl %}/tags/{{ tag.name | slug }}/{% endset %}
-  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag.name }} ({{ tag.count }})</a>
+{% set maxTagCount = 0 %}
+{% for key, tag in collections.tagMap %}
+  {% if (tag.count > maxTagCount) %}
+    {% set maxTagCount = tag.count %}
+  {% endif %}
 {% endfor %}
-</p>
+
+<div class="tags">
+  {% for key, tag in collections.tagMap | sort %}
+    {% set tagUrl %}/tags/{{ tag.name | slug }}/{% endset %}
+    <div class="tags-table">
+      <div class="tags-row">
+        <div class="tags-cell" style="width:{{ tag.count / maxTagCount * 100 }}%">
+          <a class="tags-link" href="{{ tagUrl | url }}">{{ tag.name }}</a>
+        </div>
+        <div class="tags-cell"><span class="tags-count">{{ tag.count }}</span></div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
 <p>Tags are ordered from A to Z.</p>
+
+<style>
+  .tags {
+    margin-bottom:1.6rem;
+  }
+  .tags-table {
+    display:table;
+    width: 90%;
+  }
+  .tags-row {
+    display:table-row;
+    margin-bottom: 0.5rem;
+  }
+  .tags-cell {
+    display:table-cell;
+    white-space:nowrap;
+    padding-bottom: 0.5rem;
+  }
+  .tags-link {
+    background-color: #aaa;
+    display:block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+  }
+  .tags-count {
+    display:block;
+    padding: 0.25rem 0 0.25rem 0.5rem;
+    color: #aaa;
+    font-weight: bold;
+  }
+</style>
