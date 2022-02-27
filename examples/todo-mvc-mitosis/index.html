@@ -5,60 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Todo MVC (Mitosis) | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
-    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960447">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960447">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>Todo MVC (Mitosis)</h1>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="2021-10-29">29 October 2021</time><span class="author">
-    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
-  </span>
-</p>
-<p style="margin-top:-1em">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
-</p>
+        <h1>Todo MVC (Mitosis)</h1>
 
-<p><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/mitosis/" class="post-tag">mitosis</a><a href="/tags/onupdate/" class="post-tag">onupdate</a><a href="/tags/todomvc/" class="post-tag">todomvc</a>
-</p>
+        <p class="no-margin-bottom">
+          <time datetime="2021-10-29">29 October 2021</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
 
-<div class="toc">
+        <p>
+          
+          
+          <a href="/tags/dom/" class="post-tag">dom</a>
+          
+          
+          <a href="/tags/m.route/" class="post-tag">m.route</a>
+          
+          
+          <a href="/tags/mitosis/" class="post-tag">mitosis</a>
+          
+          
+          <a href="/tags/onupdate/" class="post-tag">onupdate</a>
+          
+          
+          <a href="/tags/todomvc/" class="post-tag">todomvc</a>
+          
+        </p>
+
+        <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#markup">Markup</a></li><li class="toc__item"><a clas="toc__link" href="#model.js">Model.js</a></li><li class="toc__item"><a clas="toc__link" href="#actions.js">Actions.js</a></li><li class="toc__item"><a clas="toc__link" href="#header.js">Header.js</a></li><li class="toc__item"><a clas="toc__link" href="#main.js">Main.js</a></li><li class="toc__item"><a clas="toc__link" href="#footer.js">Footer.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">App.js</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#life-example">Life Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#markup">Markup</a></li><li class="toc__item"><a clas="toc__link" href="#model.js">Model.js</a></li><li class="toc__item"><a clas="toc__link" href="#actions.js">Actions.js</a></li><li class="toc__item"><a clas="toc__link" href="#header.js">Header.js</a></li><li class="toc__item"><a clas="toc__link" href="#main.js">Main.js</a></li><li class="toc__item"><a clas="toc__link" href="#footer.js">Footer.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">App.js</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-<p>Here is another TodoMVC implementation, this time using Mitosis for state management, see <code>actions.js</code> and <code>models.js</code>.
+        <p>Here is another TodoMVC implementation, this time using Mitosis for state management, see <code>actions.js</code> and <code>models.js</code>.
 As a realistic but still simple application example it shows Mithril.js' most used concepts, methods and lifecycle methodes.</p>
 
-      <div class="modal-container">
-        <label for="modal" class="example-label">Show Live Example in Flems</label>
-        <label for="modal" class="modal-background"></label>
-        <input type="checkbox" id="modal">
-        <div class="modal">
-          <div class="modal-header">
-            <h3>Todo MVC (Mitosis)</h3>
-            <label for="modal">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
-            </label>
-          </div>
-          <div id="flems" class="modal-body"></div>
-        </div>
-      </div>
+      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
         selected: '.js',
         files: [{"name":".html","content":"<body>\n<section class=\"todoapp\"></section>\n<footer class=\"info\">\n  <p>Double-click to edit a todo</p>\n  <p>Created by <a href=\"http://todomvc.com\">people</a></p>\n  <p>Part of <a href=\"http://todomvc.com\">TodoMVC</a></p>\n</footer>\n<!-- Scripts here. Don't remove ↓ -->\n<!-- <script src=\"node_modules/todomvc-common/base.js\"></script>-->\n<!-- <script src=\"js/app.js\"></script>-->\n</body>\n"},{"name":"model.js","content":"// model.js\nconst model = () => ({\n  todos: [],\n  filters: [\n    {filter: 'All', text: 'All'},\n    {filter: false, text: 'Active'},\n    {filter: true,  text: 'Completed'}\n  ],\n  filter: 'All',\n  all: true,\n  enter: 13\n})\n\nexport default model\n"},{"name":"actions.js","content":"// actions.js\nconst actions = (M, A = {\n  init: () => {M.todos = JSON.parse(localStorage.getItem('todos-mithril')) || []},\n  save: () => localStorage.setItem('todos-mithril', JSON.stringify(M.todos)),\n  change: (a,b,c) => {\n    void {\n      push: x => M.todos.push({...x}),\n      done: x => {\n        if (x === 'all') {\n          M.todos.forEach(y => y.completed = M.all)\n          M.all = !M.all\n        }\n        else M.todos[x].completed = !M.todos[x].completed\n      },\n      clear: () => {\n        M.todos = M.todos.filter(x => !x.completed)\n        M.all = true\n      },\n      splice: i => M.todos.splice(i,1),\n      blur: (i, todo) => M.todos[i] = {...todo}\n    }[a](b,c)\n\n    A.save()\n  },\n  setfil: fil => M.filter = fil\n}) => A\n\nexport default actions\n"},{"name":"header.js","content":"// header.js\nconst header = () => {\n  let todon = {}\n\n  const add = A => {\n    todon.id = Date.now()\n    todon.title.trim()\n    todon.completed = false\n    A.change('push', todon)\n    todon = {}\n  }\n\n  return {\n    view: ({attrs: {M,A}}) =>\n      m('header.header',\n        m('h1', 'todos'),\n        m('input.new-todo', {\n          autofocus: true,\n          placeholder: 'What needs to be done?',\n          oninput: e => todon.title = e.target.value,\n          onkeydown: e => {if (e.keyCode === M.enter && e.target.value.trim()) add(A)},\n          value: todon.title\n        })\n      )\n  }\n}\n\nexport default header\n"},{"name":"main.js","content":"// main.js\nconst main = () => {\n  const escape = 27\n  let todo = {}\n\n  return {\n    view: ({attrs: {M,A}}) =>\n      m('section.main',\n        m('input.toggle-all', {\n          id: 'toggle-all',\n          type: 'checkbox',\n          checked: M.todos.every(x => x.completed)\n        }),\n        m('label', {\n          for: 'toggle-all',\n          onclick: () => A.change('done', 'all')\n        }, 'Mark all as complete'),\n        M.todos\n          .filter(x => M.filter === 'All' ? x : x.completed === M.filter)\n          .map((x,i) =>\n            m('ul.todo-list',\n              m('li', {\n                  class: `${x.completed ? 'completed' : 'active'} ${x.id === todo.id && 'editing'}`,\n                },\n                m('.view',\n                  m('input.toggle', {\n                    type: 'checkbox',\n                    checked: x.completed,\n                    onchange: () => A.change('done', i)\n                  }),\n                  m('label', {ondblclick: () => todo = {...x}}, x.title),\n                  m('button.destroy', {\n                    onclick: () => A.change('splice', i)\n                  })\n                ),\n                m('input.edit', {\n                  onupdate: ({dom}) => dom.focus(),\n                  oninput: e => todo.title = e.target.value,\n                  onblur: e => {\n                    if (Object.keys(todo).length) {\n                      if (!todo.title.trim()) {\n                        A.change('splice', i)\n                        todo = {}\n                      }\n                      else {\n                        A.change('blur', i, todo)\n                        todo = {}\n                      }\n                    }\n                  },\n                  onkeydown: e => {\n                    if (e.keyCode === M.enter) e.target.blur()\n                    else if (e.keyCode === escape) todo = {}\n                  },\n                  value: todo.title\n                })\n              )\n            )\n          )\n      )\n  }\n}\n\nexport default main\n"},{"name":"footer.js","content":"// footer.js\nconst footer = () => {\n  const left = M => M.todos.filter(x => !x.completed).length\n\n  return {\n    view: ({attrs: {M,A}}) =>\n      m('footer.footer',\n        m('span.todo-count',\n          m('strong', left(M)), ` item${left(M) === 1 ? '' : 's'} left`\n        ),\n        m('ul.filters',\n          M.filters.map(x =>\n            m('li',\n              m('a', {\n                class: M.filter === x.filter && 'selected',\n                onclick: () => {A.setfil(x.filter); m.route.set('/' + x.text)}\n              }, x.text)\n            )\n          )\n        ),\n        M.todos.some(x => x.completed) &&\n        m('button.clear-completed', {\n          onclick: () => A.change('clear')\n        }, 'Clear completed')\n      )\n  }\n}\n\nexport default footer\n"},{"name":"app.js","content":"// app.js\nimport model   from './model'\nimport actions from './actions'\nimport header  from './header'\nimport main    from './main'\nimport footer  from './footer'\n\nconst app = () => {\n  const M = model()\n  const A = actions(M)\n\n  A.init()\n\n  return {\n    view: () => [\n      m(header, {M,A}),\n      M.todos.length > 0 && m(main, {M,A}),\n      M.todos.length > 0 && m(footer, {M,A})\n    ]\n  }\n}\n\nm.route(document.querySelector('.todoapp'), '/All', {'/:filter': app})\n"},{"name":".css","content":"html,\nbody {\n  margin: 0;\n  padding: 0;\n}\n\nbutton {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  background: none;\n  font-size: 100%;\n  vertical-align: baseline;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  -webkit-appearance: none;\n  appearance: none;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\nbody {\n  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  line-height: 1.4em;\n  background: #f5f5f5;\n  color: #4d4d4d;\n  min-width: 230px;\n  max-width: 550px;\n  margin: 0 auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  font-weight: 300;\n}\n\n:focus {\n  outline: 0;\n}\n\n.hidden {\n  display: none;\n}\n\n.todoapp {\n  background: #fff;\n  margin: 130px 0 40px 0;\n  position: relative;\n  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),\n  0 25px 50px 0 rgba(0, 0, 0, 0.1);\n}\n\n.todoapp input::-webkit-input-placeholder {\n  font-style: italic;\n  font-weight: 300;\n  color: #e6e6e6;\n}\n\n.todoapp input::-moz-placeholder {\n  font-style: italic;\n  font-weight: 300;\n  color: #e6e6e6;\n}\n\n.todoapp input::input-placeholder {\n  font-style: italic;\n  font-weight: 300;\n  color: #e6e6e6;\n}\n\n.todoapp h1 {\n  position: absolute;\n  top: -155px;\n  width: 100%;\n  font-size: 100px;\n  font-weight: 100;\n  text-align: center;\n  color: rgba(175, 47, 47, 0.15);\n  -webkit-text-rendering: optimizeLegibility;\n  -moz-text-rendering: optimizeLegibility;\n  text-rendering: optimizeLegibility;\n}\n\n.new-todo,\n.edit {\n  position: relative;\n  margin: 0;\n  width: 100%;\n  font-size: 24px;\n  font-family: inherit;\n  font-weight: inherit;\n  line-height: 1.4em;\n  border: 0;\n  color: inherit;\n  padding: 6px;\n  border: 1px solid #999;\n  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);\n  box-sizing: border-box;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.new-todo {\n  padding: 16px 16px 16px 60px;\n  border: none;\n  background: rgba(0, 0, 0, 0.003);\n  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);\n}\n\n.main {\n  position: relative;\n  z-index: 2;\n  border-top: 1px solid #e6e6e6;\n}\n\n.toggle-all {\n  width: 1px;\n  height: 1px;\n  border: none; /* Mobile Safari */\n  opacity: 0;\n  position: absolute;\n  right: 100%;\n  bottom: 100%;\n}\n\n.toggle-all + label {\n  width: 60px;\n  height: 34px;\n  font-size: 0;\n  position: absolute;\n  top: -52px;\n  left: -13px;\n  -webkit-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n\n.toggle-all + label:before {\n  content: '❯';\n  font-size: 22px;\n  color: #e6e6e6;\n  padding: 10px 27px 10px 27px;\n}\n\n.toggle-all:checked + label:before {\n  color: #737373;\n}\n\n.todo-list {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n.todo-list li {\n  position: relative;\n  font-size: 24px;\n  border-bottom: 1px solid #ededed;\n}\n\n.todo-list li:last-child {\n  border-bottom: none;\n}\n\n.todo-list li.editing {\n  border-bottom: none;\n  padding: 0;\n}\n\n.todo-list li.editing .edit {\n  display: block;\n  width: calc(100% - 43px);\n  padding: 12px 16px;\n  margin: 0 0 0 43px;\n}\n\n.todo-list li.editing .view {\n  display: none;\n}\n\n.todo-list li .toggle {\n  text-align: center;\n  width: 40px;\n  /* auto, since non-WebKit browsers doesn't support input styling */\n  height: auto;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  margin: auto 0;\n  border: none; /* Mobile Safari */\n  -webkit-appearance: none;\n  appearance: none;\n}\n\n.todo-list li .toggle {\n  opacity: 0;\n}\n\n.todo-list li .toggle + label {\n  /*\n    Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433\n    IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/\n  */\n  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');\n  background-repeat: no-repeat;\n  background-position: center left;\n}\n\n.todo-list li .toggle:checked + label {\n  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');\n}\n\n.todo-list li label {\n  word-break: break-all;\n  padding: 15px 15px 15px 60px;\n  display: block;\n  line-height: 1.2;\n  transition: color 0.4s;\n}\n\n.todo-list li.completed label {\n  color: #d9d9d9;\n  text-decoration: line-through;\n}\n\n.todo-list li .destroy {\n  display: none;\n  position: absolute;\n  top: 0;\n  right: 10px;\n  bottom: 0;\n  width: 40px;\n  height: 40px;\n  margin: auto 0;\n  font-size: 30px;\n  color: #cc9a9a;\n  margin-bottom: 11px;\n  transition: color 0.2s ease-out;\n}\n\n.todo-list li .destroy:hover {\n  color: #af5b5e;\n}\n\n.todo-list li .destroy:after {\n  content: '×';\n}\n\n.todo-list li:hover .destroy {\n  display: block;\n}\n\n.todo-list li .edit {\n  display: none;\n}\n\n.todo-list li.editing:last-child {\n  margin-bottom: -1px;\n}\n\n.footer {\n  color: #777;\n  padding: 10px 15px;\n  height: 20px;\n  text-align: center;\n  border-top: 1px solid #e6e6e6;\n}\n\n.footer:before {\n  content: '';\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 50px;\n  overflow: hidden;\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),\n  0 8px 0 -3px #f6f6f6,\n  0 9px 1px -3px rgba(0, 0, 0, 0.2),\n  0 16px 0 -6px #f6f6f6,\n  0 17px 2px -6px rgba(0, 0, 0, 0.2);\n}\n\n.todo-count {\n  float: left;\n  text-align: left;\n}\n\n.todo-count strong {\n  font-weight: 300;\n}\n\n.filters {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  position: absolute;\n  right: 0;\n  left: 0;\n}\n\n.filters li {\n  display: inline;\n}\n\n.filters li a {\n  color: inherit;\n  margin: 3px;\n  padding: 3px 7px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  border-radius: 3px;\n}\n\n.filters li a:hover {\n  border-color: rgba(175, 47, 47, 0.1);\n  cursor: pointer;\n}\n\n.filters li a.selected {\n  border-color: rgba(175, 47, 47, 0.2);\n}\n\n.clear-completed,\nhtml .clear-completed:active {\n  float: right;\n  position: relative;\n  line-height: 20px;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.clear-completed:hover {\n  text-decoration: underline;\n}\n\n.info {\n  margin: 65px auto 0;\n  color: #bfbfbf;\n  font-size: 10px;\n  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);\n  text-align: center;\n}\n\n.info p {\n  line-height: 1;\n}\n\n.info a {\n  color: inherit;\n  text-decoration: none;\n  font-weight: 400;\n}\n\n.info a:hover {\n  text-decoration: underline;\n}\n\n/*\n\tHack to remove background from Mobile Safari.\n\tCan't use it globally since it destroys checkboxes in Firefox\n*/\n@media screen and (-webkit-min-device-pixel-ratio:0) {\n  .toggle-all,\n  .todo-list li .toggle {\n    background: none;\n  }\n\n  .todo-list li .toggle {\n    height: 40px;\n  }\n}\n\n@media (max-width: 430px) {\n  .footer {\n    height: 50px;\n  }\n\n  .filters {\n    bottom: 10px;\n  }\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
@@ -66,7 +91,7 @@ As a realistic but still simple application example it shows Mithril.js' most us
       </script>
     
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--1">
                 <thead>
@@ -82,36 +107,6 @@ As a realistic but still simple application example it shows Mithril.js' most us
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       <h2 id="markup" tabindex="-1">Markup <a class="direct-link" href="#markup" aria-hidden="true">#</a></h2>
 <pre><code class="language-html">&lt;body&gt;
 &lt;section class=&quot;todoapp&quot;&gt;&lt;/section&gt;
@@ -713,21 +708,55 @@ It is also showing the <code>onupdate</code> hook, which is one of several Mithr
 Want to see more examples written by osban? Then <a href="/contributors/osban/">Click here</a>.</p>
 
 
-<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
 
 
-<p style="margin-top:2rem;">
-  <a href="/examples/">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/todo-mvc-mitosis.md">Edit this example on GitHub</a>
-</p>
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/todo-mvc-mitosis.md">Edit this example on GitHub</a>
+        </p>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /examples/todo-mvc-mitosis/ -->
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/todo-mvc-mitosis/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960447"></script>
+  <script src="/js/main.js?v=1645960447"></script>
 </html>

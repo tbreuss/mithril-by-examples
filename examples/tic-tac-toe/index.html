@@ -5,62 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Tic Tac Toe | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
-    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960447">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960447">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>Tic Tac Toe</h1>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="2021-10-26">26 October 2021</time><span class="author">
-    by&nbsp;<span class="author"><a href="/contributors/boazblake/">boazblake</a></span>
-  </span>
-</p>
-<p style="margin-top:-1em">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
-</p>
+        <h1>Tic Tac Toe</h1>
 
-<p><a href="/tags/3rd-party/" class="post-tag">3rd-party</a><a href="/tags/game/" class="post-tag">game</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.stream/" class="post-tag">m.stream</a><a href="/tags/oncreate/" class="post-tag">oncreate</a>
-</p>
+        <p class="no-margin-bottom">
+          <time datetime="2021-10-26">26 October 2021</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/boazblake/">boazblake</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
 
-<div class="toc">
+        <p>
+          
+          
+          <a href="/tags/3rd-party/" class="post-tag">3rd-party</a>
+          
+          
+          <a href="/tags/game/" class="post-tag">game</a>
+          
+          
+          <a href="/tags/m.mount/" class="post-tag">m.mount</a>
+          
+          
+          <a href="/tags/m.stream/" class="post-tag">m.stream</a>
+          
+          
+          <a href="/tags/oncreate/" class="post-tag">oncreate</a>
+          
+        </p>
+
+        <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#life-example">Life Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-<p>In this example we can see and play the famous tic-tac-toe game against the computer.
+        <p>In this example we can see and play the famous tic-tac-toe game against the computer.
 The game is using a central model for state management together with Mithril.js' own stream library.
 Besides that the 3rd-party library Ramda - A practical functional library for JavaScript programmers - is used.
 Well done and a very nice Mithril.js example.</p>
 
-      <div class="modal-container">
-        <label for="modal" class="example-label">Show Live Example in Flems</label>
-        <label for="modal" class="modal-background"></label>
-        <input type="checkbox" id="modal">
-        <div class="modal">
-          <div class="modal-header">
-            <h3>Tic Tac Toe</h3>
-            <label for="modal">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
-            </label>
-          </div>
-          <div id="flems" class="modal-body"></div>
-        </div>
-      </div>
+      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
         selected: '.js',
         files: [{"name":".html","content":"<link href=\"https://fonts.googleapis.com/css?family=Mansalva&display=swap\" rel=\"stylesheet\">\n"},{"name":".js","content":"const Stream = m.stream\n\nconst calcWidth = mdl => {\n  mdl.width(window.innerWidth)\n  return mdl\n}\n\nconst getRandomInt = (min, max) => Math.floor(Math.random() * (1 + max - min) + min)\n\nconst players = {\n  true: {score:0, mark: 'X' },\n  false: {score: 0, mark: 'O'},\n}\nconst boardSizes = R.filter((n) => n % 3 == 0 ,R.range(0,60))\n\n\nconst getDiagAcross =(acc, set, idx) => {\n  let r = acc.concat(set[idx])\n  return r\n}\n\nconst getDiagDown =(acc, set, idx) => {\n  let r = acc.concat(set[set.length - (idx + 1)])\n  return r\n}\n\nconst winningSetBy = mdl => {\n  if(mdl.size) {\n    let spaces = R.range(1, (mdl.size * mdl.size + 1))\n    let setsAcross = R.splitEvery(mdl.size, spaces)\n    let setsDown = R.transpose(setsAcross)\n    let setsDiagAcross = setsAcross.reduce(getDiagAcross, [])\n    let setsDiagDown = setsDown.reduce(getDiagDown, [])\n    let winnings = setsAcross.concat(setsDown).concat([setsDiagAcross].concat([setsDiagDown]))\n    return winnings\n  } else {\n    restart(mdl)\n  }\n}\n\nconst mdl = {\n  winnerSets:[],\n  winner:null,\n  turn: true,\n  players,\n  board:null,\n  size: 0,\n  width: Stream(800)\n}\n\nconst markSelectedSpace = (mdl, key, mark) => {\n  const space = R.filter(R.propEq('key', key),mdl.board)\n  let updatedSpace = R.set(R.lensProp('value'),mark, R.head(space), mdl.board)\n  let index = R.findIndex(R.propEq('key',key))(mdl.board)\n  mdl.board =  R.insert(index,updatedSpace,R.without(space,mdl.board))\n  return mdl\n}\n\nconst markRandomSpace = mdl => {\n  let emptySpaces = mdl.board.filter(R.propEq('value',''))\n  let AISpace = emptySpaces[getRandomInt(0, emptySpaces.length - 1)]\n  !mdl.winner && AISpace && markSpace(mdl)(AISpace)\n  return mdl\n}\n\nconst updateTurn = mdl => {\n  mdl.turn = !mdl.turn\n  return mdl\n}\n\nconst isWinningSpace = (mdl, key) => {\n  let value = R.prop('value',R.head(R.filter(R.propEq('key', key),mdl.board)))\n  let sets = R.groupBy(c => c[1])(mdl.board.map(R.props(['key','value'])))\n  let keys = R.keys(R.fromPairs(sets[value])).map(Number)\n  let isWinner = mdl.winnerSets.map(set => set.every(key => keys.includes(key))).includes(true)\n  return isWinner\n}\n\nconst checkIfDraw = mdl => {\n  if(!R.pluck('value',mdl.board).includes('')) {\n    mdl.winner = 'No One'\n    return mdl\n   }\n   return mdl\n}\n\nconst markSpace = mdl => space => {\n  let player = mdl.players[mdl.turn].mark\n  if(isWinningSpace(markSelectedSpace(mdl, space.key,  player), space.key)) {\n    mdl.players[mdl.turn].score ++\n    mdl.winner = player\n    return mdl\n  }\n  checkIfDraw(mdl)\n  return mdl\n}\n\nconst nextTurn =  (mdl, space) => {\n  return R.compose(updateTurn,\n    markRandomSpace,\n    updateTurn,\n    markSpace(mdl),\n  )(space)\n  return mdl\n}\n\nconst restart = mdl => {\n  mdl.winner = null\n  mdl.size = 0\n  mdl.board = null\n  mdl.width(800)\n}\n\nconst makeBoardWithSize = (mdl, size) => {\n  mdl.size = size\n  mdl.board = R.range(0,size * size).map(n => ({key: n + 1, value: ''}))\n  mdl.winnerSets = winningSetBy(mdl)\n}\n\nconst Space = {\n  view: ({attrs:{mdl, key, space}}) =>\n   m('.space', {\n      style:{\n        fontSize:`${(mdl.width()/mdl.size)/2}px`,\n        height: `${(mdl.width()/mdl.size)/2}px`,\n      flex:`1 1 ${mdl.width()/mdl.size}px`},\n      onclick: e => !mdl.winner && !space.value && nextTurn(mdl, space)},\n      space.value && m('.value', space.value))\n}\n\n\n\nconst PlayerScore = {\n    view : ({attrs:{player, mdl}}) => m('.score-card', [player.mark,':', player.score])\n}\n\nconst Toolbar = {\n  view: ({attrs:{mdl}}) =>\n    m('.toolbar', [\n      m('button.btn',{onclick: e => restart(mdl)}, 'New Game'),\n    Object.keys(mdl.players).map((player, idx) =>\n      m(PlayerScore, {key:idx, player: players[player], mdl}))\n    ])\n}\n\nconst Game = {\n  view: () =>\n    mdl.board ? m('.game', {style:{width:`${mdl.width()}px`}}, mdl.board.map((space) =>\n      m(Space, {key:space.key, space, mdl}) ))\n      : [ m('h1','select a board size'),\n          m('select', {value:mdl.size, onchange: e => makeBoardWithSize(mdl, Number(e.target.value))},\n          boardSizes.map(n => m('option', n)),\n          mdl.size)]\n}\n\nconst GameOver = {\n  oncreate: () => window.scrollTo(0,0),\n  view: ({attrs:{mdl}}) =>\n    m('.game-over', {onclick:e => restart(mdl)}, `Game Over ${mdl.winner} is the winner!`)\n}\n\nconst TicTacToe = {\n  view:() => {\n    calcWidth(mdl)\n    return m('.', [\n  m(Toolbar, {mdl}),\n  mdl.winner && m(GameOver, {mdl}),\n  m(Game, {mdl})\n])}\n}\n\n\nm.mount(document.body, TicTacToe)\n"},{"name":".css","content":"\n* {\n  box-sizing: border-box;\n  font-family: 'Mansalva';\n}\n\nselect {\n  width: 80px;\n  height: 36px;\n  font-size: 30px;\n}\n\n.toolbar {\n  border: 1px solid green;\n  display: flex;\n  flex-flow: wrap;\n  justify-content: space-between;\n}\n\n.score-card {\n  padding: 10px;\n  font-size: 30px\n}\n\n.game {\n  display: flex;\n  flex-flow: wrap;\n}\n\n\n.space {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid green;\n  cursor:pointer;\n}\n\n.game-over {\n  position: absolute;\n  top: 15%;\n  left: 15%;\n  width: 500px;\n  font-size: 90px;\n  background: #bdc3c7;\n  padding: 4px;\n  cursor: pointer;\n}\n\n.value {\n  font-size: inherit;\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"ramda@0.26.1","type":"script","url":"https://unpkg.com/ramda@0.26.1"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
@@ -68,7 +93,7 @@ Well done and a very nice Mithril.js example.</p>
       </script>
     
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--3">
                 <thead>
@@ -84,36 +109,6 @@ Well done and a very nice Mithril.js example.</p>
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       <h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
 <pre><code class="language-html">&lt;link href=&quot;https://fonts.googleapis.com/css?family=Mansalva&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
 </code></pre>
@@ -354,21 +349,55 @@ It is also showing the <code>oncreate</code> hook, which is one of several Mithr
 Do you want to see another one written by boazblake? Then <a href="/contributors/boazblake/">Click here</a>.</p>
 
 
-<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
 
 
-<p style="margin-top:2rem;">
-  <a href="/examples/">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/tic-tac-toe.md">Edit this example on GitHub</a>
-</p>
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/tic-tac-toe.md">Edit this example on GitHub</a>
+        </p>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /examples/tic-tac-toe/ -->
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/tic-tac-toe/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960447"></script>
+  <script src="/js/main.js?v=1645960447"></script>
 </html>

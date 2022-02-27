@@ -326,3 +326,18 @@ a[href].direct-link:focus:visited,
   margin-bottom: 0;
   padding-left: 1.25rem;
 }
+
+/* Flems */
+
+#flems {
+  height: 32rem;
+  margin-bottom: 2rem;
+  /*padding: 1rem;*/
+  /*background-color: rgb(246, 246, 246);*/
+  border-left: 0.5rem solid rgb(246, 246, 246);
+  border-right: 0.5rem solid rgb(246, 246, 246);
+}
+
+#flems .editor {
+  display: none;
+}

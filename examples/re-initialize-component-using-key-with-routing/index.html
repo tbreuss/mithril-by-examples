@@ -5,64 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Re-initializing a Component Using Key - With Routing | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
-    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960447">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960447">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>Re-initializing a Component Using Key - With Routing</h1>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="2020-09-24">24 September 2020</time><span class="author">
-    by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
-  </span>
-</p>
-<p style="margin-top:-1em">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
-</p>
+        <h1>Re-initializing a Component Using Key - With Routing</h1>
 
-<p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/key/" class="post-tag">key</a><a href="/tags/m.route/" class="post-tag">m.route</a><a href="/tags/vnode/" class="post-tag">vnode</a>
-</p>
+        <p class="no-margin-bottom">
+          <time datetime="2020-09-24">24 September 2020</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
 
-<div class="toc">
+        <p>
+          
+          
+          <a href="/tags/component/" class="post-tag">component</a>
+          
+          
+          <a href="/tags/key/" class="post-tag">key</a>
+          
+          
+          <a href="/tags/m.route/" class="post-tag">m.route</a>
+          
+          
+          <a href="/tags/vnode/" class="post-tag">vnode</a>
+          
+        </p>
+
+        <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#life-example">Life Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-<p>To distinguish similar vnodes from eachother, use the KEY attribute (keyword), and give it a unique value.
+        <p>To distinguish similar vnodes from eachother, use the KEY attribute (keyword), and give it a unique value.
 Keep in mind that all siblings must be keyed for it to work.
 See also the Mithril.js docs.
 This can be used to force a component to re-instantiate/re-initialize.
 In this example 4 options with routing. Date.now() is used to make sure the KEY is different each time.
 To try out the different options, change the default route to the specific option.</p>
 
-      <div class="modal-container">
-        <label for="modal" class="example-label">Show Live Example in Flems</label>
-        <label for="modal" class="modal-background"></label>
-        <input type="checkbox" id="modal">
-        <div class="modal">
-          <div class="modal-header">
-            <h3>Re-initializing a Component Using Key - With Routing</h3>
-            <label for="modal">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
-            </label>
-          </div>
-          <div id="flems" class="modal-body"></div>
-        </div>
-      </div>
+      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"// option 1 -> key is passed via attrs\nconst page1 = {\n  oninit: () => {console.log('init1')},\n  view: vnode => [\n    m('p', 'page1 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set('/page1', {key: Date.now()})}, 're-init')\n  ]\n}\n\n// option 2 -> key is passed as url parameter\nconst page2 = {\n  oninit: () => {console.log('init2')},\n  view: () => [\n    m('p', 'page2 ' + m.route.param('key')),\n    m('button', {onclick: () => m.route.set('/page2/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 3 -> id is passed as url parameter and also used as key\nconst page3 = {\n  oninit: () => {console.log('init3')},\n  view: vnode => [\n    m('p', 'page3 ' + vnode.attrs.id),\n    m('button', {onclick: () => m.route.set('/page3/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 4 -> use m.route.set() to re-init the current page\nconst page4 = {\n  oninit: () => {console.log('init4')},\n  view: vnode => [\n    m('p', 'page4 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set(m.route.get(), {key: Date.now()})}, 're-init')\n  ]\n}\n\nm.route(document.body, '/page4', {\n  '/page1'     : page1,\n  '/page2/:key': page2,\n  '/page3/:id' : {render: vnode => [m(page3, {id: vnode.attrs.id, key: vnode.attrs.id})]},\n  '/page4'     : {render: vnode => [m(page4, {key: vnode.attrs.key})]}\n})\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
@@ -70,7 +92,7 @@ To try out the different options, change the default route to the specific optio
       </script>
     
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--1">
                 <thead>
@@ -86,36 +108,6 @@ To try out the different options, change the default route to the specific optio
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// option 1 -&gt; key is passed via attrs
 const page1 = {
@@ -168,21 +160,55 @@ In this example we can also see the usecase of Vnodes (virtual DOM nodes) which 
 <a href="/contributors/osban/">Click here</a> to see more examples contributed by the author.</p>
 
 
-<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>If anyone has some improvements, that should be addressed, let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or simply fork the repository on GitHub, push your commits and send a pull request.
 For starting your work, you can click the edit link below. Thanks for contributing.</p>
 
 
-<p style="margin-top:2rem;">
-  <a href="/examples/">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/re-initialize-component-using-key-with-routing.md">Edit this example on GitHub</a>
-</p>
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/re-initialize-component-using-key-with-routing.md">Edit this example on GitHub</a>
+        </p>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /examples/re-initialize-component-using-key-with-routing/ -->
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/re-initialize-component-using-key-with-routing/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960447"></script>
+  <script src="/js/main.js?v=1645960447"></script>
 </html>

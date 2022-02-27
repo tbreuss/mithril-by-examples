@@ -5,42 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Modal | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
-    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960447">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960447">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>Modal</h1>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="2021-10-26">26 October 2021</time><span class="author">
-    by&nbsp;<span class="author"><a href="/contributors/spacejack/">spacejack</a></span>
-  </span>
-</p>
-<p style="margin-top:-1em">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">2.0.4</span>
-</p>
+        <h1>Modal</h1>
 
-<p><a href="/tags/component/" class="post-tag">component</a><a href="/tags/dialog/" class="post-tag">dialog</a><a href="/tags/dom/" class="post-tag">dom</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.redraw/" class="post-tag">m.redraw</a><a href="/tags/modal/" class="post-tag">modal</a><a href="/tags/onbeforeremove/" class="post-tag">onbeforeremove</a><a href="/tags/onbeforeupdate/" class="post-tag">onbeforeupdate</a><a href="/tags/oncreate/" class="post-tag">oncreate</a><a href="/tags/onremove/" class="post-tag">onremove</a>
-</p>
+        <p class="no-margin-bottom">
+          <time datetime="2021-10-26">26 October 2021</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/spacejack/">spacejack</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
 
-<div class="toc">
+        <p>
+          
+          
+          <a href="/tags/component/" class="post-tag">component</a>
+          
+          
+          <a href="/tags/dialog/" class="post-tag">dialog</a>
+          
+          
+          <a href="/tags/dom/" class="post-tag">dom</a>
+          
+          
+          <a href="/tags/m.mount/" class="post-tag">m.mount</a>
+          
+          
+          <a href="/tags/m.redraw/" class="post-tag">m.redraw</a>
+          
+          
+          <a href="/tags/modal/" class="post-tag">modal</a>
+          
+          
+          <a href="/tags/onbeforeremove/" class="post-tag">onbeforeremove</a>
+          
+          
+          <a href="/tags/onbeforeupdate/" class="post-tag">onbeforeupdate</a>
+          
+          
+          <a href="/tags/oncreate/" class="post-tag">oncreate</a>
+          
+          
+          <a href="/tags/onremove/" class="post-tag">onremove</a>
+          
+        </p>
+
+        <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#overlay.js">Overlay.js</a></li><li class="toc__item"><a clas="toc__link" href="#modal.js">Modal.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">app.js</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#life-example">Life Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#overlay.js">Overlay.js</a></li><li class="toc__item"><a clas="toc__link" href="#modal.js">Modal.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">app.js</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-<p>In this example we can see a modal example that is built with an Overlay, an OverlayContainer, and the Modal component itself.</p>
+        <p>In this example we can see a modal example that is built with an Overlay, an OverlayContainer, and the Modal component itself.</p>
 <p>The Overlay component provides a full-screen cover element.
 It is mounted to a separate V/DOM tree appended to the body.
 Children supplied to Overlay are rendered into this tree.
@@ -49,22 +96,15 @@ The Overlay component can be nested anywhere within your app's view but will be 
 A Modal instance can be nested anywhere within your app's view and will be rendered on top of everything else.
 For the Modal component at least one button should be provided otherwise there will be no way to close the modal.</p>
 
-      <div class="modal-container">
-        <label for="modal" class="example-label">Show Live Example in Flems</label>
-        <label for="modal" class="modal-background"></label>
-        <input type="checkbox" id="modal">
-        <div class="modal">
-          <div class="modal-header">
-            <h3>Modal</h3>
-            <label for="modal">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
-            </label>
-          </div>
-          <div id="flems" class="modal-body"></div>
-        </div>
-      </div>
+      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
         selected: 'app.js',
         files: [{"name":"Overlay.js","content":"// Overlay.js\nconst Overlay = function() {\n\tlet dom\n\tlet children\n\n\tconst OverlayContainer = {\n\t\tview: () => children\n\t}\n\n\treturn {\n\t\toncreate(v) {\n\t\t\tchildren = v.children\n\t\t\t// Append a container to the end of body\n\t\t\tdom = document.createElement('div')\n\t\t\tdom.className = 'overlay'\n\t\t\tdocument.body.appendChild(dom)\n\t\t\tm.mount(dom, OverlayContainer)\n\t\t},\n\t\tonbeforeupdate(v) {\n\t\t\tchildren = v.children\n\t\t},\n\t\tonbeforeremove(v) {\n\t\t\t// Add a class with fade-out exit animation\n\t\t\tdom.classList.add('hide')\n\t\t\treturn new Promise(r => {\n\t\t\t\tdom.addEventListener('animationend', r)\n\t\t\t})\n\t\t},\n\t\tonremove() {\n\t\t\tm.mount(dom, null)\n\t\t\t// Destroy the overlay dom tree. Using m.mount with\n\t\t\t// null triggers any modal children removal hooks.\n\t\t\tdocument.body.removeChild(dom)\n\t\t},\n\t\tview() {}\n\t}\n}\n"},{"name":"Modal.js","content":"// Modal.js\n/**\nExpected attrs are as follows:\n\ninterface Attrs {\n  title: m.Children\n  content: m.Children\n  buttons: {id: string, text: string}[]\n  onClose(id: string): void\n}\n*/\n\nconst Modal = function(v) {\n  let clickedId\n\n  return {\n    view({attrs: {title, content, buttons, onClose}}) {\n      if (clickedId != null) {\n        // We need to allow the Overlay component execute its\n        // exit animation. Because it is a child of this component,\n        // it will not fire when this component is removed.\n        // Instead, we need to remove it first before this component\n        // goes away.\n\t\t\t\t// When a button is clicked, we omit the Overlay component\n        // from this Modal component's next view render, which will\n        // trigger Overlay's onbeforeremove hook.\n        return null\n      }\n      return m(Overlay,\n        {\n          onremove() {\n            // Wait for the overlay's removal animation to complete.\n            // Then we fire our parent's callback, which will\n            // presumably remove this Modal component.\n            Promise.resolve().then(() => {\n              onClose(clickedId)\n              m.redraw()\n            })\n          }\n        },\n        m('.modal',\n          m('h3', title),\n          m('.modal-content', content),\n          m('.modal-buttons',\n            buttons.map(b =>\n              m('button',\n                {\n                  type: 'button',\n                  disabled: clickedId != null,\n                  onclick() {\n                    clickedId = b.id\n                  }\n                },\n                b.text\n              )\n            )\n          )\n        )\n      )\n    }\n  }\n}\n"},{"name":"app.js","content":"// app.js\nconst App = function() {\n  let showModal = false\n\n  return {\n    view: () => m('.app',\n      m('h1', 'Modal Demo'),\n      m('p', 'Click below to open a modal'),\n      m('p',\n        m('button',\n          {\n            type: 'button',\n            onclick() {\n              showModal = true\n            }\n          },\n          'Open Modal'\n        ),\n        // Even though this modal is nested within our App vdom,\n        // it will appear on top of everything else, appended\n        // to the end of document body.\n        showModal && m(Modal, {\n          title: 'Hello Modal!',\n          content: 'Click the button below to close.',\n          buttons: [{id: 'close', text: 'Close'}],\n          onClose(id) {\n            showModal = false\n          }\n        })\n      )\n    )\n  }\n}\n\nm.mount(document.body, App)\n"},{"name":".css","content":"body {\n  margin: 0;\n  padding: 0;\n  font-family: sans-serif;\n  font-size: 16px;\n}\n\n.app {\n  padding: 2em;\n}\n\n@keyframes fade-in {\n  from {opacity: 0;}\n  to {opacity: 1;}\n}\n\n@keyframes fade-out {\n  from {opacity: 1;}\n  to {opacity: 0;}\n}\n\n.overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(255,255,255,0.75);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  animation: fade-in 0.5s;\n}\n.overlay.hide {\n  animation: fade-out 0.5s;\n}\n\n.modal {\n  text-align: center;\n  padding: 2em 4em 3em 4em;\n  background-color: #FFF;\n  box-shadow: 0.5em 0.5em 2em #999;\n  border: #CCC 1px solid;\n}\n\n.modal-buttons {\n  margin-top: 1em;\n}\n.modal-buttons button {\n  margin: 0 0.5em;\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
@@ -72,7 +112,7 @@ For the Modal component at least one button should be provided otherwise there w
       </script>
     
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--1">
                 <thead>
@@ -88,36 +128,6 @@ For the Modal component at least one button should be provided otherwise there w
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       <h2 id="overlay.js" tabindex="-1">Overlay.js <a class="direct-link" href="#overlay.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// Overlay.js
 const Overlay = function() {
@@ -319,21 +329,55 @@ It also demonstrates, how Mithril.js' <a href="/lifecycle-methods/">lifecycle me
 Want to see more examples written by spacejack? Then <a href="/contributors/spacejack/">Click here</a>.</p>
 
 
-<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
 
 
-<p style="margin-top:2rem;">
-  <a href="/examples/">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/modal-2.md">Edit this example on GitHub</a>
-</p>
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/modal-2.md">Edit this example on GitHub</a>
+        </p>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /examples/modal-2/ -->
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/modal-2/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960447"></script>
+  <script src="/js/main.js?v=1645960447"></script>
 </html>

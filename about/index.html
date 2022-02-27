@@ -5,23 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>About | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960448">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960448">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960448">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960448">
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item nav-item-active"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>About</h1>
-
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
+        <h1 id="about-this-website" tabindex="-1">About This Website <a class="direct-link" href="#about-this-website" aria-hidden="true">#</a></h1>
 <p><em>Mithril.js by Examples</em> was created for new users including me to learn Mithril.js - a JavaScript framework for building brilliant applications.</p>
 <p>The website itself is a simple wrapper for the wonderful <a href="https://flems.io">Flems</a> - a static browser code playground.
 It contains numerous Mithril.js code samples that can be seen, reviewed and run by the help of Flems.
@@ -43,15 +58,48 @@ Besides that all examples can be searched or can be listed by tags, contributes,
 <h2 id="contributors" tabindex="-1">Contributors <a class="direct-link" href="#contributors" aria-hidden="true">#</a></h2>
 <p>The project could not exist without <a href="/contributors/">the many contributors</a>, who spent hours creating their code examples and making them available here. 🙏 Thank you!</p>
 <p>If you want to contribute, here is our <a href="https://github.com/tbreuss/mithril-by-examples">GitHub repository</a>.</p>
-<h2 id="me" tabindex="-1">Me <a class="direct-link" href="#me" aria-hidden="true">#</a></h2>
+<h2 id="about-me" tabindex="-1">About Me <a class="direct-link" href="#about-me" aria-hidden="true">#</a></h2>
 <p>This website was created by <a href="https://github.com/tbreuss">Thomas Breuss</a>.
 It was built using <a href="https://www.11ty.dev">Eleventy</a>, a simple static site generator, together with a few other fancy things.</p>
 
+      </div>
+  </div>
+</div>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /about/ -->
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /about/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960448"></script>
+  <script src="/js/main.js?v=1645960448"></script>
 </html>

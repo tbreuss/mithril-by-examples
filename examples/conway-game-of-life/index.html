@@ -5,62 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Conway Game Of Life | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/index.css?v=1645626903">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645626903">
-    <link rel="stylesheet" href="/css/modal.css?v=1645626903">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1645960447">
+    <link rel="stylesheet" href="/css/styles.css?v=1645960447">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1645960447">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <h1 class="home"><a href="/">Mithril.js by Examples</a></h1>
-      <ul class="nav">
-        <li class="nav-item nav-item-active"><a href="/examples/">Examples</a></li>
-        <li class="nav-item"><a href="/tags/">Tags</a></li>
-        <li class="nav-item"><a href="/contributors/">Contributors</a></li>
-        <li class="nav-item"><a href="/search/">Search</a></li>
-        <li class="nav-item"><a href="/about/">About</a></li>
-      </ul>
-    </header>
-    <main class="content tmpl-post">
-      <h1>Conway Game Of Life</h1>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
 
-<p>
-  <time datetime="2021-10-26">26 October 2021</time><span class="author">
-    by&nbsp;<span class="author"><a href="/contributors/boazblake/">boazblake</a></span>
-  </span>
-</p>
-<p style="margin-top:-1em">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
-</p>
+        <h1>Conway Game Of Life</h1>
 
-<p><a href="/tags/3rd-party/" class="post-tag">3rd-party</a><a href="/tags/game/" class="post-tag">game</a><a href="/tags/m.mount/" class="post-tag">m.mount</a><a href="/tags/m.redraw/" class="post-tag">m.redraw</a><a href="/tags/m.stream/" class="post-tag">m.stream</a><a href="/tags/oninit/" class="post-tag">oninit</a>
-</p>
+        <p class="no-margin-bottom">
+          <time datetime="2021-10-26">26 October 2021</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/boazblake/">boazblake</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
 
-<div class="toc">
+        <p>
+          
+          
+          <a href="/tags/3rd-party/" class="post-tag">3rd-party</a>
+          
+          
+          <a href="/tags/game/" class="post-tag">game</a>
+          
+          
+          <a href="/tags/m.mount/" class="post-tag">m.mount</a>
+          
+          
+          <a href="/tags/m.redraw/" class="post-tag">m.redraw</a>
+          
+          
+          <a href="/tags/m.stream/" class="post-tag">m.stream</a>
+          
+          
+          <a href="/tags/oninit/" class="post-tag">oninit</a>
+          
+        </p>
+
+        <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#life-example">Life Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-<p>Conway Game Of Life is a complex example showing a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+        <p>Conway Game Of Life is a complex example showing a cellular automaton devised by the British mathematician John Horton Conway in 1970.
 It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.
 This example is using a central model for state management.
 Besides that the example requires ramda.js, a practical functional library for JavaScript, and Mithril.js' own stream library.</p>
 
-      <div class="modal-container">
-        <label for="modal" class="example-label">Show Live Example in Flems</label>
-        <label for="modal" class="modal-background"></label>
-        <input type="checkbox" id="modal">
-        <div class="modal">
-          <div class="modal-header">
-            <h3>Conway Game Of Life</h3>
-            <label for="modal">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
-            </label>
-          </div>
-          <div id="flems" class="modal-body"></div>
-        </div>
-      </div>
+      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const Stream  = m.stream\nconst compose = R.compose\nconst range = R.range\nconst without = R.without\nconst values = R.values\n\nconst siblingCoords = [[-1, 0],[-1, 1],[0, 1],[1, 1],[1, 0],[1, -1],[0, -1],[-1, -1]]\n\nconst model = {\n  isRunning: Stream(false),\n  board: {},\n  delay: Stream(1000),\n  randomized: Stream(15),\n  size: Stream(30),\n  width: Stream(800),\n  lifecycle: Stream(0)\n}\n\nconst restart = (mdl) => {\n  mdl.isRunning(false)\n  mdl.delay(1000)\n  mdl.randomized(15)\n  mdl.size(30)\n  mdl.width(800)\n  mdl.lifecycle(0)\n  return mdl\n}\n\n\nconst withinBounds = (limit) => (coords) =>\n  !(coords.includes(limit) || coords.includes(-1))\n\nconst toSiblingModel = (acc, sibling) => {\n  acc[sibling] = false\n  return acc\n}\n\nconst calcSiblings = (limit) => (sibCoords) => (coords) =>\n  sibCoords\n    .map((sib) => [sib[0] + coords[0], sib[1] + coords[1]])\n    .filter(withinBounds(limit))\n    .reduce(toSiblingModel, {})\n\nconst makeCell = (mdl) => (size) => (idx) => {\n  let coords = [idx % size, Math.floor(idx / size)]\n  let siblings = calcSiblings(size)(siblingCoords)(coords)\n  let cell = {\n    key: idx,\n    value: \"\",\n    isAlive: false,\n    coords,\n    siblings\n  }\n  mdl.board[coords] = cell\n\n  return mdl\n}\n\nconst makeBoardFromSize = (mdl, size) => {\n  mdl.size(size)\n  return range(0, size * size).map(makeCell(mdl)(size))\n}\n\nconst calculateCell = (mdl) => {\n  Object.keys(mdl.board).map((cell) => {\n    let cellsAlive = without([false], values(mdl.board[cell].siblings)).length\n\n    if (mdl.board[cell].isAlive) {\n      if (cellsAlive <= 2) {\n        mdl.board[cell].isAlive = false\n      }\n\n      if ([2, 3].includes(cellsAlive)) {\n        mdl.board[cell].isAlive = true\n      }\n\n      if (cellsAlive > 3) {\n        mdl.board[cell].isAlive = false\n      }\n    } else {\n      if (cellsAlive == 3) {\n        mdl.board[cell].isAlive = true\n      }\n    }\n  })\n  return mdl\n}\n\nconst updateSiblings = (mdl) => {\n  Object.keys(mdl.board).map((cell) =>\n    Object.keys(mdl.board[cell].siblings).map(\n      (sibling) =>\n        (mdl.board[cell].siblings[sibling] = mdl.board[sibling].isAlive)\n    )\n  )\n\n  return mdl\n}\n\nconst runGOL = (mdl) => {\n  if (mdl.isRunning()) {\n    mdl.lifecycle(mdl.lifecycle() + 1)\n    setTimeout(() => {\n      m.redraw()\n      return runGOL(updateCells(mdl))\n    }, mdl.delay())\n  } else {\n    return mdl\n  }\n}\n\nconst randomizeCells = (mdl) => {\n  let randomCells = Object.keys(mdl.board)\n    .sort(() => 0.5 - Math.random())\n    .slice(0, Math.floor((mdl.randomized() / 100) * (mdl.size() * mdl.size())))\n\n  randomCells.map((cell) => (mdl.board[cell].isAlive = true))\n\n  return mdl\n}\n\n\nconst initBoard = mdl =>   {\n  makeBoardFromSize(mdl, Number(mdl.size()))\n  createSeed(mdl)\n}\n\nconst makeNewGame = mdl => e => {\n  restart(mdl)\n  initBoard(mdl)\n}\n\nconst advanceLifeCycle = mdl => (e) => {\n  mdl.isRunning(false)\n  mdl.lifecycle(mdl.lifecycle() + 1)\n  updateCells(mdl)\n}\n\nconst goForth = mdl => (e) => {\n  mdl.isRunning(true)\n  runGOL(mdl)\n}\n\nconst randomize = mdl => (e) =>{\n  mdl.randomized(e.target.value)\n  initBoard(mdl)\n}\n\nconst setDelay = mdl => (e) => mdl.delay(e.target.value)\n\nconst setBoardSize = mdl => (e) => {\n  mdl.size(e.target.value)\n  initBoard(mdl)\n}\n\nconst updateCells = compose(calculateCell, updateSiblings)\nconst createSeed = compose(updateSiblings, randomizeCells)\n\nconst Cell = {\n  view: ({ attrs: { mdl, cell } }) => {\n    return m(\".cell\", {\n      class: cell.isAlive ? \"alive\" : \"dead\",\n      style: {\n        fontSize: `${mdl.width() / mdl.size() / 2}px`,\n        height: `${mdl.width() / mdl.size() / 2}px`,\n        flex: `1 1 ${mdl.width() / mdl.size()}px`\n      },\n      onclick: () => {\n        mdl.board[cell.coords].isAlive = !cell.isAlive\n        updateSiblings(mdl)\n      }\n    })\n  }\n}\n\nconst Board = ({ attrs: { mdl } }) => {\n  makeBoardFromSize(mdl, Number(mdl.size()))\n  return {\n    oninit: ({ attrs: { mdl } }) => createSeed(mdl),\n    view: ({ attrs: { mdl } }) => {\n      return m(\n        \".board\",\n        { style: { width: `${mdl.width()}px` } },\n        Object.keys(mdl.board).map((coord) => {\n          let cell = mdl.board[coord]\n          return m(Cell, { key: cell.key, cell, mdl })\n        })\n      )\n    }\n  }\n}\n\nconst Input = () => {\n  return {\n    view: ({ attrs: { mdl, label, min, max, step, value, fn } }) => [\n      m(\"label\", [label,\n      m(\"input[type='number']\", {\n        inputmode: 'numeric',\n        pattern:\"[0-9]*\",\n        min,\n        max,\n        step,\n        value,\n        onchange: e => fn(e)\n      })\n      ])\n    ]\n  }\n}\n\nconst Button = () => {\n  return {\n    view:({attrs:{mdl, label, fn}}) => m(\n        \"button\", {onclick: (e) => fn(e)},\n        label\n      )\n  }\n}\n\nconst TopRow = {\n  view:({attrs:{mdl}})=>\n   m('.topRow', [m(Button, {mdl, fn: makeNewGame(mdl), label: 'New Game'}),\n      m(Button, {mdl, fn: advanceLifeCycle(mdl), label:\"Advance 1 Lifecycle\"}),\n      m(Button, {mdl, fn:goForth(mdl), label:\"Go Forth\"})])\n}\n\nconst BottomRow = {\n  view:({attrs:{mdl}})=>\n    m('.bottomRow',[\n      m(Input, { mdl, label: 'Randomize(%):', min:0, max:100, step:1, value:mdl.randomized(), fn:randomize(mdl) }),\n      m(Input, { mdl, label: 'Delay(ms):', min:0, max:1000, step:100, value:mdl.delay(), fn:setDelay(mdl) }),\n      m(Input, { mdl, label: 'size:', min:30, max:100, step:10, value:mdl.size(), fn: setBoardSize(mdl) })])\n}\n\n\nconst Toolbar = {\n  view: ({ attrs: { mdl } }) =>\n    m(\".toolbar\", [\n      m(TopRow, {mdl}),\n      m(BottomRow, {mdl})\n    ])\n}\n\nconst GameOfLife = {\n  view: ({ attrs: { mdl } }) => {\n    return m(\".container\", [\n      m(Toolbar, { mdl }),\n      m(Board, {\n        mdl\n      }),\n      m(\"h2\", `lifecycle: ${mdl.lifecycle()}`)\n    ])\n  }\n}\n\nm.mount(document.body , {view:() => m(GameOfLife, {mdl:model})})\n"},{"name":".css","content":"* {\n  font-family: Montserrat, Sans-Serif;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  outline: none;\n}\n\n.toolbar {\n  line-height: 70px;\n  padding: 10px;\n  border: 1px solid #ecf0f1;\n  justify-content: space-between;\n}\n\n.topRow {\n  display: flex;\n  flex-flow: wrap;\n  justify-content: space-around;\n}\n\n.bottomRow {\n  display: flex;\n  flex-flow: wrap;\n  justify-content: space-around;\n}\n\nbutton {\n\tbox-shadow: 0px 10px 14px -7px #276873;\n\tbackground:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);\n\tbackground-color:#599bb3;\n\tborder-radius:8px;\n\tdisplay:inline-block;\n\tcursor:pointer;\n\tcolor:#ffffff;\n\tfont-family:Arial;\n\tfont-size:20px;\n\tfont-weight:bold;\n\tpadding:13px 32px;\n\ttext-decoration:none;\n\ttext-shadow:0px 1px 0px #3d768a;\n}\nbutton:hover {\n\tbackground:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);\n\tbackground-color:#408c99;\n}\nbutton:active {\n\tposition:relative;\n\ttop:1px;\n}\n\nlabel > * {\n  padding: 10px;\n  margin: 10px;\n\tbackground: #1abc9c;\n\tcolor: #fff;\n\tfont-size: 1em;\n\tline-height: 30px;\n\ttext-align: center;\n\ttext-shadow: 0 1px 0 rgba(255,255,255,0.2);\n\tborder-radius: 15px;\n}\n\n.board {\n  display: flex;\n  flex-flow: wrap;\n  width: 800px;\n  background: #ecf0f1;\n}\n\n.cell {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid #8e44ad;\n  cursor: pointer;\n}\n\n.alive {\n  background: #8e44ad;\n}\n\n.dead {\n  background: #ecf0f1;\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"ramda@0.26.1","type":"script","url":"https://unpkg.com/ramda@0.26.1"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
@@ -68,7 +96,7 @@ Besides that the example requires ramda.js, a practical functional library for J
       </script>
     
         <div class="dependencies">
-          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies</h2>
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
           <div class="dependencies__tableWrap">
             <table class="dependencies__table dependencies__table--3">
                 <thead>
@@ -84,36 +112,6 @@ Besides that the example requires ramda.js, a practical functional library for J
             </table>
           </div>
         </div>
-        <style>
-        .dependencies {
-            color: #282c34;
-            margin-bottom: 2rem;
-        }
-        .dependencies__tableWrap {
-            background-color: #282c34;
-            display: block;
-            overflow-x: auto;
-        }
-        /* strange things happen here */
-        .dependencies__table {
-            margin: -1rem 0 0 0 !important;
-            padding: 1em;
-        }
-        .dependencies__table--1 {
-            margin-top: 0 !important;
-        }
-        .dependencies__table th, .dependencies__table td {
-            color: #abb2bf;
-            font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-            font-size: 14px;
-        }
-        .dependencies__table th {
-          text-align: left;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        </style>
       <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">const Stream  = m.stream
 const compose = R.compose
@@ -467,21 +465,55 @@ Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <c
 The author has written one more snippet. <a href="/contributors/boazblake/">Click here</a> to see it.</p>
 
 
-<h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
 <p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 Or much better: just fork the repository on GitHub, push your commits and send a pull request.
 Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
 
 
-<p style="margin-top:2rem;">
-  <a href="/examples/">See more code examples</a>
-  &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/conway-game-of-life.md">Edit this example on GitHub</a>
-</p>
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;|&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/conway-game-of-life.md">Edit this example on GitHub</a>
+        </p>
 
-    </main>
-    <footer></footer>
-    <!-- Current page: /examples/conway-game-of-life/ -->
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work...</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/conway-game-of-life/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script src="/css/highlight/highlight.min.js?v=1645960447"></script>
+  <script src="/js/main.js?v=1645960447"></script>
 </html>
