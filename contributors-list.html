@@ -1,17 +1,17 @@
 ---
 title: Contributors
 permalink: /contributors/
-layout: layouts/home.html
+layout: layouts/main.html
 eleventyNavigation:
   key: Contributors
   order: 3
 ---
 <h1>{{ collections.authorMap.length }} Contributors</h1>
 
-<ul class="postlist">
+<ul class="contributors">
 {% for key, author in collections.authorMap | sort %}
   {% set authorUrl %}/contributors/{{ author.name | slug }}/{% endset %}
-  <li><a href="{{ authorUrl | url }}" class="postlist-link">{{ author.name }} ({{ author.count }})</a></li>
+  <li><a class="contributor__link" href="{{ authorUrl | url }}">{{ author.name }}</a>  ({{ author.count }})</li>
 {% endfor %}
 </ul>
 
