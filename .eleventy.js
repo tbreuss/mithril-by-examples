@@ -90,7 +90,7 @@ module.exports = function(eleventyConfig) {
       && (flemsLinks.length === 0)
 
     if (version && !noFlems) {
-      toc.push(['life-example', 'Life Example'])
+      toc.push(['live-example', 'Live Example'])
       toc.push(['dependencies', 'Dependencies'])
     }
 
@@ -458,7 +458,7 @@ module.exports = function(eleventyConfig) {
     const jsonFlemsLinks = JSON.stringify(flemsLinksArray);
 
     let html = `
-      <h2 id="life-example">Life Example <a class="direct-link" href="#life-example" aria-hidden="true">#</a></h2>
+      <h2 id="live-example">Live Example <a class="direct-link" href="#live-example" aria-hidden="true">#</a></h2>
       <div id="flems"></div>
       <script>
       Flems(document.getElementById("flems"), {
