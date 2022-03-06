@@ -1,6 +1,5 @@
 const { DateTime } = require('luxon');
 const fs = require('fs');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
@@ -51,7 +50,6 @@ module.exports = function(eleventyConfig) {
   });
 
   // Add plugins
-  eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginNavigation);
 
   // https://www.11ty.dev/docs/data-deep-merge/
