@@ -8,25 +8,13 @@ author: narayand16
 layout: layouts/example.html
 ---
 
-Challenge: Understanding the basic ideas of a language/toolkit.
+This is the 7GUIs counter example implemented in Mithril.js.
+The challenge here is to understand the basic ideas of a language/toolkit.
 
-The task is to build a frame containing a label or read-only textfield T and a button B. Initially, the value in T is “0” and each click of B increases the value in T by one.
+The task is to build a frame containing a label or read-only textfield T and a button B.
+Initially, the value in T is “0” and each click of B increases the value in T by one.
 
-See <https://eugenkiss.github.io/7guis/tasks#counter>.
-
-## HTML
-
-~~~html
-<!doctype html>
-<html lang=en>
-<head>
-  <meta charset=utf-8>
-  <title>Counter</title>
-</head>
-<body>
-</body>
-</html>
-~~~
+See the original description at the 7GUIs homepage: <https://eugenkiss.github.io/7guis/tasks#counter>.
 
 ## JavaScript
 
@@ -48,5 +36,18 @@ let Counter = {
 }
 
 m.mount(root, Counter)
+~~~
 
+## HTML
+
+~~~html
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Counter</title>
+</head>
+<body>
+</body>
+</html>
 ~~~

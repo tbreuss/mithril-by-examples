@@ -8,25 +8,12 @@ author: narayand16
 layout: layouts/example.html
 ---
 
-Challenges: bidirectional data flow, user-provided text input.
+This is the 7GUIs temperature converter example implemented in Mithril.js.
+The challenges here are bidirectional data flow and user-provided text input.
 
 The task is to build a frame containing two textfields TC and TF representing the temperature in Celsius and Fahrenheit, respectively. Initially, both TC and TF are empty. When the user enters a numerical value into TC the corresponding value in TF is automatically updated and vice versa. When the user enters a non-numerical string into TC the value in TF is not updated and vice versa. The formula for converting a temperature C in Celsius into a temperature F in Fahrenheit is C = (F - 32) * (5/9) and the dual direction is F = C * (9/5) + 32.
 
-See <https://eugenkiss.github.io/7guis/tasks#temp>.
-
-## HTML
-
-~~~html
-<!doctype html>
-<html lang=en>
-<head>
-  <meta charset=utf-8>
-  <title>Temperature Converter</title>
-</head>
-<body>
-</body>
-</html>
-~~~
+See the original description at the 7GUIs homepage: <https://eugenkiss.github.io/7guis/tasks#temp>.
 
 ## JavaScript
 
@@ -65,7 +52,18 @@ function getParsedInput(input) {
 }
 
 m.mount(root, temperatureConverter)
-
-
 ~~~
 
+## HTML
+
+~~~html
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>Temperature Converter</title>
+</head>
+<body>
+</body>
+</html>
+~~~
