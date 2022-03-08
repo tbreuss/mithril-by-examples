@@ -6,27 +6,35 @@ html {
   font-size: 16px;
 }
 
-@media screen and (min-width: 35.5em) { /* ≥ 568px */
+@media screen and (min-width: 35.5em) {
+
+  /* ≥ 568px */
   html {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 
-@media screen and (min-width: 48em) { /* ≥ 768px */
-  html {
-    font-size: 19px;
-  }
-}
+@media screen and (min-width: 48em) {
 
-@media screen and (min-width: 64em) { /* ≥ 1024px */
+  /* ≥ 768px */
   html {
     font-size: 20px;
   }
 }
 
-@media screen and (min-width: 80em) { /* ≥ 1280px */
+@media screen and (min-width: 64em) {
+
+  /* ≥ 1024px */
   html {
-    font-size: 21px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 80em) {
+
+  /* ≥ 1280px */
+  html {
+    font-size: 24px;
   }
 }
 
@@ -56,7 +64,8 @@ body {
   margin: 0 auto;
   padding: 0;
 }
-.container > .pure-g {
+
+.container>.pure-g {
   padding: 0 1em;
 }
 
@@ -79,7 +88,7 @@ body {
 
 .header {
   border-bottom: 1px solid #eee;
-  box-shadow: 0 10px 60px rgba(188,210,213,.3)!important
+  box-shadow: 0 10px 60px rgba(188, 210, 213, .3) !important
 }
 
 .header .inner-container {
@@ -125,7 +134,7 @@ body {
 
 .custom-wrapper {
   margin-bottom: 0;
-/*  -webkit-font-smoothing: antialiased;*/
+  /*  -webkit-font-smoothing: antialiased;*/
   height: 4rem;
   overflow: hidden;
   -webkit-transition: height 0.5s;
@@ -187,13 +196,14 @@ body {
   line-height: 1.5;
   padding: 0.5rem 1rem;
 }
+
 .custom-toggle {
   line-height: 1.5;
 }
 
 @media screen and (max-width: 47.999em) {
   .custom-toggle {
-      display: block;
+    display: block;
   }
 }
 
@@ -255,7 +265,7 @@ body {
 .footer-ruler {
   margin-top: 4.5rem;
   margin-bottom: 2rem;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   height: 2px;
 }
@@ -283,6 +293,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  white-space: nowrap;
 }
 
 .footer-tools__heading {
@@ -298,7 +309,9 @@ body {
   line-height: 1.6;
 }
 
-@media screen and (min-width: 48em) { /* ≥ 768px */
+@media screen and (min-width: 48em) {
+
+  /* ≥ 768px */
   .footer-about__text {
     margin-bottom: 0;
     padding-right: 5rem;
@@ -341,7 +354,9 @@ body {
   margin-bottom: 1.6rem;
 }
 
-@media screen and (min-width: 48em) { /* ≥ 768px */
+@media screen and (min-width: 48em) {
+
+  /* ≥ 768px */
   .content h1 {
     font-size: 1.69rem;
   }
@@ -397,7 +412,7 @@ body {
   font-size: 0.8rem;
   max-width: 1000px;
   position: relative;
-	z-index: 99;
+  z-index: 99;
 }
 
 .content a:not([class]) {
@@ -539,27 +554,33 @@ a[href].direct-link:focus:visited,
   color: #282c34;
   margin-bottom: 2rem;
 }
+
 .dependencies__tableWrap {
   background-color: #282c34;
   display: block;
   overflow-x: auto;
 }
+
 /* strange things happen here */
 .dependencies__table {
   margin: -1rem 0 0 0 !important;
   padding: 1em;
 }
+
 .dependencies__table--1 {
   margin-top: 0 !important;
 }
-.dependencies__table th, .dependencies__table td {
+
+.dependencies__table th,
+.dependencies__table td {
   color: #abb2bf;
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-  font-size: 14px;
+  font-family: monospace, monospace;
 }
+
 .dependencies__table th {
-text-align: left;
+  text-align: left;
 }
+
 .capitalize {
   text-transform: capitalize;
 }
