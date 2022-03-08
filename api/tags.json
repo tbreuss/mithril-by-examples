@@ -11,7 +11,7 @@
     },
     {
       "name": "animation",
-      "examples": 9,
+      "examples": 10,
       "url": "/tags/animation/"
     },
     {
@@ -211,7 +211,7 @@
     },
     {
       "name": "m.redraw",
-      "examples": 6,
+      "examples": 7,
       "url": "/tags/m.redraw/"
     },
     {
@@ -226,7 +226,7 @@
     },
     {
       "name": "m.route",
-      "examples": 11,
+      "examples": 12,
       "url": "/tags/m.route/"
     },
     {
@@ -270,6 +270,11 @@
       "url": "/tags/nested/"
     },
     {
+      "name": "notification",
+      "examples": 1,
+      "url": "/tags/notification/"
+    },
+    {
       "name": "official",
       "examples": 16,
       "url": "/tags/official/"
@@ -291,7 +296,7 @@
     },
     {
       "name": "oninit",
-      "examples": 16,
+      "examples": 17,
       "url": "/tags/oninit/"
     },
     {
@@ -341,7 +346,7 @@
     },
     {
       "name": "state",
-      "examples": 15,
+      "examples": 16,
       "url": "/tags/state/"
     },
     {

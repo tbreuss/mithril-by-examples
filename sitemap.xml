@@ -804,4 +804,12 @@
     <loc>https://mithril-by-examples.js.org/tags/event/</loc>
     <lastmod>2022-03-08</lastmod>
   </url>
+  <url>
+    <loc>https://mithril-by-examples.js.org/tags/notification/</loc>
+    <lastmod>2022-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://mithril-by-examples.js.org/examples/toaster-like-notifications/</loc>
+    <lastmod>2022-03-09</lastmod>
+  </url>
 </urlset>

@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
+    <title>Toaster-like Notifications | Mithril.js by Examples</title>
+    <link rel="stylesheet" href="/css/pure-min.css?v=1646773913">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646773913">
+    <link rel="stylesheet" href="/css/styles.css?v=1646773913">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646773913">
+    <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="pure-g custom-wrapper" id="menu">
+            <div class="pure-u-1 pure-u-md-1-3">
+              <div class="pure-menu">
+                <a class="pure-menu-heading custom-brand" href="/"><img src="https://mithril.js.org/logo.svg" alt="">Mithril.js by Examples</a>
+                <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+              </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div class="pure-menu pure-menu-horizontal custom-can-transform">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item pure-menu-selected"><a class="pure-menu-link" href="/examples/">Examples</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/tags/">Tags</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/contributors/">Contributors</a></li>
+                        <li class="pure-menu-item"><a class="pure-menu-link" href="/search/">Search</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="container content">
+  <div class="pure-g">
+      <div class="pure-u-1">
+
+        <h1>Toaster-like Notifications</h1>
+
+        <p class="no-margin-bottom">
+          <time datetime="2022-03-09">09 March 2022</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
+          </span>
+        </p>
+        <p class="no-margin-bottom">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        </p>
+
+        <p>
+          
+          
+          <a href="/tags/animation/" class="post-tag">animation</a>
+          
+          
+          <a href="/tags/m.redraw/" class="post-tag">m.redraw</a>
+          
+          
+          <a href="/tags/m.route/" class="post-tag">m.route</a>
+          
+          
+          <a href="/tags/notification/" class="post-tag">notification</a>
+          
+          
+          <a href="/tags/oninit/" class="post-tag">oninit</a>
+          
+          
+          <a href="/tags/state/" class="post-tag">state</a>
+          
+        </p>
+
+        <div class="toc">
+        <h2 class="toc__heading">Contents</h2>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#live-example">Live Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#helpers.js">helpers.js</a></li><li class="toc__item"><a clas="toc__link" href="#notifications.js">Notifications.js</a></li><li class="toc__item"><a clas="toc__link" href="#layout.js">Layout.js</a></li><li class="toc__item"><a clas="toc__link" href="#page.js">Page.js</a></li><li class="toc__item"><a clas="toc__link" href="#app.js">app.js</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+    </div>
+
+        <p>This example shows toaster-like notifications with proper CSS fade-out and fade-in animation.</p>
+<p>The original author of the example is <a href="https://gist.github.com/tabula-rasa">tabula-rasa</a>.
+It was taken from <a href="https://gist.github.com/tabula-rasa/61d2ab25aac779fdf9899f4e87ab8306">here</a>, modified slightly and brought into a runnable form by <a href="/contributors/tbreuss/">tbreuss</a>.</p>
+
+      <h2 id="live-example">Live Example <a class="direct-link" href="#live-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
+        selected: '.js',
+        files: [{"name":"helpers.js","content":"// helpers.js\nfunction guid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n"},{"name":"Notifications.js","content":"// Notifications.js\nlet state = {\n  list: [],\n  destroy(msg) {\n    let index = state.list.findIndex(x => x.id === msg.id)\n    state.list.splice(index, 1)\n  }\n}\n\nfunction addSuccess(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'success', text, timeout })\n}\nfunction addInfo(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'info', text, timeout })\n}\nfunction addWarning(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'warning', text, timeout })\n}\nfunction addDanger(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'danger', text, timeout })\n}\n\nlet Notifications = {\n  oninit(vnode) {\n    if (state.list.length == 0) {\n      //demo messages\n      addInfo(\"Info message!\")\n      addWarning(\"Warning message!\")\n      addDanger(\"This is danger message! Take care.\")\n      addSuccess(\"Operation successful.\")\n    }\n  },\n  view(vnode) {\n    let ui = vnode.state\n    return state.list ?\n      m('.m-notifications', state.list.map((msg) => {\n        return m('div', { key: msg.id }, m(Notification, msg)) //wrap in div with key for proper dom updates\n      })) : null\n  }\n}\n\nlet Notification = {\n  oninit(vnode) {\n    setTimeout(() => {\n      Notification.destroy(vnode)\n    }, vnode.attrs.timeout)\n  },\n  notificationClass(type) {\n    const types = ['info', 'warning', 'success', 'danger']\n    if (types.indexOf(type) > -1)\n      return type\n    return 'info'\n  },\n  destroy(vnode) {\n    vnode.dom.classList.add('destroy')\n    setTimeout(() => {\n      state.destroy(vnode.attrs)\n      m.redraw()\n    }, 300)\n  },\n  view(vnode) {\n    let ui = vnode.state\n    let msg = vnode.attrs\n    return m('.m-notification', { class: ui.notificationClass(msg.type), onclick: () => { ui.destroy(vnode) } }, msg.text)\n  }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nconst Layout = {\n  view: function (vnode) {\n    return m(\".layout\", [\n      vnode.children,\n      m(Notifications),\n    ]);\n  }\n}\n"},{"name":"Page.js","content":"// Page.js\nconst Page = {\n  view(vnode) {\n    return m('.page', [\n      m('h1', 'Toaster-like Notifications'),\n      m('p', 'Click the buttons to see toasts in the lower right corner.'),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addSuccess('Hey, this is a success message!', 5000)\n        }},\n        'Show success message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addWarning('And this is a warning message!', 5000)\n        }},\n        'Show warning message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addInfo('Wow, this a info message!', 5000)\n        }},\n        'Show info message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addDanger('And this is a danger message!', 5000)\n        }},\n        'Show danger message'\n      )),\n    ])\n  }\n}\n"},{"name":"app.js","content":"// app.js\nm.route(document.body, '/', {\n  '/': {\n    render: () => m(Layout, m(Page))\n  }\n})\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\nbutton {\n  margin: 0.25rem 0;\n}\n.m-notifications {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  z-index: 10;\n}\n\n.m-notification {\n  width: auto;\n  margin-bottom: 0.25rem;\n  max-width: 400px;\n  cursor: pointer;\n  animation: fade-in 0.3s;\n}\n\n.m-notification:hover {\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);\n}\n\n.m-notification.destroy {\n  animation: fade-out 0.3s;\n}\n\n.m-notification.info {\n  color: #0c5460;\n  background-color: #d1ecf1;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #bee5eb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.warning {\n  color: #856404;\n  background-color: #fff3cd;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #ffeeba;\n  border-radius: 0.25rem;\n}\n\n.m-notification.danger {\n  color: #721c24;\n  background-color: #f8d7da;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #f5c6cb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.success {\n  color: #155724;\n  background-color: #d4edda;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #c3e6cb;\n  border-radius: 0.25rem;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      <h2 id="helpers.js" tabindex="-1">helpers.js <a class="direct-link" href="#helpers.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// helpers.js
+function guid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r &amp; 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+</code></pre>
+<h2 id="notifications.js" tabindex="-1">Notifications.js <a class="direct-link" href="#notifications.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// Notifications.js
+let state = {
+  list: [],
+  destroy(msg) {
+    let index = state.list.findIndex(x =&gt; x.id === msg.id)
+    state.list.splice(index, 1)
+  }
+}
+
+function addSuccess(text, timeout = 3000) {
+  state.list.push({ id: guid(), type: 'success', text, timeout })
+}
+function addInfo(text, timeout = 3000) {
+  state.list.push({ id: guid(), type: 'info', text, timeout })
+}
+function addWarning(text, timeout = 3000) {
+  state.list.push({ id: guid(), type: 'warning', text, timeout })
+}
+function addDanger(text, timeout = 3000) {
+  state.list.push({ id: guid(), type: 'danger', text, timeout })
+}
+
+let Notifications = {
+  oninit(vnode) {
+    if (state.list.length == 0) {
+      //demo messages
+      addInfo(&quot;Info message!&quot;)
+      addWarning(&quot;Warning message!&quot;)
+      addDanger(&quot;This is danger message! Take care.&quot;)
+      addSuccess(&quot;Operation successful.&quot;)
+    }
+  },
+  view(vnode) {
+    let ui = vnode.state
+    return state.list ?
+      m('.m-notifications', state.list.map((msg) =&gt; {
+        return m('div', { key: msg.id }, m(Notification, msg)) //wrap in div with key for proper dom updates
+      })) : null
+  }
+}
+
+let Notification = {
+  oninit(vnode) {
+    setTimeout(() =&gt; {
+      Notification.destroy(vnode)
+    }, vnode.attrs.timeout)
+  },
+  notificationClass(type) {
+    const types = ['info', 'warning', 'success', 'danger']
+    if (types.indexOf(type) &gt; -1)
+      return type
+    return 'info'
+  },
+  destroy(vnode) {
+    vnode.dom.classList.add('destroy')
+    setTimeout(() =&gt; {
+      state.destroy(vnode.attrs)
+      m.redraw()
+    }, 300)
+  },
+  view(vnode) {
+    let ui = vnode.state
+    let msg = vnode.attrs
+    return m('.m-notification', { class: ui.notificationClass(msg.type), onclick: () =&gt; { ui.destroy(vnode) } }, msg.text)
+  }
+}
+</code></pre>
+<h2 id="layout.js" tabindex="-1">Layout.js <a class="direct-link" href="#layout.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// Layout.js
+const Layout = {
+  view: function (vnode) {
+    return m(&quot;.layout&quot;, [
+      vnode.children,
+      m(Notifications),
+    ]);
+  }
+}
+</code></pre>
+<h2 id="page.js" tabindex="-1">Page.js <a class="direct-link" href="#page.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// Page.js
+const Page = {
+  view(vnode) {
+    return m('.page', [
+      m('h1', 'Toaster-like Notifications'),
+      m('p', 'Click the buttons to see toasts in the lower right corner.'),
+      m('div', m('button[type=button]', {
+        onclick: () =&gt; {
+          addSuccess('Hey, this is a success message!', 5000)
+        }},
+        'Show success message'
+      )),
+      m('div', m('button[type=button]', {
+        onclick: () =&gt; {
+          addWarning('And this is a warning message!', 5000)
+        }},
+        'Show warning message'
+      )),
+      m('div', m('button[type=button]', {
+        onclick: () =&gt; {
+          addInfo('Wow, this a info message!', 5000)
+        }},
+        'Show info message'
+      )),
+      m('div', m('button[type=button]', {
+        onclick: () =&gt; {
+          addDanger('And this is a danger message!', 5000)
+        }},
+        'Show danger message'
+      )),
+    ])
+  }
+}
+</code></pre>
+<h2 id="app.js" tabindex="-1">app.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">// app.js
+m.route(document.body, '/', {
+  '/': {
+    render: () =&gt; m(Layout, m(Page))
+  }
+})
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
+
+button {
+  margin: 0.25rem 0;
+}
+.m-notifications {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.m-notification {
+  width: auto;
+  margin-bottom: 0.25rem;
+  max-width: 400px;
+  cursor: pointer;
+  animation: fade-in 0.3s;
+}
+
+.m-notification:hover {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.m-notification.destroy {
+  animation: fade-out 0.3s;
+}
+
+.m-notification.info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #bee5eb;
+  border-radius: 0.25rem;
+}
+
+.m-notification.warning {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #ffeeba;
+  border-radius: 0.25rem;
+}
+
+.m-notification.danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
+}
+
+.m-notification.success {
+  color: #155724;
+  background-color: #d4edda;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #c3e6cb;
+  border-radius: 0.25rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+</code></pre>
+<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+The example targets intermediate users, that are familiar with with most aspects of the framework.</p>
+<p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.redraw</code> or <code>m.route</code>, besides the centrepiece m() hyperscript function.
+Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better know as hook).</p>
+<p>The example was written by tbreuss, last edits were made on 09 March 2022.
+The author has contributed some more snippets. <a href="/contributors/tbreuss/">Click here</a> to see them all.</p>
+
+
+        <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
+<p>Did you note a typo or something else? So let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+Or much better: just fork the repository on GitHub, push your commits and send a pull request.
+Ready to start your work? Then click on the edit link below. Thanks in advance!</p>
+
+
+        <p style="margin-top:3.2rem;">
+          <a href="/examples/">See more code examples</a>
+          &nbsp;•&nbsp; <a target="_blank" href="https://github.com/tbreuss/mithril-by-examples/blob/main/./examples/toaster-like-notifications.md">Edit this example on GitHub</a>
+        </p>
+
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+      <div class="container">
+          <div class="pure-g">
+              <div class="pure-u-1 pure-u-md-3-5 footer-about">
+                  <h3 class="footer-about__heading">Mithril.js by Examples</h3>
+                  <p class="footer-about__text">The missing addition to Mithril.js' website with many up-to-date code examples that are often searched for and just work.</p>
+              </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-tools">
+                <h3 class="footer-tools__heading">Toolset</h3>
+                <ul class="footer-tools__list">
+                    <li><a target="_blank" href="https://www.11ty.dev">Eleventy</a></li>
+                    <li><a target="_blank" href="http://purecss.io">Pure.css</a></li>
+                    <li><a target="_blank" href="https://flems.io">Flems.io</a></li>
+                    <li><a target="_blank" href="http://mithril.js.org">Mithril.js</a></li>
+                </ul>
+            </div>
+              <div class="pure-u-1-2 pure-u-md-1-5 footer-links">
+                  <h3 class="footer-links__heading">Links</h3>
+                  <ul class="footer-links__list">
+                      <li><a href="/about/">About this website</a></li>
+                      <li><a target="_blank" href="https://github.com/tbreuss/mithril-by-examples">GitHub Repository</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-ruler">
+          <div class="pure-g">
+              <div class="pure-u-1 footer-copyright">
+                  A tiny <a target="_blank" href="https://www.tebe.ch">tebe.ch</a> project
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Current page: /examples/toaster-like-notifications/ -->
+  </body>
+  <script src="/css/highlight/highlight.min.js?v=1646773913"></script>
+  <script src="/js/main.js?v=1646773913"></script>
+</html>

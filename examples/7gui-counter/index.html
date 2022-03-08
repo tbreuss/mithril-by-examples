@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Counter from 7GUIs | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1646745891">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646745891">
-    <link rel="stylesheet" href="/css/styles.css?v=1646745891">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646745891">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1646773913">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646773913">
+    <link rel="stylesheet" href="/css/styles.css?v=1646773913">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646773913">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -60,12 +60,14 @@
 
         <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#live-example">Live Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#live-example">Live Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-        <p>Challenge: Understanding the basic ideas of a language/toolkit.</p>
-<p>The task is to build a frame containing a label or read-only textfield T and a button B. Initially, the value in T is “0” and each click of B increases the value in T by one.</p>
-<p>See <a href="https://eugenkiss.github.io/7guis/tasks#counter">https://eugenkiss.github.io/7guis/tasks#counter</a>.</p>
+        <p>This is the 7GUIs counter example implemented in Mithril.js.
+The challenge here is to understand the basic ideas of a language/toolkit.</p>
+<p>The task is to build a frame containing a label or read-only textfield T and a button B.
+Initially, the value in T is “0” and each click of B increases the value in T by one.</p>
+<p>See the original description at the 7GUIs homepage: <a href="https://eugenkiss.github.io/7guis/tasks#counter">https://eugenkiss.github.io/7guis/tasks#counter</a>.</p>
 
       <h2 id="live-example">Live Example <a class="direct-link" href="#live-example" aria-hidden="true">#</a></h2>
       <div id="flems"></div>
@@ -77,7 +79,7 @@
         toolbar: true,
         autoHeight: false,
         selected: '.js',
-        files: [{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Counter</title>\n</head>\n<body>\n</body>\n</html>\n"},{"name":".js","content":"let root = document.body\nlet count = 0\n\nlet Counter = {\n  view: function() {\n    return m(\"main\", [\n      m(\"input[readonly=true]\", {\n        value: count\n      }),\n      m(\"button\", {\n        onclick: function() {count++}\n      }, \"Count\")\n    ])\n  }\n}\n\nm.mount(root, Counter)\n\n"}],
+        files: [{"name":".js","content":"let root = document.body\nlet count = 0\n\nlet Counter = {\n  view: function() {\n    return m(\"main\", [\n      m(\"input[readonly=true]\", {\n        value: count\n      }),\n      m(\"button\", {\n        onclick: function() {count++}\n      }, \"Count\")\n    ])\n  }\n}\n\nm.mount(root, Counter)\n"},{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Counter</title>\n</head>\n<body>\n</body>\n</html>\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -99,18 +101,7 @@
             </table>
           </div>
         </div>
-      <h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
-<pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang=en&gt;
-&lt;head&gt;
-  &lt;meta charset=utf-8&gt;
-  &lt;title&gt;Counter&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">let root = document.body
 let count = 0
 
@@ -128,7 +119,17 @@ let Counter = {
 }
 
 m.mount(root, Counter)
-
+</code></pre>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;head&gt;
+  &lt;meta charset=utf-8&gt;
+  &lt;title&gt;Counter&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 <p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
 It is aimed at beginners and shows some basic recipes.</p>
@@ -186,6 +187,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/7gui-counter/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1646745891"></script>
-  <script src="/js/main.js?v=1646745891"></script>
+  <script src="/css/highlight/highlight.min.js?v=1646773913"></script>
+  <script src="/js/main.js?v=1646773913"></script>
 </html>

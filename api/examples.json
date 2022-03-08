@@ -720,6 +720,15 @@
       "url": "/examples/7gui-timer/"
     },
     {
+      "title": "Toaster-like Notifications",
+      "date": "2022-03-09",
+      "tags": ["animation","notification","m.redraw","m.route","oninit","state"],
+      "level": "intermediate",
+      "version": "2.0.4",
+      "author": "tbreuss",
+      "url": "/examples/toaster-like-notifications/"
+    },
+    {
       "title": "Todo MVC",
       "date": "2021-10-27",
       "tags": ["todomvc","official","m.route","vnode","dom","onbeforeupdate","onupdate","oninit"],
