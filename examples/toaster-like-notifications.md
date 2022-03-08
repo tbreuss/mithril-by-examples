@@ -1,8 +1,8 @@
 ---
 title: Toaster-like Notifications
 date: 2022-03-09
-tags: []
-level: beginner
+tags: [animation, notification, m.redraw, m.route, oninit, state]
+level: intermediate
 version: 2.0.4
 author: tbreuss
 layout: layouts/example.html
@@ -12,12 +12,14 @@ flems:
     - Notifications.js
     - Layout.js
     - Page.js
+    - app.js
     - .css
 ---
 
-This example shows Mithril.js toaster-like notifications with proper CSS fade-out and fade-in animation.
+This example shows toaster-like notifications with proper CSS fade-out and fade-in animation.
 
-The example was taken from [here](https://gist.github.com/tabula-rasa/61d2ab25aac779fdf9899f4e87ab8306), modified and brought into a runnable form by [tbreuss](/contributors/tbreuss/). The original author of the example is [tabula-rasa](https://gist.github.com/tabula-rasa).
+The original author of the example is [tabula-rasa](https://gist.github.com/tabula-rasa).
+It was taken from [here](https://gist.github.com/tabula-rasa/61d2ab25aac779fdf9899f4e87ab8306), modified slightly and brought into a runnable form by [tbreuss](/contributors/tbreuss/).
 
 ## helpers.js
 
@@ -125,36 +127,43 @@ const Page = {
     return m('.page', [
       m('h1', 'Toaster-like Notifications'),
       m('p', 'Click the buttons to see toasts in the lower right corner.'),
-      m('button[type=button]', {
+      m('div', m('button[type=button]', {
         onclick: () => {
           addSuccess('Hey, this is a success message!', 5000)
         }},
         'Show success message'
-      ),
-      m('button[type=button]', {
+      )),
+      m('div', m('button[type=button]', {
         onclick: () => {
           addWarning('And this is a warning message!', 5000)
         }},
         'Show warning message'
-      ),
-      m('button[type=button]', {
+      )),
+      m('div', m('button[type=button]', {
         onclick: () => {
           addInfo('Wow, this a info message!', 5000)
         }},
         'Show info message'
-      ),
-      m('button[type=button]', {
+      )),
+      m('div', m('button[type=button]', {
         onclick: () => {
           addDanger('And this is a danger message!', 5000)
         }},
         'Show danger message'
-      ),
+      )),
     ])
   }
 }
+~~~
 
+## app.js
+
+~~~js
+// app.js
 m.route(document.body, '/', {
-  '/': {render: () => m(Layout, m(Page))}
+  '/': {
+    render: () => m(Layout, m(Page))
+  }
 })
 ~~~
 
