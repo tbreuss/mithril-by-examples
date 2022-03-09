@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Toaster-like Notifications | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1646773913">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646773913">
-    <link rel="stylesheet" href="/css/styles.css?v=1646773913">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646773913">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1646829685">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646829685">
+    <link rel="stylesheet" href="/css/styles.css?v=1646829685">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646829685">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -89,7 +89,7 @@ It was taken from <a href="https://gist.github.com/tabula-rasa/61d2ab25aac779fdf
         toolbar: true,
         autoHeight: false,
         selected: '.js',
-        files: [{"name":"helpers.js","content":"// helpers.js\nfunction guid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n"},{"name":"Notifications.js","content":"// Notifications.js\nlet state = {\n  list: [],\n  destroy(msg) {\n    let index = state.list.findIndex(x => x.id === msg.id)\n    state.list.splice(index, 1)\n  }\n}\n\nfunction addSuccess(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'success', text, timeout })\n}\nfunction addInfo(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'info', text, timeout })\n}\nfunction addWarning(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'warning', text, timeout })\n}\nfunction addDanger(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'danger', text, timeout })\n}\n\nlet Notifications = {\n  oninit(vnode) {\n    if (state.list.length == 0) {\n      //demo messages\n      addInfo(\"Info message!\")\n      addWarning(\"Warning message!\")\n      addDanger(\"This is danger message! Take care.\")\n      addSuccess(\"Operation successful.\")\n    }\n  },\n  view(vnode) {\n    let ui = vnode.state\n    return state.list ?\n      m('.m-notifications', state.list.map((msg) => {\n        return m('div', { key: msg.id }, m(Notification, msg)) //wrap in div with key for proper dom updates\n      })) : null\n  }\n}\n\nlet Notification = {\n  oninit(vnode) {\n    setTimeout(() => {\n      Notification.destroy(vnode)\n    }, vnode.attrs.timeout)\n  },\n  notificationClass(type) {\n    const types = ['info', 'warning', 'success', 'danger']\n    if (types.indexOf(type) > -1)\n      return type\n    return 'info'\n  },\n  destroy(vnode) {\n    vnode.dom.classList.add('destroy')\n    setTimeout(() => {\n      state.destroy(vnode.attrs)\n      m.redraw()\n    }, 300)\n  },\n  view(vnode) {\n    let ui = vnode.state\n    let msg = vnode.attrs\n    return m('.m-notification', { class: ui.notificationClass(msg.type), onclick: () => { ui.destroy(vnode) } }, msg.text)\n  }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nconst Layout = {\n  view: function (vnode) {\n    return m(\".layout\", [\n      vnode.children,\n      m(Notifications),\n    ]);\n  }\n}\n"},{"name":"Page.js","content":"// Page.js\nconst Page = {\n  view(vnode) {\n    return m('.page', [\n      m('h1', 'Toaster-like Notifications'),\n      m('p', 'Click the buttons to see toasts in the lower right corner.'),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addSuccess('Hey, this is a success message!', 5000)\n        }},\n        'Show success message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addWarning('And this is a warning message!', 5000)\n        }},\n        'Show warning message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addInfo('Wow, this a info message!', 5000)\n        }},\n        'Show info message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addDanger('And this is a danger message!', 5000)\n        }},\n        'Show danger message'\n      )),\n    ])\n  }\n}\n"},{"name":"app.js","content":"// app.js\nm.route(document.body, '/', {\n  '/': {\n    render: () => m(Layout, m(Page))\n  }\n})\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\nbutton {\n  margin: 0.25rem 0;\n}\n.m-notifications {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  z-index: 10;\n}\n\n.m-notification {\n  width: auto;\n  margin-bottom: 0.25rem;\n  max-width: 400px;\n  cursor: pointer;\n  animation: fade-in 0.3s;\n}\n\n.m-notification:hover {\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);\n}\n\n.m-notification.destroy {\n  animation: fade-out 0.3s;\n}\n\n.m-notification.info {\n  color: #0c5460;\n  background-color: #d1ecf1;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #bee5eb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.warning {\n  color: #856404;\n  background-color: #fff3cd;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #ffeeba;\n  border-radius: 0.25rem;\n}\n\n.m-notification.danger {\n  color: #721c24;\n  background-color: #f8d7da;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #f5c6cb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.success {\n  color: #155724;\n  background-color: #d4edda;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #c3e6cb;\n  border-radius: 0.25rem;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"}],
+        files: [{"name":"helpers.js","content":"// helpers.js\nfunction guid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n"},{"name":"Notifications.js","content":"// Notifications.js\nlet state = {\n  list: [],\n  destroy(msg) {\n    let index = state.list.findIndex(x => x.id === msg.id)\n    state.list.splice(index, 1)\n  }\n}\n\nfunction addSuccess(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'success', text, timeout })\n}\nfunction addInfo(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'info', text, timeout })\n}\nfunction addWarning(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'warning', text, timeout })\n}\nfunction addDanger(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'danger', text, timeout })\n}\n\nlet Notifications = {\n  view(vnode) {\n    let ui = vnode.state\n    return state.list ?\n      m('.m-notifications', state.list.map((msg) => {\n        return m('div', { key: msg.id }, m(Notification, msg)) //wrap in div with key for proper dom updates\n      })) : null\n  }\n}\n\nlet Notification = {\n  oninit(vnode) {\n    setTimeout(() => {\n      Notification.destroy(vnode)\n    }, vnode.attrs.timeout)\n  },\n  notificationClass(type) {\n    const types = ['info', 'warning', 'success', 'danger']\n    if (types.indexOf(type) > -1)\n      return type\n    return 'info'\n  },\n  destroy(vnode) {\n    vnode.dom.classList.add('destroy')\n    setTimeout(() => {\n      state.destroy(vnode.attrs)\n      m.redraw()\n    }, 300)\n  },\n  view(vnode) {\n    let ui = vnode.state\n    let msg = vnode.attrs\n    return m('.m-notification', { class: ui.notificationClass(msg.type), onclick: () => { ui.destroy(vnode) } }, msg.text)\n  }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nconst Layout = {\n  view: function (vnode) {\n    return m('.layout', [\n      vnode.children,\n      m(Notifications),\n    ]);\n  }\n}\n"},{"name":"Page.js","content":"// Page.js\nconst Page = {\n  view(vnode) {\n    return m('.page', [\n      m('h1', 'Toaster-like Notifications'),\n      m('p', 'Click the buttons to see toasts in the lower right corner.'),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addSuccess('Hey, this is a success message!', 5000)\n        }},\n        'Show success message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addWarning('And this is a warning message!', 5000)\n        }},\n        'Show warning message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addInfo('Wow, this a info message!', 5000)\n        }},\n        'Show info message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addDanger('And this is a danger message!', 5000)\n        }},\n        'Show danger message'\n      )),\n    ])\n  }\n}\n"},{"name":"app.js","content":"// app.js\n\naddInfo('Info message!')\naddWarning('Warning message!')\naddDanger('This is danger message! Take care.')\naddSuccess('Operation successful.')\n\nm.route(document.body, '/', {\n  '/': {\n    render: () => m(Layout, m(Page))\n  }\n})\n"},{"name":".css","content":"@import 'https://unpkg.com/water.css@2/out/water.min.css';\n\nbutton {\n  margin: 0.25rem 0;\n}\n\n.m-notifications {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  z-index: 10;\n}\n\n.m-notification {\n  width: auto;\n  margin-bottom: 0.25rem;\n  max-width: 400px;\n  cursor: pointer;\n  animation: fade-in 0.3s;\n}\n\n.m-notification:hover {\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);\n}\n\n.m-notification.destroy {\n  animation: fade-out 0.3s;\n}\n\n.m-notification.info {\n  color: #0c5460;\n  background-color: #d1ecf1;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #bee5eb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.warning {\n  color: #856404;\n  background-color: #fff3cd;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #ffeeba;\n  border-radius: 0.25rem;\n}\n\n.m-notification.danger {\n  color: #721c24;\n  background-color: #f8d7da;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #f5c6cb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.success {\n  color: #155724;\n  background-color: #d4edda;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #c3e6cb;\n  border-radius: 0.25rem;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"}],
         links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
       });
       </script>
@@ -144,15 +144,6 @@ function addDanger(text, timeout = 3000) {
 }
 
 let Notifications = {
-  oninit(vnode) {
-    if (state.list.length == 0) {
-      //demo messages
-      addInfo(&quot;Info message!&quot;)
-      addWarning(&quot;Warning message!&quot;)
-      addDanger(&quot;This is danger message! Take care.&quot;)
-      addSuccess(&quot;Operation successful.&quot;)
-    }
-  },
   view(vnode) {
     let ui = vnode.state
     return state.list ?
@@ -192,7 +183,7 @@ let Notification = {
 <pre><code class="language-js">// Layout.js
 const Layout = {
   view: function (vnode) {
-    return m(&quot;.layout&quot;, [
+    return m('.layout', [
       vnode.children,
       m(Notifications),
     ]);
@@ -236,6 +227,12 @@ const Page = {
 </code></pre>
 <h2 id="app.js" tabindex="-1">app.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// app.js
+
+addInfo('Info message!')
+addWarning('Warning message!')
+addDanger('This is danger message! Take care.')
+addSuccess('Operation successful.')
+
 m.route(document.body, '/', {
   '/': {
     render: () =&gt; m(Layout, m(Page))
@@ -243,11 +240,12 @@ m.route(document.body, '/', {
 })
 </code></pre>
 <h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
-<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
+<pre><code class="language-css">@import 'https://unpkg.com/water.css@2/out/water.min.css';
 
 button {
   margin: 0.25rem 0;
 }
+
 .m-notifications {
   position: fixed;
   bottom: 20px;
@@ -383,6 +381,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/toaster-like-notifications/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1646773913"></script>
-  <script src="/js/main.js?v=1646773913"></script>
+  <script src="/css/highlight/highlight.min.js?v=1646829685"></script>
+  <script src="/js/main.js?v=1646829685"></script>
 </html>

@@ -259,7 +259,7 @@ body {
 }
 
 .footer a:hover {
-  color: #cccccc;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-ruler {
@@ -420,6 +420,15 @@ body {
   color: #2374d7;
 }
 
+.content a:not([class]):hover {
+  color: #0354b7;
+}
+
+.content a:not([class]):visited {
+  color: #700090;
+  border-color: #700090;
+}
+
 .content a.pure-button-primary {
   background: #313447;
 }
@@ -465,11 +474,24 @@ a[href].direct-link:focus:visited,
 .postlist-link {
   display: inline-block;
   font-size: 1.3rem;
-  color: #333;
+  color: #2374d7;
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 0;
   letter-spacing: -0.035rem;
+}
+
+.postlist-link:hover {
+  color: #0354b7;
+}
+
+.postlist-link:visited {
+  color: #803080;
+}
+
+.postlist-link+span {
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
 }
 
 .post-tag {
