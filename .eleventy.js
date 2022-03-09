@@ -217,7 +217,7 @@ module.exports = function(eleventyConfig) {
       text.push([
         'It also shows, how Mithril.js\' [lifecycle methods](/lifecycle-methods/) can be used. This can be seen here by using the ' + parseItems(lifecycleMethods, 'and') + ' hook.',
         'It is also showing the ' + parseItems(lifecycleMethods, 'and') + ' hook, which is one of several Mithril.js\' [lifecycle methods](/lifecycle-methods/).',
-        'Moreover, it shows how the [lifecycle method](/lifecycle-methods/) ' + parseItems(lifecycleMethods, 'and') + ' can be used (better know as hook).'
+        'Moreover, it shows how the [lifecycle method](/lifecycle-methods/) ' + parseItems(lifecycleMethods, 'and') + ' can be used (better known as hook).'
       ][textVariantNumber]);
     }
 
