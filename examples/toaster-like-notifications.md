@@ -59,15 +59,6 @@ function addDanger(text, timeout = 3000) {
 }
 
 let Notifications = {
-  oninit(vnode) {
-    if (state.list.length == 0) {
-      //demo messages
-      addInfo("Info message!")
-      addWarning("Warning message!")
-      addDanger("This is danger message! Take care.")
-      addSuccess("Operation successful.")
-    }
-  },
   view(vnode) {
     let ui = vnode.state
     return state.list ?
@@ -110,7 +101,7 @@ let Notification = {
 // Layout.js
 const Layout = {
   view: function (vnode) {
-    return m(".layout", [
+    return m('.layout', [
       vnode.children,
       m(Notifications),
     ]);
@@ -160,6 +151,12 @@ const Page = {
 
 ~~~js
 // app.js
+
+addInfo('Info message!')
+addWarning('Warning message!')
+addDanger('This is danger message! Take care.')
+addSuccess('Operation successful.')
+
 m.route(document.body, '/', {
   '/': {
     render: () => m(Layout, m(Page))
@@ -170,11 +167,12 @@ m.route(document.body, '/', {
 ## CSS
 
 ~~~css
-@import "https://unpkg.com/water.css@2/out/water.min.css";
+@import 'https://unpkg.com/water.css@2/out/water.min.css';
 
 button {
   margin: 0.25rem 0;
 }
+
 .m-notifications {
   position: fixed;
   bottom: 20px;
