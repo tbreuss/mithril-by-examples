@@ -199,11 +199,11 @@
     },
     {
       "title": "Flight Booker from 7GUIs",
-      "date": "2021-10-18",
-      "tags": ["7guis"],
+      "date": "2022-03-28",
+      "tags": ["7guis","mitosis","m.mount"],
       "level": "beginner",
       "version": "2.0.4",
-      "author": "",
+      "author": "tbreuss",
       "url": "/examples/7gui-flight-booker/"
     },
     {

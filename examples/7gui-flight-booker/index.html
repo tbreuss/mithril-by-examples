@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Flight Booker from 7GUIs | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1646829685">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1646829685">
-    <link rel="stylesheet" href="/css/styles.css?v=1646829685">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1646829685">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -41,7 +41,9 @@
         <h1>Flight Booker from 7GUIs</h1>
 
         <p class="no-margin-bottom">
-          <time datetime="2021-10-18">18 October 2021</time>
+          <time datetime="2022-03-28">28 March 2022</time><span class="author">
+            by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
+          </span>
         </p>
         <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
         </p>
@@ -51,21 +53,201 @@
           
           <a href="/tags/7guis/" class="post-tag">7guis</a>
           
+          
+          <a href="/tags/m.mount/" class="post-tag">m.mount</a>
+          
+          
+          <a href="/tags/mitosis/" class="post-tag">mitosis</a>
+          
         </p>
 
         <div class="toc">
         <h2 class="toc__heading">Contents</h2>
-        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#live-example">Live Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
+        <ol class="toc__list"><li class="toc__item"><a clas="toc__link" href="#live-example">Live Example</a></li><li class="toc__item"><a clas="toc__link" href="#dependencies">Dependencies</a></li><li class="toc__item"><a clas="toc__link" href="#javascript">JavaScript</a></li><li class="toc__item"><a clas="toc__link" href="#html">HTML</a></li><li class="toc__item"><a clas="toc__link" href="#css">CSS</a></li><li class="toc__item"><a clas="toc__link" href="#contribute">Contribute</a></li></ol>
     </div>
 
-        <p>Challenge: Constraints.</p>
+        <p>This is the 7GUIs flight booker example implemented in Mithril.js.
+The challenges here are constraints between a select box and two input text fields.
+For the state management the Mitosis pattern is used.</p>
 <p>The task is to build a frame containing a combobox C with the two options “one-way flight” and “return flight”, two textfields T1 and T2 representing the start and return date, respectively, and a button B for submitting the selected flight. T2 is enabled iff C’s value is “return flight”. When C has the value “return flight” and T2’s date is strictly before T1’s then B is disabled. When a non-disabled textfield T has an ill-formatted date then T is colored red and B is disabled. When clicking B a message is displayed informing the user of his selection (e.g. “You have booked a one-way flight on 04.04.2014.”). Initially, C has the value “one-way flight” and T1 as well as T2 have the same (arbitrary) date (it is implied that T2 is disabled).</p>
 <p>See <a href="https://eugenkiss.github.io/7guis/tasks#flight">https://eugenkiss.github.io/7guis/tasks#flight</a>.</p>
-<p><strong>To be done.</strong></p>
-<p>Do you have time and are you able to implement this example?
-Then fork this repo and get ready :-)</p>
+
+      <h2 id="live-example">Live Example <a class="direct-link" href="#live-example" aria-hidden="true">#</a></h2>
+      <div id="flems"></div>
+      <script>
+      Flems(document.getElementById("flems"), {
+        middle: 0,
+        resizable: false,
+        editable: true,
+        toolbar: true,
+        autoHeight: false,
+        selected: '.js',
+        files: [{"name":".js","content":"const ONE_WAY = 'one-way'\nconst TWO_WAY = 'two-way'\n\n// helpers\n\nconst parseDate = (str) => {\n  const m = str && str.match(/^(\\d{2}).(\\d{2}).(\\d{4})$/)\n  return m ? Date.parse(`${m[3]}-${m[2]}-${m[1]}`) : m\n}\n\nconst formatDate = (time) => {\n  const D = new Date(time)\n  let d = D.getDate()\n  d = (d <= 9 ? '0' : '') + d\n  let m = D.getMonth() + 1\n  m = (m <= 9 ? '0' : '') + m\n  return `${d}.${m}.${D.getFullYear()}`\n}\n\nconst isValidDate = (date) => {\n  const isValidDate = parseDate(date)\n  if (isValidDate) {\n    return true\n  }\n  return Number.isNaN(isValidDate)\n}\n\n// state\n\nconst State = () => ({\n  way: ONE_WAY,\n  departDate: formatDate(Date.now()),\n  returnDate: formatDate(Date.now()),\n  confirmMsg: ''\n})\n\n// actions\n\nconst Actions = state => ({\n  setWay: (way) => {\n    state.way = way\n  },\n  setDepart: (date) => {\n    state.departDate = date\n  },\n  setReturn: (date) => {\n    state.returnDate = date\n  },\n  canBook: () => {\n    const departDate = parseDate(state.departDate)\n    if (!departDate) {\n      return false\n    }\n    if (state.way === ONE_WAY) {\n      return true\n    }\n    const returnDate = parseDate(state.returnDate)\n    if (!returnDate) {\n      return false\n    }\n    return returnDate > departDate\n  },\n  book: () => {\n    book = JSON.parse(JSON.stringify(state)) // clone state object\n    if (book.way === ONE_WAY) {\n      state.confirmMsg = `You booked a one way flight. Depart: ${book.departDate}`\n    } else {\n    state.confirmMsg = `You booked a two way flight. Depart: ${book.departDate} Return: ${book.returnDate}`\n    }\n  }\n})\n\n// ui\n\nconst FlightBooker = (state, actions) => [\n  m('h1', 'Flight Booker ✈️'),\n  m('div',\n    m('select', {\n        onchange: (e) => actions.setWay(e.target.value)\n      },\n      m('option', {value: ONE_WAY}, \"One Way Flight\"),\n      m('option', {value: TWO_WAY}, \"Return Flight\"),\n    )\n  ),\n  m('.depart',\n    m('label', 'Depart:'),\n    m('input[size=10][maxlength=10]', {\n      placeholder: 'DD.MM.YYYY',\n      value: state.departDate,\n      oninput: (e) => actions.setDepart(e.target.value),\n      class: !isValidDate(state.departDate) ? 'error' : ''\n    }),\n  ),\n  m('.return',\n    m('label', 'Return:'),\n    m('input[size=10][maxlength=10]', {\n      placeholder: 'DD.MM.YYYY',\n      value: state.returnDate,\n      oninput: (e) => actions.setReturn(e.target.value),\n      disabled: state.way === ONE_WAY,\n      class: (state.way === TWO_WAY && !isValidDate(state.returnDate)) ? 'error' : ''\n    })\n  ),\n  m('div',\n    m('button', {\n      onclick: actions.book,\n      disabled: actions.canBook() === false\n    }, 'Book')\n  ),\n  state.confirmMsg ? m('h3', state.confirmMsg) : ''\n]\n\nm.mount(document.body, () => {\n  const state = State()\n  const actions = Actions(state)\n  return {\n    view: () => FlightBooker(state, actions)\n  }\n})\n"},{"name":".html","content":"<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Flight Booker</title>\n</head>\n<body>\n</body>\n</html>\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\n.error {\n  color: red;\n}\n"}],
+        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+      });
+      </script>
+    
+        <div class="dependencies">
+          <h2 id="dependencies" class="dependencies__heading" tabindex="-1">Dependencies <a class="direct-link" href="#dependencies" aria-hidden="true">#</a></h2>
+          <div class="dependencies__tableWrap">
+            <table class="dependencies__table dependencies__table--1">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      <h2 id="javascript" tabindex="-1">JavaScript <a class="direct-link" href="#javascript" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">const ONE_WAY = 'one-way'
+const TWO_WAY = 'two-way'
+
+// helpers
+
+const parseDate = (str) =&gt; {
+  const m = str &amp;&amp; str.match(/^(\d{2}).(\d{2}).(\d{4})$/)
+  return m ? Date.parse(`${m[3]}-${m[2]}-${m[1]}`) : m
+}
+
+const formatDate = (time) =&gt; {
+  const D = new Date(time)
+  let d = D.getDate()
+  d = (d &lt;= 9 ? '0' : '') + d
+  let m = D.getMonth() + 1
+  m = (m &lt;= 9 ? '0' : '') + m
+  return `${d}.${m}.${D.getFullYear()}`
+}
+
+const isValidDate = (date) =&gt; {
+  const isValidDate = parseDate(date)
+  if (isValidDate) {
+    return true
+  }
+  return Number.isNaN(isValidDate)
+}
+
+// state
+
+const State = () =&gt; ({
+  way: ONE_WAY,
+  departDate: formatDate(Date.now()),
+  returnDate: formatDate(Date.now()),
+  confirmMsg: ''
+})
+
+// actions
+
+const Actions = state =&gt; ({
+  setWay: (way) =&gt; {
+    state.way = way
+  },
+  setDepart: (date) =&gt; {
+    state.departDate = date
+  },
+  setReturn: (date) =&gt; {
+    state.returnDate = date
+  },
+  canBook: () =&gt; {
+    const departDate = parseDate(state.departDate)
+    if (!departDate) {
+      return false
+    }
+    if (state.way === ONE_WAY) {
+      return true
+    }
+    const returnDate = parseDate(state.returnDate)
+    if (!returnDate) {
+      return false
+    }
+    return returnDate &gt; departDate
+  },
+  book: () =&gt; {
+    book = JSON.parse(JSON.stringify(state)) // clone state object
+    if (book.way === ONE_WAY) {
+      state.confirmMsg = `You booked a one way flight. Depart: ${book.departDate}`
+    } else {
+    state.confirmMsg = `You booked a two way flight. Depart: ${book.departDate} Return: ${book.returnDate}`
+    }
+  }
+})
+
+// ui
+
+const FlightBooker = (state, actions) =&gt; [
+  m('h1', 'Flight Booker ✈️'),
+  m('div',
+    m('select', {
+        onchange: (e) =&gt; actions.setWay(e.target.value)
+      },
+      m('option', {value: ONE_WAY}, &quot;One Way Flight&quot;),
+      m('option', {value: TWO_WAY}, &quot;Return Flight&quot;),
+    )
+  ),
+  m('.depart',
+    m('label', 'Depart:'),
+    m('input[size=10][maxlength=10]', {
+      placeholder: 'DD.MM.YYYY',
+      value: state.departDate,
+      oninput: (e) =&gt; actions.setDepart(e.target.value),
+      class: !isValidDate(state.departDate) ? 'error' : ''
+    }),
+  ),
+  m('.return',
+    m('label', 'Return:'),
+    m('input[size=10][maxlength=10]', {
+      placeholder: 'DD.MM.YYYY',
+      value: state.returnDate,
+      oninput: (e) =&gt; actions.setReturn(e.target.value),
+      disabled: state.way === ONE_WAY,
+      class: (state.way === TWO_WAY &amp;&amp; !isValidDate(state.returnDate)) ? 'error' : ''
+    })
+  ),
+  m('div',
+    m('button', {
+      onclick: actions.book,
+      disabled: actions.canBook() === false
+    }, 'Book')
+  ),
+  state.confirmMsg ? m('h3', state.confirmMsg) : ''
+]
+
+m.mount(document.body, () =&gt; {
+  const state = State()
+  const actions = Actions(state)
+  return {
+    view: () =&gt; FlightBooker(state, actions)
+  }
+})
+</code></pre>
+<h2 id="html" tabindex="-1">HTML <a class="direct-link" href="#html" aria-hidden="true">#</a></h2>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Flight Booker&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
+<pre><code class="language-css">@import &quot;https://unpkg.com/water.css@2/out/water.min.css&quot;;
+
+.error {
+  color: red;
+}
+</code></pre>
 <p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
+<p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
+<p>The example was written by tbreuss, last edits were made on 28 March 2022.
+The author has contributed some more snippets. <a href="/contributors/tbreuss/">Click here</a> to see them all.</p>
 
 
         <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
@@ -117,6 +299,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/7gui-flight-booker/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1646829685"></script>
-  <script src="/js/main.js?v=1646829685"></script>
+  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
+  <script src="/js/main.js?v=1649591713"></script>
 </html>
