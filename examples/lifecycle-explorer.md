@@ -4,7 +4,7 @@ abstract: Interactive sandbox to check the order of Mithril.js' life cycleevents
 date: 2021-10-23
 tags: [lifecycle, m.render, m.mount, vnode, onbeforeupdate, onremove, onbeforeremove, onupdate, oncreate, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: barneycarroll
 layout: layouts/example.html
 ---

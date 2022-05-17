@@ -4,7 +4,7 @@ abstract: An example showing four options with routing and components which are 
 date: 2020-09-24
 tags: [component, key, m.route, vnode]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

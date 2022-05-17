@@ -4,7 +4,7 @@ abstract: Re-init a component every time.
 date: 2020-09-24
 tags: [component, key, m.route, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

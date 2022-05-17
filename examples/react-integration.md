@@ -4,7 +4,7 @@ abstract: Integrate react components into a mithrl app.
 date: 2021-10-26
 tags: [3rd-party, react, lifecycle, dom, component, m.mount, oncreate]
 level: expert
-version: 2.0.4
+version: latest
 author: barneycarroll
 layout: layouts/example.html
 flems:

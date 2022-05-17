@@ -4,7 +4,7 @@ abstract: Form with multiple checkboxes that are grouped so that only one checkb
 date: 2021-10-24
 tags: [form, checkbox, radiobutton, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

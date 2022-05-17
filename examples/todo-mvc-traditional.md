@@ -4,7 +4,7 @@ abstract: Here is another TodoMVC implementation, this time a more traditional o
 date: 2021-10-29
 tags: [todomvc, m.route, dom, onupdate, oninit]
 level: expert
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 flems:

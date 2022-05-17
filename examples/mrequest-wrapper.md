@@ -4,7 +4,7 @@ abstract: Wrapper example for m.request allowing an easier and snappier api hand
 date: 2020-09-24
 tags: [m.request, api, wrapper]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 flems:

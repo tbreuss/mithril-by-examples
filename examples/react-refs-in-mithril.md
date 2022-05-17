@@ -4,7 +4,7 @@ abstract: Shows how to access dom nodes of a component, much like reacts refs.
 date: 2021-10-26
 tags: [dom, react, m.mount, vnode, oncreate]
 level: beginner
-version: 2.0.4
+version: latest
 author: stephanhoyer
 layout: layouts/example.html
 ---

@@ -4,7 +4,7 @@ abstract: This example was taken from the official website.
 date: 2021-10-16
 tags: [basics, official, m.render]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 ---

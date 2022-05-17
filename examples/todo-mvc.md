@@ -4,7 +4,7 @@ abstract: This example shows the famous TodoMVC real world application written i
 date: 2021-10-27
 tags: [todomvc, official, m.route, vnode, dom, onbeforeupdate, onupdate, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 flems:

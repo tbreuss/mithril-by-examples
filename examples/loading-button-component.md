@@ -4,7 +4,7 @@ abstract: Here is an example of a button whose loading and disabled states are c
 date: 2022-01-29
 tags: [animation, button, component, loading, m.mount, m.redraw, vnode]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

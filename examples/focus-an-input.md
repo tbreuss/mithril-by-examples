@@ -4,7 +4,7 @@ abstract: Shows how to focus an input element on load right away.
 date: 2021-10-22
 tags: [form, input, focus, dom, m.mount, oncreate]
 level: beginner
-version: 2.0.4
+version: latest
 author: stephanhoyer
 layout: layouts/example.html
 ---

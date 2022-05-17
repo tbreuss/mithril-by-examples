@@ -4,7 +4,7 @@ abstract: Example showing an authentication wrapper around Mithril.js' `m.reques
 date: 2021-10-26
 tags: [jwt, local storage, wrapper, m.request, m.route, m.mount, vnode, login, api]
 level: beginner
-version: 2.0.4
+version: latest
 author: cmnstmntmn
 layout: layouts/example.html
 ---

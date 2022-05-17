@@ -3,7 +3,7 @@ title: Flight Booker from 7GUIs
 date: 2022-03-28
 tags: [7guis, mitosis, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

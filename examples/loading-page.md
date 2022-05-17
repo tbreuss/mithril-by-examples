@@ -4,7 +4,7 @@ abstract: Example showing a loading page while loading external data.
 date: 2020-09-24
 tags: [loading, m.mount, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

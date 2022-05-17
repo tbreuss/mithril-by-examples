@@ -4,7 +4,7 @@ abstract: Animating an element via CSS when the element is created is simple. Ju
 date: 2021-10-19
 tags: [basics, animation, official, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 ---

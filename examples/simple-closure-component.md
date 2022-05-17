@@ -4,7 +4,7 @@ abstract: This example shows a simple closure component.
 date: 2021-10-24
 tags: [component, closure, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

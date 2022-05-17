@@ -4,7 +4,7 @@ abstract: Force a component to re-initialize by passing a key attribute when cha
 date: 2021-10-16
 tags: [component, key, m.route, vnode, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

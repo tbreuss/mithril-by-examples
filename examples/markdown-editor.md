@@ -4,7 +4,7 @@ abstract: This example shows a very simple markdown editor using marked.js.
 date: 2021-10-27
 tags: [3rd-party, markdown, editor, official, m.trust, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 flems:

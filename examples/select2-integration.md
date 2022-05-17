@@ -4,7 +4,7 @@ abstract: This example shows the integration of select2 3rd-party library.
 date: 2021-10-26
 tags: [3rd-party, form, select, m.mount, dom, oncreate]
 level: beginner
-version: 2.0.4
+version: latest
 author: kevinfiol
 layout: layouts/example.html
 flems:

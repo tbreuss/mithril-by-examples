@@ -4,7 +4,7 @@ abstract: Conway Game Of Life using a central model for state management.
 date: 2021-10-26
 tags: [3rd-party, game, m.stream, m.mount, m.redraw, oninit]
 level: expert
-version: 2.0.4
+version: latest
 author: boazblake
 layout: layouts/example.html
 flems:

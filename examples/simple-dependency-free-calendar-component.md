@@ -4,7 +4,7 @@ abstract: Simple dependency free calendar component.
 date: 2021-10-16
 tags: [calendar, component, m.mount, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: stephanhoyer
 layout: layouts/example.html
 ---

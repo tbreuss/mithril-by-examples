@@ -4,7 +4,7 @@ abstract: Examples showing random dog images requested by an API and displayed w
 date: 2021-10-31
 tags: [animation, m.stream, m.mount, dom, api, oncreate]
 level: beginner
-version: 2.0.4
+version: latest
 author: JAForbes
 layout: layouts/example.html
 flems:
