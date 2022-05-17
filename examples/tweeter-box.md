@@ -4,7 +4,7 @@ abstract: A small nonsense Tweeter Box code example in Mithril.js using Mitosis 
 date: 2021-11-01
 tags: [form, textarea, state, mitosis, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

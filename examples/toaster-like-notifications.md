@@ -3,7 +3,7 @@ title: Toaster-like Notifications
 date: 2022-03-09
 tags: [animation, notification, m.redraw, m.route, oninit, state]
 level: intermediate
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 flems:

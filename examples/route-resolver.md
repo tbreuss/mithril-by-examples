@@ -4,7 +4,7 @@ abstract:
 date: 2020-09-24
 tags: [route, resolver, m.route]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

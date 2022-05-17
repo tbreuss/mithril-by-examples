@@ -4,7 +4,7 @@ abstract: In Mithril.js you are free to structure your state data however you'd 
 date: 2021-10-19
 tags: [state, component, mitosis, m.mount]
 level: intermediate
-version: 2.0.4
+version: latest
 author: kevinfiol
 layout: layouts/example.html
 ---

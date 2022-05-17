@@ -4,7 +4,7 @@ abstract: Mithril.js offers the `onbeforeremove` hook that allows us to defer th
 date: 2021-10-19
 tags: [basics, animation, official, m.mount, vnode, dom, onbeforeremove]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 ---

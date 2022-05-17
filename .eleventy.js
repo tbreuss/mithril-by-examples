@@ -141,7 +141,7 @@ module.exports = function(eleventyConfig) {
 
     if (version.length > 0) {
       text.push ("\n");
-      if (version === '2.0.4') {
+      if (version === 'latest') {
         text.push([
           'The snippet is using the most current version ' + version + ' of Mithril.js framework.',
           'The snippet requires the latest version ' + version + ' of Mithril.js framework.',
@@ -276,7 +276,7 @@ module.exports = function(eleventyConfig) {
     if (version.length > 0) {
       text.push ("\n");
       text.push ("## Contribute");
-      if (version === '2.0.4') {
+      if (version === 'latest') {
         text.push([
           'If anyone has some improvements, that should be addressed, let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',
           'Do you see some improvements, that could be addressed here? Then let me know by [opening an issue](https://github.com/tbreuss/mithril-by-examples/issues).',

@@ -4,7 +4,7 @@ abstract: An example as a simple Counter application written with Mithril.js.
 date: 2021-10-19
 tags: [state, component, m.mount]
 level: intermediate
-version: 2.0.4
+version: latest
 author: kevinfiol
 layout: layouts/example.html
 ---

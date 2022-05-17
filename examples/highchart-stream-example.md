@@ -4,14 +4,14 @@ abstract: How to use highchart lib together with Mithril.js and mithril-stream.
 date: 2021-10-26
 tags: [3rd-party, charts, m.stream, m.request, m.mount, dom, onremove, oncreate]
 level: expert
-version: 2.0.4
+version: latest
 author: skyghis
 layout: layouts/example.html
 flems:
   files:
     - app.js
   links:
-    - mithril@2.0.4/stream/stream.js
+    - mithril@latest/stream/stream.js
     - highcharts@6.1.1
 ---
 

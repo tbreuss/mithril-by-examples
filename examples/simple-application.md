@@ -4,7 +4,7 @@ abstract: This example shows off how to do most of the major things you would ne
 date: 2021-10-16
 tags: [model, list, form, layout, tutorial, official, m.request, m.route, vnode, api, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 flems:

@@ -4,7 +4,7 @@ abstract: This example shows a solution for a simple Icon component and suitable
 date: 2022-02-06
 tags: [component, icons, m.mount, svg]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

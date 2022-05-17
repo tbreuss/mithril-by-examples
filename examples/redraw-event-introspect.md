@@ -4,7 +4,7 @@ desc: 'This example shows a solution to introspect m.request, and all other even
 date: 2022-02-16
 tags: [event, m.mount, m.redraw, m.request]
 level: expert
-version: 2.0.4
+version: latest
 author: JAForbes
 layout: layouts/example.html
 flems:

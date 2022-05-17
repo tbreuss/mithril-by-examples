@@ -4,7 +4,7 @@ abstract: This example shows a simple search form that filters prefetched data.
 date: 2021-11-27
 tags: [form, m.mount, m.request, oninit, oncreate, onupdate, state, mitosis]
 level: advanced
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

@@ -4,7 +4,7 @@ abstract: Demonstrate async and await around Mithril.js' `m.request`.
 date: 2021-10-26
 tags: [m.request, async-await, m.mount, api, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: viniciusCamargo
 layout: layouts/example.html
 ---

@@ -4,7 +4,7 @@ abstract: Component state example using plain old JavaScript object (POJO).
 date: 2020-09-24
 tags: [component, pojo, state, m.mount, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

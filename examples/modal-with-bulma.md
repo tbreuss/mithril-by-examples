@@ -4,7 +4,7 @@ abstract: Modal using Bulma CSS framework.
 date: 2021-10-26
 tags: [modal, bulma, m.render, m.mount, vnode]
 level: beginner
-version: 2.0.4
+version: latest
 author: mike-ward
 layout: layouts/example.html
 flems:

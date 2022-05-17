@@ -4,7 +4,7 @@ abstract: This example shows an animated clock using SVG.
 date: 2021-10-27
 tags: [animation, official, svg, m.render]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 ---

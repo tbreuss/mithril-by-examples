@@ -4,7 +4,7 @@ abstract: This is an example showing nested components using `vnode.children`.
 date: 2021-10-27
 tags: [component, nested, m.mount, vnode]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 ---

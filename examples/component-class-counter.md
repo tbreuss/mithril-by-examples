@@ -4,7 +4,7 @@ abstract: This is the classic counter example, that shows a value, that can be i
 date: 2020-09-24
 tags: [component, class, state, counter, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

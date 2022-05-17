@@ -4,7 +4,7 @@ abstract: In this example two component instances are created, but only the 'foo
 date: 2020-09-24
 tags: [component, key, m.mount, vnode, oninit]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

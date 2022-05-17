@@ -4,7 +4,7 @@ abstract: This example shows the well know DB monster application.
 date: 2021-10-27
 tags: [3rd-party, animation, official, m.mount, m.redraw]
 level: beginner
-version: 2.0.4
+version: latest
 author: mithril
 layout: layouts/example.html
 flems:

@@ -4,7 +4,7 @@ abstract: This is an example using Vnodes passing some variables in.
 date: 2020-09-24
 tags: [vnode, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 ---

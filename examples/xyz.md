@@ -4,7 +4,7 @@ abstract: This example is for demonstration purposes only to show how things wor
 date: 2021-01-17
 tags: [basics, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: tbreuss
 layout: layouts/example.html
 flems:

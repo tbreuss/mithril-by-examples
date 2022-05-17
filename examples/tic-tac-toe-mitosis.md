@@ -4,7 +4,7 @@ abstract: This slim Tic-Tac-Toe example was written using the Mitosis pattern fo
 date: 2021-10-31
 tags: [game, mitosis, m.mount]
 level: beginner
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 flems:

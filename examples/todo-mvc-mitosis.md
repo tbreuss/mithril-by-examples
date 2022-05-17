@@ -4,7 +4,7 @@ abstract: Here is another TodoMVC implementation, this time using Mitosis for st
 date: 2021-10-29
 tags: [todomvc, mitosis, m.route, dom, onupdate]
 level: expert
-version: 2.0.4
+version: latest
 author: osban
 layout: layouts/example.html
 flems:
