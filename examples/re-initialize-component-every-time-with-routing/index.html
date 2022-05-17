@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Re-initializing a Component Every Time - Without Routing | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -82,7 +82,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const closure = () => {\n  console.log('init closure')\n\n  return {\n    view: () => [\n      m('button', {onclick: () => m.route.set('/plop/123')}, 'click'),\n      m('div', 'test')\n    ]\n  }\n}\n\nconst pojo = {\n  oninit: () => console.log('init pojo'),\n  view: () => [\n    m('button', {onclick: () => m.route.set('/plop/123')}, 'click'),\n    m('div', 'test')\n  ]\n}\n\nm.route(document.body, '/plop/123', {\n  '/plop/:id': {\n    onmatch: () => ({view: v => m(closure, v.attrs)})\n    // onmatch: () => ({...pojo})\n  }\n})\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -98,7 +98,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -130,7 +130,7 @@ m.route(document.body, '/plop/123', {
   }
 })
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.route</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
 It is also showing the <code>oninit</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
@@ -187,6 +187,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/re-initialize-component-every-time-with-routing/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

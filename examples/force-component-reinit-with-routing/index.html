@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Force Component Re-Init with Routing | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -92,7 +92,7 @@ Thus, on a redraw, when Mithril.js doesn't find a new vnode with the old key, it
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"// option 1 -> key is passed via attrs\nconst page1 = {\n  oninit: () => {console.log('init1')},\n  view: vnode => [\n    m('p', 'page1 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set('/page1', {key: Date.now()})}, 're-init')\n  ]\n}\n\n// option 2 -> key is passed as url parameter\nconst page2 = {\n  oninit: () => {console.log('init2')},\n  view: () => [\n    text(),\n    m('p', 'page2 ' + m.route.param('key')),\n    m('button', {onclick: () => m.route.set('/page2/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 3 -> id is passed as url parameter and also used as key\nconst page3 = {\n  oninit: () => {console.log('init3')},\n  view: vnode => [\n    text(),\n    m('p', 'page3 ' + vnode.attrs.id),\n    m('button', {onclick: () => m.route.set('/page3/' + Date.now())}, 're-init')\n  ]\n}\n\n// option 4 -> use m.route.set() to re-init the current page\nconst page4 = {\n  oninit: () => {console.log('init4')},\n  view: vnode => [\n    text(),\n    m('p', 'page4 ' + (vnode.attrs.key || '')),\n    m('button', {onclick: () => m.route.set(m.route.get(), {key: Date.now()})}, 're-init')\n  ]\n}\n\nm.route(document.body, '/page1', { // change to /page2/1, /page3/1, or /page4\n  '/page1'     : page1,\n  '/page2/:key': page2,\n  '/page3/:id' : {render: vnode => m(page3, {id: vnode.attrs.id, key: vnode.attrs.id})},\n  '/page4'     : {render: vnode => m(page4, {key: vnode.attrs.key})}\n})\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -108,7 +108,7 @@ Thus, on a redraw, when Mithril.js doesn't find a new vnode with the old key, it
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -160,7 +160,7 @@ m.route(document.body, '/page1', { // change to /page2/1, /page3/1, or /page4
   '/page4'     : {render: vnode =&gt; m(page4, {key: vnode.attrs.key})}
 })
 </code></pre>
-<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+<p>The snippet is using the most current version latest of Mithril.js framework.
 It is aimed at beginners and shows some basic recipes.</p>
 <p>In addition to the Mithril.js hyperscript function m(), here we can see an example of Mithril.js' <code>m.route</code> <a href="/api-methods/">API method</a>.
 It also shows, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> can be used. This can be seen here by using the <code>oninit</code> hook.
@@ -218,6 +218,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/force-component-reinit-with-routing/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

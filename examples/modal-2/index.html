@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Modal | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/spacejack/">spacejack</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -107,7 +107,7 @@ For the Modal component at least one button should be provided otherwise there w
         autoHeight: false,
         selected: 'app.js',
         files: [{"name":"Overlay.js","content":"// Overlay.js\nconst Overlay = function() {\n\tlet dom\n\tlet children\n\n\tconst OverlayContainer = {\n\t\tview: () => children\n\t}\n\n\treturn {\n\t\toncreate(v) {\n\t\t\tchildren = v.children\n\t\t\t// Append a container to the end of body\n\t\t\tdom = document.createElement('div')\n\t\t\tdom.className = 'overlay'\n\t\t\tdocument.body.appendChild(dom)\n\t\t\tm.mount(dom, OverlayContainer)\n\t\t},\n\t\tonbeforeupdate(v) {\n\t\t\tchildren = v.children\n\t\t},\n\t\tonbeforeremove(v) {\n\t\t\t// Add a class with fade-out exit animation\n\t\t\tdom.classList.add('hide')\n\t\t\treturn new Promise(r => {\n\t\t\t\tdom.addEventListener('animationend', r)\n\t\t\t})\n\t\t},\n\t\tonremove() {\n\t\t\tm.mount(dom, null)\n\t\t\t// Destroy the overlay dom tree. Using m.mount with\n\t\t\t// null triggers any modal children removal hooks.\n\t\t\tdocument.body.removeChild(dom)\n\t\t},\n\t\tview() {}\n\t}\n}\n"},{"name":"Modal.js","content":"// Modal.js\n/**\nExpected attrs are as follows:\n\ninterface Attrs {\n  title: m.Children\n  content: m.Children\n  buttons: {id: string, text: string}[]\n  onClose(id: string): void\n}\n*/\n\nconst Modal = function(v) {\n  let clickedId\n\n  return {\n    view({attrs: {title, content, buttons, onClose}}) {\n      if (clickedId != null) {\n        // We need to allow the Overlay component execute its\n        // exit animation. Because it is a child of this component,\n        // it will not fire when this component is removed.\n        // Instead, we need to remove it first before this component\n        // goes away.\n\t\t\t\t// When a button is clicked, we omit the Overlay component\n        // from this Modal component's next view render, which will\n        // trigger Overlay's onbeforeremove hook.\n        return null\n      }\n      return m(Overlay,\n        {\n          onremove() {\n            // Wait for the overlay's removal animation to complete.\n            // Then we fire our parent's callback, which will\n            // presumably remove this Modal component.\n            Promise.resolve().then(() => {\n              onClose(clickedId)\n              m.redraw()\n            })\n          }\n        },\n        m('.modal',\n          m('h3', title),\n          m('.modal-content', content),\n          m('.modal-buttons',\n            buttons.map(b =>\n              m('button',\n                {\n                  type: 'button',\n                  disabled: clickedId != null,\n                  onclick() {\n                    clickedId = b.id\n                  }\n                },\n                b.text\n              )\n            )\n          )\n        )\n      )\n    }\n  }\n}\n"},{"name":"app.js","content":"// app.js\nconst App = function() {\n  let showModal = false\n\n  return {\n    view: () => m('.app',\n      m('h1', 'Modal Demo'),\n      m('p', 'Click below to open a modal'),\n      m('p',\n        m('button',\n          {\n            type: 'button',\n            onclick() {\n              showModal = true\n            }\n          },\n          'Open Modal'\n        ),\n        // Even though this modal is nested within our App vdom,\n        // it will appear on top of everything else, appended\n        // to the end of document body.\n        showModal && m(Modal, {\n          title: 'Hello Modal!',\n          content: 'Click the button below to close.',\n          buttons: [{id: 'close', text: 'Close'}],\n          onClose(id) {\n            showModal = false\n          }\n        })\n      )\n    )\n  }\n}\n\nm.mount(document.body, App)\n"},{"name":".css","content":"body {\n  margin: 0;\n  padding: 0;\n  font-family: sans-serif;\n  font-size: 16px;\n}\n\n.app {\n  padding: 2em;\n}\n\n@keyframes fade-in {\n  from {opacity: 0;}\n  to {opacity: 1;}\n}\n\n@keyframes fade-out {\n  from {opacity: 1;}\n  to {opacity: 0;}\n}\n\n.overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(255,255,255,0.75);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  animation: fade-in 0.5s;\n}\n.overlay.hide {\n  animation: fade-out 0.5s;\n}\n\n.modal {\n  text-align: center;\n  padding: 2em 4em 3em 4em;\n  background-color: #FFF;\n  box-shadow: 0.5em 0.5em 2em #999;\n  border: #CCC 1px solid;\n}\n\n.modal-buttons {\n  margin-top: 1em;\n}\n.modal-buttons button {\n  margin: 0 0.5em;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -123,7 +123,7 @@ For the Modal component at least one button should be provided otherwise there w
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -321,7 +321,7 @@ m.mount(document.body, App)
   margin: 0 0.5em;
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 More advanced users should be able to follow this example, however it contains some first difficulties.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.mount</code> or <code>m.redraw</code>, besides Mithril.js' basic m() hyperscript function.
 It also demonstrates, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>onbeforeupdate</code>, <code>onremove</code>, <code>onbeforeremove</code> and <code>oncreate</code> can be used.</p>
@@ -378,6 +378,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/modal-2/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

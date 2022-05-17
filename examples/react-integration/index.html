@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>React Integration | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/barneycarroll/">barneycarroll</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -91,7 +91,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","compiler":"babel","content":"class ReactComponent extends React.Component {\n  constructor(){\n    super()\n\n    this.state = { count : 0 }\n  }\n\n  render(){\n    return [\n      <p key=\"0\">\n        Count: {this.state.count}\n      </p>,\n\n      <button key=\"1\" onClick={() => {\n        this.setState({count: this.state.count + 1})\n      }}>\n        Increment\n      </button>\n    ]\n  }\n}\n\nconst MithrilComponent = () => {\n  let showSubComponent = false\n\n  return {\n    view: () => [\n      m('label',\n        m('input[type=checkbox]', {\n          onchange: e => {\n            showSubComponent = e.target.checked\n          }\n        }),\n\n        'Render React component?'\n      ),\n\n      m('br'),\n\n      showSubComponent &&\n        m('.ReactBridge', {\n          oncreate: v => {\n            ReactDOM.render(<ReactComponent/>, v.dom)\n          },\n        })\n    ]\n  }\n}\n\nm.mount(document.body, MithrilComponent)\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"react/umd/react.development.js","type":"script","url":"https://unpkg.com/react/umd/react.development.js"},{"name":"react-dom/umd/react-dom.development.js","type":"script","url":"https://unpkg.com/react-dom/umd/react-dom.development.js"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"react/umd/react.development.js","type":"script","url":"https://unpkg.com/react/umd/react.development.js"},{"name":"react-dom/umd/react-dom.development.js","type":"script","url":"https://unpkg.com/react-dom/umd/react-dom.development.js"}]
       });
       </script>
     
@@ -107,7 +107,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>react/umd/react.development.js</td><td>https://unpkg.com/react/umd/react.development.js</td></tr>,<tr><td class="capitalize">script</td><td>react-dom/umd/react-dom.development.js</td><td>https://unpkg.com/react-dom/umd/react-dom.development.js</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>react/umd/react.development.js</td><td>https://unpkg.com/react/umd/react.development.js</td></tr>,<tr><td class="capitalize">script</td><td>react-dom/umd/react-dom.development.js</td><td>https://unpkg.com/react-dom/umd/react-dom.development.js</td></tr>
                 </tbody>
             </table>
           </div>
@@ -164,7 +164,7 @@ const MithrilComponent = () =&gt; {
 
 m.mount(document.body, MithrilComponent)
 </code></pre>
-<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+<p>The snippet is using the most current version latest of Mithril.js framework.
 It is aimed at expert users who are familiar with all of the aspects of the framework and JavaScript itself.</p>
 <p>In addition to the Mithril.js hyperscript function m(), here we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>.
 It also shows, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> can be used. This can be seen here by using the <code>oncreate</code> hook.</p>
@@ -221,6 +221,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/react-integration/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Simple Dependency Free Calendar Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/stephanhoyer/">stephanhoyer</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -82,7 +82,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".css","content":".calendar {\n  width: 20rem;\n  display: grid;\n  grid-template-columns: 1fr 5fr 1fr;\n  text-align: center;\n}\n\n.days {\n  padding: 0;\n  grid-column: 1 / 4;\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n}\n\n.day {\n  list-style: none;\n}\n\n.day.nextMonth, .day.previousMonth {\n  color: silver;\n}\n\n.day.weekday-6.nextMonth, .day.weekday-6.previousMonth {\n  color: coral;\n}\n.day.weekday-6 {\n  color: red;\n}\n"},{"name":".js","content":"function times(n, fn) {\n  return Array(n).fill().map((_, index) => fn(index))\n}\n\nfunction daysInMonth (month, year) {\n  return new Date(year, month + 1, 0).getDate();\n}\n\nfunction getWeekday(year, month, day) {\n  return new Date(year, month, day).getDay();\n}\n\nfunction yearView(state) {\n  return [\n    m('button.previousYear', {\n      onclick: () => state.year -= 1\n    }, '<'),\n    m('.year', state.year),\n    m('button.nextYear', {\n      onclick: () => state.year += 1\n    }, '>'),\n  ]\n}\n\nfunction monthView(state) {\n  return [\n    m('button.previousMonth', {\n      onclick: () => {\n        if (state.month == 0) {\n          state.year -= 1\n          state.month = 12\n        }\n        state.month -= 1\n      }\n    }, '<'),\n    m('.month', state.month + 1),\n    m('button.nextMonth', {\n      onclick: () => {\n        if (state.month == 11) {\n          state.year += 1\n          state.month = -1\n        }\n        state.month += 1\n      }\n    }, '>'),\n  ]\n}\n\nfunction daysView(state) {\n  const daysInPreviousMonth = daysInMonth(state.month - 1, state.year)\n  return [\n    m('ul.days', [\n      times(getWeekday(state.year, state.month, 0), index => {\n        const day = index + 1 + daysInPreviousMonth - getWeekday(state.year, state.month, 0)\n        return m('li.day.previousMonth', {\n          className: `weekday-${getWeekday(state.year, state.month-1, day)}`\n        }, day)\n      }),\n      times(daysInMonth(state.month, state.year), day => m('li.day', {\n        className: `weekday-${getWeekday(state.year, state.month, day)}`\n      }, day + 1)),\n      times(7 - getWeekday(state.year, state.month + 1, 0), day => {\n        return m('li.day.nextMonth', {\n          className: `weekday-${getWeekday(state.year, state.month + 1, day)}`\n        }, day + 1)\n      }),\n    ])\n  ]\n}\n\nconst calendarComponent = {\n  oninit({state, attrs}) {\n    state.year = attrs.date.getFullYear()\n    state.month = attrs.date.getMonth()\n    state.day = attrs.date.getDate()\n  },\n  view({state}) {\n    return m('.calendar', [\n      yearView(state),\n      monthView(state),\n      daysView(state)\n    ])\n  }\n}\n\nm.mount(document.body, {\n  view() {\n    return m(calendarComponent, {\n      date: new Date()\n    })\n  }\n})\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -98,7 +98,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -227,7 +227,7 @@ m.mount(document.body, {
   }
 })
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().
 Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better known as hook).</p>
@@ -284,6 +284,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/simple-dependency-free-calendar-component/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

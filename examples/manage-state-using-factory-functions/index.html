@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Manage State using Factory Functions | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/kevinfiol/">kevinfiol</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -83,7 +83,7 @@ Credits for porsager and foxdonut.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const State = () => ({ count: 0 });\n\nconst Actions = state => ({\n  increment: () => state.count += 1,\n  decrement: () => state.count -= 1\n});\n\nconst state   = State();\nconst actions = Actions(state);\n\nconst Counter = {\n  view: ({ attrs: { state, actions } }) =>\n    m('div',\n      m('h1', 'Counter'),\n      m('p', state.count),\n      m('button', { onclick: actions.increment }, '+'),\n      m('button', { onclick: actions.decrement }, '-')\n    )\n};\n\nm.mount(document.body, {\n  view: () => m(Counter, { state, actions })\n});\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -99,7 +99,7 @@ Credits for porsager and foxdonut.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -129,7 +129,7 @@ m.mount(document.body, {
   view: () =&gt; m(Counter, { state, actions })
 });
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 You should be familiar with most aspects of the framework. So the example is aimed at advanced users.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
 <p>The code sample was authored by kevinfiol. It was last modified on 19 October 2021.
@@ -185,6 +185,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/manage-state-using-factory-functions/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

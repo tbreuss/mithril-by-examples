@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Toaster-like Notifications | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">intermediate</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -90,7 +90,7 @@ It was taken from <a href="https://gist.github.com/tabula-rasa/61d2ab25aac779fdf
         autoHeight: false,
         selected: '.js',
         files: [{"name":"helpers.js","content":"// helpers.js\nfunction guid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {\n    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n"},{"name":"Notifications.js","content":"// Notifications.js\nlet state = {\n  list: [],\n  destroy(msg) {\n    let index = state.list.findIndex(x => x.id === msg.id)\n    state.list.splice(index, 1)\n  }\n}\n\nfunction addSuccess(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'success', text, timeout })\n}\nfunction addInfo(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'info', text, timeout })\n}\nfunction addWarning(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'warning', text, timeout })\n}\nfunction addDanger(text, timeout = 3000) {\n  state.list.push({ id: guid(), type: 'danger', text, timeout })\n}\n\nlet Notifications = {\n  view(vnode) {\n    let ui = vnode.state\n    return state.list ?\n      m('.m-notifications', state.list.map((msg) => {\n        return m('div', { key: msg.id }, m(Notification, msg)) //wrap in div with key for proper dom updates\n      })) : null\n  }\n}\n\nlet Notification = {\n  oninit(vnode) {\n    setTimeout(() => {\n      Notification.destroy(vnode)\n    }, vnode.attrs.timeout)\n  },\n  notificationClass(type) {\n    const types = ['info', 'warning', 'success', 'danger']\n    if (types.indexOf(type) > -1)\n      return type\n    return 'info'\n  },\n  destroy(vnode) {\n    vnode.dom.classList.add('destroy')\n    setTimeout(() => {\n      state.destroy(vnode.attrs)\n      m.redraw()\n    }, 300)\n  },\n  view(vnode) {\n    let ui = vnode.state\n    let msg = vnode.attrs\n    return m('.m-notification', { class: ui.notificationClass(msg.type), onclick: () => { ui.destroy(vnode) } }, msg.text)\n  }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nconst Layout = {\n  view: function (vnode) {\n    return m('.layout', [\n      vnode.children,\n      m(Notifications),\n    ]);\n  }\n}\n"},{"name":"Page.js","content":"// Page.js\nconst Page = {\n  view(vnode) {\n    return m('.page', [\n      m('h1', 'Toaster-like Notifications'),\n      m('p', 'Click the buttons to see toasts in the lower right corner.'),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addSuccess('Hey, this is a success message!', 5000)\n        }},\n        'Show success message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addWarning('And this is a warning message!', 5000)\n        }},\n        'Show warning message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addInfo('Wow, this a info message!', 5000)\n        }},\n        'Show info message'\n      )),\n      m('div', m('button[type=button]', {\n        onclick: () => {\n          addDanger('And this is a danger message!', 5000)\n        }},\n        'Show danger message'\n      )),\n    ])\n  }\n}\n"},{"name":"app.js","content":"// app.js\n\naddInfo('Info message!')\naddWarning('Warning message!')\naddDanger('This is danger message! Take care.')\naddSuccess('Operation successful.')\n\nm.route(document.body, '/', {\n  '/': {\n    render: () => m(Layout, m(Page))\n  }\n})\n"},{"name":".css","content":"@import 'https://unpkg.com/water.css@2/out/water.min.css';\n\nbutton {\n  margin: 0.25rem 0;\n}\n\n.m-notifications {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  z-index: 10;\n}\n\n.m-notification {\n  width: auto;\n  margin-bottom: 0.25rem;\n  max-width: 400px;\n  cursor: pointer;\n  animation: fade-in 0.3s;\n}\n\n.m-notification:hover {\n  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);\n}\n\n.m-notification.destroy {\n  animation: fade-out 0.3s;\n}\n\n.m-notification.info {\n  color: #0c5460;\n  background-color: #d1ecf1;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #bee5eb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.warning {\n  color: #856404;\n  background-color: #fff3cd;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #ffeeba;\n  border-radius: 0.25rem;\n}\n\n.m-notification.danger {\n  color: #721c24;\n  background-color: #f8d7da;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #f5c6cb;\n  border-radius: 0.25rem;\n}\n\n.m-notification.success {\n  color: #155724;\n  background-color: #d4edda;\n  padding: 0.75rem 1.25rem;\n  border: 1px solid #c3e6cb;\n  border-radius: 0.25rem;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -106,7 +106,7 @@ It was taken from <a href="https://gist.github.com/tabula-rasa/61d2ab25aac779fdf
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -324,7 +324,7 @@ button {
   }
 }
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 The example targets intermediate users, that are familiar with with most aspects of the framework.</p>
 <p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.redraw</code> or <code>m.route</code>, besides the centrepiece m() hyperscript function.
 Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better known as hook).</p>
@@ -381,6 +381,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/toaster-like-notifications/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

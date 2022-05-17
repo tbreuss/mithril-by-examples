@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Modal with Bulma II | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/mike-ward/">mike-ward</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -85,7 +85,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".ts","content":"function modal(content: string | m.Vnode) {\n  const view =\n    m('.modal is-active',\n      m('.modal-background', { onclick: () => modalContainer.remove() }),\n      m('.modal-content', m('.box', content)));\n\n  const modalContainer = document.createElement('div');\n  document.body.appendChild(modalContainer);\n  m.render(modalContainer, view);\n}\n"},{"name":".js","content":"const modalContent =\n  m('.title.has-text-centered', 'Title',\n    m('.subtitle', 'some content here'));\n\nconst app = {\n  view: () => m('.section',\n    m('button.button.subtitle',\n    { onclick: () => modal(modalContent) },\n    'Show Modal')\n    )\n}\n\nm.mount(document.body, app)\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"bulma.css","type":"css","url":"https://unpkg.com/bulma@0.7.2/css/bulma.css"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"bulma.css","type":"css","url":"https://unpkg.com/bulma@0.7.2/css/bulma.css"}]
       });
       </script>
     
@@ -101,7 +101,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">css</td><td>bulma.css</td><td>https://unpkg.com/bulma@0.7.2/css/bulma.css</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">css</td><td>bulma.css</td><td>https://unpkg.com/bulma@0.7.2/css/bulma.css</td></tr>
                 </tbody>
             </table>
           </div>
@@ -133,7 +133,7 @@ const app = {
 
 m.mount(document.body, app)
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.render</code> or <code>m.mount</code>, besides the centrepiece m() hyperscript function.
 Also covered in this example is the use of Vnodes or virtual DOM nodes, a JavaScript data structure that describes a DOM tree.</p>
@@ -189,6 +189,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/modal-with-bulma/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

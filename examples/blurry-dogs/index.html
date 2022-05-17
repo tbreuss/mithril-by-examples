@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Blurry Dogs | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/jaforbes/">JAForbes</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -91,7 +91,7 @@ The filter is part of the <code>Canvas API</code>, the JavaScript Canvas 2D API,
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"function BlurryDog({attrs: {src, blur}}) {\n\n  let el = m.stream()\n  let context = el.map(x => x.getContext('2d'))\n\n  let loaded = m.stream()\n  let image = src.map(src => {\n    let image = new Image()\n    image.src = src\n    image.onload = () => loaded(true)\n    return image\n  })\n\n  m.stream.merge([el, context, image, loaded, blur])\n    .map(([el, context, image, loaded, blur]) => {\n\n      if (!loaded) return;\n\n      requestAnimationFrame(() => {\n        el.width = el.width\n        context.filter = `blur(${blur}px)`\n        context.drawImage(image, 0, 0, el.width, el.height)\n      })\n    })\n\n  return {\n    view() {\n      return m('canvas', {\n        width: 200,\n        height: 200, oncreate: v => el(v.dom),\n        style: 'background: #DDD'\n      })\n    }\n  }\n}\n\nfunction RandomBlurryDog({attrs: {blur}}) {\n  let src = m.stream()\n\n  fetch('https://dog.ceo/api/breeds/image/random')\n    .then(x => x.json())\n    .then(x => src(x.message))\n\n  return {\n    view: () => m(BlurryDog, {src, blur})\n  }\n}\n\nfunction App() {\n\n  const blur = m.stream(5)\n  const count = m.stream(5)\n\n  function view() {\n    return m('.app',\n      {style: 'display: grid;'},\n      m('.form',\n        {style: 'display: grid; grid-template-columns: 1fr 3em 3em; gap: 1em;'},\n        m('label',\n          'Blur', m('input[type=range]', {\n            style: 'width: 100%; height: 2em;',\n            oninput: e => blur(e.target.valueAsNumber),\n            max: 10,\n            min: 0,\n            value: blur()\n          })\n        ),\n        m('button', {onclick: () => count(count() + 1)}, '+'),\n        m('button', {onclick: () => count(count() - 1)}, '-')\n      ),\n      m('.dogs',\n        Array(count()).fill(0).map(() =>\n          m(RandomBlurryDog, {blur})\n        )\n      )\n    )\n  }\n\n  return {view}\n}\n\nm.mount(document.body, App)\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
       });
       </script>
     
@@ -107,7 +107,7 @@ The filter is part of the <code>Canvas API</code>, the JavaScript Canvas 2D API,
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>mithril-stream@2.0.0/stream.js</td><td>https://unpkg.com/mithril-stream@2.0.0/stream.js</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>mithril-stream@2.0.0/stream.js</td><td>https://unpkg.com/mithril-stream@2.0.0/stream.js</td></tr>
                 </tbody>
             </table>
           </div>
@@ -196,7 +196,7 @@ function App() {
 
 m.mount(document.body, App)
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.stream</code> or <code>m.mount</code>, besides Mithril.js' basic m() hyperscript function.
 It is also showing the <code>oncreate</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
@@ -252,6 +252,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/blurry-dogs/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

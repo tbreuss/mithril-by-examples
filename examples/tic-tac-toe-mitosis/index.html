@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Tic-Tac-Toe (Mitosis) | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -81,7 +81,7 @@ Well done!</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":"state.js","content":"// state.js\nconst State = () => ({\n  history: [\n    {squares: [...Array(9).fill(null)]}\n  ],\n  current: {squares: [...Array(9).fill(null)]},\n  stepNumber: 0,\n  xIsNext: true\n})\n\nexport default State\n"},{"name":"actions.js","content":"// actions.js\nconst Actions = (S, A = {\n  calculateWinner: squares => {\n    const lines = [\n      [0, 1, 2],\n      [3, 4, 5],\n      [6, 7, 8],\n      [0, 3, 6],\n      [1, 4, 7],\n      [2, 5, 8],\n      [0, 4, 8],\n      [2, 4, 6]\n    ]\n    for (let i = 0; i < lines.length; i++) {\n      const [a, b, c] = lines[i]\n      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {\n        return squares[a]\n      }\n    }\n    return null\n  },\n\n  jumpTo: step => {\n    S.stepNumber = step\n    S.current    = S.history[step]\n    S.xIsNext    = !(step % 2)\n  },\n\n  handleClick: i => {\n    const history = S.history.slice(0, S.stepNumber + 1)\n    const squares = S.current.squares.slice()\n\n    if (A.calculateWinner(squares) || squares[i]) return\n    squares[i] = S.xIsNext ? 'X' : 'O'\n    S.stepNumber = S.history.length\n    S.history    = [...history, {squares}]\n    S.current    = S.history[S.history.length - 1]\n    S.xIsNext    = !S.xIsNext\n  }\n}) => A\n\nexport default Actions\n"},{"name":"square.js","content":"// square.js\nconst Square = {\n  view: ({attrs: {S,A, value}}) =>\n    m('button.square', {\n      onclick: () => A.handleClick(value)\n    }, S.current.squares[+value])\n}\n\nexport default Square\n"},{"name":"board.js","content":"// board.js\nimport Square from './square'\n\nconst Board = {\n  view: ({attrs: {S,A}}) =>\n    m('div',\n      [0,3,6].map(x =>\n        m('div.board-row',\n          [0,1,2].map(y =>\n            m(Square, {S,A, value: x+y})\n          )\n        )\n      )\n    )\n}\n\nexport default Board\n"},{"name":"game.js","content":"// game.js\nimport Board from './board'\n\nconst Game = {\n  view: ({attrs: {S,A}}) =>\n    m('div.game',\n      m('div.game-board',\n        m(Board, {S,A})\n      ),\n      m('div.game-info',\n        m('div',\n          A.calculateWinner(S.current.squares)\n          ? 'Winner: ' + A.calculateWinner(S.current.squares)\n          : 'Next player: ' + (S.xIsNext ? 'X' : 'O')\n        ),\n        m('ol',\n          S.history.map((step, move) =>\n            m('li', {key: move},\n              m('button', {\n                onclick: () => A.jumpTo(move)\n              }, move ? 'Go to move #' + move : 'Go to game start')\n            )\n          )\n        )\n      )\n    )\n}\n\nexport default Game\n"},{"name":".js","content":"import State   from './state'\nimport Actions from './actions'\nimport Game    from './game'\n\nconst app = () => {\n  const S = State()\n  const A = Actions(S)\n\n  return {\n    view: () => m(Game, {S,A})\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"body {\n  font: 14px \"Century Gothic\", Futura, sans-serif;\n  margin: 20px;\n}\n\nol, ul {\n  padding-left: 30px;\n}\n\n.board-row:after {\n  clear: both;\n  content: \"\";\n  display: table;\n}\n\n.status {\n  margin-bottom: 10px;\n}\n\n.square {\n  background: #fff;\n  border: 1px solid #999;\n  float: left;\n  font-size: 24px;\n  font-weight: bold;\n  line-height: 34px;\n  height: 34px;\n  margin-right: -1px;\n  margin-top: -1px;\n  padding: 0;\n  text-align: center;\n  width: 34px;\n}\n\n.square:focus {\n  outline: none;\n}\n\n.kbd-navigation .square:focus {\n  background: #ddd;\n}\n\n.game {\n  display: flex;\n  flex-direction: row;\n}\n\n.game-info {\n  margin-left: 20px;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -97,7 +97,7 @@ Well done!</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -288,7 +288,7 @@ ol, ul {
   margin-left: 20px;
 }
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
 <p>The example was written by osban, last edits were made on 31 October 2021.
@@ -344,6 +344,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/tic-tac-toe-mitosis/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

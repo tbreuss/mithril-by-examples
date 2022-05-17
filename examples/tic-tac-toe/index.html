@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Tic Tac Toe | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/boazblake/">boazblake</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -88,7 +88,7 @@ Well done and a very nice Mithril.js example.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".html","content":"<link href=\"https://fonts.googleapis.com/css?family=Mansalva&display=swap\" rel=\"stylesheet\">\n"},{"name":".js","content":"const Stream = m.stream\n\nconst calcWidth = mdl => {\n  mdl.width(window.innerWidth)\n  return mdl\n}\n\nconst getRandomInt = (min, max) => Math.floor(Math.random() * (1 + max - min) + min)\n\nconst players = {\n  true: {score:0, mark: 'X' },\n  false: {score: 0, mark: 'O'},\n}\nconst boardSizes = R.filter((n) => n % 3 == 0 ,R.range(0,60))\n\n\nconst getDiagAcross =(acc, set, idx) => {\n  let r = acc.concat(set[idx])\n  return r\n}\n\nconst getDiagDown =(acc, set, idx) => {\n  let r = acc.concat(set[set.length - (idx + 1)])\n  return r\n}\n\nconst winningSetBy = mdl => {\n  if(mdl.size) {\n    let spaces = R.range(1, (mdl.size * mdl.size + 1))\n    let setsAcross = R.splitEvery(mdl.size, spaces)\n    let setsDown = R.transpose(setsAcross)\n    let setsDiagAcross = setsAcross.reduce(getDiagAcross, [])\n    let setsDiagDown = setsDown.reduce(getDiagDown, [])\n    let winnings = setsAcross.concat(setsDown).concat([setsDiagAcross].concat([setsDiagDown]))\n    return winnings\n  } else {\n    restart(mdl)\n  }\n}\n\nconst mdl = {\n  winnerSets:[],\n  winner:null,\n  turn: true,\n  players,\n  board:null,\n  size: 0,\n  width: Stream(800)\n}\n\nconst markSelectedSpace = (mdl, key, mark) => {\n  const space = R.filter(R.propEq('key', key),mdl.board)\n  let updatedSpace = R.set(R.lensProp('value'),mark, R.head(space), mdl.board)\n  let index = R.findIndex(R.propEq('key',key))(mdl.board)\n  mdl.board =  R.insert(index,updatedSpace,R.without(space,mdl.board))\n  return mdl\n}\n\nconst markRandomSpace = mdl => {\n  let emptySpaces = mdl.board.filter(R.propEq('value',''))\n  let AISpace = emptySpaces[getRandomInt(0, emptySpaces.length - 1)]\n  !mdl.winner && AISpace && markSpace(mdl)(AISpace)\n  return mdl\n}\n\nconst updateTurn = mdl => {\n  mdl.turn = !mdl.turn\n  return mdl\n}\n\nconst isWinningSpace = (mdl, key) => {\n  let value = R.prop('value',R.head(R.filter(R.propEq('key', key),mdl.board)))\n  let sets = R.groupBy(c => c[1])(mdl.board.map(R.props(['key','value'])))\n  let keys = R.keys(R.fromPairs(sets[value])).map(Number)\n  let isWinner = mdl.winnerSets.map(set => set.every(key => keys.includes(key))).includes(true)\n  return isWinner\n}\n\nconst checkIfDraw = mdl => {\n  if(!R.pluck('value',mdl.board).includes('')) {\n    mdl.winner = 'No One'\n    return mdl\n   }\n   return mdl\n}\n\nconst markSpace = mdl => space => {\n  let player = mdl.players[mdl.turn].mark\n  if(isWinningSpace(markSelectedSpace(mdl, space.key,  player), space.key)) {\n    mdl.players[mdl.turn].score ++\n    mdl.winner = player\n    return mdl\n  }\n  checkIfDraw(mdl)\n  return mdl\n}\n\nconst nextTurn =  (mdl, space) => {\n  return R.compose(updateTurn,\n    markRandomSpace,\n    updateTurn,\n    markSpace(mdl),\n  )(space)\n  return mdl\n}\n\nconst restart = mdl => {\n  mdl.winner = null\n  mdl.size = 0\n  mdl.board = null\n  mdl.width(800)\n}\n\nconst makeBoardWithSize = (mdl, size) => {\n  mdl.size = size\n  mdl.board = R.range(0,size * size).map(n => ({key: n + 1, value: ''}))\n  mdl.winnerSets = winningSetBy(mdl)\n}\n\nconst Space = {\n  view: ({attrs:{mdl, key, space}}) =>\n   m('.space', {\n      style:{\n        fontSize:`${(mdl.width()/mdl.size)/2}px`,\n        height: `${(mdl.width()/mdl.size)/2}px`,\n      flex:`1 1 ${mdl.width()/mdl.size}px`},\n      onclick: e => !mdl.winner && !space.value && nextTurn(mdl, space)},\n      space.value && m('.value', space.value))\n}\n\n\n\nconst PlayerScore = {\n    view : ({attrs:{player, mdl}}) => m('.score-card', [player.mark,':', player.score])\n}\n\nconst Toolbar = {\n  view: ({attrs:{mdl}}) =>\n    m('.toolbar', [\n      m('button.btn',{onclick: e => restart(mdl)}, 'New Game'),\n    Object.keys(mdl.players).map((player, idx) =>\n      m(PlayerScore, {key:idx, player: players[player], mdl}))\n    ])\n}\n\nconst Game = {\n  view: () =>\n    mdl.board ? m('.game', {style:{width:`${mdl.width()}px`}}, mdl.board.map((space) =>\n      m(Space, {key:space.key, space, mdl}) ))\n      : [ m('h1','select a board size'),\n          m('select', {value:mdl.size, onchange: e => makeBoardWithSize(mdl, Number(e.target.value))},\n          boardSizes.map(n => m('option', n)),\n          mdl.size)]\n}\n\nconst GameOver = {\n  oncreate: () => window.scrollTo(0,0),\n  view: ({attrs:{mdl}}) =>\n    m('.game-over', {onclick:e => restart(mdl)}, `Game Over ${mdl.winner} is the winner!`)\n}\n\nconst TicTacToe = {\n  view:() => {\n    calcWidth(mdl)\n    return m('.', [\n  m(Toolbar, {mdl}),\n  mdl.winner && m(GameOver, {mdl}),\n  m(Game, {mdl})\n])}\n}\n\n\nm.mount(document.body, TicTacToe)\n"},{"name":".css","content":"\n* {\n  box-sizing: border-box;\n  font-family: 'Mansalva';\n}\n\nselect {\n  width: 80px;\n  height: 36px;\n  font-size: 30px;\n}\n\n.toolbar {\n  border: 1px solid green;\n  display: flex;\n  flex-flow: wrap;\n  justify-content: space-between;\n}\n\n.score-card {\n  padding: 10px;\n  font-size: 30px\n}\n\n.game {\n  display: flex;\n  flex-flow: wrap;\n}\n\n\n.space {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid green;\n  cursor:pointer;\n}\n\n.game-over {\n  position: absolute;\n  top: 15%;\n  left: 15%;\n  width: 500px;\n  font-size: 90px;\n  background: #bdc3c7;\n  padding: 4px;\n  cursor: pointer;\n}\n\n.value {\n  font-size: inherit;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"ramda@0.26.1","type":"script","url":"https://unpkg.com/ramda@0.26.1"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"ramda@0.26.1","type":"script","url":"https://unpkg.com/ramda@0.26.1"},{"name":"mithril-stream@2.0.0/stream.js","type":"script","url":"https://unpkg.com/mithril-stream@2.0.0/stream.js"}]
       });
       </script>
     
@@ -104,7 +104,7 @@ Well done and a very nice Mithril.js example.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>ramda@0.26.1</td><td>https://unpkg.com/ramda@0.26.1</td></tr>,<tr><td class="capitalize">script</td><td>mithril-stream@2.0.0/stream.js</td><td>https://unpkg.com/mithril-stream@2.0.0/stream.js</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>ramda@0.26.1</td><td>https://unpkg.com/ramda@0.26.1</td></tr>,<tr><td class="capitalize">script</td><td>mithril-stream@2.0.0/stream.js</td><td>https://unpkg.com/mithril-stream@2.0.0/stream.js</td></tr>
                 </tbody>
             </table>
           </div>
@@ -341,7 +341,7 @@ select {
   font-size: inherit;
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 As an expert user, who is familiar with all the aspects of Mithril.js and JavaScript itself, you are able the follow the example easily.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.stream</code> or <code>m.mount</code>, besides Mithril.js' basic m() hyperscript function.
 It is also showing the <code>oncreate</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
@@ -398,6 +398,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/tic-tac-toe/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

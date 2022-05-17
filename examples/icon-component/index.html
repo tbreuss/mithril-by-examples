@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Icon Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -82,7 +82,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const icons = {\n  'heart': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-heart\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>`,\n  'checked': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-square\"><polyline points=\"9 11 12 14 22 4\"></polyline><path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11\"></path></svg>`,\n  'help': (cssClass) => `<svg class=\"${cssClass}\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg>`,\n}\n\nconst Icon = {\n  view: (v) => {\n    if (v.attrs.name in icons) {\n      let cssClass = v.attrs.class || ''\n      return m.trust(icons[v.attrs.name](cssClass))\n    }\n    return ''\n  }\n}\n\nconst app = () => {\n  return {\n    view: () => m('div',\n      m('h1', 'The Mithril.js Way'),\n      m('ul',\n        m('li', m(Icon, {name: 'help', class: 'yellow'}), m('span', 'Doubt it?')),\n        m('li', m(Icon, {name: 'checked', class: 'green'}), m('span', 'Try it.')),\n        m('li', m(Icon, {name: 'heart', class: 'red'}), m('span', 'Love it!'))\n      )\n    )\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\nul {\n  padding-left: 0;\n}\nli {\n  list-style-type: none;\n  margin-bottom: 1rem;\n}\nspan {\n  font-size: 2.2rem;\n  line-height: 2.2rem;\n  display: inline-block;\n  vertical-align: top;\n  margin-left: 1rem;\n}\nsvg {\n  height: 2.2rem;\n  width: auto;\n}\n.red {\n  stroke: red;\n  fill: red;\n}\n.green {\n  stroke: green;\n}\n.yellow {\n  stroke: yellow;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -98,7 +98,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -166,7 +166,7 @@ svg {
   stroke: yellow;
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
 <p>The code sample was authored by tbreuss. It was last modified on 06 February 2022.
@@ -222,6 +222,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/icon-component/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Re-initializing a Component Using Key - Without Routing | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -89,7 +89,7 @@ In this example 2 comp instances are created, but only the 'foo' one gets a chan
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const comp = {\n  oninit: vnode => console.log('init ' + vnode.attrs.name),\n  view: vnode => m('div', vnode.attrs.name + ' key: ' + vnode.attrs.key)\n}\n\nconst app = () => {\n  count = 0\n\n  return {\n    oninit: () => {console.log('init app')},\n    view: () => [\n      m('div', 'Test',\n        ['foo','bar'].map(x => m(comp, {name: x, key: x === 'foo' && count}))\n      ),\n      m('button', {onclick: () => count++}, 'click')\n    ]\n  }\n}\n\nm.mount(document.body, app)\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -105,7 +105,7 @@ In this example 2 comp instances are created, but only the 'foo' one gets a chan
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -132,7 +132,7 @@ const app = () =&gt; {
 
 m.mount(document.body, app)
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().
 Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better known as hook).
@@ -190,6 +190,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/re-initialize-component-using-key-without-routing/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

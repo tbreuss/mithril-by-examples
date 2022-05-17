@@ -4,7 +4,7 @@
       "date": "2021-10-26",
       "tags": ["m.request","async-await","m.mount","api","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "viniciusCamargo",
       "url": "/examples/async-and-await-around-mrequest/"
     },
@@ -13,7 +13,7 @@
       "date": "2021-10-26",
       "tags": ["jwt","local storage","wrapper","m.request","m.route","m.mount","vnode","login","api"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "cmnstmntmn",
       "url": "/examples/authentication-wrapper-around-mrequest/"
     },
@@ -22,7 +22,7 @@
       "date": "2021-10-26",
       "tags": ["autocomplete","form","input","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "stephanhoyer",
       "url": "/examples/autocomplete-component/"
     },
@@ -31,7 +31,7 @@
       "date": "2021-10-31",
       "tags": ["animation","m.stream","m.mount","dom","api","oncreate"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "JAForbes",
       "url": "/examples/blurry-dogs/"
     },
@@ -40,7 +40,7 @@
       "date": "2021-10-18",
       "tags": ["7guis"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "",
       "url": "/examples/7gui-cells/"
     },
@@ -49,7 +49,7 @@
       "date": "2021-10-18",
       "tags": ["7guis"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "",
       "url": "/examples/7gui-circle-drawer/"
     },
@@ -58,7 +58,7 @@
       "date": "2020-09-24",
       "tags": ["component","class","state","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-class-add-item/"
     },
@@ -67,7 +67,7 @@
       "date": "2020-09-24",
       "tags": ["component","class","state","counter","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-class-counter/"
     },
@@ -76,7 +76,7 @@
       "date": "2020-09-24",
       "tags": ["component","closure","state","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-closure-add-item/"
     },
@@ -85,7 +85,7 @@
       "date": "2020-09-24",
       "tags": ["component","pojo","state","counter","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-closure-counter/"
     },
@@ -94,7 +94,7 @@
       "date": "2020-09-24",
       "tags": ["component","state","counter","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-external-state-counter-entries/"
     },
@@ -103,7 +103,7 @@
       "date": "2020-09-24",
       "tags": ["component","pojo","state","m.mount","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-pojo-add-item/"
     },
@@ -112,7 +112,7 @@
       "date": "2020-09-24",
       "tags": ["component","pojo","state","counter","m.mount","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/component-pojo-counter/"
     },
@@ -121,7 +121,7 @@
       "date": "2021-10-16",
       "tags": ["basics","component","official","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/components/"
     },
@@ -130,7 +130,7 @@
       "date": "2021-10-26",
       "tags": ["3rd-party","game","m.stream","m.mount","m.redraw","oninit"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "boazblake",
       "url": "/examples/conway-game-of-life/"
     },
@@ -139,7 +139,7 @@
       "date": "2021-10-18",
       "tags": ["7guis","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "narayand16",
       "url": "/examples/7gui-counter/"
     },
@@ -148,7 +148,7 @@
       "date": "2021-10-18",
       "tags": ["7guis"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "",
       "url": "/examples/7gui-crud/"
     },
@@ -157,7 +157,7 @@
       "date": "2021-10-19",
       "tags": ["basics","animation","official","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/css-animation-on-element-creation/"
     },
@@ -166,7 +166,7 @@
       "date": "2021-10-19",
       "tags": ["basics","animation","official","m.mount","vnode","dom","onbeforeremove"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/css-animation-on-element-removal/"
     },
@@ -175,7 +175,7 @@
       "date": "2020-09-24",
       "tags": ["binding","helper","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/data-binding-helper/"
     },
@@ -184,7 +184,7 @@
       "date": "2021-10-27",
       "tags": ["3rd-party","animation","official","m.mount","m.redraw"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/db-monster/"
     },
@@ -193,7 +193,7 @@
       "date": "2021-10-16",
       "tags": ["basics","official","m.render"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/dom-elements/"
     },
@@ -202,7 +202,7 @@
       "date": "2022-03-28",
       "tags": ["7guis","mitosis","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/7gui-flight-booker/"
     },
@@ -211,7 +211,7 @@
       "date": "2021-10-22",
       "tags": ["form","input","focus","dom","m.mount","oncreate"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "stephanhoyer",
       "url": "/examples/focus-an-input/"
     },
@@ -220,7 +220,7 @@
       "date": "2021-10-16",
       "tags": ["component","key","m.route","vnode","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/force-component-reinit-with-routing/"
     },
@@ -229,7 +229,7 @@
       "date": "2021-10-16",
       "tags": ["component","key","m.mount","vnode","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/force-component-reinit-without-routing/"
     },
@@ -238,7 +238,7 @@
       "date": "2020-09-24",
       "tags": ["component","button","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/generic-button-component/"
     },
@@ -247,7 +247,7 @@
       "date": "2021-10-24",
       "tags": ["form","checkbox","radiobutton","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/grouped-checkboxes/"
     },
@@ -265,7 +265,7 @@
       "date": "2021-10-16",
       "tags": ["basics","official","m.render"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/hello-world/"
     },
@@ -274,7 +274,7 @@
       "date": "2021-10-24",
       "tags": ["hex","rgb","converter","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "prompt-07",
       "url": "/examples/hex-to-rgb-converter/"
     },
@@ -283,7 +283,7 @@
       "date": "2021-10-26",
       "tags": ["3rd-party","charts","m.stream","m.request","m.mount","dom","onremove","oncreate"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "skyghis",
       "url": "/examples/highchart-stream-example/"
     },
@@ -292,7 +292,7 @@
       "date": "2022-02-06",
       "tags": ["component","icons","m.mount","svg"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/icon-component/"
     },
@@ -301,7 +301,7 @@
       "date": "2020-09-24",
       "tags": ["layout","m.route"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/layout-header-footer/"
     },
@@ -310,7 +310,7 @@
       "date": "2021-10-23",
       "tags": ["lifecycle","m.render","m.mount","vnode","onbeforeupdate","onremove","onbeforeremove","onupdate","oncreate","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "barneycarroll",
       "url": "/examples/lifecycle-explorer/"
     },
@@ -319,7 +319,7 @@
       "date": "2021-10-19",
       "tags": ["component","lifecycle","official","m.mount","vnode","onbeforeupdate","onremove","onbeforeremove","onupdate","oncreate","oninit"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/lifecycle-methods/"
     },
@@ -328,7 +328,7 @@
       "date": "2022-01-29",
       "tags": ["animation","button","component","loading","m.mount","m.redraw","vnode"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/loading-button-component/"
     },
@@ -337,7 +337,7 @@
       "date": "2020-09-24",
       "tags": ["loading","m.request","m.mount","m.redraw"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/loading-message/"
     },
@@ -346,7 +346,7 @@
       "date": "2020-09-24",
       "tags": ["loading","m.mount","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/loading-page/"
     },
@@ -355,7 +355,7 @@
       "date": "2021-10-19",
       "tags": ["state","component","mitosis","m.mount"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "kevinfiol",
       "url": "/examples/manage-state-using-factory-functions/"
     },
@@ -364,7 +364,7 @@
       "date": "2021-10-16",
       "tags": ["mitosis","state","component","m.mount"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "kevinfiol",
       "url": "/examples/manage-state-using-factory-functions-with-stateless-components/"
     },
@@ -373,7 +373,7 @@
       "date": "2021-10-19",
       "tags": ["state","component","pojo","m.mount"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "kevinfiol",
       "url": "/examples/manage-state-using-pojos/"
     },
@@ -382,7 +382,7 @@
       "date": "2021-10-19",
       "tags": ["state","component","m.mount"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "kevinfiol",
       "url": "/examples/manage-state-using-simple-variables/"
     },
@@ -391,7 +391,7 @@
       "date": "2021-10-27",
       "tags": ["3rd-party","markdown","editor","official","m.trust","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/markdown-editor/"
     },
@@ -400,7 +400,7 @@
       "date": "2021-10-26",
       "tags": ["modal","dialog","component","m.mount","m.redraw","dom","onbeforeupdate","onremove","onbeforeremove","oncreate"],
       "level": "advanced",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "spacejack",
       "url": "/examples/modal-2/"
     },
@@ -409,7 +409,7 @@
       "date": "2021-10-16",
       "tags": ["modal","dialog","m.render","m.mount","vnode","bulma"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "spacejack",
       "url": "/examples/modal/"
     },
@@ -418,7 +418,7 @@
       "date": "2021-10-26",
       "tags": ["modal","bulma","m.render","m.mount","vnode"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mike-ward",
       "url": "/examples/modal-with-bulma/"
     },
@@ -427,7 +427,7 @@
       "date": "2020-09-24",
       "tags": ["modal","state","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/modal-external-state/"
     },
@@ -436,7 +436,7 @@
       "date": "2020-09-24",
       "tags": ["modal","state","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/modal-internal-state/"
     },
@@ -445,7 +445,7 @@
       "date": "2021-10-27",
       "tags": ["animation","mosaic","official","m.render","dom","onbeforeremove"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/mosaic/"
     },
@@ -454,7 +454,7 @@
       "date": "2020-09-24",
       "tags": ["select","form","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/multi-select-divs/"
     },
@@ -463,7 +463,7 @@
       "date": "2021-10-27",
       "tags": ["component","nested","m.mount","vnode"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/nested-components-using-vnode-children/"
     },
@@ -472,7 +472,7 @@
       "date": "2020-09-24",
       "tags": ["component","communication","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/parent-child-communication/"
     },
@@ -481,7 +481,7 @@
       "date": "2020-09-24",
       "tags": ["form","input","radiobutton","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/radio-buttons/"
     },
@@ -490,7 +490,7 @@
       "date": "2020-09-24",
       "tags": ["component","key","m.route","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/re-initialize-component-every-time-with-routing/"
     },
@@ -499,7 +499,7 @@
       "date": "2020-09-24",
       "tags": ["component","key","m.route","vnode"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/re-initialize-component-using-key-with-routing/"
     },
@@ -508,7 +508,7 @@
       "date": "2020-09-24",
       "tags": ["component","key","m.mount","vnode","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/re-initialize-component-using-key-without-routing/"
     },
@@ -517,7 +517,7 @@
       "date": "2021-10-26",
       "tags": ["3rd-party","react","lifecycle","dom","component","m.mount","oncreate"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "barneycarroll",
       "url": "/examples/react-integration/"
     },
@@ -526,7 +526,7 @@
       "date": "2021-10-26",
       "tags": ["dom","react","m.mount","vnode","oncreate"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "stephanhoyer",
       "url": "/examples/react-refs-in-mithril/"
     },
@@ -535,7 +535,7 @@
       "date": "2022-02-16",
       "tags": ["event","m.mount","m.redraw","m.request"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "JAForbes",
       "url": "/examples/redraw-event-introspect/"
     },
@@ -544,7 +544,7 @@
       "date": "2020-09-24",
       "tags": ["route","resolver","m.route"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/route-resolver/"
     },
@@ -553,7 +553,7 @@
       "date": "2021-10-16",
       "tags": ["basics","official","m.route"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/routing/"
     },
@@ -562,7 +562,7 @@
       "date": "2020-09-24",
       "tags": ["form","select","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/select/"
     },
@@ -571,7 +571,7 @@
       "date": "2021-10-26",
       "tags": ["3rd-party","form","select","m.mount","dom","oncreate"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "kevinfiol",
       "url": "/examples/select2-integration/"
     },
@@ -580,7 +580,7 @@
       "date": "2021-10-16",
       "tags": ["model","list","form","layout","tutorial","official","m.request","m.route","vnode","api","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/simple-application/"
     },
@@ -589,7 +589,7 @@
       "date": "2021-10-24",
       "tags": ["component","closure","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/simple-closure-component/"
     },
@@ -598,7 +598,7 @@
       "date": "2021-10-16",
       "tags": ["calendar","component","m.mount","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "stephanhoyer",
       "url": "/examples/simple-dependency-free-calendar-component/"
     },
@@ -607,7 +607,7 @@
       "date": "2021-10-16",
       "tags": ["form","login","bss","validation","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "smuemd",
       "url": "/examples/simple-login-form-with-validation-using-bss/"
     },
@@ -616,7 +616,7 @@
       "date": "2020-09-24",
       "tags": ["modal","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/modal-simple/"
     },
@@ -625,7 +625,7 @@
       "date": "2021-11-27",
       "tags": ["form","m.mount","m.request","oninit","oncreate","onupdate","state","mitosis"],
       "level": "advanced",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/simple-search-form-filtering-preloaded-data/"
     },
@@ -643,7 +643,7 @@
       "date": "2021-10-27",
       "tags": ["animation","official","svg","m.render"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/svg-clock/"
     },
@@ -652,7 +652,7 @@
       "date": "2021-10-27",
       "tags": ["animation","official","svg","m.render"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/svg-ring/"
     },
@@ -661,7 +661,7 @@
       "date": "2021-10-27",
       "tags": ["animation","official","svg","m.render"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/svg-tiger/"
     },
@@ -679,7 +679,7 @@
       "date": "2021-10-24",
       "tags": ["table","sticky","header","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "spacejack",
       "url": "/examples/table-with-sticky-header/"
     },
@@ -688,7 +688,7 @@
       "date": "2021-10-18",
       "tags": ["7guis","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "narayand16",
       "url": "/examples/7gui-temperature-converter/"
     },
@@ -697,7 +697,7 @@
       "date": "2021-10-26",
       "tags": ["3rd-party","game","m.stream","m.mount","oncreate"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "boazblake",
       "url": "/examples/tic-tac-toe/"
     },
@@ -706,7 +706,7 @@
       "date": "2021-10-31",
       "tags": ["game","mitosis","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/tic-tac-toe-mitosis/"
     },
@@ -715,7 +715,7 @@
       "date": "2021-10-18",
       "tags": ["7guis"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "",
       "url": "/examples/7gui-timer/"
     },
@@ -724,7 +724,7 @@
       "date": "2022-03-09",
       "tags": ["animation","notification","m.redraw","m.route","oninit","state"],
       "level": "intermediate",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/toaster-like-notifications/"
     },
@@ -733,7 +733,7 @@
       "date": "2021-10-27",
       "tags": ["todomvc","official","m.route","vnode","dom","onbeforeupdate","onupdate","oninit"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/todo-mvc/"
     },
@@ -742,7 +742,7 @@
       "date": "2021-10-29",
       "tags": ["todomvc","mitosis","m.route","dom","onupdate"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/todo-mvc-mitosis/"
     },
@@ -751,7 +751,7 @@
       "date": "2021-10-29",
       "tags": ["todomvc","m.route","dom","onupdate","oninit"],
       "level": "expert",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/todo-mvc-traditional/"
     },
@@ -760,7 +760,7 @@
       "date": "2021-11-01",
       "tags": ["form","textarea","state","mitosis","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/tweeter-box/"
     },
@@ -769,7 +769,7 @@
       "date": "2020-09-24",
       "tags": ["form","two-way-binding","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/two-way-binding-plain/"
     },
@@ -778,7 +778,7 @@
       "date": "2020-09-24",
       "tags": ["form","two-way-binding","m.stream","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/two-way-binding-mstream/"
     },
@@ -787,7 +787,7 @@
       "date": "2020-09-24",
       "tags": ["vnode","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/vnode-variables-passing-in/"
     },
@@ -796,7 +796,7 @@
       "date": "2020-09-24",
       "tags": ["m.request","api","wrapper"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "osban",
       "url": "/examples/mrequest-wrapper/"
     },
@@ -805,7 +805,7 @@
       "date": "2021-10-16",
       "tags": ["basics","official","m.request","m.mount","api"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "mithril",
       "url": "/examples/xhr/"
     },
@@ -814,7 +814,7 @@
       "date": "2021-01-17",
       "tags": ["basics","m.mount"],
       "level": "beginner",
-      "version": "2.0.4",
+      "version": "latest",
       "author": "tbreuss",
       "url": "/examples/xyz/"
     }

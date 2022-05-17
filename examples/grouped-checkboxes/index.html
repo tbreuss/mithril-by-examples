@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Grouped Checkboxes | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/osban/">osban</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -84,7 +84,7 @@ The example shows also, how to use simple helper functions to make Mithril.js co
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const list = [\n  [\n    {label: \"1\", groupId: 0},\n    {label: \"2\", groupId: 0},\n    {label: \"5\", groupId: 0}\n  ],\n  [\n    {label: \"4\", groupId: 1},\n    {label: \"3\", groupId: 1}\n  ],\n  [\n    {label: \"6\", groupId: 2},\n    {label: \"7\", groupId: 2}\n  ]\n]\n\nconst model = []\n\nconst checkboxView = ({groupId, label}) => {\n  const checked = model[groupId] === label\n  return m('label',\n    m('input[type=checkbox]', {\n      checked,\n      onchange: () => model[groupId] = checked ? '' : label,\n    }),\n    label\n  )\n}\n\nconst groupView = attrs => m('div', attrs.map(checkboxView))\n\nconst app = {\n  view: () => [\n    m('h1', 'Checkbox Groups'),\n    list.map(groupView),\n    m('p', model.filter(x => x).join(',')),\n  ]\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"label { display: inline-block }\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -100,7 +100,7 @@ The example shows also, how to use simple helper functions to make Mithril.js co
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -150,7 +150,7 @@ m.mount(document.body, app)
 <h2 id="css" tabindex="-1">CSS <a class="direct-link" href="#css" aria-hidden="true">#</a></h2>
 <pre><code class="language-css">label { display: inline-block }
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
 <p>The example was written by osban, last edits were made on 24 October 2021.
@@ -206,6 +206,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/grouped-checkboxes/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

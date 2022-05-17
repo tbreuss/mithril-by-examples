@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Loading Button Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -95,7 +95,7 @@ The animation in this example was made with pure CSS animation.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const LoadingButton = {\n  view: (v) => m('button', {\n      type: v.attrs.type || 'submit',\n      class: v.attrs.class || '',\n      onclick: v.attrs.onclick || null,\n      disabled: v.attrs.loading\n    }, [\n    v.attrs.loading ? m('div.spinner') : '',\n    m('div', v.children),\n  ])\n}\n\nconst request = () => new Promise((resolve, reject) => {\n  let wait = setTimeout(() => {\n    resolve('Response received')\n  }, 1500)\n})\n\nconst state = {\n  loading: false,\n  text: []\n}\n\nconst app = () => {\n  return {\n    view: () => m('div',\n      m('h1', 'Loading Button'),\n      m('div.buttons',\n        m(LoadingButton, {\n          loading: state.loading,\n          onclick: () => {\n            state.loading = true\n            state.text.push('Request sent')\n            m.redraw()\n            request().then((response) => {\n              state.loading = false\n              state.text.push(response)\n              m.redraw() // not necessary in a real m.request\n            })\n          }\n        }, 'Make Request'),\n        state.text.length ? m(LoadingButton, {\n          onclick: () => {\n            state.text = []\n          }\n        }, 'Reset Log') : '',\n      ),\n      m('div.log',\n        state.text.map((t) => m('div', '> ' + t))\n      )\n    )\n  }\n}\n\nm.mount(document.body, app)\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\ndiv.buttons {\n  margin-bottom: 0.5em;\n}\n\nbutton div {\n  float: left;\n}\n\n.spinner,\n.spinner:after {\n  border-radius: 50%;\n  width: 1.5em;\n  height: 1.5em;\n}\n\n.spinner {\n  margin-right: 0.5em;\n  font-size: 10px;\n  position: relative;\n  text-indent: -9999em;\n  border-top: .2em solid white;\n  border-right: .2em solid white;\n  border-bottom: .2em solid white;\n  border-left: .2em solid transparent;\n  transform: translateZ(0);\n  animation: spinning 1s infinite linear;\n}\n\n@keyframes spinning {\n  0% { transform: rotate(0deg) }\n  100% { transform: rotate(360deg) }\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -111,7 +111,7 @@ The animation in this example was made with pure CSS animation.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -209,7 +209,7 @@ button div {
   100% { transform: rotate(360deg) }
 }
 </code></pre>
-<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+<p>The snippet is using the most current version latest of Mithril.js framework.
 It is aimed at beginners and shows some basic recipes.</p>
 <p>Besides Mithril.js' hyperscript function m() we can see different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.mount</code> or <code>m.redraw</code>.
 In this example we can also see the usecase of Vnodes (virtual DOM nodes) which is a JavaScript data structure that describes a DOM tree.</p>
@@ -266,6 +266,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/loading-button-component/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

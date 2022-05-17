@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Markdown Editor | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -90,7 +90,7 @@ The example was taken from the official website at <a href="https://mithril.js.o
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"//model\nvar state = {\n\ttext: \"# Markdown Editor\\n\\nType on the top panel and see the result on the bottom panel\",\n\tupdate: function(value) {\n\t\tstate.text = value\n\t}\n}\n\n//view\nvar Editor = {\n\tview: function() {\n\t\treturn [\n\t\t\tm(\"textarea.input\", {\n\t\t\t\toninput: function (e) {\n\t\t\t\t  state.update(e.target.value)\n        },\n\t\t\t\tvalue: state.text\n\t\t\t}),\n\t\t\tm(\".preview\", m.trust(marked(state.text))),\n\t\t]\n\t}\n}\n\nm.mount(document.body, Editor)\n"},{"name":".css","content":"html, body {\n    height: 100%;\n    margin: 0;\n}\n\nh1, h2, h3, h4, h5, h6, p {\n    margin: 0 0 10px;\n}\n\n#editor {\n    display: flex;\n    height: 100%;\n}\n\n.input, .preview {\n    box-sizing: border-box;\n    height: 50%;\n    margin: 0;\n    padding: 10px;\n    width: 100%;\n}\n\n.input {\n    border: 0;\n    border-bottom: 1px solid #ccc;\n    outline: none;\n    resize: none;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"marked@0.6.0","type":"script","url":"https://unpkg.com/marked@0.6.0"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"marked@0.6.0","type":"script","url":"https://unpkg.com/marked@0.6.0"}]
       });
       </script>
     
@@ -106,7 +106,7 @@ The example was taken from the official website at <a href="https://mithril.js.o
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>marked@0.6.0</td><td>https://unpkg.com/marked@0.6.0</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>marked@0.6.0</td><td>https://unpkg.com/marked@0.6.0</td></tr>
                 </tbody>
             </table>
           </div>
@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6, p {
     resize: none;
 }
 </code></pre>
-<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+<p>The snippet is using the most current version latest of Mithril.js framework.
 It is aimed at beginners and shows some basic recipes.</p>
 <p>Besides Mithril.js' hyperscript function m() we can see different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.trust</code> or <code>m.mount</code>.</p>
 <p>The example was contributed by mithril and last modified on 27 October 2021.
@@ -223,6 +223,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/markdown-editor/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

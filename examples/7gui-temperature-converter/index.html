@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Temperature Converter from 7GUIs | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/narayand16/">narayand16</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -79,7 +79,7 @@ The challenges here are bidirectional data flow and user-provided text input.</p
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"let root = document.body\nlet tempInCelsius\nlet tempInFahrenheit\n\nlet temperatureConverter = {\n  view: function() {\n    return m(\"main\", [\n      m(\"input.input[type=text]\", {\n        oninput: function(e) {\n          tempInCelsius = getParsedInput(e.target.value);\n          tempInFahrenheit = tempInCelsius ? ((tempInCelsius * (9/5) + 32).toFixed(1)) : undefined;\n        },\n        value: tempInCelsius\n      }),\n      m(\"label.label\", \" Celsius = \"),\n      m(\"input.input[type=text]\", {\n        oninput: function(e) {\n          tempInFahrenheit = getParsedInput(e.target.value);\n          tempInCelsius = tempInFahrenheit ? (((tempInFahrenheit - 32) * (5/9)).toFixed(1)) : undefined;\n          },\n          value: tempInFahrenheit\n      }),\n      m(\"label.label\", \" Farenheit\")\n    ])\n  }\n}\n\nfunction getParsedInput(input) {\n  if(input && input.trim().length > 0) {\n    return isNaN(input) ? null : input;\n  }\n}\n\nm.mount(root, temperatureConverter)\n"},{"name":".html","content":"<!doctype html>\n<html lang=en>\n<head>\n  <meta charset=utf-8>\n  <title>Temperature Converter</title>\n</head>\n<body>\n</body>\n</html>\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -95,7 +95,7 @@ The challenges here are bidirectional data flow and user-provided text input.</p
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -147,7 +147,7 @@ m.mount(root, temperatureConverter)
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
 <p>The code sample was authored by narayand16. It was last modified on 18 October 2021.
@@ -203,6 +203,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/7gui-temperature-converter/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Tweeter Box | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -87,7 +87,7 @@ The example is inspired by Jorge Bucaran's <em>Tweeter Box</em>, who wrote it as
         autoHeight: false,
         selected: '.js',
         files: [{"name":".html","content":"<main id=\"app\"></main>\n"},{"name":".js","content":"const MAX_LENGTH = 140\n\nconst State = () => ({\n  message: '',\n  charsLeft: MAX_LENGTH\n})\n\nconst Actions = state => ({\n  update: (text) => {\n    state.message = text.substr(0, MAX_LENGTH)\n    state.charsLeft = MAX_LENGTH - state.message.length\n  },\n  reset: () => {\n    state.message = ''\n    state.charsLeft = MAX_LENGTH\n  }\n})\n\nconst TweeterBox = (state, actions) => [\n  m('h1', 'Tweeter 🐤'),\n  m('textarea', {\n    placeholder: 'What\\'s on your mind?',\n    rows: 4,\n    value: state.message,\n    oninput: (e) => actions.update(e.target.value)\n  }),\n  m('section', [\n    state.charsLeft,\n    m('button', {\n      disabled: state.charsLeft === MAX_LENGTH,\n      onclick: actions.reset\n    }, 'Tweet')\n  ])\n]\n\nm.mount(document.getElementById('app'), () => {\n  const state = State()\n  const actions = Actions(state)\n  return {\n    view: () => TweeterBox(state, actions)\n  }\n})\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\nbody {\n  display: flex;\n  font-size: 1.5em;\n  justify-content: center;\n}\n\nmain {\n  width: clamp(45ch, 50%, 75ch);\n  display: flex;\n  flex-direction: column;\n}\n\ntextarea {\n\ttransition: .2s;\n  resize: none;\n  overflow: hidden;\n}\n\nsection {\n  display: flex;\n}\n\nbutton {\n  margin: 0 0 0 auto;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -103,7 +103,7 @@ The example is inspired by Jorge Bucaran's <em>Tweeter Box</em>, who wrote it as
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -184,7 +184,7 @@ button {
   margin: 0 0 0 auto;
 }
 </code></pre>
-<p>The snippet is using the most current version 2.0.4 of Mithril.js framework.
+<p>The snippet is using the most current version latest of Mithril.js framework.
 It is aimed at beginners and shows some basic recipes.</p>
 <p>In addition to the Mithril.js hyperscript function m(), here we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>.</p>
 <p>The example was contributed by tbreuss and last modified on 01 November 2021.
@@ -240,6 +240,6 @@ For starting your work, you can click the edit link below. Thanks for contributi
   </div>
   <!-- Current page: /examples/tweeter-box/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

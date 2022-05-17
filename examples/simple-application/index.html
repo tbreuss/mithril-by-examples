@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Simple Application | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -104,7 +104,7 @@ It shows off how to do most of the major things you would need to deal with whil
         autoHeight: false,
         selected: '.js',
         files: [{"name":"UserModel.js","content":"// UserModel.js\nvar User = {\n    list: [],\n    loadList: function() {\n        return m.request({\n            method: \"GET\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users\",\n            withCredentials: true,\n        })\n        .then(function(result) {\n            User.list = result.data\n        })\n    },\n\n    current: {},\n    load: function(id) {\n        return m.request({\n            method: \"GET\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users/\" + id,\n            withCredentials: true,\n        })\n        .then(function(result) {\n            User.current = result\n        })\n    },\n\n    save: function() {\n        return m.request({\n            method: \"PUT\",\n            url: \"https://rem-rest-api.herokuapp.com/api/users/\" + User.current.id,\n            body: User.current,\n            withCredentials: true,\n        })\n    }\n}\n"},{"name":"UserList.js","content":"// UserList.js\nvar UserList = {\n    oninit: User.loadList,\n    view: function() {\n        return m(\".user-list\", User.list.map(function(user) {\n            return m(m.route.Link, {href: \"/edit/\" + user.id, class: 'user-list-item'}, user.firstName + \" \" + user.lastName)\n        }))\n    }\n}\n"},{"name":"UserForm.js","content":"// UserForm.js\nvar UserForm = {\n    oninit: function(vnode) {User.load(vnode.attrs.id)},\n    view: function() {\n        return m(\"form\", {\n                onsubmit: function(e) {\n                    e.preventDefault()\n                    User.save()\n                }\n            }, [\n            m(\"label.label\", \"First name\"),\n            m(\"input.input[type=text][placeholder=First name]\", {\n                oninput: function(e) {User.current.firstName = e.target.value},\n                value: User.current.firstName\n            }),\n            m(\"label.label\", \"Last name\"),\n            m(\"input.input[placeholder=Last name]\", {\n                oninput: function(e) {User.current.lastName = e.target.value},\n                value: User.current.lastName\n            }),\n            m(\"button.button[type=submit]\", \"Save\"),\n        ])\n    }\n}\n"},{"name":"Layout.js","content":"// Layout.js\nvar Layout = {\n    view: function(vnode) {\n        return m(\"main.layout\", [\n            m(\"nav.menu\", [\n                m(m.route.Link, {\n                  href: '/list'\n                }, \"Users\")\n            ]),\n            m(\"section\", vnode.children)\n        ])\n    }\n}\n"},{"name":"app.js","content":"// app.js\nm.route.prefix = '#'\nm.route(document.body, \"/list\", {\n    \"/list\": {\n        render: function() {\n            return m(Layout, m(UserList))\n        }\n    },\n    \"/edit/:id\": {\n        render: function(vnode) {\n            return m(Layout, m(UserForm, vnode.attrs))\n        }\n    },\n})\n"},{"name":".css","content":"body, .input, .button {\n  font: normal 16px Verdana;\n  margin: 20px;\n}\n\n.layout {\n  margin: 10px auto;\n  max-width: 1000px;\n}\n\n.menu {\n  margin: 0 0 30px;\n}\n\n.user-list {\n  list-style: none;\n  margin: 0 0 10px;\n  padding: 0;\n}\n\n.user-list-item {\n  background: #fafafa;\n  border: 1px solid #ddd;\n  color: #333;\n  display: block;\n  margin: 0 0 1px;\n  padding: 8px 15px;\n  text-decoration: none;\n}\n\n.user-list-item:hover {\n  text-decoration: underline;\n}\n\n.label {\n  display: block;\n  margin: 0 0 5px;\n}\n\n.input {\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  box-sizing: border-box;\n  display: block;\n  margin: 0 0 10px;\n  padding: 10px 15px;\n  width: 100%;\n}\n\n.button {\n  background: #eee;\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  color: #333;\n  display: inline-block;\n  margin: 0 0 10px;\n  padding: 10px 15px;\n  text-decoration: none;\n}\n\n.button:hover {\n  background: #e8e8e8;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -120,7 +120,7 @@ It shows off how to do most of the major things you would need to deal with whil
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -295,7 +295,7 @@ m.route(document.body, &quot;/list&quot;, {
   background: #e8e8e8;
 }
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.request</code> or <code>m.route</code>, besides the centrepiece m() hyperscript function.
 Moreover, it shows how the <a href="/lifecycle-methods/">lifecycle method</a> <code>oninit</code> can be used (better known as hook).
@@ -353,6 +353,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/simple-application/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

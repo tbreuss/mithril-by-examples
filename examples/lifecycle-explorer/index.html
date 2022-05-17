@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Lifecycle Explorer | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/barneycarroll/">barneycarroll</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -102,7 +102,7 @@ The example is using all of Mithril.js` lifecycle methods.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"function Log() {\n  let counter = 1\n  let log = []\n  let me = {\n    add(message) {\n      log.push({id: counter++, time: new Date(), message: message})\n      return me\n    },\n    log() {\n      console.log(log)\n    },\n    map(f) {\n      return log.map(f)\n    }\n  }\n  return me\n}\n\nvar log = new Log()\n//log.add('test 1').add('test 2')\n//log.add('test 3')\n\nApp = {\n  views: {}\n}\n\nApp.views.Log = function () {\n  let dom = undefined\n  let me = {\n    view: (vnode) => {\n      //dom && setTimeout(render)\n      return [\n        m('button', {\n            onclick: () => {\n            }\n          },\n          'Redraw'\n        ),\n        m('button', {\n            onclick: (e) => {\n              e.redraw = false\n              log = new Log()\n              render()\n            }\n          },\n          'Clear'\n        ),\n        m('button', {\n          innerHTML: 'Break',\n          onclick: (e) => {\n            e.redraw = false\n            log.add('***')\n            render()\n          }\n        }),\n        m('', {\n          oncreate: (vnode) => {\n            dom = vnode.dom\n            render()\n          },\n          onupdate: () => render()\n        }),\n      ]\n    }\n  }\n  return me\n  function render() {\n    m.render(dom, [\n      m(\"span\", [\"Current time:\", new Date().toString()]),\n      log.map((it) => {\n        return m('pre', JSON.stringify(it))\n      })\n    ])\n\n  }\n}\n\nApp.views.Node = function (vnode) {\n  let key = vnode.attrs.key\n  let subnodes = []\n  return {\n    oninit: (vnode) => {\n      log.add(key + ' -- oninit')\n    },\n    oncreate: (vnode) => {\n      log.add(key + ' -- oncreate')\n    },\n    onupdate: (vnode) => {\n      log.add(key + ' -- onupdate')\n    },\n    onbeforeupdate: (vnode) => {\n      log.add(key + ' -- onbeforeupdate')\n    },\n    onbeforeremove: (vnode) => {\n      log.add(key + ' -- onbeforeremove')\n    },\n    onremove: (vnode) => {\n      log.add(key + ' -- onremove')\n    },\n    view: ({\n             tag,\n             attrs: {remove},\n             output,\n           }) => {\n      log.add(key + ' -- view (start)')\n      let retVnode = m('[style=border: 1px solid; padding: .5em; margin: .5em]', {}, [\n        'Node',\n        key,\n        ' ',\n        remove && m('button', {\n          innerHTML: 'x',\n          onclick: remove,\n        }),\n        m('hr'),\n        subnodes.map((key, i) =>\n          m(tag, {\n            key,\n            remove: () =>\n              subnodes.splice(i, 1),\n          })\n        ),\n        m('button', {\n          innerHTML: '+',\n          onclick: () =>\n            subnodes.push(key + '.' + (subnodes.length + 1))\n        }),\n      ])\n      //setTimeout(() => {\n      log.add(key + ' -- view (end)')\n      //})\n      return retVnode\n    }\n  }\n}\n\nm.mount(document.body, {\n  view() {\n    return [\n      m('[style=flex: 0 1 50%; overflow-y: auto;]', m(App.views.Node, {key: 1})),\n      m('[style=flex: 1 1 50%; overflow-y: auto;]', m(App.views.Log))\n    ]\n  }\n})\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -118,7 +118,7 @@ The example is using all of Mithril.js` lifecycle methods.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -268,7 +268,7 @@ m.mount(document.body, {
   }
 })
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>Here we can see use cases of different <a href="/api-methods/">Mithril.js API methods</a> like <code>m.render</code> or <code>m.mount</code>, besides the centrepiece m() hyperscript function.
 Moreover, it can also be seen how <a href="/lifecycle-methods/">lifecycle methods</a> (as known as hooks) like <code>onbeforeupdate</code>, <code>onremove</code>, <code>onbeforeremove</code>, <code>onupdate</code>, <code>oncreate</code> and <code>oninit</code> can be used.
@@ -326,6 +326,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/lifecycle-explorer/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

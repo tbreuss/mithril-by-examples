@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Simple Search Form Filtering Prefetched Data | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">advanced</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -96,7 +96,7 @@ A live example can be seen here on this website.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"  const State = () => ({\n    formData: {\n      input: ''\n    },\n    rawData: [],\n    filteredData: [],\n  })\n\n  const Actions = state => ({\n    filter: (input) => {\n      state.formData.input = input\n      input = input.trim()\n      if (input.length === 0) {\n        state.filteredData = []\n        return\n      }\n      const words = input.split(/\\s+/)\n      state.filteredData = state.rawData.filter(example => {\n        let filtered = false\n        words.map(word => {\n          if (example.title.toLowerCase().indexOf(word.toLowerCase()) > -1) {\n            filtered = true\n          }\n        })\n        return filtered\n      })\n    },\n    reset: () => {\n      state.formData.input = ''\n      state.filteredData = []\n    }\n  })\n\n  const focus = ({dom}) => setTimeout(() => dom.focus())\n\n  const filter = (e) => actions.filter(e.target.value)\n\n  const Form = {\n    view: ({attrs: {state, actions}}) => m('.search', [\n      m('input[type=text]', {\n        placeholder: 'Search for examples...',\n        value: state.formData.input,\n        oncreate: focus,\n        onupdate: focus,\n        oninput: filter\n      }),\n      state.formData.input.length > 0\n        ? m('button', {onclick: actions.reset}, 'Reset')\n        : ''\n    ])\n  }\n\n  const List = {\n    view: ({attrs: {state, actions}}) => {\n      return state.filteredData.length > 0\n        ? m('ul', state.filteredData.map(example => {\n            return m('li', example.title)\n          })\n        )\n        : state.formData.input.length > 0\n          ? m('p', 'Your search did not match any examples.')\n          : ''\n    }\n  }\n\n  const apiUrl = 'https://mithril-by-examples.js.org/api/examples.json'\n  const state = State()\n  const actions = Actions(state)\n\n  m.mount(document.body, {\n    oninit: async function () {\n      state.rawData = await m.request(apiUrl)\n    },\n    view: () => [\n      m(Form, {state, actions}),\n      m(List, {state, actions})\n    ]\n  })\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\ninput {\n  display: inline;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -112,7 +112,7 @@ A live example can be seen here on this website.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -203,7 +203,7 @@ input {
   display: inline;
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 More advanced users should be able to follow this example, however it contains some first difficulties.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.mount</code> or <code>m.request</code>, besides Mithril.js' basic m() hyperscript function.
 It also demonstrates, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>oninit</code>, <code>oncreate</code> and <code>onupdate</code> can be used.</p>
@@ -260,6 +260,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/simple-search-form-filtering-preloaded-data/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

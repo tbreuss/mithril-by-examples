@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Mosaic Animation | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/mithril/">mithril</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -90,7 +90,7 @@ The example was taken from the official website at <a href="https://mithril.js.o
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"var root = document.body\n\nvar empty = []\nvar full = []\nfor (var i = 0; i < 100; i++) full.push(i)\n\nvar cells\n\nfunction view() {\n\treturn m(\".container\", cells.map(function(i) {\n\t\treturn m(\".slice\", {\n\t\t\tstyle: {\n\t\t\t  backgroundPosition: (i % 10 * 11) + \"% \" + (Math.floor(i / 10) * 11) + \"%\"\n      },\n\t\t\tonbeforeremove: exit\n\t\t})\n\t}))\n}\n\nfunction exit(vnode) {\n\tvnode.dom.classList.add(\"exit\")\n\treturn new Promise(function(resolve) {\n\t\tsetTimeout(resolve, 1000)\n\t})\n}\n\nfunction run() {\n\tcells = cells === full ? empty : full\n\tm.render(root, [view()])\n\tsetTimeout(run, 2000)\n}\n\nrun()\n"},{"name":".css","content":"#root {\n  margin:auto;\n  max-width:600px;\n  width:100%;\n}\n.slice {\n  animation:enter 1s;\n  animation-fill-mode:forwards;\n  background-image:url(https://raw.githubusercontent.com/MithrilJS/mithril.js/master/examples/animation/flowers.jpg);\n  height:60px;\n  float:left;\n  opacity:0;\n  width:60px;\n}\n.slice:nth-child(10n) {\n  clear:right;\n}\n.exit {\n  animation:exit 1s;\n}\n\n@keyframes enter {\n\tfrom {\n    opacity:0;\n    transform:rotate(-90deg) scale(0);\n  }\n\tto {\n    opacity:1;\n    transform:rotate(0) scale(1);\n  }\n}\n\n@keyframes exit {\n\tfrom {\n    opacity:1;\n    transform:rotate(0) scale(1);\n  }\n\tto {\n    opacity:0;\n    transform:rotate(90deg) scale(0);\n  }\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -106,7 +106,7 @@ The example was taken from the official website at <a href="https://mithril.js.o
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -190,7 +190,7 @@ run()
   }
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.render</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.
 It is also showing the <code>onbeforeremove</code> hook, which is one of several Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a>.</p>
@@ -247,6 +247,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/mosaic/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

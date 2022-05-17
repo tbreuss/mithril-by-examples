@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Flight Booker from 7GUIs | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/tbreuss/">tbreuss</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -83,7 +83,7 @@ For the state management the Mitosis pattern is used.</p>
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"const ONE_WAY = 'one-way'\nconst TWO_WAY = 'two-way'\n\n// helpers\n\nconst parseDate = (str) => {\n  const m = str && str.match(/^(\\d{2}).(\\d{2}).(\\d{4})$/)\n  return m ? Date.parse(`${m[3]}-${m[2]}-${m[1]}`) : m\n}\n\nconst formatDate = (time) => {\n  const D = new Date(time)\n  let d = D.getDate()\n  d = (d <= 9 ? '0' : '') + d\n  let m = D.getMonth() + 1\n  m = (m <= 9 ? '0' : '') + m\n  return `${d}.${m}.${D.getFullYear()}`\n}\n\nconst isValidDate = (date) => {\n  const isValidDate = parseDate(date)\n  if (isValidDate) {\n    return true\n  }\n  return Number.isNaN(isValidDate)\n}\n\n// state\n\nconst State = () => ({\n  way: ONE_WAY,\n  departDate: formatDate(Date.now()),\n  returnDate: formatDate(Date.now()),\n  confirmMsg: ''\n})\n\n// actions\n\nconst Actions = state => ({\n  setWay: (way) => {\n    state.way = way\n  },\n  setDepart: (date) => {\n    state.departDate = date\n  },\n  setReturn: (date) => {\n    state.returnDate = date\n  },\n  canBook: () => {\n    const departDate = parseDate(state.departDate)\n    if (!departDate) {\n      return false\n    }\n    if (state.way === ONE_WAY) {\n      return true\n    }\n    const returnDate = parseDate(state.returnDate)\n    if (!returnDate) {\n      return false\n    }\n    return returnDate > departDate\n  },\n  book: () => {\n    book = JSON.parse(JSON.stringify(state)) // clone state object\n    if (book.way === ONE_WAY) {\n      state.confirmMsg = `You booked a one way flight. Depart: ${book.departDate}`\n    } else {\n    state.confirmMsg = `You booked a two way flight. Depart: ${book.departDate} Return: ${book.returnDate}`\n    }\n  }\n})\n\n// ui\n\nconst FlightBooker = (state, actions) => [\n  m('h1', 'Flight Booker ✈️'),\n  m('div',\n    m('select', {\n        onchange: (e) => actions.setWay(e.target.value)\n      },\n      m('option', {value: ONE_WAY}, \"One Way Flight\"),\n      m('option', {value: TWO_WAY}, \"Return Flight\"),\n    )\n  ),\n  m('.depart',\n    m('label', 'Depart:'),\n    m('input[size=10][maxlength=10]', {\n      placeholder: 'DD.MM.YYYY',\n      value: state.departDate,\n      oninput: (e) => actions.setDepart(e.target.value),\n      class: !isValidDate(state.departDate) ? 'error' : ''\n    }),\n  ),\n  m('.return',\n    m('label', 'Return:'),\n    m('input[size=10][maxlength=10]', {\n      placeholder: 'DD.MM.YYYY',\n      value: state.returnDate,\n      oninput: (e) => actions.setReturn(e.target.value),\n      disabled: state.way === ONE_WAY,\n      class: (state.way === TWO_WAY && !isValidDate(state.returnDate)) ? 'error' : ''\n    })\n  ),\n  m('div',\n    m('button', {\n      onclick: actions.book,\n      disabled: actions.canBook() === false\n    }, 'Book')\n  ),\n  state.confirmMsg ? m('h3', state.confirmMsg) : ''\n]\n\nm.mount(document.body, () => {\n  const state = State()\n  const actions = Actions(state)\n  return {\n    view: () => FlightBooker(state, actions)\n  }\n})\n"},{"name":".html","content":"<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Flight Booker</title>\n</head>\n<body>\n</body>\n</html>\n"},{"name":".css","content":"@import \"https://unpkg.com/water.css@2/out/water.min.css\";\n\n.error {\n  color: red;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"}]
       });
       </script>
     
@@ -99,7 +99,7 @@ For the state management the Mitosis pattern is used.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>
                 </tbody>
             </table>
           </div>
@@ -243,7 +243,7 @@ m.mount(document.body, () =&gt; {
   color: red;
 }
 </code></pre>
-<p>As a prerequisite for this snippet, the latest version 2.0.4 of Mithril.js framework is required.
+<p>As a prerequisite for this snippet, the latest version latest of Mithril.js framework is required.
 Beginners should have no problems following this example, that simply shows some basic recipies.</p>
 <p>In this code sample Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a> is use, besides the basic hyperscript function m().</p>
 <p>The example was written by tbreuss, last edits were made on 28 March 2022.
@@ -299,6 +299,6 @@ Ready to start your work? Then click on the edit link below. Thanks in advance!<
   </div>
   <!-- Current page: /examples/7gui-flight-booker/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

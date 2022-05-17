@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Highchart Stream Example | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/skyghis/">skyghis</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -96,7 +96,7 @@ In the demo two charts and three buttons are rendered, that can be used to inter
         autoHeight: false,
         selected: '.js',
         files: [{"name":"app.js","content":"// app.js\nfunction Chart() {\n  let chart;\n  let dataStream;\n\n  return {\n    view: () => m(\"\"),\n    oncreate: ({attrs: {data}, dom}) => {\n      chart = Highcharts.chart(dom, data());\n      dataStream = data.map((options) => chart.update(options, true));\n    },\n    onremove: () => chart && chart.destroy()\n  };\n};\n\nconst model = {\n  serie1: m.stream([]),\n  serie2: m.stream([])\n};\n\nconst actions = {\n  clear: () => {\n    model.serie1([]);\n    model.serie2([]);\n  },\n  query: {\n    data1: () => {\n      const rnd = Math.random();\n      m.request(\"https://raw.githubusercontent.com/highcharts/highcharts/master/samples/data/aapl-c.json\")\n        .then((data)  => data.map(([x, y]) => [x, (y / 100) - rnd]))\n        .then((data) => model.serie1(data));\n    },\n    data2: () => {\n      const rnd = Math.random();\n      m.request(\"https://cdn.rawgit.com/highcharts/highcharts/master/samples/data/usdeur.json\")\n        .then((data)  => data.map(([x, y]) => [x, y + rnd]))\n        .then((data) => model.serie2(data))\n    }\n  }\n}\n\nm.mount(document.body, {\n  view: () => [\n    m(\"\", [\n      m(\"input[type=button][value=load serie 1]\", {onclick: actions.query.data1}),\n      m(\"input[type=button][value=load serie 2]\", {onclick: actions.query.data2}),\n      m(\"input[type=button][value=clear]\", {onclick: actions.clear}),\n    ]),\n    m(Chart, {data: model.serie1.map((data) => ({\n      xAxis: {type: \"datetime\"},\n      series: [{name: \"serie 1\", data: data}]\n    }))}),\n    m(Chart, {data: m.stream.merge([model.serie1, model.serie2]).map(([data1, data2]) => ({\n      xAxis: {type: \"datetime\"},\n      series: [\n        {id: 1, name: \"serie 1\", data: data1},\n        {id: 2, name: \"serie 2\", data: data2}\n      ]\n    }))})\n  ]\n});\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"mithril@2.0.4/stream/stream.js","type":"script","url":"https://unpkg.com/mithril@2.0.4/stream/stream.js"},{"name":"highcharts@6.1.1","type":"script","url":"https://unpkg.com/highcharts@6.1.1"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"mithril@latest/stream/stream.js","type":"script","url":"https://unpkg.com/mithril@latest/stream/stream.js"},{"name":"highcharts@6.1.1","type":"script","url":"https://unpkg.com/highcharts@6.1.1"}]
       });
       </script>
     
@@ -112,7 +112,7 @@ In the demo two charts and three buttons are rendered, that can be used to inter
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>mithril@2.0.4/stream/stream.js</td><td>https://unpkg.com/mithril@2.0.4/stream/stream.js</td></tr>,<tr><td class="capitalize">script</td><td>highcharts@6.1.1</td><td>https://unpkg.com/highcharts@6.1.1</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>mithril@latest/stream/stream.js</td><td>https://unpkg.com/mithril@latest/stream/stream.js</td></tr>,<tr><td class="capitalize">script</td><td>highcharts@6.1.1</td><td>https://unpkg.com/highcharts@6.1.1</td></tr>
                 </tbody>
             </table>
           </div>
@@ -180,7 +180,7 @@ m.mount(document.body, {
   ]
 });
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 As an expert user, who is familiar with all the aspects of Mithril.js and JavaScript itself, you are able the follow the example easily.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.stream</code>, <code>m.request</code> or <code>m.mount</code>, besides Mithril.js' basic m() hyperscript function.
 It also demonstrates, how Mithril.js' <a href="/lifecycle-methods/">lifecycle methods</a> (aka hooks) like <code>onremove</code> and <code>oncreate</code> can be used.</p>
@@ -236,6 +236,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/highchart-stream-example/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>

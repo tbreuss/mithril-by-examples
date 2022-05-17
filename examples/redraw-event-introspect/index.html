@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Redraw Event Introspection | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1649591713">
-    <link rel="stylesheet" href="/css/styles.css?v=1649591713">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1649591713">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1652818532">
+    <link rel="stylesheet" href="/css/styles.css?v=1652818532">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1652818532">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/jaforbes/">JAForbes</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">2.0.4</span>
+        <p class="no-margin-bottom">Level: <span class="level">expert</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -81,7 +81,7 @@
         autoHeight: false,
         selected: '.js',
         files: [{"name":".js","content":"let oldM = window.m\nlet m = (...args) => {\n  let x = oldM(...args)\n  let stack = (new Error().stack+'').split(/\\bat\\b/gm)[2].trim()\n  let selector = args[0]\n  let [column, ln, file, protocol] = stack.split(':').reverse()\n  column = column.match(/\\d+/)[0]\n\n  if( x.attrs ) {\n    for(let k of Object.keys(x.attrs)){\n      if ( k.slice(0,2) == 'on' ) {\n        let old = x.attrs[k]\n        x.attrs[k] = (...args) => {\n          m.redraw.cause.unshift({\n            type: 'event',\n            selector,\n            vnode: x,\n            where: {\n              column, ln, file, protocol\n            }\n          })\n          return old(...args)\n        }\n      }\n    }\n  }\n\n  return x\n}\n\nm.oldRequest = oldM.request\nconst newRequest = (...args) => {\n\n  let [url, options] =\n    typeof args[0] != 'string'\n    ? [args[0].url, args[0]||{}]\n    : args.concat({})\n\n  let out = m.oldRequest(...args)\n\n  let stack = (new Error().stack+'').split(/\\bat\\b/gm)[2].trim()\n  let selector = args[0]\n  let [column, ln, file, protocol] = stack.split(':').reverse()\n  column = column.match(/\\d+/)[0]\n\n  out.finally( () => {\n    m.redraw.cause.unshift({\n      type: 'request',\n      url,\n      options,\n      where: {\n        column, ln, file, protocol\n      }\n    })\n  })\n  return out\n}\n\nObject.assign(m, oldM, { request: newRequest })\nm.redraw.cause = []\n\nlet renders = 0\nm.mount(document.body, () => ({\n  view: () => [\n    m('button.a', { onclick(){} }, 'Button A'),\n    m('button.b', { onclick(){\n      m.request('https://jsonplaceholder.typicode.com/todos/1')\n    } }, 'Button B'),\n    m('input[type=date]', { oninput(){} }),\n    m('input[type=text]', { oninput(){} }),\n    m('p','Renders: ', ++renders),\n    m.redraw.cause.flatMap(({ vnode, type, url, options, selector, where }) =>\n      type == 'event'\n      ? [\n        m('pre', m('code', `m(\"${selector}\", ${JSON.stringify(vnode.attrs)}, ${vnode.text ? `\"${vnode.text}\"` : ''})`)),\n        ,m('.table'\n          ,Object.entries({ selector, ...where }).map(\n            ([k,v]) =>\n              m('.row'\n                  ,m('.key', k), m('.value', v)\n              )\n          )\n        )\n      ]\n      : type == 'request'\n      ? [\n        ,m('pre', m('code', `m.request(\"${url}\", ${JSON.stringify(options)})`))\n        ,m('.table'\n          ,Object.entries({ ...where }).map(\n            ([k,v]) =>\n              m('.row'\n                  ,m('.key', k), m('.value', v)\n              )\n          )\n        )\n      ]\n      : null\n    )\n  ]\n}))\n"},{"name":".css","content":".row {\n  display: grid;\n  grid-template-columns: 4em 1fr;\n  gap: 1em;\n}\n\n.row .key {\n  font-weight: bold;\n}\n"}],
-        links: [{"name":"mithril@2.0.4","type":"script","url":"https://unpkg.com/mithril@2.0.4"},{"name":"bss.js","type":"script","url":"https://unpkg.com/bss@1.6.4/bss.js"}]
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"bss.js","type":"script","url":"https://unpkg.com/bss@1.6.4/bss.js"}]
       });
       </script>
     
@@ -97,7 +97,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@2.0.4</td><td>https://unpkg.com/mithril@2.0.4</td></tr>,<tr><td class="capitalize">script</td><td>bss.js</td><td>https://unpkg.com/bss@1.6.4/bss.js</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">script</td><td>bss.js</td><td>https://unpkg.com/bss@1.6.4/bss.js</td></tr>
                 </tbody>
             </table>
           </div>
@@ -215,7 +215,7 @@ m.mount(document.body, () =&gt; ({
   font-weight: bold;
 }
 </code></pre>
-<p>The snippet requires the latest version 2.0.4 of Mithril.js framework.
+<p>The snippet requires the latest version latest of Mithril.js framework.
 As an expert user, who is familiar with all the aspects of Mithril.js and JavaScript itself, you are able the follow the example easily.</p>
 <p>In this example we can see some <a href="/api-methods/">Mithril.js API methods</a> like <code>m.mount</code>, <code>m.redraw</code> or <code>m.request</code>, besides Mithril.js' basic m() hyperscript function.</p>
 <p>The code sample was authored by JAForbes. It was last modified on 16 February 2022.</p>
@@ -270,6 +270,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/redraw-event-introspect/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1649591713"></script>
-  <script src="/js/main.js?v=1649591713"></script>
+  <script src="/css/highlight/highlight.min.js?v=1652818532"></script>
+  <script src="/js/main.js?v=1652818532"></script>
 </html>
