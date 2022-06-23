@@ -26,7 +26,7 @@ But the best thing is: The code snippets are up-to-date and just work!
 
 ### Community
 
-- [Gitter Chat Room](https://gitter.im/mithriljs/mithril.js)
+- [Zulip Chat](https://mithril.zulipchat.com)
 - Use `#mithriljs` on Twitter and other social media.
 
 ## Contributors
