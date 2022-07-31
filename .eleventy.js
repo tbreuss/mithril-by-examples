@@ -143,9 +143,9 @@ module.exports = function(eleventyConfig) {
       text.push ("\n");
       if (version === 'latest') {
         text.push([
-          'The snippet is using the most current version ' + version + ' of Mithril.js framework.',
-          'The snippet requires the latest version ' + version + ' of Mithril.js framework.',
-          'As a prerequisite for this snippet, the latest version ' + version + ' of Mithril.js framework is required.'
+          'The snippet is using the most current version of Mithril.js framework.',
+          'The snippet requires the latest version of Mithril.js framework.',
+          'As a prerequisite for this snippet, the latest version of Mithril.js framework is required.'
         ][textVariantNumber]);
       } else {
         text.push([
