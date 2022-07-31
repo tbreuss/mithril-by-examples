@@ -71,7 +71,7 @@ export default ({attrs:{initial = 0}}) => {
 
 ~~~js
 // app.js
-import Tabs from "./Tabs";
+import Tabs from './Tabs';
 
 m.mount(document.body, () => {
   let sidebarIsOpen = false
@@ -79,7 +79,7 @@ m.mount(document.body, () => {
   return {
     view: () =>
       m('.m-4',
-        m("h1.mb-8", "Tabs: Compound components with context"),
+        m('h1.mb-8', 'Tabs: Compound components with context'),
 
         m('h2.mb-4', 'Tabs on the left'),
 
