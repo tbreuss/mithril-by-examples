@@ -4,7 +4,7 @@ abstract: Use bss (Better Style Sheets) like styled components, but way simpler.
 date: 2021-10-16
 tags: [bss, css, m.mount]
 level: beginner
-version: 1.1.6
+version: latest
 author: porsager
 layout: layouts/example.html
 flems:
@@ -49,4 +49,3 @@ m.mount(document.body, {
     }, 'Test button')
 })
 ~~~
-
