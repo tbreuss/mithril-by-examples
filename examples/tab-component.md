@@ -4,7 +4,7 @@ abstract: Demonstration how to create a tab view, where tab toggle buttons commu
 date: 2021-10-16
 tags: [component, tab, m.mount]
 level: beginner
-version: 1.1.6
+version: latest
 author: barneycarroll
 layout: layouts/example.html
 flems:
@@ -26,8 +26,8 @@ The example is using Tailwind.css for the UI part.
 ~~~js
 // Tabs.js
 const viewOf = v =>
-  v.children[0] && typeof v.children[0].children == 'function'
-  ? v.children[0].children : () => children
+  typeof v.children[0] == 'function'
+    ? v.children[0] : () => children
 
 export default ({attrs:{initial = 0}}) => {
   let active = initial
