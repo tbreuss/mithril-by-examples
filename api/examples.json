@@ -634,7 +634,7 @@
       "date": "2021-10-16",
       "tags": ["bss","css","m.mount"],
       "level": "beginner",
-      "version": "1.1.6",
+      "version": "latest",
       "author": "porsager",
       "url": "/examples/styled-component-with-bss/"
     },
