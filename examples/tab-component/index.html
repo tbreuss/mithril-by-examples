@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="4spLhTDINzdede85HIlvHd0YVnKLKeP1Xw4FnIUaT1Q" />
     <title>Tab Component | Mithril.js by Examples</title>
-    <link rel="stylesheet" href="/css/pure-min.css?v=1658564490">
-    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1658564490">
-    <link rel="stylesheet" href="/css/styles.css?v=1658564490">
-    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1658564490">
+    <link rel="stylesheet" href="/css/pure-min.css?v=1659384071">
+    <link rel="stylesheet" href="/css/grids-responsive-min.css?v=1659384071">
+    <link rel="stylesheet" href="/css/styles.css?v=1659384071">
+    <link rel="stylesheet" href="/css/highlight/styles/atom-one-dark.min.css?v=1659384071">
     <script src="https://flems.io/flems.html" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
@@ -45,7 +45,7 @@
             by&nbsp;<span class="author"><a href="/contributors/barneycarroll/">barneycarroll</a></span>
           </span>
         </p>
-        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">1.1.6</span>
+        <p class="no-margin-bottom">Level: <span class="level">beginner</span> • Mithril.js Version: <span class="version">latest</span>
         </p>
 
         <p>
@@ -79,8 +79,8 @@ The example is using Tailwind.css for the UI part.</p>
         toolbar: true,
         autoHeight: false,
         selected: 'app.js',
-        files: [{"name":"Tabs.js","content":"// Tabs.js\nconst viewOf = v =>\n  v.children[0] && typeof v.children[0].children == 'function'\n  ? v.children[0].children : () => children\n\nexport default ({attrs:{initial = 0}}) => {\n  let active = initial\n  let tabs   = 0\n  let panels = 0\n\n  const Tab = {\n    view: ({ state, children, attrs: {tab = tabs++} }) =>\n      m('.p-2', {\n        class: tab === active\n          ? 'border border-blue text-blue rounded'\n          : 'hover:text-blue cursor-pointer',\n        onclick: () => {\n          active = tab\n        },\n      },\n        children,\n      ),\n  }\n\n  const TabPanel = {\n    view: ({ state, children, attrs: {tab = panels++} }) =>\n      tab === active && children,\n  }\n\n  return {\n    view: v => (\n      tabs   = 0,\n      panels = 0,\n\n      viewOf(v)({\n        Tab,\n        TabPanel,\n      })\n    )\n  }\n}\n"},{"name":"app.js","content":"// app.js\nimport Tabs from \"./Tabs\";\n\nm.mount(document.body, () => {\n  let sidebarIsOpen = false\n\n  return {\n    view: () =>\n      m('.m-4',\n        m(\"h1.mb-8\", \"Tabs: Compound components with context\"),\n\n        m('h2.mb-4', 'Tabs on the left'),\n\n        m(Tabs, ({Tab, TabPanel}) => [\n          m('.flex',\n            m('.flex.flex-col.w-32',\n              m(Tab, 'One'),\n              m(Tab, 'Two'),\n              m(Tab, 'Three'),\n            ),\n\n            m('.ml-4.p-2.border-l-2',\n              m(TabPanel, 'Content Panel One'),\n              m(TabPanel, 'Content Panel Two'),\n              m(TabPanel, 'Content Panel Three'),\n            ),\n          ),\n        ]),\n\n        m('hr.border.my-8'),\n\n        m('h2', 'Tabs in a sidebar'),\n\n        m('p', 'With named tab references and initial tab declaration'),\n\n        m(Tabs, {initial: 'Two'},  ({Tab, TabPanel}) => [\n          m('.p-4.border.my-4.rounded.shadow',\n            m(TabPanel, {tab: 'One'}, 'Content Panel One'),\n            m(TabPanel, {tab: 'Two'}, 'Content Panel Two'),\n            m(TabPanel, {tab: 'Three'}, 'Content Panel Three'),\n          ),\n\n          sidebarIsOpen &&\n          m('.fixed.pin-r.pin-t.pin-b.w-1/2.bg-white.border',\n            m(Tab, {tab: 'One'}, 'One'),\n            m(Tab, {tab: 'Two'}, 'Two'),\n            m(Tab, {tab: 'Three'}, 'Three'),\n          ),\n\n          m('div',\n            m('button.p-2.border.rounded.bg-blue.text-white', {\n              onclick: () => {\n                sidebarIsOpen = !sidebarIsOpen\n              },\n            }, 'Toggle sidebar')\n          ),\n        ])\n      ),\n  }\n})\n"}],
-        links: [{"name":"mithril@1.1.6","type":"script","url":"https://unpkg.com/mithril@1.1.6"},{"name":"tailwind.css","type":"css","url":"https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css"}]
+        files: [{"name":"Tabs.js","content":"// Tabs.js\nconst viewOf = v =>\n  typeof v.children[0] == 'function'\n    ? v.children[0] : () => children\n\nexport default ({attrs:{initial = 0}}) => {\n  let active = initial\n  let tabs   = 0\n  let panels = 0\n\n  const Tab = {\n    view: ({ state, children, attrs: {tab = tabs++} }) =>\n      m('.p-2', {\n        class: tab === active\n          ? 'border border-blue text-blue rounded'\n          : 'hover:text-blue cursor-pointer',\n        onclick: () => {\n          active = tab\n        },\n      },\n        children,\n      ),\n  }\n\n  const TabPanel = {\n    view: ({ state, children, attrs: {tab = panels++} }) =>\n      tab === active && children,\n  }\n\n  return {\n    view: v => (\n      tabs   = 0,\n      panels = 0,\n\n      viewOf(v)({\n        Tab,\n        TabPanel,\n      })\n    )\n  }\n}\n"},{"name":"app.js","content":"// app.js\nimport Tabs from './Tabs';\n\nm.mount(document.body, () => {\n  let sidebarIsOpen = false\n\n  return {\n    view: () =>\n      m('.m-4',\n        m('h1.mb-8', 'Tabs: Compound components with context'),\n\n        m('h2.mb-4', 'Tabs on the left'),\n\n        m(Tabs, ({Tab, TabPanel}) => [\n          m('.flex',\n            m('.flex.flex-col.w-32',\n              m(Tab, 'One'),\n              m(Tab, 'Two'),\n              m(Tab, 'Three'),\n            ),\n\n            m('.ml-4.p-2.border-l-2',\n              m(TabPanel, 'Content Panel One'),\n              m(TabPanel, 'Content Panel Two'),\n              m(TabPanel, 'Content Panel Three'),\n            ),\n          ),\n        ]),\n\n        m('hr.border.my-8'),\n\n        m('h2', 'Tabs in a sidebar'),\n\n        m('p', 'With named tab references and initial tab declaration'),\n\n        m(Tabs, {initial: 'Two'},  ({Tab, TabPanel}) => [\n          m('.p-4.border.my-4.rounded.shadow',\n            m(TabPanel, {tab: 'One'}, 'Content Panel One'),\n            m(TabPanel, {tab: 'Two'}, 'Content Panel Two'),\n            m(TabPanel, {tab: 'Three'}, 'Content Panel Three'),\n          ),\n\n          sidebarIsOpen &&\n          m('.fixed.pin-r.pin-t.pin-b.w-1/2.bg-white.border',\n            m(Tab, {tab: 'One'}, 'One'),\n            m(Tab, {tab: 'Two'}, 'Two'),\n            m(Tab, {tab: 'Three'}, 'Three'),\n          ),\n\n          m('div',\n            m('button.p-2.border.rounded.bg-blue.text-white', {\n              onclick: () => {\n                sidebarIsOpen = !sidebarIsOpen\n              },\n            }, 'Toggle sidebar')\n          ),\n        ])\n      ),\n  }\n})\n"}],
+        links: [{"name":"mithril@latest","type":"script","url":"https://unpkg.com/mithril@latest"},{"name":"tailwind.css","type":"css","url":"https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css"}]
       });
       </script>
     
@@ -96,7 +96,7 @@ The example is using Tailwind.css for the UI part.</p>
                     </tr>
                 </thead>
                 <tbody>
-                <tr><td class="capitalize">script</td><td>mithril@1.1.6</td><td>https://unpkg.com/mithril@1.1.6</td></tr>,<tr><td class="capitalize">css</td><td>tailwind.css</td><td>https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css</td></tr>
+                <tr><td class="capitalize">script</td><td>mithril@latest</td><td>https://unpkg.com/mithril@latest</td></tr>,<tr><td class="capitalize">css</td><td>tailwind.css</td><td>https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.css</td></tr>
                 </tbody>
             </table>
           </div>
@@ -104,8 +104,8 @@ The example is using Tailwind.css for the UI part.</p>
       <h2 id="tabs.js" tabindex="-1">Tabs.js <a class="direct-link" href="#tabs.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// Tabs.js
 const viewOf = v =&gt;
-  v.children[0] &amp;&amp; typeof v.children[0].children == 'function'
-  ? v.children[0].children : () =&gt; children
+  typeof v.children[0] == 'function'
+    ? v.children[0] : () =&gt; children
 
 export default ({attrs:{initial = 0}}) =&gt; {
   let active = initial
@@ -146,7 +146,7 @@ export default ({attrs:{initial = 0}}) =&gt; {
 </code></pre>
 <h2 id="app.js" tabindex="-1">App.js <a class="direct-link" href="#app.js" aria-hidden="true">#</a></h2>
 <pre><code class="language-js">// app.js
-import Tabs from &quot;./Tabs&quot;;
+import Tabs from './Tabs';
 
 m.mount(document.body, () =&gt; {
   let sidebarIsOpen = false
@@ -154,7 +154,7 @@ m.mount(document.body, () =&gt; {
   return {
     view: () =&gt;
       m('.m-4',
-        m(&quot;h1.mb-8&quot;, &quot;Tabs: Compound components with context&quot;),
+        m('h1.mb-8', 'Tabs: Compound components with context'),
 
         m('h2.mb-4', 'Tabs on the left'),
 
@@ -206,7 +206,7 @@ m.mount(document.body, () =&gt; {
   }
 })
 </code></pre>
-<p>The snippet requires version 1.1.6 of Mithril.js framework.
+<p>The snippet requires the latest version of Mithril.js framework.
 It is ideal for beginners showing some basic recipes.</p>
 <p>In this example we can see an example of Mithril.js' <code>m.mount</code> <a href="/api-methods/">API method</a>, besides it core m() hyperscript function.</p>
 <p>The code sample was authored by barneycarroll. It was last modified on 16 October 2021.
@@ -214,7 +214,7 @@ Want to see more examples written by barneycarroll? Then <a href="/contributors/
 
 
         <h2 id="contribute" tabindex="-1">Contribute <a class="direct-link" href="#contribute" aria-hidden="true">#</a></h2>
-<p>❓ Hey! Do you want to bring this code sample up to the latest version? Or do you see a bug or other improvements for this snippet? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
+<p>Do you see some improvements, that could be addressed here? Then let me know by <a href="https://github.com/tbreuss/mithril-by-examples/issues">opening an issue</a>.
 As an alternative, you can fork the repository on GitHub, push your commits and send a pull request.
 To start your work, click on the edit link below. Thank you for contributing to this repo.</p>
 
@@ -262,6 +262,6 @@ To start your work, click on the edit link below. Thank you for contributing to 
   </div>
   <!-- Current page: /examples/tab-component/ -->
   </body>
-  <script src="/css/highlight/highlight.min.js?v=1658564490"></script>
-  <script src="/js/main.js?v=1658564490"></script>
+  <script src="/css/highlight/highlight.min.js?v=1659384071"></script>
+  <script src="/js/main.js?v=1659384071"></script>
 </html>
